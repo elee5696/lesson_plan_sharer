@@ -1,0 +1,20 @@
+[
+  {
+    "name": "stick-figures",
+    "description": "students will create stick figures using natural materials.",
+    "goals": [
+      "art",
+      "hands-on",
+      "creative",
+      "crafts"
+    ],
+    "materials": [
+      "sticks",
+      "paper",
+      "glue",
+      "googly-eyes"
+    ],
+    "outcomes": "students responded well to the hands on project. The use of natural materials helped provide tactile repononse.",
+    "image": "/stick-figure.png"
+  }
+]
