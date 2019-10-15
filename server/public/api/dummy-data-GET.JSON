@@ -18,7 +18,7 @@
     ],
     "outcomes": "students responded well to the hands on project. The use of natural materials helped provide tactile repononse.",
     "rating": 4.85,
-    "image": "/stick-figure.png"
+    "image": "/images/stick-figure.png"
   },
   {
     "id": 2,
@@ -40,6 +40,6 @@
     ],
     "outcomes": "students were able to train hand-eye coordination with the use of small letter beads, as well as training reading comprehension",
     "rating": 3.32,
-    "image": "/name-beads.png"
+    "image": "/images/name-beads.png"
   }
 ]
