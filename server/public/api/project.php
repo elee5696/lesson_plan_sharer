@@ -8,7 +8,7 @@ if(!$conn) {
   throw new Exception('connection failed');
 }
 
-method = $_SERVER['REQUEST_METHOD'];
+$method = $_SERVER['REQUEST_METHOD'];
 
 switch($method) {
   case 'GET':
