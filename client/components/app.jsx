@@ -9,7 +9,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'list',
+        name: 'details',
         params: {}
       }
     }
@@ -27,21 +27,27 @@ export default class App extends React.Component {
 
   render() {
     let body;
+    let active;
+
     switch (this.state.view.name) {
       case 'list':
         body = <ProjectList />;
+        active = 'home';
         break;
       case 'submit':
         body = <ProjectSubmit />;
         break;
       case 'details':
         body = <ProjectDetails />;
+        active = 'provs';
         break;
     }
 
     return (
       <>
-      <Header />
+      <Header
+      setViewCallback={this.setView}
+      currentActive={active}/>
       {body}
       </>
     );
