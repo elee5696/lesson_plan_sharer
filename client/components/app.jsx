@@ -31,14 +31,14 @@ export default class App extends React.Component {
 
     switch (this.state.view.name) {
       case 'list':
-        body = <ProjectList />;
+        body = <ProjectList view={this.setView}/>;
         active = 'home';
         break;
       case 'submit':
         body = <ProjectSubmit />;
         break;
       case 'details':
-        body = <ProjectDetails />;
+        body = <ProjectDetails projectID={this.state.view.params.id}/>;
         active = 'provs';
         break;
     }
