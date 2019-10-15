@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class Projectsubmit extends React.Component {
+class ProjectSubmit extends React.Component {
   constructor(props) {
     super(props);
   this.state ={
@@ -149,4 +149,4 @@ class Projectsubmit extends React.Component {
   }
 }
 
-export default Projectsubmit;
+export default ProjectSubmit;

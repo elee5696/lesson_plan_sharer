@@ -30,7 +30,9 @@ export default class ProjectList extends React.Component {
         <div className="row">
           {this.state.projects.map(project => {
             return (
-              <ProjectListItem key={project.ID}
+              <ProjectListItem
+                key={project.ID}
+                id={project.ID}
                 projectImage={project.IMAGE}
                 projectName={project.NAME}
                 projectDescription={project.DESCRIPTION}

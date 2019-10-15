@@ -1,3 +1,7 @@
+body {
+  font-family: 'Work Sans', sans-serif !important;
+}
+
 .descriptionBox, .outcomeBox{
   width: 400px;
   height: 100px;
