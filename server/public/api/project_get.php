@@ -1,6 +1,6 @@
 <?php
 
-if(!defined(INTERNAL)) {
+if(defined(INTERNAL)) {
   exit('Direct access is not allowed');
 }
 
@@ -28,6 +28,4 @@ while($row=mysqli_fetch_assoc($result)){
 $encodedJson= json_encode($output);
 
 print_r($encodedJson) ;
-
-
 ?>
