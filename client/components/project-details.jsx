@@ -16,7 +16,7 @@ export default class ProjectDetails extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/project.php?id=${this.props.id}`)
+    fetch(`/api/project.php?id=${this.props.projectID}`)
       .then(res => res.json())
       .then(project => {
         this.setState({
@@ -27,9 +27,8 @@ export default class ProjectDetails extends React.Component {
   }
 
   render() {
-
     if (this.state.project === null) {
-      return <div className="pageLoading">Page loading...</div>;
+      return <div className="page-loading">Page loading...</div>;
     }
 
     let setupSteps = this.state.project.SET_UP.split(',');

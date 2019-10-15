@@ -12,7 +12,7 @@ export default class ProjectListItem extends React.Component {
           <div className="card-body">
             <h5 className="card-title">{this.props.projectName}</h5>
             <p className="card-text">{this.props.projectDescription}</p>
-            <a href="#" className="btn btn-primary">Go somewhere</a>
+              <a href="#" onClick={() => this.props.view('details', { id: this.props.id })} className="btn btn-primary">View Details</a>
           </div>
           </div>
 </div>
