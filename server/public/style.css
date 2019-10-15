@@ -1,11 +1,11 @@
-.descriptionBox{
+.descriptionBox, .outcomeBox{
   width: 400px;
   height: 100px;
   padding: 50px;
   border: 1px solid black
 }
 
-.projectEntry{
+.projectEntry, .setUpEntry{
   width: 300px;
   border: 1px solid black
 }

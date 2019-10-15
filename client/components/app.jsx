@@ -3,6 +3,7 @@ import Header from './header';
 import Projectsubmit from './projectSubmit';
 import ProjectList from './project-list';
 // import ProjectDetails from './project-details';
+import SecondSubmit from './secondSubmitPage';
 
 export default class App extends React.Component {
   constructor(props) {
