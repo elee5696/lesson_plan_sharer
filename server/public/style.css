@@ -18,7 +18,7 @@ body {
   border: 1px solid black;
 }
 
-.projectEntry, .setUpEntry{
+.projectEntry, .setUpEntry, #goalSubmit, #materialSubmit{
   width: 300px;
   border: 1px solid black
 }

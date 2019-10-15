@@ -40,7 +40,7 @@ export default class ProjectDetails extends React.Component {
           <div className="project-image-container d-flex justify-content-center mb-5">
             <img className="project-image" src={this.state.project.IMAGE}></img>
           </div>
-          <div className="project-title-contatiner mb-5">
+          <div className="project-title-container mb-5">
             <h1 className="project-title display-3">{this.state.project.NAME}</h1>
           </div>
           <div className="project-desc-container mb-5">

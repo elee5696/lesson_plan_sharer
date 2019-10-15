@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom'
 
 class ProjectSubmit extends React.Component {
   constructor(props) {
@@ -81,7 +81,9 @@ class ProjectSubmit extends React.Component {
   }
   render() {
     return (
-      <div>
+    <div className= "row">
+      <div className="spacer col col-3"></div>
+      <div className="form container col col-4 d-flex justify-content-center">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label >Project Title</label>
@@ -112,7 +114,7 @@ class ProjectSubmit extends React.Component {
         </div>
           <div>
             <div className="form-group inline">
-              <label for="colFormLabel"
+              <label
               className="col-sm-2 col-form-label">Materials</label>
               <div className="col-sm-10">
                 <input onChange={this.handleMaterialChange}
@@ -124,14 +126,16 @@ class ProjectSubmit extends React.Component {
           </div>
           <div>
           <div className="form-group">
-            <label for="SetUp">Set-Up</label>
+            <label>Set-Up</label>
+
             <input onChange={this.handleSetUpChange}
             type="text"
             className="form-control setUpEntry" id="setUp"
-            placeholder="Setup Entry" />
+            placeholder="Set-Up Entry" />
+              <small className="text-muted"> Separate instructions with commas</small>
           </div>
           <div className="form-group">
-            <label for="Outcome">Outcomes</label>
+            <label>Outcomes</label>
             <textarea onChange= {this.handleOutcomesChange}
             className="form-control outcomeBox"
             id="outcomeBox"
@@ -144,6 +148,8 @@ class ProjectSubmit extends React.Component {
         </div>
       </form>
     </div>
+        <div className="spacer col col-3"></div>
+  </div>
     );
   }
 }
