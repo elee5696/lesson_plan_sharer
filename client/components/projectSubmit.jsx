@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom'
 
 class ProjectSubmit extends React.Component {
   constructor(props) {
@@ -34,6 +34,7 @@ class ProjectSubmit extends React.Component {
     })
   }
   handleSubmit(event){
+    <Link to = '/project-details'></Link>
     event.preventDefault();
   }
   handleDescriptionChange(event){
@@ -53,7 +54,6 @@ class ProjectSubmit extends React.Component {
       goals: "",
       goalsToSubmit: this.goalsArray
   })
-  console.log(this.goalArray);
   }
   handleSetUpChange (event) {
     this.setState({
@@ -73,7 +73,6 @@ class ProjectSubmit extends React.Component {
       materials: "",
       materialsToSubmit: this.materialsArray
     })
-    console.log(this.materialsArray);
   }
   handleOutcomesChange(event) {
     this.setState({

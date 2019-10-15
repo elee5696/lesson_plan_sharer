@@ -27,13 +27,12 @@ export default class App extends React.Component {
 
   render() {
     let body;
-
     switch (this.state.view.name) {
       case 'list':
         body = <ProjectList />;
         break;
       case 'submit':
-        body = <Projectsubmit />;
+        body = <ProjectSubmit />;
         break;
       case 'details':
         body = <ProjectDetails />;
