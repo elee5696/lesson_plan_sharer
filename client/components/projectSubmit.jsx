@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 class ProjectSubmit extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class ProjectSubmit extends React.Component {
     })
   }
   handleSubmit(event){
-    <Link to = '/project-details'></Link>
+    //<Link to = '/project-details'></Link>
     event.preventDefault();
   }
   handleDescriptionChange(event){
