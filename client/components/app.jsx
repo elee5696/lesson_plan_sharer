@@ -9,7 +9,6 @@ export default class App extends React.Component {
       <div>
         <Header/>
         <Projectsubmit/>
-        <SecondSubmit/>
       </div>
     );
   }
