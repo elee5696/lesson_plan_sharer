@@ -85,7 +85,6 @@ class Projectsubmit extends React.Component {
             <label >Description</label>
             <input onChange={this.handleDescriptionChange} className="form-control descriptionBox" placeholder="Description Text" rows="3"></input>
           </div>
-
           <div>
             <form className="form-inline">
               <div className="form-group row"> </div>
@@ -119,35 +118,8 @@ class Projectsubmit extends React.Component {
             <button onClick= {this.handleSubmit} type="button" className="btn btn-secondary btn-lg">Submit</button>
           </form>
       </div>
-
-
-
-
-
-
-
-
-
-
           </form>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     );
   }
 }
