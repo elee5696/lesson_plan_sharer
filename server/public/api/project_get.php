@@ -1,8 +1,8 @@
 <?php
 
-// if(!defined(INTERNAL)) {
-//   exit('Direct access is not allowed');
-// }
+if(!defined(INTERNAL)) {
+  exit('Direct access is not allowed');
+}
 
 
 $query = "SELECT P.ID, P.NAME, DESCRIPTION, SET_UP, OUTCOMES,RATING,IMAGE,
