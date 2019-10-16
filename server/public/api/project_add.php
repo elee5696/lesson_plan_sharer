@@ -21,7 +21,7 @@ VALUES
 ('$name', '$description', '$outcomes', '$image', '$set_up')";
 
 $result = mysqli_query($conn, $query);
-
+print($query);
 if(!$result) {
   throw new Exception('query failed');
 }
