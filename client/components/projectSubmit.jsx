@@ -1,5 +1,6 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
+import ListBubble from './list-bubble';
 
 class ProjectSubmit extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class ProjectSubmit extends React.Component {
         "goals": "",
         "goalsToSubmit": [],
         "materials": "",
-        "materialsToSubmit": ""
+        "materialsToSubmit": []
       }
     this.materialsArray =[],
     this.goalsArray = [];
@@ -34,6 +35,8 @@ class ProjectSubmit extends React.Component {
     })
   }
   handleSubmit(event){
+
+
     // <Link to = '/project-details'></Link>
     event.preventDefault();
   }
@@ -79,11 +82,16 @@ class ProjectSubmit extends React.Component {
       outcomes: event.target.value
     })
   }
+  componentDidUpdate(prevState){
+    if (this.state !== prevState) {
+      this.render();
+    }
+  }
   render() {
     return (
     <div className= "row">
       <div className="spacer col col-3"></div>
-      <div className="form container col col-4 d-flex justify-content-center">
+      <div className="form container col col-6 d-flex justify-content-center m-0">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label >Project Title</label>
@@ -95,13 +103,13 @@ class ProjectSubmit extends React.Component {
           </div>
           <div className="form-group">
             <label >Description</label>
-            <input onChange={this.handleDescriptionChange}
-            className="form-control descriptionBox" placeholder="Description Text" rows="3"></input>
+            <textarea onChange={this.handleDescriptionChange}
+            className="form-control descriptionBox" placeholder="Description Text" rows="3"></textarea>
           </div>
           <div>
             <div className="form-group inline">
               <label className="col-sm-2 col-form-label">Goals</label>
-              <div className="col-sm-10">
+              <div className="col-sm-10 p-0">
                 <input type="text"
                   className="form-control"
                   id="goalSubmit"
@@ -110,25 +118,35 @@ class ProjectSubmit extends React.Component {
                   placeholder="Goals Entry"></input>
                 <button onClick={this.handleGoalSubmit}>+</button>
               </div>
+              <div className="row goal-bubble-container">
+                {this.state.goalsToSubmit.map(goal => {
+                  return <ListBubble text = {goal}/>
+                })}
+              </div>
             </div>
         </div>
-          <div>
-            <div className="form-group inline">
+            <div>
+            <div className="form-group inline ">
               <label
               className="col-sm-2 col-form-label">Materials</label>
-              <div className="col-sm-10">
+              <div className="col-sm-10 p-0">
                 <input onChange={this.handleMaterialChange}
                 type="text" className="form-control" id="materialSubmit"
-                placeholder="Materials Entry"></input>
+                    placeholder="Materials Entry" value={this.state.materials}></input>
                 <button onClick={this.handleMaterialSubmit}>+</button>
               </div>
+                <div className="row materials-bubble-container">
+                  {this.state.materialsToSubmit.map(material => {
+                    return <ListBubble text={material} />
+                  })}
+                </div>
             </div>
           </div>
           <div>
           <div className="form-group">
             <label>Set-Up</label>
 
-            <input onChange={this.handleSetUpChange}
+              <textarea onChange={this.handleSetUpChange}
             type="text"
             className="form-control setUpEntry" id="setUp"
             placeholder="Set-Up Entry" />

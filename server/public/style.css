@@ -14,7 +14,6 @@ body {
 .descriptionBox, .outcomeBox{
   width: 400px;
   height: 100px;
-  padding: 50px;
   border: 1px solid black;
 }
 
