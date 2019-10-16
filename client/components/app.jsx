@@ -72,9 +72,9 @@ export default class App extends React.Component {
         <ProjectSubmit />;
         break;
       case 'details':
-        body =
-        <ProjectDetails
-        projectID={this.state.view.params.id}/>;
+        body = <ProjectDetails
+        projectID={this.state.view.params.id}
+        view={this.setView}/>;
         active = 'provs';
         break;
       case 'search':
