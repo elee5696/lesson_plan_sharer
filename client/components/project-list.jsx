@@ -4,24 +4,10 @@ import ProjectListItem from './projectlist-item';
 export default class ProjectList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      projects: []
-    };
   }
 
   componentDidMount() {
-    this.getProjects();
-  }
-
-  getProjects() {
-    fetch('/api/project.php')
-      .then(res => res.json())
-      .then(fetchedProjects => {
-        this.setState({
-           projects: fetchedProjects
-           })
-        })
-      .catch(err => console.error(err));
+    this.props.getProjectCallback();
   }
 
   render() {

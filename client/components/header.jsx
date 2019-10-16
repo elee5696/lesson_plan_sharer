@@ -1,4 +1,5 @@
 import React from 'react';
+import Searchbar from './search-bar';
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -37,10 +38,8 @@ export default class Header extends React.Component {
                 <a className="nav-link" href="#">User</a>
               </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-              <input className="form-control mr-sm-2" type="search" placeholder="Search"/>
-                <button className="btn btn-outline-success mr-2 my-2 my-sm-0" type="submit">Search</button>
-              </form>
+            <Searchbar
+            searchCallback={this.props.searchCallback} />
             </div>
           </nav>
       </div>

@@ -11,7 +11,7 @@ class ProjectSubmit extends React.Component {
         "set_up": "",
         "outcomes": "",
         "rating": "",
-        "image": "",
+        "image": "gfdgdfg",
         "goals": "",
         "goalsToSubmit": [],
         "materials": "",
@@ -35,10 +35,27 @@ class ProjectSubmit extends React.Component {
     })
   }
   handleSubmit(event){
-
-
-    // <Link to = '/project-details'></Link>
     event.preventDefault();
+    let body = JSON.stringify({
+      name: this.state.name,
+      description: this.state.description,
+      set_up: this.state.set_up,
+      outcomes: this.state.outcomes,
+      goals: this.state.goalsToSubmit,
+      materials: this.state.materialsToSubmit,
+      image: this.state.image
+
+    })
+    fetch(`/api/project.php`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: body
+    })
+      .then(response => console.log(response))
+      .catch(error=> console.error(error))
+
   }
   handleDescriptionChange(event){
     this.setState({
