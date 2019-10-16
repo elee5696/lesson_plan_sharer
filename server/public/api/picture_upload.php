@@ -15,7 +15,7 @@ if($_FILES['picture']) {
 
   if(in_array($file_ext, $extentions)=== false){
     $errors++;
-    throw new Exception('Image must be in JPEG or PNG format');
+    throw new Exception('Image must be in JPG, JPEG or PNG format');
   }
 
   if($pictureSize > 2097152 ) {

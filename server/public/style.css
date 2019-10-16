@@ -13,7 +13,7 @@ body {
 
 .bubble-container:hover {
   color: white;
-  background-color: rgb(161, 161, 161);
+  background-color: rgb(61, 61, 61);
 }
 
 .descriptionBox, .outcomeBox{

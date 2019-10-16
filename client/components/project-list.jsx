@@ -17,7 +17,7 @@ export default class ProjectList extends React.Component {
         <div className="project-container col col-8 d-flex flex-column justify-content-center">
           <div className="project-tile-container">
               <div className="row">
-                {this.state.projects.map(project => {
+                {this.props.projects.map(project => {
                   return (
                     <ProjectListItem
                       key={project.ID}
