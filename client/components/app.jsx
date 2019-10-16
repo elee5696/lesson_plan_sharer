@@ -5,6 +5,7 @@ import ProjectList from './project-list';
 import ProjectDetails from './project-details';
 import SearchPage from './project-search';
 
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);

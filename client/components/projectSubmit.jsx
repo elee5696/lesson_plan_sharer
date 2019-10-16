@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
 import ListBubble from './list-bubble';
+import PictureUploadForm from './picture-upload';
 
 class ProjectSubmit extends React.Component {
   constructor(props) {
@@ -14,8 +15,9 @@ class ProjectSubmit extends React.Component {
         "image": "gfdgdfg",
         "goals": "",
         "goalsToSubmit": [],
+        "materialsToSubmit": [],
+        "goals": "",
         "materials": "",
-        "materialsToSubmit": []
       }
     this.materialsArray =[],
     this.goalsArray = [];
@@ -55,7 +57,6 @@ class ProjectSubmit extends React.Component {
     })
       .then(response => console.log(response))
       .catch(error=> console.error(error))
-
   }
   handleDescriptionChange(event){
     this.setState({
@@ -107,6 +108,13 @@ class ProjectSubmit extends React.Component {
   render() {
     return (
     <div className= "row">
+    <div>
+          <PictureUploadForm/>
+    </div>
+
+
+
+
       <div className="spacer col col-3"></div>
       <div className="form container col col-6 d-flex justify-content-center m-0">
         <form onSubmit={this.handleSubmit}>
@@ -184,7 +192,9 @@ class ProjectSubmit extends React.Component {
       </form>
     </div>
         <div className="spacer col col-3"></div>
+
   </div>
+
     );
   }
 }
