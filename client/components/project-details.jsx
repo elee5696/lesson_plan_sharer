@@ -34,6 +34,10 @@ export default class ProjectDetails extends React.Component {
     let setupSteps = this.state.project.SET_UP.split(',');
 
     return (
+      <>
+      <div className="back-button-container row">
+        <button type="button" onClick={() => this.props.view('list', {})} className="btn btn-outline-dark back-button">{'< Back to Projects'}</button>
+      </div>
       <div className="body-container row mt-4">
         <div className="spacer col col-2"></div>
         <div className="project-container col col-8">
@@ -110,6 +114,7 @@ export default class ProjectDetails extends React.Component {
         </div>
         <div className="col col-2 spacer"></div>
       </div>
+      </>
     );
   }
 }
