@@ -1,12 +1,7 @@
-
-
-/** Pass in the project ID needed to render as a prop */
-
-
-
 import React from 'react';
 import ListBubble from './list-bubble';
 import Ratings from './ratings';
+import { Link } from 'react-router-dom';
 
 export default class ProjectDetails extends React.Component {
   constructor(props) {
@@ -25,7 +20,7 @@ export default class ProjectDetails extends React.Component {
           project: project[0]
         });
       })
-      .catch(err => console.error(err))
+      .catch(err => console.error(err));
   }
 
   render() {
@@ -33,28 +28,28 @@ export default class ProjectDetails extends React.Component {
       return <div className="page-loading">Page loading...</div>;
     }
 
-    let setupSteps = this.state.project.SET_UP.split(',');
+    let setupSteps = this.state.project.set_up.split(',');
 
     return (
       <>
       <div className="back-button-container row">
-        <button type="button" onClick={() => this.props.view('list', {})} className="btn btn-outline-dark back-button">{'< Back to Projects'}</button>
+        <Link type="button" to="/provs" className="btn btn-outline-dark back-button">{'< Back to Projects'}</Link>
       </div>
       <div className="body-container row mt-4">
         <div className="spacer col col-2"></div>
         <div className="project-container col col-8">
           <div className="project-image-container d-flex justify-content-center mb-5">
-            <img className="project-image" src={this.state.project.IMAGE}></img>
+            <img className="project-image" src={this.state.project.image}></img>
           </div>
           <div className="project-title-container mb-5">
-            <h1 className="project-title display-3">{this.state.project.NAME}</h1>
+            <h1 className="project-title display-3">{this.state.project.name}</h1>
           </div>
           <div className="project-desc-container mb-5">
             <div className="project-desc-header-container mb-4">
               <h1 className="project-desc-header">Description</h1>
             </div>
             <div className="project-desc-body">
-              <h3>{this.state.project.DESCRIPTION}</h3>
+              <h3>{this.state.project.description}</h3>
             </div>
           </div>
           <div className="project-goals-container">
@@ -62,12 +57,13 @@ export default class ProjectDetails extends React.Component {
               <h1 className="project-goals-header">Goals</h1>
             </div>
             <div className="project-goals-list mb-4 row ml-0">
-              {this.state.project.GOALS.map((e, i) => {
+              {this.state.project.goals.map((e, i) => {
                 return (
                   <ListBubble
+                    key={i}
                     className="project-goals-list-item"
                     text={e} />
-                )
+                );
               })}
             </div>
           </div>
@@ -79,8 +75,8 @@ export default class ProjectDetails extends React.Component {
               <div className="project-setup-desc-body">
                 {setupSteps.map((e, i) => {
                   return (
-                    <h5 className="project-setup-steps mb-2">{i + 1}. {e}</h5>
-                  )
+                    <h5 key={i} className="project-setup-steps mb-2">{i + 1}. {e}</h5>
+                  );
                 })}
               </div>
             </div>
@@ -89,12 +85,13 @@ export default class ProjectDetails extends React.Component {
                 <h1 className="project-materials-header">Materials</h1>
               </div>
               <div className="project-materials-list-container">
-                {this.state.project.MATERIALS.map((e, i) => {
+                {this.state.project.materials.map((e, i) => {
                   return (
                     <ListBubble
-                    className="project-materials-list-item"
-                    text={e}/>
-                  )
+                      key={i}
+                      className="project-materials-list-item"
+                      text={e}/>
+                  );
                 })}
               </div>
             </div>
@@ -104,14 +101,16 @@ export default class ProjectDetails extends React.Component {
               <h1 className="project-outcomes-header">Outcome</h1>
             </div>
             <div className="project-outcomes-body mb-4">
-              <h5>{this.state.project.OUTCOMES}</h5>
-              </div>
+              <h5>{this.state.project.outcomes}</h5>
+            </div>
           </div>
           <div className="project-rating-container">
             <div className="project-rating-header-container mb-4">
               <h1 className="project-rating-header">Feedback</h1>
             </div>
-              <div className="project-rating-body mb-4"><Ratings rating={this.state.project.RATING}/></div>
+            <div className="project-rating-body mb-4">
+              <Ratings rating={this.state.project.rating}/>
+            </div>
           </div>
         </div>
         <div className="col col-2 spacer"></div>
