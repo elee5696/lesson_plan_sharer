@@ -3,7 +3,7 @@ import Homepage from './homepage'
 import Searchbar from './search-bar';
 import ProjectSubmit from './projectSubmit';
 import ProjectDetails from './project-details';
-import SearchPage from './project-search';
+import ProvPage from './prov-page';
 import UserPage from './user-page';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
 
@@ -16,7 +16,7 @@ export default class App extends React.Component {
         params: {}
       },
       projects: [],
-      searchResults: []
+      searchResults: ''
     }
     this.setView = this.setView.bind(this);
     this.getProjects = this.getProjects.bind(this);
@@ -90,9 +90,10 @@ export default class App extends React.Component {
               projects={this.state.projects} />} />
           <Route path="/submit" component={ProjectSubmit} />
           <Route path="/provs" render={(props) =>
-            <SearchPage {...props}
+            <ProvPage {...props}
               projects={this.state.projects}
               results={this.state.searchResults}
+              getProjectCallback={this.getProjects}
               searchCallback={this.searchProjects} />} />
           <Route path="/user" component={UserPage} />
           <Route path="/detail/:id" render={(props) =>

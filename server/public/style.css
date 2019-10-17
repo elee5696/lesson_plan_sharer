@@ -45,3 +45,12 @@ body {
 .list-image {
   height: 15rem;
 }
+
+.project-tile-container {
+  color: black;
+}
+
+.project-tile-container:hover {
+  color: black;
+  text-decoration: none;
+}
