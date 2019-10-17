@@ -1,8 +1,7 @@
 import React from 'react';
-import Header from './header';
+import Homepage from './homepage'
 import Searchbar from './search-bar';
 import ProjectSubmit from './projectSubmit';
-import ProjectList from './project-list';
 import ProjectDetails from './project-details';
 import SearchPage from './project-search';
 import UserPage from './user-page';
@@ -80,20 +79,17 @@ export default class App extends React.Component {
                 <li className='nav-item'>
                   <Link to="/user" className="nav-link">User</Link>
                 </li>
-                <li className='nav-item'>
-                  <Link to="/search" className="nav-link">Search</Link>
-                </li>
               </ul>
             </div>
           </nav>
         </div>
         <Switch>
-          <Route path="/provs" render={(props) =>
-            <ProjectList {...props}
+          <Route exact path="/" render={(props) =>
+            <Homepage {...props}
               getProjectCallback={this.getProjects}
               projects={this.state.projects} />} />
           <Route path="/submit" component={ProjectSubmit} />
-          <Route path="/search" render={(props) =>
+          <Route path="/provs" render={(props) =>
             <SearchPage {...props}
               projects={this.state.projects}
               results={this.state.searchResults}

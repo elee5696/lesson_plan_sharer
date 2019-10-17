@@ -20,10 +20,7 @@ export default class ProjectListItem extends React.Component {
             rating={this.props.rating} /></div>
           </div>
           </div>
-</div>
-</div>
-
-
+        </div>
     );
   }
 }
