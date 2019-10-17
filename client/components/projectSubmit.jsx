@@ -3,6 +3,7 @@ import React from 'react';
 import ListBubble from './list-bubble';
 import PictureUploadForm from './picture-upload';
 
+
 class ProjectSubmit extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +14,6 @@ class ProjectSubmit extends React.Component {
         "outcomes": "",
         "rating": "",
         "image": "gfdgdfg",
-        "goals": "",
         "goalsToSubmit": [],
         "materialsToSubmit": [],
         "goals": "",
@@ -55,7 +55,6 @@ class ProjectSubmit extends React.Component {
       },
       body: body
     })
-      .then(response => console.log(response))
       .catch(error=> console.error(error))
   }
   handleDescriptionChange(event){
@@ -108,13 +107,6 @@ class ProjectSubmit extends React.Component {
   render() {
     return (
     <div className= "row">
-    <div>
-          <PictureUploadForm/>
-    </div>
-
-
-
-
       <div className="spacer col col-3"></div>
       <div className="form container col col-6 d-flex justify-content-center m-0">
         <form onSubmit={this.handleSubmit}>
@@ -144,8 +136,8 @@ class ProjectSubmit extends React.Component {
                 <button onClick={this.handleGoalSubmit}>+</button>
               </div>
               <div className="row goal-bubble-container">
-                {this.state.goalsToSubmit.map(goal => {
-                  return <ListBubble text = {goal}/>
+                {this.state.goalsToSubmit.map((goal, index) => {
+                  return <ListBubble text={goal} key={index}/>
                 })}
               </div>
             </div>
@@ -161,8 +153,8 @@ class ProjectSubmit extends React.Component {
                 <button onClick={this.handleMaterialSubmit}>+</button>
               </div>
                 <div className="row materials-bubble-container">
-                  {this.state.materialsToSubmit.map(material => {
-                    return <ListBubble text={material} />
+                  {this.state.materialsToSubmit.map((material, index) => {
+                    return <ListBubble text={material} key={index} />
                   })}
                 </div>
             </div>
@@ -185,13 +177,13 @@ class ProjectSubmit extends React.Component {
             placeholder="Outcome Entries"
             rows="3"></textarea>
           </div>
-          <button onClick= {this.handleSubmit}
-          type="button"
-          className="btn btn-secondary btn-lg">Submit</button>
+          <div className="spacer col col-3"></div>
+          <button onClick={this.handleSubmit}
+            type="submit"
+            className="btn btn-secondary btn-lg">Submit</button>
         </div>
       </form>
     </div>
-        <div className="spacer col col-3"></div>
 
   </div>
 
