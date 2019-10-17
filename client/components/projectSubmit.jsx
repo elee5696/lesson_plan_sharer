@@ -7,7 +7,7 @@ import PictureUploadForm from './picture-upload';
 class ProjectSubmit extends React.Component {
   constructor(props) {
     super(props);
-  this.state ={
+    this.state ={
         "name": "",
         "description": "",
         "set_up": "",
