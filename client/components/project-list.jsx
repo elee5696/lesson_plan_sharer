@@ -25,11 +25,9 @@ export default class ProjectList extends React.Component {
                       projectImage={project.IMAGE}
                       projectName={project.NAME}
                       projectDescription={project.DESCRIPTION}
-                      view={this.props.view}
-                    />
-                  );
-                })
-                }
+                      view={this.props.view}/>
+                      )
+                  })}
               </div>
             </div>
             </div>

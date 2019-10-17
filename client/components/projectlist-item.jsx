@@ -1,4 +1,6 @@
 import React from 'react';
+import ProjectDetails from './project-details';
+import { Route, Link } from 'react-router-dom';
 
 export default class ProjectListItem extends React.Component {
   render() {
@@ -12,7 +14,7 @@ export default class ProjectListItem extends React.Component {
           <div className="card-body">
             <h5 className="card-title">{this.props.projectName}</h5>
             <p className="card-text">{this.props.projectDescription}</p>
-              <a href="#" onClick={() => this.props.view('details', { id: this.props.id })} className="btn btn-outline-dark">View Details</a>
+              <Link to={`/detail/${this.props.id}`} className="btn btn-outline-dark">View Details</Link>
           </div>
           </div>
 </div>
