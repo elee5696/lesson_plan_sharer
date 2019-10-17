@@ -1,10 +1,6 @@
 import React from 'react';
 import ProjectListItem from './projectlist-item';
-import Ratings from './ratings';
 export default class Homepage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.getProjectCallback();
@@ -25,18 +21,15 @@ export default class Homepage extends React.Component {
               <div className="row">
                 {this.props.projects.map(project => {
                   return (
-                    <div>
-                      <ProjectListItem
-                        key={project.ID}
-                        id={project.ID}
-                        projectImage={project.IMAGE}
-                        projectName={project.NAME}
-                        projectDescription={project.DESCRIPTION}
-                        view={this.props.view}
-                        rating={project.RATING}
-                      />
-
-                    </div>
+                    <ProjectListItem
+                      key={project.id}
+                      id={project.id}
+                      projectImage={project.image}
+                      projectName={project.name}
+                      projectDescription={project.description}
+                      view={this.props.view}
+                      rating={project.rating}
+                    />
                   );
                 })
                 }
