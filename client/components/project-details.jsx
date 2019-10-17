@@ -6,6 +6,7 @@
 
 import React from 'react';
 import ListBubble from './list-bubble';
+import Ratings from './ratings';
 
 export default class ProjectDetails extends React.Component {
   constructor(props) {
@@ -110,7 +111,7 @@ export default class ProjectDetails extends React.Component {
             <div className="project-rating-header-container mb-4">
               <h1 className="project-rating-header">Feedback</h1>
             </div>
-            <div className="project-rating-body mb-4">{this.state.project.RATING}</div>
+              <div className="project-rating-body mb-4"><Ratings rating={this.state.project.RATING}/></div>
           </div>
         </div>
         <div className="col col-2 spacer"></div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectListItem from './projectlist-item';
-
+import Ratings from './ratings';
 export default class ProjectList extends React.Component {
   constructor(props) {
     super(props);
@@ -12,27 +12,40 @@ export default class ProjectList extends React.Component {
 
   render() {
     return (
-     <div className="project-list-container row mt-4">
-        <div className="spacer col col-2"></div>
-        <div className="project-container col col-8 d-flex flex-column justify-content-center">
+     <>
+      <div className="project-list-container row mt-4">
+          <div className="spacer col col-1"></div>
+        <div className="project-container col col-10 ml-4 d-flex justify-content-center">
           <div className="project-tile-container">
+              <div className="top-rated-provs-container row col-10 mt-4">
+                <h2 className="top-rated-text-provs">
+                    Top-rated provs
+                </h2>
+              </div>
               <div className="row">
                 {this.props.projects.map(project => {
                   return (
+                    <div>
                     <ProjectListItem
                       key={project.ID}
                       id={project.ID}
                       projectImage={project.IMAGE}
                       projectName={project.NAME}
                       projectDescription={project.DESCRIPTION}
-                      view={this.props.view}/>
-                      )
-                  })}
+                      view={this.props.view}
+                      rating={project.RATING}
+                    />
+
+                  </div>
+                  );
+                })
+                }
               </div>
-            </div>
-            </div>
-          <div className="spacer col col-2"></div>
-           </div>
+             </div>
+          </div>
+        <div className="spacer col col-1"></div>
+      </div>
+    </>
           );
         }
 }
