@@ -17,7 +17,8 @@ export default class ProjectDetails extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/project.php?id=${this.props.projectID}`)
+    const { id } = this.props.match.params;
+    fetch(`/api/project.php?id=${id}`)
       .then(res => res.json())
       .then(project => {
         this.setState({

@@ -18,9 +18,6 @@ export default class Searchbar extends React.Component {
 
   onSubmit() {
     event.preventDefault();
-    this.setState({
-      value: ''
-    })
     this.props.searchCallback(this.state.value);
   }
 
