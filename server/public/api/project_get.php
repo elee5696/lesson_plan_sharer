@@ -14,15 +14,19 @@ if (empty($_GET['id'])) {
   $whereClause = " WHERE P.ID={$id}";
 }
 
-$query = "SELECT P.id, P.name, P.description, P.set_up, P.outcomes,P.rating,
-(SELECT GROUP_CONCAT(M.`name`) AS Materials FROM `project_material` AS PM JOIN `materials` AS M ON PM.material_id = M.id)
-AS materials,
-(SELECT GROUP_CONCAT(G.`name`) AS Goals FROM `project_goals` AS PG JOIN `goals` AS G ON PG.goal_id = G.id) AS goals
-FROM projects AS P
-JOIN materials AS M
-ON M.ID = P.ID
-GROUP BY P.ID";
-
+$query = "SELECT `id`, name, description, set_up, outcomes, rating, goals, materials
+FROM projects
+JOIN
+(SELECT temp2.materials, temp.goals, temp.project_id
+FROM
+	(SELECT GROUP_CONCAT(`name`) AS materials,`project_id` FROM project_material
+	JOIN materials ON material_id = id GROUP BY `project_id`)  AS temp2
+ JOIN
+	(SELECT GROUP_CONCAT(`name`) AS goals,`project_id`
+		FROM project_goals
+		JOIN goals ON goal_id = id GROUP BY `project_id`) AS temp
+ ON temp2.project_id = temp.project_id) AS temp3
+ON id = project_id";
 $result=mysqli_query($conn, $query);
 
 $output = [];
