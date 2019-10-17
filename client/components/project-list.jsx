@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectListItem from './projectlist-item';
-
+import Ratings from './ratings';
 export default class ProjectList extends React.Component {
   constructor(props) {
     super(props);
@@ -25,6 +25,7 @@ export default class ProjectList extends React.Component {
               <div className="row">
                 {this.props.projects.map(project => {
                   return (
+                    <div>
                     <ProjectListItem
                       key={project.ID}
                       id={project.ID}
@@ -32,7 +33,10 @@ export default class ProjectList extends React.Component {
                       projectName={project.NAME}
                       projectDescription={project.DESCRIPTION}
                       view={this.props.view}
+                      rating={project.RATING}
                     />
+
+                  </div>
                   );
                 })
                 }
