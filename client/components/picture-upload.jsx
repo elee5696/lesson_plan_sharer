@@ -3,7 +3,12 @@ import React from 'react';
 class PictureUploadForm extends React.Component {
   constructor(props) {
     super(props);
-    //this.onSubmit = this.onSubmit.bind(this);
+    this.state= {
+      inputValue: null
+    }
+    // this.saveUrl = this.saveUrl.bind(this);
+    // this.testState = this.testState.bind(this);
+    // this.onSubmit = this.onSubmit.bind(this);
   }
 
   // onSubmit(event) {
@@ -14,6 +19,14 @@ class PictureUploadForm extends React.Component {
   //   });
   // }
 
+  // testState(){
+  //   console.log(this.state.inputValue);
+  // }
+  // saveUrl(event) {
+  //   this.setState({
+  //    inputValue: event.target.value
+  //   });
+  // }
   render() {
     return (
       <form action="/api/picture_upload.php" method="POST" encType="multipart/form-data">
