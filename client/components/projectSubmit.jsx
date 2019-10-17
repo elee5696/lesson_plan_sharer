@@ -1,8 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
 import ListBubble from './list-bubble';
-import PictureUploadForm from './picture-upload';
-
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 class ProjectSubmit extends React.Component {
   constructor(props) {

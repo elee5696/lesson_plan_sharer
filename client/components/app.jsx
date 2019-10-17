@@ -1,7 +1,7 @@
 import React from 'react';
 import Homepage from './homepage'
 import Searchbar from './search-bar';
-import ProjectSubmit from './projectSubmit';
+import PictureUploadForm from './picture-upload';
 import ProjectDetails from './project-details';
 import SearchPage from './project-search';
 import UserPage from './user-page';
@@ -88,7 +88,7 @@ export default class App extends React.Component {
             <Homepage {...props}
               getProjectCallback={this.getProjects}
               projects={this.state.projects} />} />
-          <Route path="/submit" component={ProjectSubmit} />
+          <Route path="/submit" component={PictureUploadForm} />
           <Route path="/provs" render={(props) =>
             <SearchPage {...props}
               projects={this.state.projects}

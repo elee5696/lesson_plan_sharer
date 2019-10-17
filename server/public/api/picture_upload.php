@@ -25,7 +25,7 @@ if($_FILES['picture']) {
 
   if(empty($errors)==true){
     move_uploaded_file($picture_tempName, "../images/$picture_uploaded");
-    header('Location: ../index.html');
+    // header('Location: ../index.html');
     echo $picture_uploaded;
   } else {
     throw new Exception('File could not be uploaded');
