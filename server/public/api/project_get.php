@@ -11,7 +11,7 @@ if (empty($_GET['id'])) {
     throw new Exception( 'id needs to be a number' );
   }
   $id = intval($_GET['id']);
-  $whereClause = " WHERE P.ID={$id}";
+  $whereClause = " WHERE project_id={$id}";
 }
 
 $query = "SELECT `id`, name, description, set_up, outcomes, rating, goals, materials
@@ -26,7 +26,8 @@ FROM
 		FROM project_goals
 		JOIN goals ON goal_id = id GROUP BY `project_id`) AS temp
  ON temp2.project_id = temp.project_id) AS temp3
-ON id = project_id";
+ON id = project_id"
+. $whereClause;
 $result=mysqli_query($conn, $query);
 
 $output = [];
