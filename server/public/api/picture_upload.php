@@ -1,4 +1,5 @@
 <?php
+$picture_path = 'NULL';
 
 if($_FILES['picture']) {
 
@@ -30,6 +31,8 @@ if($_FILES['picture']) {
   } else {
     throw new Exception('File could not be uploaded');
   }
+
+  $picture_path = "../images/$picture_uploaded";
 }
 
 ?>
