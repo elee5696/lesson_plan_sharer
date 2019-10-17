@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "webpack"
+    "build": "webpack",
+    "db:export": ". ./.env; mysqldump -u $DB_USER -p$DB_PASSWORD $DB_DATABASE > database/dump.sql",
+    "db:import": ". ./.env; mysql -u $DB_USER -p$DB_PASSWORD $DB_DATABASE < database/dump.sql"
+
   },
   "repository": {
     "type": "git",
