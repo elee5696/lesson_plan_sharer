@@ -1,4 +1,6 @@
 import React from 'react';
+import ProjectSubmit from './projectSubmit';
+// import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 class PictureUploadForm extends React.Component {
   constructor(props) {
@@ -29,10 +31,12 @@ class PictureUploadForm extends React.Component {
   // }
   render() {
     return (
+      <div> Select a photo for your project's page
       <form action="/api/picture_upload.php" method="POST" encType="multipart/form-data">
         <input type="file" name="picture"></input>
         <input type="submit"></input>
       </form>
+      </div>
     )
   }
 }

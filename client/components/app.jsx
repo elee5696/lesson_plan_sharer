@@ -1,11 +1,10 @@
 import React from 'react';
-import Homepage from './homepage'
-import Searchbar from './search-bar';
-import ProjectSubmit from './projectSubmit';
+import Homepage from './homepage';
+import PictureUploadForm from './picture-upload';
 import ProjectDetails from './project-details';
 import ProvPage from './prov-page';
 import UserPage from './user-page';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -51,7 +50,7 @@ export default class App extends React.Component {
       .then(fetchedProjects => {
         this.setState({
           projects: fetchedProjects
-        })
+        });
       })
       .catch(err => console.error(err));
   }
@@ -61,7 +60,7 @@ export default class App extends React.Component {
       <Router>
         <div className="header-container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="prov-logo navbar-brand" onClick={this.setView}>Prov</a>
+            <Link className="prov-logo navbar-brand" to="/">Prov</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -84,7 +83,7 @@ export default class App extends React.Component {
           </nav>
         </div>
         <Switch>
-          <Route exact path="/" render={(props) =>
+          <Route exact path="/" render={props =>
             <Homepage {...props}
               getProjectCallback={this.getProjects}
               projects={this.state.projects} />} />
@@ -96,7 +95,7 @@ export default class App extends React.Component {
               getProjectCallback={this.getProjects}
               searchCallback={this.searchProjects} />} />
           <Route path="/user" component={UserPage} />
-          <Route path="/detail/:id" render={(props) =>
+          <Route path="/detail/:id" render={props =>
             <ProjectDetails {...props}
               projectID={this.state.location}/>} />
         </Switch>

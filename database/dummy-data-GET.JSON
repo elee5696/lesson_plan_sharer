@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "name": "stick-figures",
+    "description": "students will create stick figures using natural materials.",
+    "set_up":"lay out materials on the table,separate materials by category, lay out paper and glue",
+    "outcomes": "students responded well to the hands on project. The use of natural materials helped provide tactile response.",
+    "rating": 4.85,
+    "image": "/images/stick-figure.png",
+    "goals": [
+      "art",
+      "hands-on",
+      "creative",
+      "crafts"
+    ],
+    "materials": [
+      "sticks",
+      "paper",
+      "glue",
+      "googly-eyes"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "name-beads",
+    "description": "Students will spell out their name using letter beads, with guidance of a name print out",
+    "set_up": "print out paper name print-outs, leave room for students to glue letter beads, supply letter beads (do not sort by letter) and glue",
+    "outcomes": "students were able to train hand-eye coordination with the use of small letter beads, as well as training reading comprehension",
+    "rating": 3.32,
+    "image": "/images/name-beads.png",
+    "goals": [
+      "art",
+      "reading",
+      "cognitive",
+      "hands-on",
+      "creative",
+      "crafts"
+    ],
+    "materials": [
+      "glue",
+      "name-print-outs",
+      "letter-beads"
+    ]
+  }
+]

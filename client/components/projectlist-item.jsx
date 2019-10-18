@@ -1,7 +1,5 @@
 import React from 'react';
-import ProjectDetails from './project-details';
-import { Route, Link } from 'react-router-dom';
-import Ratings from './ratings';
+import { Link } from 'react-router-dom';
 
 export default class ProjectListItem extends React.Component {
   render() {
@@ -14,7 +12,6 @@ export default class ProjectListItem extends React.Component {
               <div className="media-body align-right" >
                 <div className="project-info " >
                   <p className="project-name-info"   >{this.props.projectName}</p>
-
             <Ratings
               rating={this.props.rating} />
                 </div>
@@ -23,9 +20,7 @@ export default class ProjectListItem extends React.Component {
           </div>
           <div className="spacer col col-1"></div>
         </div>
-
       </Link>
-
     );
   }
 }

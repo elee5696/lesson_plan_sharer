@@ -11,27 +11,31 @@ if (empty($_GET['id'])) {
     throw new Exception( 'id needs to be a number' );
   }
   $id = intval($_GET['id']);
-  $whereClause = " WHERE P.ID={$id}";
+  $whereClause = " WHERE project_id={$id}";
 }
 
-$query = "SELECT P.ID, P.NAME, DESCRIPTION, SET_UP, OUTCOMES,RATING,IMAGE,
-GROUP_CONCAT(G.NAME) AS GOALS,
-(SELECT GROUP_CONCAT(M.NAME) FROM MATERIALSLIST AS M WHERE P.ID = M.PROJECT_ID)
-AS MATERIALS
-FROM PROJECTS AS P
-JOIN GOALSLIST AS G
-ON P.ID = G.PROJECT_ID"
-. $whereClause .
-" GROUP BY P.ID";
-
+$query = "SELECT `id`, name, description, set_up, outcomes, rating, goals, materials
+FROM projects
+JOIN
+(SELECT temp2.materials, temp.goals, temp.project_id
+FROM
+	(SELECT GROUP_CONCAT(`name`) AS materials,`project_id` FROM project_material
+	JOIN materials ON material_id = id GROUP BY `project_id`)  AS temp2
+ JOIN
+	(SELECT GROUP_CONCAT(`name`) AS goals,`project_id`
+		FROM project_goals
+		JOIN goals ON goal_id = id GROUP BY `project_id`) AS temp
+ ON temp2.project_id = temp.project_id) AS temp3
+ON id = project_id"
+. $whereClause;
 $result=mysqli_query($conn, $query);
 
 $output = [];
 
 while($row=mysqli_fetch_assoc($result)){
 
-  $row["GOALS"] = explode(',', $row["GOALS"]);
-  $row["MATERIALS"]= explode(',', $row["MATERIALS"]);
+  $row["goals"] = explode(',', $row["goals"]);
+  $row["materials"]= explode(',', $row["materials"]);
   $output[]=$row;
 }
 
