@@ -54,7 +54,7 @@ export default class ProjectDetails extends React.Component {
           <div className="project-goals-header-container row mb-2">
             <h1 className="project-goals-header">Goals</h1>
           </div>
-          <div className="project-goals-list row mb-2">
+          <div className="project-goals-list row justify-content-start mb-2">
             {this.state.project.goals.map((e, i) => {
               return (
                 <ListBubble
@@ -106,11 +106,11 @@ export default class ProjectDetails extends React.Component {
             <h5 className="col project-outcomes-text">{this.state.project.outcomes}</h5>
           </div>
         </div>
-        <div className="project-rating-container">
-          <div className="project-rating-header-container row mb-4">
+        <div className="project-rating-container col-10 mb-2">
+          <div className="project-rating-header-container row">
             <h1 className="project-rating-header col-10">Feedback</h1>
           </div>
-          <div className="project-rating-body mb-4">
+          <div className="project-rating-body mb-2">
             <Ratings rating={this.state.project.rating}/>
           </div>
         </div>

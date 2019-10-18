@@ -22,12 +22,23 @@ body {
 .project-title {
   font-weight: 600;
 }
-.project-desc-text, .project-setup-steps, .project-outcomes-text {
+.project-desc-text,
+.project-setup-steps,
+.project-outcomes-text,
+.rating-text {
   font-size: 18px;
 }
 
-.project-goals-header, .project-setup-header, .project-materials-header, .project-outcomes-header {
+.project-goals-header,
+.project-setup-header,
+.project-materials-header,
+.project-outcomes-header,
+.project-rating-header {
   font-size: 32px;
+}
+
+.bubble-container {
+  text-align: center;
 }
 
 .bubble-container:hover {
