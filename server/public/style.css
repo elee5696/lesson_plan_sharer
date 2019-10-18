@@ -7,23 +7,38 @@ body {
 }
 
 .back-button {
-  margin-left: 6%;
-  margin-top: 2%;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .top-rated-provs-container {
   font-weight: bold;
 }
+
 .project-container {
   margin-left: 25%;
 }
 
-.project-tile-text {
-  -webkit-line-clamp: 3;
-  overflow : hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+.project-title {
+  font-weight: 600;
+}
+.project-desc-text,
+.project-setup-steps,
+.project-outcomes-text,
+.rating-text {
+  font-size: 18px;
+}
+
+.project-goals-header,
+.project-setup-header,
+.project-materials-header,
+.project-outcomes-header,
+.project-rating-header {
+  font-size: 32px;
+}
+
+.bubble-container {
+  text-align: center;
 }
 
 .bubble-container:hover {

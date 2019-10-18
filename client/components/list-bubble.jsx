@@ -13,7 +13,7 @@ export default class ListBubble extends React.Component {
     return(
       <div className="bubble-container col justify-content-center m-2 p-1" style={borderStyle}>
         <div className="text-container">
-          <h5 className="m-0">{this.props.text}</h5>
+          <h5 className="m-0 goals-bubble-text">{this.props.text}</h5>
         </div>
       </div>
     );

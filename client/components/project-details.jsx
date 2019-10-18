@@ -33,28 +33,28 @@ export default class ProjectDetails extends React.Component {
 
     return (
       <div className="entire-page-container container">
-        <div className="back-button-container row mb-2">
-          <Link to="/provs" className="back-button col" style={{textDecoration: 'none', color: 'black'}}>{'< Back'}</Link>
+        <div className="back-button-container row mt-3 mb-3">
+          <Link to="/provs" className="back-button col-10" style={{textDecoration: 'none', color: 'black'}}>{'< Back'}</Link>
         </div>
         <div className="project-image-container row justify-content-center mb-3">
-          <img className="project-image col" style={{ width: '20rem' }} src="/images/beautiful-flower-field-background-1.jpg"></img>
+          <img className="project-image col-10" style={{ width: '20rem' }} src={this.state.project.image}></img>
         </div>
-        <div className="project-title-container row mb-3">
-          <h1 className="project-title col display-3">{this.state.project.name}</h1>
+        <div className="project-title-container col-10 mb-3">
+          <h1 className="project-title">{this.state.project.name}</h1>
         </div>
-        <div className="project-desc-container mb-3">
+        <div className="project-desc-container col-10 ml-3 mb-3">
           <div className="project-desc-header-container row mb-2">
-            <h1 className="project-desc-header col">Description</h1>
+            <h1 className="project-desc-header">Description</h1>
           </div>
           <div className="project-desc-body row">
-            <h3 className="col">{this.state.project.description}</h3>
+            <h3 className="project-desc-text">{this.state.project.description}</h3>
           </div>
         </div>
-        <div className="project-goals-container">
-          <div className="project-goals-header-container mb-2">
+        <div className="project-goals-container col-10 ml-3 mb-3">
+          <div className="project-goals-header-container row mb-2">
             <h1 className="project-goals-header">Goals</h1>
           </div>
-          <div className="project-goals-list row mb-2">
+          <div className="project-goals-list row justify-content-start mb-2">
             {this.state.project.goals.map((e, i) => {
               return (
                 <ListBubble
@@ -65,7 +65,7 @@ export default class ProjectDetails extends React.Component {
             })}
           </div>
         </div>
-        <div className="project-setup-materials-container">
+        <div className="project-setup-materials-container col-12">
           <div className="project-setup-materials-header row">
             <div className="project-setup-header-container col mb-2">
               <h1 className="project-setup-header">Set-Up</h1>
@@ -75,7 +75,7 @@ export default class ProjectDetails extends React.Component {
             </div>
           </div>
           <div className="project-setup-materials-body row">
-            <div className="project-setup-container col mb-5 w-75">
+            <div className="project-setup-container col-6 mb-3 w-75">
               <div className="project-setup-desc-body">
                 {setupSteps.map((e, i) => {
                   return (
@@ -84,7 +84,7 @@ export default class ProjectDetails extends React.Component {
                 })}
               </div>
             </div>
-            <div className="project-materials-container col mb-5">
+            <div className="project-materials-container col-6 mb-3">
               <div className="project-materials-list-container">
                 {this.state.project.materials.map((e, i) => {
                   return (
@@ -98,19 +98,19 @@ export default class ProjectDetails extends React.Component {
             </div>
           </div>
         </div>
-        <div className="project-outcomes-container">
-          <div className="project-outcomes-header-container row mb-4">
-            <h1 className="project-outcomes-header col">Outcome</h1>
+        <div className="project-outcomes-container col-10">
+          <div className="project-outcomes-header-container row mb-2">
+            <h1 className="project-outcomes-header col">Outcomes</h1>
           </div>
           <div className="project-outcomes-body row mb-4">
-            <h5 className="col">{this.state.project.outcomes}</h5>
+            <h5 className="col project-outcomes-text">{this.state.project.outcomes}</h5>
           </div>
         </div>
-        <div className="project-rating-container">
-          <div className="project-rating-header-container row mb-4">
-            <h1 className="project-rating-header col">Feedback</h1>
+        <div className="project-rating-container col-10 mb-2">
+          <div className="project-rating-header-container row">
+            <h1 className="project-rating-header col-10">Feedback</h1>
           </div>
-          <div className="project-rating-body mb-4">
+          <div className="project-rating-body mb-2">
             <Ratings rating={this.state.project.rating}/>
           </div>
         </div>
