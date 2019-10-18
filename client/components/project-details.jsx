@@ -39,10 +39,10 @@ export default class ProjectDetails extends React.Component {
         <div className="project-image-container row justify-content-center mb-3">
           <img className="project-image col-10" style={{ width: '20rem' }} src={this.state.project.image}></img>
         </div>
-        <div className="project-title-container col-10 ml-2 mb-3">
+        <div className="project-title-container col-10 mb-3">
           <h1 className="project-title">{this.state.project.name}</h1>
         </div>
-        <div className="project-desc-container col-10 ml-4 mb-3">
+        <div className="project-desc-container col-10 ml-3 mb-3">
           <div className="project-desc-header-container row mb-2">
             <h1 className="project-desc-header">Description</h1>
           </div>
@@ -50,7 +50,7 @@ export default class ProjectDetails extends React.Component {
             <h3 className="project-desc-text">{this.state.project.description}</h3>
           </div>
         </div>
-        <div className="project-goals-container col-10 ml-4 mb-3">
+        <div className="project-goals-container col-10 ml-3 mb-3">
           <div className="project-goals-header-container row mb-2">
             <h1 className="project-goals-header">Goals</h1>
           </div>
