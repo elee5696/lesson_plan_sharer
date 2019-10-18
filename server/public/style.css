@@ -54,3 +54,30 @@ body {
   color: black;
   text-decoration: none;
 }
+.searchButton{
+  background:#f8b1d1;
+  color: white;
+}
+.searchButton:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.searchBar{
+  background: rgb(250, 249, 249);
+}
+.searchBar::placeholder{
+  color: lightgrey;
+}
+
+.listItemCard{
+  border: solid 1px black;
+}
+
+.project-list-item{
+  margin-right: 19px;
+  padding-right: 0px;
+}
+.project-tile-image-container{
+  padding-right: 0px;
+  padding-left: 0px;
+
+}
