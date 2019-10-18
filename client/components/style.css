@@ -1,4 +1,4 @@
-body {
+#root {
   font-family: 'Work Sans', sans-serif !important;
 }
 
@@ -13,9 +13,6 @@ body {
 
 .top-rated-provs-container {
   font-weight: bold;
-}
-.project-container {
-  margin-left: 25%;
 }
 
 .project-tile-text {
@@ -42,18 +39,6 @@ body {
   border: 1px solid black
 }
 
-.list-image {
-  height: 15rem;
-}
-
-.project-tile-container {
-  color: black;
-}
-
-.project-tile-container:hover {
-  color: black;
-  text-decoration: none;
-}
 .searchButton{
   background:#f8b1d1;
   color: white;
@@ -75,12 +60,4 @@ body {
 .project-list-item{
   margin-right: 19px;
   padding-right: 0px;
-}
-.project-tile-image-container{
-  padding-right: 0px;
-  padding-left: 0px;
-
-}
-.project-title, .project-desc-header-container, .project-desc-header {
-  font-size: 2rem;
 }
