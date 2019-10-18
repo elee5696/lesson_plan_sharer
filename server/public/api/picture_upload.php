@@ -1,6 +1,7 @@
 <?php
 $picture_path = 'NULL';
 
+
 if($_FILES['picture']) {
 
   $errors=0;
@@ -24,6 +25,12 @@ if($_FILES['picture']) {
     throw new Exception('File is too large. Please upload a photo smaller than 5 MB');
   }
 
+  $regexPat = '[\s]';
+  if(preg_match($regexPat, $picture_uploaded)) {
+    $picNameArray = explode(" ", $picture_uploaded);
+    $picture_uploaded = implode($picNameArray);
+  }
+
   if(empty($errors)==true){
     move_uploaded_file($picture_tempName, "../images/$picture_uploaded");
     // header('Location: ../index.html');
@@ -32,7 +39,10 @@ if($_FILES['picture']) {
     throw new Exception('File could not be uploaded');
   }
 
-  $picture_path = "../images/$picture_uploaded";
+  $picture_path = "/images/$picture_uploaded";
+
+  print $picture_path;
+
 }
 
 ?>

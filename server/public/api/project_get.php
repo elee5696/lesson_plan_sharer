@@ -28,15 +28,42 @@ FROM
  ON temp2.project_id = temp.project_id) AS temp3
 ON id = project_id"
 . $whereClause;
+
 $result=mysqli_query($conn, $query);
+if(!$result) {
+throw new Exception('query failed');
+}
 
 $output = [];
-
 while($row=mysqli_fetch_assoc($result)){
 
   $row["goals"] = explode(',', $row["goals"]);
   $row["materials"]= explode(',', $row["materials"]);
   $output[]=$row;
+}
+
+$query = "SELECT `filename`, `url`, `project_id` FROM `images`";
+
+$result=mysqli_query($conn, $query);
+if(!$result) {
+throw new Exception('query failed');
+}
+
+$image_data = [];
+while($row=mysqli_fetch_assoc($result)){
+  $image_data[]=$row;
+}
+
+foreach($output as &$project) {
+  foreach($image_data as $image) {
+    if($project['id'] == $image['project_id']) {
+      if($image['url'] === 'NULL') {
+        $project['image'] = $image['filename'];
+      } else {
+        $project['image'] = $image['url'];
+      }
+    }
+  }
 }
 
 $encodedJson= json_encode($output);
