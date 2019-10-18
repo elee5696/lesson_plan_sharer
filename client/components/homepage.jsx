@@ -1,5 +1,8 @@
 import React from 'react';
 import ProjectListItem from './projectlist-item';
+import Carousel from './carousel';
+import Searchbar from './search-bar';
+
 export default class Homepage extends React.Component {
 
   componentDidMount() {
@@ -8,6 +11,11 @@ export default class Homepage extends React.Component {
 
   render() {
     return (
+      // <div>
+      // <Searchbar/>
+      // <Carousel/>
+      // </div>
+
       <>
         <div className="project-list-container row mt-4">
           <div className="spacer col col-1"></div>

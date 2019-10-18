@@ -3,7 +3,6 @@ import ListBubble from './list-bubble';
 import Ratings from './ratings';
 import { Link } from 'react-router-dom';
 import Searchbar from './search-bar';
-import './style.css';
 
 export default class ProjectDetails extends React.Component {
   constructor(props) {
