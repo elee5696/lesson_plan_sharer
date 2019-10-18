@@ -33,7 +33,7 @@ export default class ProjectDetails extends React.Component {
 
     return (
       <div className="entire-page-container container">
-        <div className="back-button-container row mt-2 mb-2">
+        <div className="back-button-container row mt-3 mb-3">
           <Link to="/provs" className="back-button col-10" style={{textDecoration: 'none', color: 'black'}}>{'< Back'}</Link>
         </div>
         <div className="project-image-container row justify-content-center mb-3">
@@ -65,7 +65,7 @@ export default class ProjectDetails extends React.Component {
             })}
           </div>
         </div>
-        <div className="project-setup-materials-container">
+        <div className="project-setup-materials-container col-12">
           <div className="project-setup-materials-header row">
             <div className="project-setup-header-container col mb-2">
               <h1 className="project-setup-header">Set-Up</h1>
@@ -75,7 +75,7 @@ export default class ProjectDetails extends React.Component {
             </div>
           </div>
           <div className="project-setup-materials-body row">
-            <div className="project-setup-container col mb-5 w-75">
+            <div className="project-setup-container col-6 mb-3 w-75">
               <div className="project-setup-desc-body">
                 {setupSteps.map((e, i) => {
                   return (
@@ -84,7 +84,7 @@ export default class ProjectDetails extends React.Component {
                 })}
               </div>
             </div>
-            <div className="project-materials-container col mb-5">
+            <div className="project-materials-container col-6 mb-3">
               <div className="project-materials-list-container">
                 {this.state.project.materials.map((e, i) => {
                   return (
@@ -98,12 +98,12 @@ export default class ProjectDetails extends React.Component {
             </div>
           </div>
         </div>
-        <div className="project-outcomes-container">
-          <div className="project-outcomes-header-container row mb-4">
-            <h1 className="project-outcomes-header col">Outcome</h1>
+        <div className="project-outcomes-container col-10">
+          <div className="project-outcomes-header-container row mb-2">
+            <h1 className="project-outcomes-header col">Outcomes</h1>
           </div>
           <div className="project-outcomes-body row mb-4">
-            <h5 className="col">{this.state.project.outcomes}</h5>
+            <h5 className="col project-outcomes-text">{this.state.project.outcomes}</h5>
           </div>
         </div>
         <div className="project-rating-container">

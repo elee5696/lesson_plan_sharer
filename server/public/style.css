@@ -22,11 +22,11 @@ body {
 .project-title {
   font-weight: 600;
 }
-.project-desc-text {
+.project-desc-text, .project-setup-steps, .project-outcomes-text {
   font-size: 18px;
 }
 
-.project-goals-header {
+.project-goals-header, .project-setup-header, .project-materials-header, .project-outcomes-header {
   font-size: 32px;
 }
 
