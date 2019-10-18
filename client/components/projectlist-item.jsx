@@ -7,14 +7,14 @@ export default class ProjectListItem extends React.Component {
   render() {
     return (
 
-      <Link className="project-tile-container card col" to={`/detail/${this.props.id}`}>
-        <div className="media" style={{ width: '17rem' }}> </div>
-          <div className="project-tile-image row">
-            <div className="project-image row">
+      <Link className="project-tile-container card col mb-4" to={`/detail/${this.props.id}`}>
+        <div className="media" style={{ width: '16rem' }}> </div>
+          <div className="project-tile-image ">
+          <div className="project-image row text-right">
               <img className="image-prov-thumbnail " style={{ height: '5rem', width: '5rem' }} src={this.props.projectImage} alt={this.props.projectName}/>
               <div className="media-body" >
-                <div className="project-info " >
-                  <p className="project-name-info" >{this.props.projectName}</p>
+                <div className="project-info col" >
+                  <p className="project-name-info text-capitalize" >{this.props.projectName}</p>
                   <Ratings
                     rating={this.props.rating} />
 

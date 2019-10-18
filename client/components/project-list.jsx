@@ -28,8 +28,8 @@ handleFilterClick(){
                 Provs
               </h2>
               <div>
-                <div class="dropdown">
-                  <button class="btn btn-outline dropdown-toggle" type="button" id="dropdownMenuButton" onClick={this.handleFilterClick} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div className="dropdown">
+                  <button className="btn btn-outline filter dropdown-toggle" type="button" id="dropdownMenuButton" onClick={this.handleFilterClick} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     filter
                   </button>
                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -42,8 +42,8 @@ handleFilterClick(){
                 </div>
               </div>
             </div>
-
-            <div className="row card">
+            <div className="row card bottom-buffer
+            ">
               {this.props.projects.map(project => {
                 return (
                   <ProjectListItem
