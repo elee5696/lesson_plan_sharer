@@ -14,7 +14,9 @@ export default class ProjectListItem extends React.Component {
                 <div className="project-info " >
                   <p className="project-name-info" >{this.props.projectName}</p>
                   <Ratings
-                    rating={this.props.rating} />
+                    id={this.props.id}
+                    rating={this.props.rating}
+                    rating_count={this.props.rating_count} />
                 </div>
               </div>
             </div>

@@ -85,6 +85,7 @@ foreach($output as &$project) {
         $project['rating'] = NULL;
       } else {
         $project['rating'] = $rating['rating'];
+        $project['rating_count'] = $rating['count'];
       }
     }
   }
