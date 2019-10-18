@@ -18,6 +18,9 @@ switch($method) {
     require('project_add.php');
     require('picture_upload.php');
     break;
+  case 'PATCH':
+    require('project_patch_rate.php');
+    break;
   default:
     throw new Exception('Cannot ' . $method . ' /api/project.php');
 }
