@@ -117,5 +117,7 @@ foreach($materials as $material) {
   if(!$result) {
   throw new Exception('query failed');
   }
+
+  print $project_id;
 }
 ?>
