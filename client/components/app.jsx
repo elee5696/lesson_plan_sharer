@@ -1,10 +1,10 @@
 import React from 'react';
 import Homepage from './homepage';
-import PictureUploadForm from './picture-upload';
 import ProjectDetails from './project-details';
 import ProvPage from './prov-page';
 import UserPage from './user-page';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import ProjectSubmit from './projectSubmit';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export default class App extends React.Component {
       },
       projects: [],
       searchResults: ''
-    }
+    };
     this.setView = this.setView.bind(this);
     this.getProjects = this.getProjects.bind(this);
     this.searchProjects = this.searchProjects.bind(this);
@@ -88,7 +88,7 @@ export default class App extends React.Component {
               getProjectCallback={this.getProjects}
               projects={this.state.projects} />} />
           <Route path="/submit" component={ProjectSubmit} />
-          <Route path="/provs" render={(props) =>
+          <Route path="/provs" render={props =>
             <ProvPage {...props}
               projects={this.state.projects}
               results={this.state.searchResults}

@@ -1,6 +1,5 @@
 import React from 'react';
 import ProjectListItem from './projectlist-item';
-import Ratings from './ratings';
 
 export default class ProjectList extends React.Component {
   render() {
@@ -11,7 +10,7 @@ export default class ProjectList extends React.Component {
           <div className="project-tile-container">
             <div className="top-rated-provs-container row col-10 mt-4">
               <h2 className="top-rated-text-provs">
-                    Top-rated provs
+                Top-rated provs
               </h2>
             </div>
             <div className="row">
@@ -33,7 +32,6 @@ export default class ProjectList extends React.Component {
         </div>
         <div className="spacer col col-1"></div>
       </div>
-    </>
     );
   }
 }
