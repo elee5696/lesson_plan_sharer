@@ -15,8 +15,8 @@ switch($method) {
     require('project_get.php');
     break;
   case 'POST':
-    require('picture_upload.php');
     require('project_add.php');
+    require('picture_upload.php');
     break;
   default:
     throw new Exception('Cannot ' . $method . ' /api/project.php');
