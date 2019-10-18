@@ -2,7 +2,6 @@ import React from 'react';
 import ListBubble from './list-bubble';
 import Ratings from './ratings';
 import { Link } from 'react-router-dom';
-import Searchbar from './search-bar';
 
 export default class ProjectDetails extends React.Component {
   constructor(props) {
@@ -34,10 +33,10 @@ export default class ProjectDetails extends React.Component {
     return (
       <div className="entire-page-container container">
         <div className="back-button-container row mb-2">
-          <Link to="/provs" className="back-button col" style={{textDecoration: 'none', color: 'black'}}>{'< Back'}</Link>
+          <Link to="/provs" className="back-button col" style={{ textDecoration: 'none', color: 'black' }}>{'< Back'}</Link>
         </div>
         <div className="project-image-container row justify-content-center mb-3">
-          <img className="project-image col" style={{ width: '20rem' }} src="/images/beautiful-flower-field-background-1.jpg"></img>
+          <img className="project-image col" style={{ width: '20rem' }} src={this.state.project.image}></img>
         </div>
         <div className="project-title-container row mb-3">
           <h1 className="project-title col display-3">{this.state.project.name}</h1>
@@ -114,7 +113,7 @@ export default class ProjectDetails extends React.Component {
             <Ratings rating={this.state.project.rating}/>
           </div>
         </div>
-       </div>
+      </div>
     );
   }
 }

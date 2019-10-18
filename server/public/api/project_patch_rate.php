@@ -23,38 +23,35 @@ while($row = mysqli_fetch_assoc($result)){
 }
 
 $new_count = $update_rating_data['count'] + 1;
+$new_total = $update_rating_data['total_rating'] + $rating;
+$new_rating = $new_total / $new_count;
 
-$new_rating =
-($update_rating_data['rating'] + $rating) / $update_rating_data['count'];
 
-print($new_count \n);
-print($new_rating);
+$query =
+"UPDATE `project_rating`
+SET
+`rating`=$new_rating,`count`=$new_count, `total_rating`=$new_total
+WHERE `project_id`=$id";
 
-// $query =
-// "UPDATE `project_rating`
-// SET
-// `rating`={$update_rating_data['rating']},`count`={$update_rating_data['count']}
-// WHERE `project_id`=$id";
+$result = mysqli_query($conn, $query);
+if(!$result) {
+  throw new Exception('query failed');
+}
 
-// $result=mysqli_query($conn, $query);
-// if(!$result) {
-//   throw new Exception('query failed');
-// }
+$query =
+"SELECT * FROM `project_rating` WHERE `project_id`=$id";
 
-// $query =
-// "SELECT * FROM `project_rating` WHERE `project_id`=$id";
+$result = mysqli_query($conn, $query);
+if(!$result) {
+  throw new Exception('query failed');
+}
 
-// $result = mysqli_query($conn, $query);
-// if(!$result) {
-//   throw new Exception('query failed');
-// }
+$output = [];
+while($row = mysqli_fetch_assoc($result)) {
+  $output[]=$row;
+}
 
-// $output = [];
-// while($row = mysqli_fetch_assoc($result)) {
-//   $output[]=$row;
-// }
+$encodedJson= json_encode($output);
 
-// $encodedJson= json_encode($output);
-
-// print_r($encodedJson);
+print_r($encodedJson);
 ?>
