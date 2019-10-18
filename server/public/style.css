@@ -7,23 +7,27 @@ body {
 }
 
 .back-button {
-  margin-left: 6%;
-  margin-top: 2%;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .top-rated-provs-container {
   font-weight: bold;
 }
+
 .project-container {
   margin-left: 25%;
 }
 
-.project-tile-text {
-  -webkit-line-clamp: 3;
-  overflow : hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+.project-title {
+  font-weight: 600;
+}
+.project-desc-text {
+  font-size: 18px;
+}
+
+.project-goals-header {
+  font-size: 32px;
 }
 
 .bubble-container:hover {
