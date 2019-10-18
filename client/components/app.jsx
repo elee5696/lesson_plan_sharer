@@ -2,7 +2,7 @@ import React from 'react';
 import Homepage from './homepage';
 import PictureUploadForm from './picture-upload';
 import ProjectDetails from './project-details';
-import SearchPage from './project-search';
+import ProvPage from './prov-page';
 import UserPage from './user-page';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 
@@ -11,12 +11,12 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'list',
+        name: 'search',
         params: {}
       },
       projects: [],
-      searchResults: []
-    };
+      searchResults: ''
+    }
     this.setView = this.setView.bind(this);
     this.getProjects = this.getProjects.bind(this);
     this.searchProjects = this.searchProjects.bind(this);
@@ -87,11 +87,12 @@ export default class App extends React.Component {
             <Homepage {...props}
               getProjectCallback={this.getProjects}
               projects={this.state.projects} />} />
-          <Route path="/submit" component={PictureUploadForm} />
-          <Route path="/provs" render={props =>
-            <SearchPage {...props}
+          <Route path="/submit" component={ProjectSubmit} />
+          <Route path="/provs" render={(props) =>
+            <ProvPage {...props}
               projects={this.state.projects}
               results={this.state.searchResults}
+              getProjectCallback={this.getProjects}
               searchCallback={this.searchProjects} />} />
           <Route path="/user" component={UserPage} />
           <Route path="/detail/:id" render={props =>

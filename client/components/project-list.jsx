@@ -1,14 +1,10 @@
 import React from 'react';
 import ProjectListItem from './projectlist-item';
+import Ratings from './ratings';
 
 export default class ProjectList extends React.Component {
-  componentDidMount() {
-    this.props.getProjectCallback();
-  }
-
   render() {
     return (
-     <>
       <div className="project-list-container row mt-4">
         <div className="spacer col col-1"></div>
         <div className="project-container col col-10 ml-4 d-flex justify-content-center">

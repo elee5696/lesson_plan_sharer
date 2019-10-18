@@ -24,18 +24,21 @@ export default class Searchbar extends React.Component {
   render() {
     return(
       <div className="searchbar-container">
-        <form className="form-inline my-2 my-lg-0">
+        <div className="row">
+        <form className="w-100 col-9">
           <input
-          className={this.props.className ? this.props.className : "form-control mr-sm-2"}
+          className="form-control searchBar"
           type="search"
           placeholder="Search"
           onChange={this.onChange}
           value={this.state.value} />
+         </form>
+
           <button
-          className="btn btn-outline-dark mr-2 my-2 my-sm-0"
+          className="btn searchButton"
           type="submit"
           onClick={this.onSubmit}>Search</button>
-        </form>
+        </div>
       </div>
     );
   }

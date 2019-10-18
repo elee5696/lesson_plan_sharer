@@ -3,8 +3,10 @@ import React from 'react';
 export default class ListBubble extends React.Component {
   render() {
     let borderStyle = {
-      border: '1px black solid',
-      borderRadius: '15px',
+      border: '1px #E5E5E5 solid',
+      background: '#FFC7F9',
+      color: 'white',
+      borderRadius: '50px',
       width: '200px'
     };
 
