@@ -99,3 +99,23 @@ body {
 .project-title, .project-desc-header-container, .project-desc-header {
   font-size: 2rem;
 }
+
+.uploadPicButton {
+  color: white;
+  background-color:#f8b1d1;
+  border-radius: 10%;
+  border-style: none;
+}
+
+.next-page-button-container {
+  margin-top: 315px;
+  margin-left: 70px;
+}
+
+/* .chooseFileButton-div {
+  margin-top: 150px;
+} */
+
+.inputButton {
+  border: 2px solid #f8b1d1;
+}
