@@ -26,7 +26,7 @@ export default class ProvPage extends React.Component {
         <div className="spacer col col-1"></div>
         <div className="col col-10 main-content">
           <Seachbar searchCallback={this.props.searchCallback}/>
-          <div className="row col-8 search-results-container">
+          <div className="row col-8 search-results-container ml-2">
             {body}
           </div>
         </div>
