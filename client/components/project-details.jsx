@@ -33,7 +33,7 @@ export default class ProjectDetails extends React.Component {
     return (
       <div className="entire-page-container container row m-0 p-0">
         <div className="back-button-container row mt-3 mb-3 col-12">
-          <Link to="/provs" className="back-button col-10" style={{textDecoration: 'none', color: 'black'}}>{'< Back'}</Link>
+          <Link to="/provs" className="back-button col-10" style={{ textDecoration: 'none', color: 'black' }}>{'< Back'}</Link>
         </div>
         <div className="spacer col col-1 p-0"></div>
         <div className="col-10 p-0">
@@ -114,7 +114,10 @@ export default class ProjectDetails extends React.Component {
               <h1 className="project-rating-header col-10">Feedback</h1>
             </div>
             <div className="project-rating-body mb-2">
-              <Ratings rating={this.state.project.rating} />
+              <Ratings
+                id={this.state.project.id}
+                rating={this.state.project.rating}
+                rating_count={this.state.project.rating_count}/>
             </div>
           </div>
         </div>
