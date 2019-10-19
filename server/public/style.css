@@ -100,6 +100,17 @@ body {
   font-size: 2rem;
 }
 
+.star-rating__star.is-selected {
+  color: #f8b1d1;
+}
+
+.star-rating__star {
+  color: #F5F5F5;
+}
+
+.star-rating__star:hover {
+  cursor: pointer;
+}
 
 /* div.project-image.row {
   text-align: end;
@@ -128,4 +139,3 @@ body {
 .inputButton {
   border: 2px solid #f8b1d1;
 }
-
