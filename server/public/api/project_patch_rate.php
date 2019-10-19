@@ -48,7 +48,7 @@ if(!$result) {
 
 $output = [];
 while($row = mysqli_fetch_assoc($result)) {
-  $output[]=$row;
+  $output = $row;
 }
 
 $encodedJson= json_encode($output);

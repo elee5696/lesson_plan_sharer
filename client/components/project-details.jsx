@@ -115,7 +115,10 @@ export default class ProjectDetails extends React.Component {
               <h1 className="project-rating-header col-10">Feedback</h1>
             </div>
             <div className="project-rating-body mb-2">
-              <Ratings rating={this.state.project.rating} />
+              <Ratings
+                id={this.state.project.id}
+                rating={this.state.project.rating}
+                rating_count={this.state.project.rating_count}/>
             </div>
           </div>
         </div>

@@ -5,30 +5,32 @@ export default class Ratings extends React.Component {
     super(props);
     this.state = {
       rating: this.props.rating,
+      total: '',
       rated: false
     };
   }
 
-  // componentDidUpdate(prevState) {
-  //   if (prevState !== this.state) {
-  //     let body = {
-  //       id: this.props.id,
-  //       rating: this.state.rating
-  //     };
-  //     fetch('/api/project.php', {
-  //       method: 'PATCH',
-  //       header: { 'content-type': 'application/json' },
-  //       body: JSON.stringify(body)
-  //     })
-  //       .then(this.setState({ rated: true }))
-  //       .catch(err => console.error(err));
-  //   }
-  // }
+  rate(domRating) {
 
-  rate(rating) {
-    this.setState({
-      rating: rating
-    });
+    let body = {
+      id: this.props.id,
+      rating: domRating
+    };
+
+    fetch('/api/project.php', {
+      method: 'PATCH',
+      header: { 'content-type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+      .then(res => res.json())
+      .then(resJSON => {
+        this.setState({
+          rating: resJSON.rating,
+          total: resJSON['count'],
+          rated: true
+        });
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
@@ -60,7 +62,7 @@ export default class Ratings extends React.Component {
         </div>
         {this.state.rated ? <p>Rated</p> : null }
         <div className="ml-0 row rating-details-container">
-          <p>Total Ratings: {this.props.rating_count}</p>
+          <p>Total Ratings: { this.state.total ? this.state.total : this.props.rating_count}</p>
         </div>
       </div>
     );
