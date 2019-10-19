@@ -1,6 +1,7 @@
 import React from 'react';
 import Homepage from './homepage';
 import ProjectDetails from './project-details';
+import ProjectSubmit from './projectSubmit';
 import ProvPage from './prov-page';
 import UserPage from './user-page';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
@@ -88,6 +89,7 @@ export default class App extends React.Component {
               getProjectCallback={this.getProjects}
               projects={this.state.projects} />} />
           <Route path="/submit" component={PictureUploadForm} />
+          <Route path="/submit2" component={ProjectSubmit} />
           <Route path="/provs" render={props =>
             <ProvPage {...props}
               projects={this.state.projects}
