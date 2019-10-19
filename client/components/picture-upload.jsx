@@ -12,11 +12,11 @@ class PictureUploadForm extends React.Component {
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
+
   }
 
   onSubmit(event) {
     event.preventDefault();
-    var pictureForm = document.getElementById('pictureForm');
     var formData = new FormData();
     formData.append('picture', this.state.file);
     fetch('/api/picture_upload.php', {
@@ -25,22 +25,69 @@ class PictureUploadForm extends React.Component {
     });
   }
   onChange(event) {
-    this.setState({ file: event.target.files[0] })
+    var fileToPreview = new FileReader();
+    this.setState({ file: event.target.files[0] });
   }
   render() {
+    if (this.state.file) {
+      console.log(this.state.file.name);
+      var style = {
+        backgroundImage: '(url' + this.state.file.name + ')',
+        backgroundsize: 'cover',
+        height: 200 + 'px',
+        width: 200 + 'px',
+      };
     return (
-      <div> Select a photo for your project's page
-      <form id="pictureForm">
-          <input type="file" id="anything" name="picture" onChange= {this.onChange}></input>
-        <button onClick={this.onSubmit}>Submit</button>
-      </form>
-      </div>
+        <div className="col picForm container p-0">
+          <div className="select-photo-text d-flex justify-content-center mt-5">
+            <div className="picForm-div select-photo">Select a photo for your project's page</div>
+          </div>
+          <div className="chooseFileButton-div col d-flex justify-content-center">
+            <form id="pictureForm">
+              <input className="inputButton" type="file" name="picture" onChange={this.onChange}></input>
+              <div style={style}>
+              </div>
+              <div className="next-page-button-container justify-content-center">
+                <div className="m-5 ">
+                  <button className="uploadPicButton" onClick={this.onSubmit}>Next Page</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
     )
+      } else {
+        return (
+          <div className="col picForm container p-0">
+            <div className="select-photo-text d-flex justify-content-center mt-5">
+              <div className="picForm-div select-photo">Select a photo for your project's page</div>
+            </div>
+            <div className="chooseFileButton-div col d-flex justify-content-center">
+              <form id="pictureForm">
+                <input className="inputButton" type="file" name="picture" onChange={this.onChange}></input>
+                <div>
+                </div>
+                <div className="next-page-button-container justify-content-center">
+                  <div className="m-5 ">
+                    <button className="uploadPicButton" onClick={this.onSubmit}>Next Page</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        )
+      }
   }
 }
 
 
+
+
 export default PictureUploadForm;
+
+
+
+
 
 // <div> Select a photo for your project's page
 //       <form action="/api/picture_upload.php" method="POST" encType="multipart/form-data">

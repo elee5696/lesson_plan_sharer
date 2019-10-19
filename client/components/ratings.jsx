@@ -8,7 +8,7 @@ export default class Ratings extends React.Component{
   render() {
     return (
     <div>
-        <p> Rating: {this.props.rating}</p>
+        <p className="rating-text"> Rating: {this.props.rating}</p>
 
     </div>
   )
