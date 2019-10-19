@@ -9,22 +9,22 @@ export default class Ratings extends React.Component {
     };
   }
 
-  componentDidUpdate(prevState) {
-    if (prevState !== this.state) {
-      let body = {
-        id: this.props.id,
-        rating: this.state.rating
-      };
+  // componentDidUpdate(prevState) {
+  //   if (prevState !== this.state) {
+  //     let body = {
+  //       id: this.props.id,
+  //       rating: this.state.rating
+  //     };
 
-      fetch('/api/project.php', {
-        method: 'PATCH',
-        header: { 'content-type': 'application/json' },
-        body: JSON.stringify(body)
-      })
-        .then(this.setState({ rated: true }))
-        .catch(err => console.error(err));
-    }
-  }
+  //     fetch('/api/project.php', {
+  //       method: 'PATCH',
+  //       header: { 'content-type': 'application/json' },
+  //       body: JSON.stringify(body)
+  //     })
+  //       .then(this.setState({ rated: true }))
+  //       .catch(err => console.error(err));
+  //   }
+  // }
 
   rate(rating) {
     this.setState({
