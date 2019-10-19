@@ -100,6 +100,15 @@ body {
   font-size: 2rem;
 }
 
+
+/* div.project-image.row {
+  text-align: end;
+} */
+
+/* .project-tile-container{
+  margin-bottom: 27px
+} */
+
 .uploadPicButton {
   color: white;
   background-color:#f8b1d1;
@@ -119,3 +128,4 @@ body {
 .inputButton {
   border: 2px solid #f8b1d1;
 }
+
