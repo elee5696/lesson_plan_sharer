@@ -4,7 +4,7 @@ import ProjectDetails from './project-details';
 import ProvPage from './prov-page';
 import UserPage from './user-page';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
-import ProjectSubmit from './projectSubmit';
+import PictureUploadForm from './picture-upload';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -87,7 +87,7 @@ export default class App extends React.Component {
             <Homepage {...props}
               getProjectCallback={this.getProjects}
               projects={this.state.projects} />} />
-          <Route path="/submit" component={ProjectSubmit} />
+          <Route path="/submit" component={PictureUploadForm} />
           <Route path="/provs" render={props =>
             <ProvPage {...props}
               projects={this.state.projects}

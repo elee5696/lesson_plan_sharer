@@ -15,7 +15,6 @@ export default class Ratings extends React.Component {
   //       id: this.props.id,
   //       rating: this.state.rating
   //     };
-
   //     fetch('/api/project.php', {
   //       method: 'PATCH',
   //       header: { 'content-type': 'application/json' },
