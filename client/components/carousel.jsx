@@ -20,7 +20,6 @@ handleSlideRight() {
   this.setState({
     currentImagesIndex: this.state.currentImagesIndex + 1
   })
-  console.log("I click");
   if (this.state.currentImagesIndex === this.images.length - 1) {
     this.setState({
       currentImagesIndex: 0
