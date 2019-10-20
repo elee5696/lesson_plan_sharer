@@ -4,10 +4,10 @@ export default class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.images = [
-      "images/beautiful-flower-field-background-1.jpg",
-      "/images/flower.jpg",
-      "/images/6820517-tulip-fields.jpg"
-    ];
+      "/images/name-beads.png",
+      "/images/stick-figure-2.png",
+      "/images/stick-figure.png"
+      ];
     this.state = {
       currentImagesIndex: 0
     };
@@ -17,16 +17,26 @@ export default class Carousel extends React.Component {
 
 
 handleSlideRight() {
-  var nextImage = this.state.currentImagesIndex + 1;
+  this.setState({
+    currentImagesIndex: this.state.currentImagesIndex + 1
+  })
+  console.log("I click");
   if (this.state.currentImagesIndex === this.images.length - 1) {
-    nextImage = 0;
+    this.setState({
+      currentImagesIndex: 0
+    })
   }
 }
 
+
 handleSlideLeft() {
-  var nextImage = this.state.currentImagesIndex - 1;
+  this.setState({
+    currentImagesIndex: this.state.currentImagesIndex - 1
+  });
   if (this.state.currentImagesIndex === 0) {
-    nextImage = this.images.length - 1;
+    this.setState({
+      currentImagesIndex: this.images.length - 1
+    })
   }
 }
 
@@ -38,7 +48,7 @@ render() {
           <i className="fas fa-chevron-left carousel-left-arrow-icon" onClick={this.handleSlideLeft}></i>
         </div>
         <div className="carousel-image-container">
-          <img className="carousel-image" src={this.images[this.state.currentImageIndex]}/>
+          <img className="carousel-image" src={this.images[this.state.currentImagesIndex]}/>
         </div>
         <div className="carousel-right-arrow-container">
           <i className="fas fa-chevron-right carousel-right-arrow-icon" onClick={this.handleSlideRight}></i>
@@ -46,5 +56,5 @@ render() {
       </div>
     </div>
   );
-}
+ }
 }
