@@ -8,7 +8,8 @@ class PictureUploadForm extends React.Component {
     super(props);
     this.state = {
       inputValue: null,
-      file: null
+      file: null,
+      imagePreviewUrl: null
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -25,17 +26,19 @@ class PictureUploadForm extends React.Component {
     });
   }
   onChange(event) {
-    // var fileToPreview = new FileReader();
-    this.setState({ file: event.target.files[0] });
-  }
+    var fileReader = new FileReader();
+    var file = event.target.files[0];
+    fileReader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: fileReader.result });
+    }
+    fileReader.readAsDataURL(file)
+    }
+
   render() {
-    if (this.state.file) {
-      var style = {
-        backgroundImage: '(url' + this.state.file.name + ')',
-        backgroundsize: 'cover',
-        height: 200 + 'px',
-        width: 200 + 'px'
-      };
+    if (this.state.imagePreviewUrl) {
+      var imagePreview = <img src={this.state.imagePreviewUrl}/>;
       return (
         <div className="col picForm container p-0">
           <div className="select-photo-text d-flex justify-content-center mt-5">
@@ -44,7 +47,8 @@ class PictureUploadForm extends React.Component {
           <div className="chooseFileButton-div col d-flex justify-content-center">
             <form id="pictureForm">
               <input className="inputButton" type="file" name="picture" onChange={this.onChange}></input>
-              <div style={style}>
+              <div>
+              {imagePreview}
               </div>
               <div className="next-page-button-container justify-content-center">
                 <div className="m-5 ">
