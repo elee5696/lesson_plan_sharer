@@ -9,7 +9,8 @@ export default class Carousel extends React.Component {
       "/images/stick-figure.png"
       ];
     this.state = {
-      currentImagesIndex: 0
+      currentImagesIndex: 0,
+      interval: null
     };
     this.handleSlideLeft = this.handleSlideLeft.bind(this);
     this.handleSlideRight = this.handleSlideRight.bind(this);
@@ -37,6 +38,16 @@ handleSlideLeft() {
       currentImagesIndex: this.images.length - 1
     })
   }
+}
+
+componentDidMount() {
+ this.setState({
+   interval: setInterval(this.handleSlideRight, 3000)
+ })
+}
+
+componentWillUnmount() {
+  clearInterval(this.state.interval);
 }
 
 render() {
