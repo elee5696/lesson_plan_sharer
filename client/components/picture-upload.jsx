@@ -1,7 +1,7 @@
 import React from 'react';
 // import ProjectSubmit from './projectSubmit';
 // import FormData from 'form-data';
-// import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Link, RouteComponentProps} from 'react-router-dom';
 
 class PictureUploadForm extends React.Component {
   constructor(props) {
@@ -24,6 +24,8 @@ class PictureUploadForm extends React.Component {
       'method': 'POST',
       'body': formData
     });
+
+    // history.push('/submitForm');
   }
   onChange(event) {
     var fileReader = new FileReader();
@@ -61,8 +63,11 @@ class PictureUploadForm extends React.Component {
               </div>
               <div style={styleNextPageButtondiv} className="justify-content-center">
                 <div style={{margin: '8rem'}}>
-                  <button  className="uploadPicButton" onClick={this.onSubmit}>Next Page</button>
-                </div>
+                    <button className="uploadPicButton" onClick={this.onSubmit}>
+                    <Link style={{color: "white"}} to='/submitForm'>
+                    Next Page
+                    </Link></button>
+                  </div>
               </div>
             </form>
           </div>
