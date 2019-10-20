@@ -38,7 +38,7 @@ export default class ProjectDetails extends React.Component {
         <div className="spacer col col-1 p-0"></div>
         <div className="col-10 p-0">
           <div className="project-image-container row justify-content-center mb-3">
-            <img className="project-image p-0" style={{ width: '20rem' }} src={this.state.project.image}></img>
+            <img className="project-image p-0" style={{ width: '20rem' }} src={console.log(this.state.project.image)}></img>
           </div>
           <div className="project-title-container col-10 mb-3 p-0">
             <h1 className="project-title">{this.state.project.name}</h1>
