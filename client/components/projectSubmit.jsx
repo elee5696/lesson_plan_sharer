@@ -105,9 +105,9 @@ class ProjectSubmit extends React.Component {
   }
   render() {
     return (
-      <div className= "container row m-0 p-0 col-12">
-        <div className="spacer col col-1"></div>
-        <div className="form container col col-10 d-flex justify-content-center m-0">
+      <div className= "container row m-0 p-0 col-sm-10 col-md-12">
+        <div className="spacer col col-sm-0 col-md-1"></div>
+        <div className="form container col col-sm-10 col-md-10 d-flex justify-content-center m-0">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label >Project Title</label>
@@ -125,7 +125,7 @@ class ProjectSubmit extends React.Component {
             <div>
               <div className="form-group inline">
                 <label className="col-sm-2 col-form-label">Goals</label>
-                <div className="col-sm-10 p-0">
+                <div className="col-sm-10 col-md-10 p-0">
                   <input type="text"
                     className="form-control"
                     id="goalSubmit"
@@ -145,7 +145,7 @@ class ProjectSubmit extends React.Component {
               <div className="form-group inline ">
                 <label
                   className="col-sm-2 col-form-label">Materials</label>
-                <div className="col-sm-10 p-0">
+                <div className="col-sm-10 col-md-10 p-0">
                   <input onChange={this.handleMaterialChange}
                     type="text" className="form-control" id="materialSubmit"
                     placeholder="Materials Entry" value={this.state.materials}></input>
@@ -182,7 +182,7 @@ class ProjectSubmit extends React.Component {
             </div>
           </form>
         </div>
-        <div className="spacer col col-1"></div>
+        <div className="spacer col col-sm-0 col-md-1"></div>
       </div>
 
     );
