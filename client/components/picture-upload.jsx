@@ -8,7 +8,8 @@ class PictureUploadForm extends React.Component {
     super(props);
     this.state = {
       inputValue: null,
-      file: null
+      file: null,
+      imagePreviewUrl: null
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -25,17 +26,28 @@ class PictureUploadForm extends React.Component {
     });
   }
   onChange(event) {
-    // var fileToPreview = new FileReader();
-    this.setState({ file: event.target.files[0] });
-  }
+    var fileReader = new FileReader();
+    var file = event.target.files[0];
+    fileReader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: fileReader.result });
+    }
+    fileReader.readAsDataURL(file)
+    }
+
   render() {
-    if (this.state.file) {
+    if (this.state.imagePreviewUrl) {
       var style = {
-        backgroundImage: '(url' + this.state.file.name + ')',
-        backgroundsize: 'cover',
-        height: 200 + 'px',
-        width: 200 + 'px'
+        width: '20rem',
+        height: '20rem',
+        margin: '25px 0 0 4px'
       };
+      var styleNextPageButtondiv ={
+        margin: '100 0 0 70px'
+      };
+      var imagePreview = <img style ={style} src={this.state.imagePreviewUrl}/>;
+
       return (
         <div className="col picForm container p-0">
           <div className="select-photo-text d-flex justify-content-center mt-5">
@@ -45,10 +57,11 @@ class PictureUploadForm extends React.Component {
             <form id="pictureForm">
               <input className="inputButton" type="file" name="picture" onChange={this.onChange}></input>
               <div style={style}>
+              {imagePreview}
               </div>
-              <div className="next-page-button-container justify-content-center">
-                <div className="m-5 ">
-                  <button className="uploadPicButton" onClick={this.onSubmit}>Next Page</button>
+              <div style={styleNextPageButtondiv} className="justify-content-center">
+                <div style={{margin: '8rem'}}>
+                  <button  className="uploadPicButton" onClick={this.onSubmit}>Next Page</button>
                 </div>
               </div>
             </form>
@@ -67,7 +80,7 @@ class PictureUploadForm extends React.Component {
               <div>
               </div>
               <div className="next-page-button-container justify-content-center">
-                <div className="m-5 ">
+                <div className="m-5">
                   <button className="uploadPicButton" onClick={this.onSubmit}>Next Page</button>
                 </div>
               </div>
