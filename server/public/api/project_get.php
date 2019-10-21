@@ -57,7 +57,7 @@ while($row=mysqli_fetch_assoc($result)){
 foreach($output as &$project) {
   foreach($image_data as $image) {
     if($project['id'] == $image['project_id']) {
-      if($image['url'] === 'NULL') {
+      if($image['url'] === NULL) {
         $project['image'] = $image['filename'];
       } else {
         $project['image'] = $image['url'];

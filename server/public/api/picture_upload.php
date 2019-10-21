@@ -38,11 +38,6 @@ if($_FILES['picture']) {
   } else {
     throw new Exception('File could not be uploaded');
   }
-
-  $picture_path = "/images/$picture_uploaded";
-
-  print $picture_path;
-
 }
 
 ?>
