@@ -13,7 +13,6 @@ class PictureUploadForm extends React.Component {
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
-
   }
 
   onSubmit(event) {
@@ -24,8 +23,6 @@ class PictureUploadForm extends React.Component {
       'method': 'POST',
       'body': formData
     });
-
-    // history.push('/submitForm');
   }
   onChange(event) {
     var fileReader = new FileReader();

@@ -12,7 +12,7 @@ class ProjectSubmit extends React.Component {
       'set_up': '',
       'outcomes': '',
       'rating': '',
-      'image': 'gfdgdfg',
+      'image': null,
       'goalsToSubmit': [],
       'materialsToSubmit': [],
       'goals': '',
@@ -20,19 +20,21 @@ class ProjectSubmit extends React.Component {
     };
     this.materialsArray = [];
     this.goalsArray = [];
+    this.image= null;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGoalSubmit = this.handleGoalSubmit.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.handleProjectTitleChange = this.handleProjectTitleChange.bind(this);
+    this.handleProjectTitleandImageChange = this.handleProjectTitleandImageChange.bind(this);
     this.handleGoalChange = this.handleGoalChange.bind(this);
     this.handleSetUpChange = this.handleSetUpChange.bind(this);
     this.handleMaterialChange = this.handleMaterialChange.bind(this);
     this.handleOutcomesChange = this.handleOutcomesChange.bind(this);
     this.handleMaterialSubmit = this.handleMaterialSubmit.bind(this);
   }
-  handleProjectTitleChange(event) {
+  handleProjectTitleandImageChange(event) {
     this.setState({
-      name: event.target.value
+      name: event.target.value,
+      image: this.image
     });
   }
   handleSubmit(event) {
@@ -103,6 +105,15 @@ class ProjectSubmit extends React.Component {
       this.render();
     }
   }
+  componentDidMount(){
+    var pictureName = this.props.location.state.file.name;
+    var pictureHasSpaces = pictureName.match('[\s]');
+    if(pictureHasSpaces){
+      var pictureBrokenUp=pictureName.split(" ");
+      var pictureName = pictureBrokenUp.join("");
+    }
+    this.image = pictureName;
+  }
   render() {
     return (
       <div className= "container row m-0 p-0 col-sm-10 col-md-12">
@@ -112,7 +123,7 @@ class ProjectSubmit extends React.Component {
             <div className="form-group">
               <label >Project Title</label>
               <input
-                onChange={this.handleProjectTitleChange}
+                onChange={this.handleProjectTitleandImageChange}
                 type="text"
                 className="form-control projectEntry"
                 placeholder="Project Entry"></input>
