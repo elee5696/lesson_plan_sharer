@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Carousel extends React.Component {
   constructor(props) {
@@ -61,9 +61,9 @@ export default class Carousel extends React.Component {
       </div>
       <div className="carousel-body row mt-3">
         <div className="carousel-image-container col">
-          {/* <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}> */}
-          <img className="carousel-image" src={this.props.projects[this.state.currentImagesIndex].image} style={{ width: '20rem' }}></img>
-          {/* </Link> */}
+          <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}>
+            <img className="carousel-image" src={this.props.projects[this.state.currentImagesIndex].image} style={{ width: '20rem' }}></img>
+          </Link>
         </div>
         <div className="carousel-circles-container row col d-flex justify-content-center">
           {this.props.projects.map((project, circleIndex) => {
