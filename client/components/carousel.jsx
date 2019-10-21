@@ -1,50 +1,85 @@
 import React from 'react';
+// import { Link } from 'react-router-dom';
 
 export default class Carousel extends React.Component {
   constructor(props) {
     super(props);
-    this.images = [
-      "images/beautiful-flower-field-background-1.jpg",
-      "/images/flower.jpg",
-      "/images/6820517-tulip-fields.jpg"
-    ];
     this.state = {
-      currentImagesIndex: 0
+      currentImagesIndex: 0,
+      interval: null
     };
     this.handleSlideLeft = this.handleSlideLeft.bind(this);
     this.handleSlideRight = this.handleSlideRight.bind(this);
   }
 
-
-handleSlideRight() {
-  var nextImage = this.state.currentImagesIndex + 1;
-  if (this.state.currentImagesIndex === this.images.length - 1) {
-    nextImage = 0;
+  handleSlideRight() {
+    this.setState({
+      currentImagesIndex: this.state.currentImagesIndex + 1
+    });
+    if (this.state.currentImagesIndex === this.props.projects.length - 1) {
+      this.setState({
+        currentImagesIndex: 0
+      });
+    }
   }
-}
 
-handleSlideLeft() {
-  var nextImage = this.state.currentImagesIndex - 1;
-  if (this.state.currentImagesIndex === 0) {
-    nextImage = this.images.length - 1;
+  handleSlideLeft() {
+    this.setState({
+      currentImagesIndex: this.state.currentImagesIndex - 1
+    });
+    if (this.state.currentImagesIndex === 0) {
+      this.setState({
+        currentImagesIndex: this.props.projects.length - 1
+      });
+    }
   }
-}
 
-render() {
-  return (
-    <div className="carousel-container">
-      <div className="carousel-body">
-        <div className="carousel-left-arrow-container">
-          <i className="fas fa-chevron-left carousel-left-arrow-icon" onClick={this.handleSlideLeft}></i>
+  goToProject(circleIndex) {
+    this.setState({
+      currentImagesIndex: circleIndex
+    });
+  }
+
+  // componentDidMount() {
+  //  this.setState({
+  //    interval: setInterval(this.handleSlideRight, 3000)
+  //  })
+  // }
+
+  // componentWillUnmount() {
+  //   clearInterval(this.state.interval);
+  // }
+
+  render() {
+    if (this.props.projects.length === 0) {
+      return <h1>Page loading...</h1>;
+    }
+    return (
+    <>
+      <div className="featured-posts row">
+        <h3 className="featured-posts-text col-10 mt-5">Featured Provs</h3>
+      </div>
+      <div className="carousel-body row mt-3">
+        <div className="carousel-image-container col">
+          {/* <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}> */}
+          <img className="carousel-image" src={this.props.projects[this.state.currentImagesIndex].image} style={{ width: '20rem' }}></img>
+          {/* </Link> */}
         </div>
-        <div className="carousel-image-container">
-          <img className="carousel-image" src={this.images[this.state.currentImageIndex]}/>
-        </div>
-        <div className="carousel-right-arrow-container">
-          <i className="fas fa-chevron-right carousel-right-arrow-icon" onClick={this.handleSlideRight}></i>
+        <div className="carousel-circles-container row col d-flex justify-content-center">
+          {this.props.projects.map((project, circleIndex) => {
+            var className = this.state.currentImagesIndex === circleIndex ? 'fas' : 'far';
+            var circleHandleClick = () => this.goToProject(circleIndex);
+            return (
+              <i key={circleIndex}
+                onClick={circleHandleClick}
+                className={`btn ${className} fa-circle col`}>
+              </i>
+            );
+          })
+          }
         </div>
       </div>
-    </div>
-  );
-}
+    </>
+    );
+  }
 }
