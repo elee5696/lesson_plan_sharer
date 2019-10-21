@@ -55,34 +55,31 @@ export default class Carousel extends React.Component {
       return <h1>Page loading...</h1>;
     }
     return (
-      <div className="carousel-container">
-        <div className="carousel-body">
-          <div className="carousel-left-arrow-container">
-            <i className="fas fa-chevron-left carousel-left-arrow-icon" onClick={this.handleSlideLeft}></i>
-          </div>
-          <div className="carousel-image-container">
-            {/* <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}> */}
-            <img className="carousel-image" src={this.props.projects[this.state.currentImagesIndex].image} style={{ width: '20rem' }}></img>
-            {/* </Link> */}
-          </div>
-          <div className="carousel-right-arrow-container">
-            <i className="fas fa-chevron-right carousel-right-arrow-icon" onClick={this.handleSlideRight}></i>
-          </div>
-          <div className="carousel-circles-container">
-            {this.props.projects.map((project, circleIndex) => {
-              var className = this.state.currentImagesIndex === circleIndex ? 'fas' : 'far';
-              var circleHandleClick = () => this.goToProject(circleIndex);
-              return (
-                <i key={circleIndex}
-                  onClick={circleHandleClick}
-                  className={`btn ${className} fa-circle`}>
-                </i>
-              );
-            })
-            }
-          </div>
+    <>
+      <div className="featured-posts row">
+        <h3 className="featured-posts-text col-10 mt-5">Featured Provs</h3>
+      </div>
+      <div className="carousel-body row mt-3">
+        <div className="carousel-image-container col">
+          {/* <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}> */}
+          <img className="carousel-image" src={this.props.projects[this.state.currentImagesIndex].image} style={{ width: '20rem' }}></img>
+          {/* </Link> */}
+        </div>
+        <div className="carousel-circles-container row col d-flex justify-content-center">
+          {this.props.projects.map((project, circleIndex) => {
+            var className = this.state.currentImagesIndex === circleIndex ? 'fas' : 'far';
+            var circleHandleClick = () => this.goToProject(circleIndex);
+            return (
+              <i key={circleIndex}
+                onClick={circleHandleClick}
+                className={`btn ${className} fa-circle col`}>
+              </i>
+            );
+          })
+          }
         </div>
       </div>
+    </>
     );
   }
 }
