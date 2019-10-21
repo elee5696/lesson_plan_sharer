@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectListItem from './projectlist-item';
 
 export default class ProjectList extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       isClicked: false
@@ -10,13 +10,13 @@ export default class ProjectList extends React.Component {
 
     this.handleFilterClick = this.handleFilterClick.bind(this);
   }
-handleFilterClick(){
-  this.setState({
-    isClicked: !this.state.isClicked
-  });
 
+  handleFilterClick() {
+    this.setState({
+      isClicked: !this.state.isClicked
+    });
 
-}
+  }
   render() {
     return (
       <div className="project-list-container row mt-4">
@@ -52,8 +52,8 @@ handleFilterClick(){
                     projectImage={project.image}
                     projectName={project.name}
                     projectDescription={project.description}
-                    view={this.props.view}
                     rating={project.rating}
+                    rating_count={project.rating_count}
                   />
                 );
               })}

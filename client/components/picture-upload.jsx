@@ -1,7 +1,7 @@
 import React from 'react';
 // import ProjectSubmit from './projectSubmit';
 // import FormData from 'form-data';
-import { Link, RouteComponentProps} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class PictureUploadForm extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class PictureUploadForm extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    var formData = new FormData();
+    const formData = new FormData();
     formData.append('picture', this.state.file);
     fetch('/api/picture_upload.php', {
       'method': 'POST',
@@ -25,27 +25,29 @@ class PictureUploadForm extends React.Component {
     });
   }
   onChange(event) {
-    var fileReader = new FileReader();
-    var file = event.target.files[0];
+    const fileReader = new FileReader();
+    const file = event.target.files[0];
     fileReader.onloadend = () => {
       this.setState({
         file: file,
         imagePreviewUrl: fileReader.result });
-    }
-    fileReader.readAsDataURL(file)
-    }
+    };
+    fileReader.readAsDataURL(file);
+  }
 
   render() {
     if (this.state.imagePreviewUrl) {
-      var style = {
+      const style = {
         width: '20rem',
         height: '20rem',
         margin: '25px 0 0 4px'
       };
-      var styleNextPageButtondiv ={
+
+      const styleNextPageButtondiv = {
         margin: '100 0 0 70px'
       };
-      var imagePreview = <img style ={style} src={this.state.imagePreviewUrl}/>;
+
+      const imagePreview = <img style ={style} src={this.state.imagePreviewUrl}/>;
 
       return (
         <div className="col picForm container p-0">
@@ -56,21 +58,21 @@ class PictureUploadForm extends React.Component {
             <form id="pictureForm">
               <input className="inputButton" type="file" name="picture" onChange={this.onChange}></input>
               <div style={style}>
-              {imagePreview}
+                {imagePreview}
               </div>
               <div style={styleNextPageButtondiv} className="justify-content-center">
-                <div style={{margin: '8rem'}}>
-                    <button className="uploadPicButton" onClick={this.onSubmit}>
-                    <Link style={{color: "white"}} to={{
+                <div style={{ margin: '8rem' }}>
+                  <button className="uploadPicButton" onClick={this.onSubmit}>
+                    <Link style={{ color: 'white' }} to={{
                       pathname: '/submitForm',
                       state: {
                         file: this.state.file
                       }
                     }}
-                      >
+                    >
                     Next Page
                     </Link></button>
-                  </div>
+                </div>
               </div>
             </form>
           </div>

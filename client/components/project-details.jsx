@@ -1,7 +1,6 @@
 import React from 'react';
 import ListBubble from './list-bubble';
 import Ratings from './ratings';
-import { Link } from 'react-router-dom';
 
 export default class ProjectDetails extends React.Component {
   constructor(props) {
@@ -31,14 +30,21 @@ export default class ProjectDetails extends React.Component {
     let setupSteps = this.state.project.set_up.split(',');
 
     return (
-      <div className="entire-page-container container row m-0 p-0 col-12">
-        <div className="back-button-container row mt-3 mb-3 col-12">
-          <Link to="/provs" className="back-button col-10" style={{ textDecoration: 'none', color: 'black' }}>{'< Back'}</Link>
+      <div className="entire-page-container container row col-12 m-0 p-0">
+        <div className="back-button-container row m-3 col-12 p-0">
+          <div
+            onClick={this.props.history.goBack}
+            className="back-button col-12">{'< Back'}
+          </div>
         </div>
         <div className="spacer col col-1 p-0"></div>
-        <div className="col-10 p-0 justify-content-center">
+        <div className="col-8 p-0 justify-content-center">
           <div className="project-image-container row justify-content-center mb-3">
-            <img className="project-image p-0" style={{ width: '20rem', height: '20rem' }} src={this.state.project.image}></img>
+            <img
+              className="project-image p-0"
+              style={{ width: '80%' }}
+              src={this.state.project.image}>
+            </img>
           </div>
           <div className="project-title-container col-10 mb-3 p-0">
             <h1 className="project-title">{this.state.project.name}</h1>
@@ -55,7 +61,7 @@ export default class ProjectDetails extends React.Component {
             <div className="project-goals-header-container row mb-2 ml-1">
               <h1 className="project-goals-header">Goals</h1>
             </div>
-            <div className="col d-flex">
+            <div className="col">
               <div className="project-goals-list row mb-2">
                 {this.state.project.goals.map((e, i) => {
                   return (
@@ -70,8 +76,26 @@ export default class ProjectDetails extends React.Component {
             </div>
           </div>
           <div className="project-setup-materials-container col-12 row p-0 m-0">
-            <div className="materials p-0 w-50">
-              <div className="project-materials-header-container col mb-2 p-0">
+            <div className="set-up col-6 p-0">
+              <div className="project-setup-header-container col mb-2 p-0">
+                <h1 className="project-setup-header">Set-Up</h1>
+              </div>
+              <div className="project-setup-container mb-3">
+                <div className="project-setup-desc-body">
+                  {setupSteps.map((e, i) => {
+                    return (
+                      <h6
+                        key={i}
+                        className="project-setup-steps mb-2">
+                        {i + 1}. {e}
+                      </h6>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+            <div className="materials col-6 p-0">
+              <div className="project-materials-header-container col mb-2">
                 <h1 className="project-materials-header">Materials</h1>
               </div>
               <div className="project-materials-container col-12 mb-3 p-0">
@@ -81,7 +105,8 @@ export default class ProjectDetails extends React.Component {
                       <ListBubble
                         key={i}
                         className="project-materials-list-item"
-                        text={e} />
+                        text={e}
+                        width="150px" />
                     );
                   })}
                 </div>
@@ -122,7 +147,6 @@ export default class ProjectDetails extends React.Component {
             </div>
           </div>
         </div>
-        <div className="spacer col-1 p-0"></div>
       </div>
     );
   }

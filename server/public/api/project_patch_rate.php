@@ -51,7 +51,7 @@ while($row = mysqli_fetch_assoc($result)) {
   $output = $row;
 }
 
-$encodedJson= json_encode($output);
+$encodedJson = json_encode($output);
 
 print_r($encodedJson);
 ?>

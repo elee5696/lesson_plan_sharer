@@ -62,7 +62,7 @@ export default class Ratings extends React.Component {
         </div>
         {this.state.rated ? <p>Rated</p> : null }
         <div className="ml-0 row rating-details-container">
-          <p>Total Ratings: { this.state.total ? this.state.total : this.props.rating_count}</p>
+          <p>Total Ratings: { this.state.total ? this.state.total : this.props.rating_count }</p>
         </div>
       </div>
     );
