@@ -1,7 +1,7 @@
 import React from 'react';
 import ProjectListItem from './projectlist-item';
-import Carousel from './carousel';
-import Searchbar from './search-bar';
+// import Carousel from './carousel';
+// import Searchbar from './search-bar';
 
 export default class Homepage extends React.Component {
 
@@ -11,10 +11,10 @@ export default class Homepage extends React.Component {
 
   render() {
     return (
-      // <div>
-      // <Searchbar/>
-      // <Carousel/>
-      // </div>
+    // <div>
+    // <Searchbar/>
+    // <Carousel/>
+    // </div>
 
       <>
         <div className="project-list-container row mt-4">
@@ -35,8 +35,8 @@ export default class Homepage extends React.Component {
                       projectImage={project.image}
                       projectName={project.name}
                       projectDescription={project.description}
-                      view={this.props.view}
                       rating={project.rating}
+                      rating_count={project.rating_count}
                     />
                   );
                 })

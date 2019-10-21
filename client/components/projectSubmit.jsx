@@ -20,7 +20,7 @@ class ProjectSubmit extends React.Component {
     };
     this.materialsArray = [];
     this.goalsArray = [];
-    this.image= null;
+    this.image = null;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGoalSubmit = this.handleGoalSubmit.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -105,12 +105,13 @@ class ProjectSubmit extends React.Component {
       this.render();
     }
   }
-  componentDidMount(){
-    var pictureName = this.props.location.state.file.name;
-    var pictureHasSpaces = pictureName.match('[\s]');
-    if(pictureHasSpaces){
-      var pictureBrokenUp=pictureName.split(" ");
-      var pictureName = pictureBrokenUp.join("");
+  componentDidMount() {
+    const regex = '[\\s]';
+    let pictureName = this.props.location.state.file.name;
+    let pictureHasSpaces = pictureName.match(regex);
+    if (pictureHasSpaces) {
+      let pictureBrokenUp = pictureName.split(' ');
+      pictureName = pictureBrokenUp.join('');
     }
     this.image = pictureName;
   }
@@ -172,7 +173,6 @@ class ProjectSubmit extends React.Component {
             <div>
               <div className="form-group">
                 <label>Set-Up</label>
-
                 <textarea onChange={this.handleSetUpChange}
                   type="text"
                   className="form-control setUpEntry" id="setUp"
@@ -195,7 +195,6 @@ class ProjectSubmit extends React.Component {
         </div>
         <div className="spacer col col-sm-0 col-md-1"></div>
       </div>
-
     );
   }
 }

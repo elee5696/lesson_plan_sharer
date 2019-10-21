@@ -61,11 +61,22 @@ export default class App extends React.Component {
       <Router>
         <div className="header-container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="prov-logo navbar-brand" to="/">Prov</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <Link className="prov-logo navbar-brand" to="/">
+              <img src="/images/logo.png" style={{ width: '30%' }}/>
+            </Link>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarTogglerDemo02"
+              aria-controls="navbarTogglerDemo02"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto mt-2 mr-4 mt-lg-0">
                 <li className='nav-item'>
                   <Link to="/" className="nav-link">Home</Link>
