@@ -30,7 +30,7 @@ export default class ProjectDetails extends React.Component {
     let setupSteps = this.state.project.set_up.split(',');
 
     return (
-      <div className="entire-page-container container row m-0 p-0">
+      <div className="entire-page-container container row col m-0 p-0">
         <div className="back-button-container row mt-3 mb-3 col-12">
           <div
             onClick={this.props.history.goBack}
@@ -61,15 +61,15 @@ export default class ProjectDetails extends React.Component {
             <div className="project-goals-header-container row mb-2 ml-1">
               <h1 className="project-goals-header">Goals</h1>
             </div>
-            <div className="col d-flex justify-content-center">
-              <div className="project-goals-list mb-2">
+            <div className="row">
+              <div className="project-goals-list row m-0">
                 {this.state.project.goals.map((e, i) => {
                   return (
                     <ListBubble
                       key={i}
                       className="project-goals-list-item"
                       text={e}
-                      width="175px" />
+                      width="80px" />
                   );
                 })}
               </div>
