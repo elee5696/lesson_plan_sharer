@@ -16,7 +16,6 @@ switch($method) {
     break;
   case 'POST':
     require('project_add.php');
-    require('picture_upload.php');
     break;
   case 'PATCH':
     require('project_patch_rate.php');
