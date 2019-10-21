@@ -22,15 +22,11 @@ export default class ProvPage extends React.Component {
     }
 
     return (
-      <div className="main-container row mt-4">
-        <div className="spacer col col-1"></div>
-        <div className="col col-10 main-content">
-          <Seachbar searchCallback={this.props.searchCallback}/>
-          <div className="search-results-container">
-            {body}
-          </div>
+      <div className="prov-page-container container row mt-4">
+        <Seachbar searchCallback={this.props.searchCallback}/>
+        <div className="search-results-container">
+          {body}
         </div>
-        <div className="spacer col col-1"></div>
       </div>
     );
   }

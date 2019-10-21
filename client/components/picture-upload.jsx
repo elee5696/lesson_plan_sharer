@@ -103,10 +103,3 @@ class PictureUploadForm extends React.Component {
 }
 
 export default PictureUploadForm;
-
-// <div> Select a photo for your project's page
-//       <form action="/api/picture_upload.php" method="POST" encType="multipart/form-data">
-//     <input type="file" name="picture"></input>
-//     <input type="submit"></input>
-//   </form>
-// </div>

@@ -31,12 +31,14 @@ class ProjectSubmit extends React.Component {
     this.handleOutcomesChange = this.handleOutcomesChange.bind(this);
     this.handleMaterialSubmit = this.handleMaterialSubmit.bind(this);
   }
+
   handleProjectTitleandImageChange(event) {
     this.setState({
       name: event.target.value,
       image: this.image
     });
   }
+
   handleSubmit(event) {
     event.preventDefault();
     let body = JSON.stringify({
@@ -46,7 +48,7 @@ class ProjectSubmit extends React.Component {
       outcomes: this.state.outcomes,
       goals: this.state.goalsToSubmit,
       materials: this.state.materialsToSubmit,
-      image: this.state.image
+      image: `/images/${this.state.image}`
 
     });
     fetch(`/api/project.php`, {
@@ -58,16 +60,19 @@ class ProjectSubmit extends React.Component {
     })
       .catch(error => console.error(error));
   }
+
   handleDescriptionChange(event) {
     this.setState({
       description: event.target.value
     });
   }
+
   handleGoalChange(event) {
     this.setState({
       goals: event.target.value
     });
   }
+
   handleGoalSubmit(event) {
     event.preventDefault();
     this.goalsArray.push(this.state.goals);
@@ -76,6 +81,7 @@ class ProjectSubmit extends React.Component {
       goalsToSubmit: this.goalsArray
     });
   }
+
   handleSetUpChange(event) {
     this.setState({
       set_up: event.target.value
@@ -87,6 +93,7 @@ class ProjectSubmit extends React.Component {
     });
     event.preventDefault();
   }
+
   handleMaterialSubmit(event) {
     event.preventDefault();
     this.materialsArray.push(this.state.materials);
@@ -95,16 +102,19 @@ class ProjectSubmit extends React.Component {
       materialsToSubmit: this.materialsArray
     });
   }
+
   handleOutcomesChange(event) {
     this.setState({
       outcomes: event.target.value
     });
   }
+
   componentDidUpdate(prevState) {
     if (this.state !== prevState) {
       this.render();
     }
   }
+
   componentDidMount() {
     const regex = '[\\s]';
     let pictureName = this.props.location.state.file.name;
@@ -115,6 +125,7 @@ class ProjectSubmit extends React.Component {
     }
     this.image = pictureName;
   }
+
   render() {
     return (
       <div className= "container row m-0 p-0 col-sm-10 col-md-12">

@@ -34,6 +34,7 @@ if(!$result) {
 }
 
 $project_id = '';
+
 while( $row = mysqli_fetch_assoc($result) ) {
   $project_id = $row['id'];
 }
@@ -43,9 +44,14 @@ throw new Exception( mysqli_error( $conn ) );
 }
 
 $query =
-"INSERT INTO `images` (`filename`, `project_id`, `url`)
+"INSERT INTO `images` (`filename`, `project_id`)
   VALUES
-  ('$picture_path', $project_id, '$image')";
+  ('$image', $project_id)";
+
+$result = mysqli_query($conn, $query);
+if(!$result) {
+  throw new Exception('query failed');
+}
 
 foreach($goals as $goal) {
 
@@ -53,7 +59,7 @@ foreach($goals as $goal) {
   "INSERT INTO goals (`name`)
     SELECT * FROM (SELECT '$goal') AS tmp
     WHERE NOT EXISTS (
-      SELECT name FROM goals WHERE `name`='$goal'
+      SELECT `name` FROM goals WHERE `name`='$goal'
       ) LIMIT 1";
 
   $result = mysqli_query($conn, $query);
@@ -86,10 +92,10 @@ foreach($goals as $goal) {
 foreach($materials as $material) {
 
   $query =
-  "INSERT INTO goals (name)
+  "INSERT INTO materials (`name`)
     SELECT * FROM (SELECT '$material') AS tmp
     WHERE NOT EXISTS (
-      SELECT name FROM goals WHERE name = '$material'
+      SELECT `name` FROM materials WHERE `name` = '$material'
       ) LIMIT 1";
 
   $result = mysqli_query($conn, $query);
@@ -97,7 +103,7 @@ foreach($materials as $material) {
   throw new Exception('query failed');
   }
 
-  $query = "SELECT `id` FROM goals WHERE `name`='$material'";
+  $query = "SELECT `id` FROM materials WHERE `name`='$material'";
 
   $result = mysqli_query($conn, $query);
   if(!$result) {
@@ -117,7 +123,16 @@ foreach($materials as $material) {
   if(!$result) {
   throw new Exception('query failed');
   }
-
-  print $project_id;
 }
+
+$query =
+  "INSERT INTO `project_rating` (`project_id`)
+    VALUES ($project_id)";
+
+$result = mysqli_query($conn, $query);
+if(!$result) {
+  throw new Exception('query failed');
+}
+
+print($project_id);
 ?>
