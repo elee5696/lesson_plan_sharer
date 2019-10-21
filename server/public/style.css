@@ -139,3 +139,22 @@ body {
 .inputButton {
   border: 2px solid #f8b1d1;
 }
+
+.pic, .enter-info {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.username-key,
+.username-value,
+.experience-key,
+.experience-value,
+.about-me-key,
+.about-me-value,
+.projects-amount-key,
+.projects-amount-value,
+.points-amount-key,
+.points-amount-value {
+  font-weight: 500;
+  font-size: 18px;
+}
