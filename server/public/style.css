@@ -47,8 +47,8 @@ body {
 }
 
 .descriptionBox, .outcomeBox{
-  width: 400px;
-  height: 100px;
+  width: 100%;
+  height: 40%;
   border: 1px solid black;
 }
 
@@ -131,10 +131,6 @@ body {
   margin-top: 315px;
   margin-left: 70px;
 }
-
-/* .chooseFileButton-div {
-  margin-top: 150px;
-} */
 
 .inputButton {
   border: 2px solid #f8b1d1;

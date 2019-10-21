@@ -61,11 +61,22 @@ export default class App extends React.Component {
       <Router>
         <div className="header-container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="prov-logo navbar-brand" to="/">Prov</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <Link className="prov-logo navbar-brand" to="/">
+              <img src="/images/logo.png" style={{ width: '30%' }}/>
+            </Link>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarTogglerDemo02"
+              aria-controls="navbarTogglerDemo02"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto mt-2 mr-4 mt-lg-0">
                 <li className='nav-item'>
                   <Link to="/" className="nav-link">Home</Link>
@@ -74,7 +85,7 @@ export default class App extends React.Component {
                   <Link to="/provs" className="nav-link">Provs</Link>
                 </li>
                 <li className='nav-item'>
-                  <Link to="/submit" className="nav-link">Submit</Link>
+                  <Link to="/submitPicture" className="nav-link">Submit</Link>
                 </li>
                 <li className='nav-item'>
                   <Link to="/user" className="nav-link">User</Link>
@@ -88,8 +99,8 @@ export default class App extends React.Component {
             <Homepage {...props}
               getProjectCallback={this.getProjects}
               projects={this.state.projects} />} />
-          <Route path="/submit" component={PictureUploadForm} />
-          <Route path="/submit2" component={ProjectSubmit} />
+          <Route path="/submitPicture" component={PictureUploadForm} />
+          <Route path="/submitForm" component={ProjectSubmit} />
           <Route path="/provs" render={props =>
             <ProvPage {...props}
               projects={this.state.projects}

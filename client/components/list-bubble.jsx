@@ -7,15 +7,15 @@ export default class ListBubble extends React.Component {
       background: '#FFC7F9',
       color: 'white',
       borderRadius: '50px',
-      width: '200px'
+      width: this.props.width ? this.props.width : '200px'
     };
 
-    return(
-      <div className="bubble-container col-12 justify-content-center m-1 p-1" style={borderStyle}>
+    return (
+      <div className="bubble-container justify-content-center m-1 p-1" style={borderStyle}>
         <div className="text-container">
           <div
-          className="m-0 goals-bubble-text"
-          style={{fontSize: "14px"}}>{this.props.text}</div>
+            className="m-0 goals-bubble-text"
+            style={{ fontSize: '14px' }}>{this.props.text}</div>
         </div>
       </div>
     );

@@ -90,6 +90,7 @@
     "form-data": "^2.5.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-file-reader": "^1.1.4",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "style-loader": "^1.0.0"
