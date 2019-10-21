@@ -33,12 +33,12 @@ export default class ProjectDetails extends React.Component {
     return (
       <div className="entire-page-container container row m-0 p-0">
         <div className="back-button-container row mt-3 mb-3 col-12">
-          <Link to="/provs" className="back-button col-10" style={{textDecoration: 'none', color: 'black'}}>{'< Back'}</Link>
+          <Link to="/provs" className="back-button col-10" style={{ textDecoration: 'none', color: 'black' }}>{'< Back'}</Link>
         </div>
         <div className="spacer col col-1 p-0"></div>
         <div className="col-10 p-0">
           <div className="project-image-container row justify-content-center mb-3">
-            <img className="project-image p-0" style={{ width: '20rem' }} src={console.log(this.state.project.image)}></img>
+            <img className="project-image p-0" style={{ width: '20rem' }} src={this.state.project.image}></img>
           </div>
           <div className="project-title-container col-10 mb-3 p-0">
             <h1 className="project-title">{this.state.project.name}</h1>
