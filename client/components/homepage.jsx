@@ -2,6 +2,7 @@ import React from 'react';
 // import ProjectListItem from './projectlist-item';
 import Carousel from './carousel';
 import Searchbar from './search-bar';
+import WriteButton from './write-button';
 
 export default class Homepage extends React.Component {
 
@@ -17,6 +18,7 @@ export default class Homepage extends React.Component {
           <Searchbar/>
           <Carousel
             projects={this.props.projects}/>
+          <WriteButton />
         </div>
         <div className="spacer col-1 p-0"></div>
       </div>
