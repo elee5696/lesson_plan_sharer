@@ -52,7 +52,7 @@ export default class Searchbar extends React.Component {
             className="btn dropdown-toggle shadow-none dropdown-toggle-split searchButton"
             data-toggle="dropdown">
           </button>
-          <div className="dropdown-menu dropdown-menu-right">
+          <div className="dropdown-menu dropdown-menu-right pl-2">
             <span className="m-1">Filter:</span>
             <div
               className="filter-item m-1"
