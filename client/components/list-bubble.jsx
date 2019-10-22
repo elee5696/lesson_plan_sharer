@@ -7,7 +7,8 @@ export default class ListBubble extends React.Component {
       background: '#FFC7F9',
       color: 'white',
       borderRadius: '50px',
-      width: this.props.width ? this.props.width : '200px'
+      minWidth: this.props.minWidth,
+      maxWidth: this.props.maxWidth
     };
 
     return (
