@@ -64,7 +64,7 @@ class PictureUploadForm extends React.Component {
                 <div style={{ margin: '8rem' }}>
                   <button className="uploadPicButton" onClick={this.onSubmit}>
                     <Link style={{ color: 'white' }} to={{
-                      pathname: '/submitForm',
+                      pathname: '/submit2',
                       state: {
                         file: this.state.file
                       }
