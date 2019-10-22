@@ -1,7 +1,6 @@
 <?php
 $picture_path = 'NULL';
 
-
 if($_FILES['picture']) {
 
   $errors=0;

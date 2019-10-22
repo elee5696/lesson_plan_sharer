@@ -9,22 +9,14 @@ export default class ProvPage extends React.Component {
   }
 
   render() {
-    let body;
-
-    if (this.props.results) {
-      body =
+    let body =
       <ProjectList
-        projects={this.props.results} />;
-    } else {
-      body =
-      <ProjectList
-        projects={this.props.projects}/>;
-    }
+        projects={this.props.results ? this.props.result : this.props.projects} />;
 
     return (
-      <div className="prov-page-container container row mt-4">
+      <div className="prov-page-container container mt-4">
         <Seachbar searchCallback={this.props.searchCallback}/>
-        <div className="search-results-container">
+        <div className="search-results-container container">
           {body}
         </div>
       </div>
