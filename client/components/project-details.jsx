@@ -30,15 +30,15 @@ export default class ProjectDetails extends React.Component {
     let setupSteps = this.state.project.set_up.split(',');
 
     return (
-      <div className="entire-page-container container row col-12 m-0 p-0">
-        <div className="back-button-container row m-3 col-12 p-0">
+      <div className="entire-page-container container row col m-0 p-0">
+        <div className="back-button-container row mt-3 mb-3 col-12">
           <div
             onClick={this.props.history.goBack}
-            className="back-button col-12">{'< Back'}
+            className="back-button col-10">{'< Back'}
           </div>
         </div>
         <div className="spacer col col-1 p-0"></div>
-        <div className="col-8 p-0 justify-content-center">
+        <div className="col-10 p-0">
           <div className="project-image-container row justify-content-center mb-3">
             <img
               className="project-image p-0"
@@ -61,15 +61,15 @@ export default class ProjectDetails extends React.Component {
             <div className="project-goals-header-container row mb-2 ml-1">
               <h1 className="project-goals-header">Goals</h1>
             </div>
-            <div className="col">
-              <div className="project-goals-list row mb-2">
+            <div className="row">
+              <div className="project-goals-list row m-0">
                 {this.state.project.goals.map((e, i) => {
                   return (
                     <ListBubble
                       key={i}
                       className="project-goals-list-item"
                       text={e}
-                      width="175px" />
+                      width="80px" />
                   );
                 })}
               </div>
@@ -98,7 +98,7 @@ export default class ProjectDetails extends React.Component {
               <div className="project-materials-header-container col mb-2">
                 <h1 className="project-materials-header">Materials</h1>
               </div>
-              <div className="project-materials-container col-12 mb-3 p-0">
+              <div className="project-materials-container col-12 mb-3">
                 <div className="project-materials-list-container">
                   {this.state.project.materials.map((e, i) => {
                     return (
@@ -112,41 +112,28 @@ export default class ProjectDetails extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="set-up p-0">
-              <div className="project-setup-header-container col mb-2 p-0">
-                <h1 className="project-setup-header">Set-Up</h1>
+            <div className="project-outcomes-container">
+              <div className="project-outcomes-header-container row mb-2">
+                <h1 className="project-outcomes-header col">Outcomes</h1>
               </div>
-              <div className="project-setup-container mb-3">
-                <div className="project-setup-desc-body">
-                  {setupSteps.map((e, i) => {
-                    return (
-                      <h6 key={i} className="project-setup-steps mb-2">{i + 1}. {e}</h6>
-                    );
-                  })}
-                </div>
+              <div className="project-outcomes-body row mb-4">
+                <h5 className="col project-outcomes-text">{this.state.project.outcomes}</h5>
               </div>
             </div>
-          </div>
-          <div className="project-outcomes-container">
-            <div className="project-outcomes-header-container row mb-2">
-              <h1 className="project-outcomes-header col">Outcomes</h1>
-            </div>
-            <div className="project-outcomes-body row mb-4">
-              <h5 className="col project-outcomes-text">{this.state.project.outcomes}</h5>
-            </div>
-          </div>
-          <div className="project-rating-container col-10 mb-2 p-0">
-            <div className="project-rating-header-container row">
-              <h1 className="project-rating-header col-10">Feedback</h1>
-            </div>
-            <div className="project-rating-body mb-2">
-              <Ratings
-                id={this.state.project.id}
-                rating={this.state.project.rating}
-                rating_count={this.state.project.rating_count}/>
+            <div className="project-rating-container col-10 mb-2 p-0">
+              <div className="project-rating-header-container row">
+                <h1 className="project-rating-header col-10">Feedback</h1>
+              </div>
+              <div className="project-rating-body mb-2">
+                <Ratings
+                  id={this.state.project.id}
+                  rating={this.state.project.rating}
+                  rating_count={this.state.project.rating_count}/>
+              </div>
             </div>
           </div>
         </div>
+        <div className="spacer col-1 p-0"></div>
       </div>
     );
   }

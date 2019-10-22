@@ -12,7 +12,7 @@ export default class Homepage extends React.Component {
   render() {
     return (
       <div className="entire-page-container container row m-0 p-0">
-        <div className="spacer col col-1"></div>
+        <div className="spacer col col-1 p-0"></div>
         <div className="search-bar-carousel-container col-10 p-0 mt-5">
           <Searchbar/>
           <Carousel
