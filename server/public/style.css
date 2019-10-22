@@ -98,19 +98,7 @@ body {
   cursor: pointer;
 }
 
-<<<<<<< Updated upstream
-/* div.project-image.row {
-  text-align: end;
-} */
-
-/* .project-tile-container{
-  margin-bottom: 27px
-} */
-
 .uploadPicButton, .projectSubmitButton {
-=======
-.uploadPicButton {
->>>>>>> Stashed changes
   color: white;
   background-color:#f8b1d1;
   border-radius: 10%;

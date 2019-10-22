@@ -31,7 +31,7 @@ export default class ProjectDetails extends React.Component {
 
     return (
       <div className="entire-page-container container row col m-0 p-0">
-        <div className="back-button-container row mt-3 mb-3 col-12">
+        <div className="back-button-container mt-3 mb-3 col-12">
           <div
             onClick={this.props.history.goBack}
             className="back-button col-10">{'< Back'}
@@ -42,7 +42,7 @@ export default class ProjectDetails extends React.Component {
           <div className="project-image-container row justify-content-center mb-3">
             <img
               className="project-image p-0"
-              style={{ width: '80%' }}
+              style={{ width: '90%' }}
               src={this.state.project.image}>
             </img>
           </div>
