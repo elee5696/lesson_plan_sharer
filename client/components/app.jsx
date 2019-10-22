@@ -32,7 +32,7 @@ export default class App extends React.Component {
     });
   }
 
-  searchProjects(value, field = 'NAME') {
+  searchProjects(value, field = 'name') {
     let searchedProjects = this.state.projects.filter(e => e[field].includes(value));
 
     this.setState({
