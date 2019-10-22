@@ -42,7 +42,7 @@ export default class ProjectDetails extends React.Component {
           <div className="project-image-container row justify-content-center mb-3">
             <img
               className="project-image p-0"
-              style={{ width: '90%', maxWidth: '450px' }}
+              style={{ width: '90%', maxWidth: '450px', height: '40%' }}
               src={this.state.project.image}>
             </img>
           </div>
