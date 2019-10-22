@@ -61,7 +61,7 @@ class PictureUploadForm extends React.Component {
                 {imagePreview}
               </div>
               <div style={styleNextPageButtondiv} className="justify-content-center">
-                <div style={{ margin: '8rem' }}>
+                <div className = "nextPageDiv" style={{ margin: '8rem' }}>
                   <button className="uploadPicButton" onClick={this.onSubmit}>
                     <Link style={{ color: 'white' }} to={{
                       pathname: '/submit2',

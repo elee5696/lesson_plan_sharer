@@ -68,7 +68,7 @@ body {
   text-decoration: none;
 }
 
-.searchButton {
+.searchButton, .uploadPicButton, .projectSubmitButton {
   background:#f8b1d1;
   color: white;
 }
@@ -98,16 +98,13 @@ body {
   cursor: pointer;
 }
 
-.uploadPicButton, .projectSubmitButton {
-  color: white;
-  background-color:#f8b1d1;
-  border-radius: 10%;
+.uploadPicButton {
   border-style: none;
 }
 
 .next-page-button-container {
   margin-top: 315px;
-  margin-left: 70px;
+  margin-left: 100px;
 }
 
 .inputButton {
@@ -148,6 +145,13 @@ body {
 
 .filter-item:hover {
   background-color: #ffebf4 !important;
+}
+
+@media (min-height: 1024px) {
+  .next-page-button-container {
+    margin-top: 600px;
+    margin-left: 70px;
+  }
 }
 
 @media (max-width: 576px) {
