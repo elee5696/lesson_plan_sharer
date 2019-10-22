@@ -15,7 +15,9 @@ export default class ProvPage extends React.Component {
 
     return (
       <div className="prov-page-container container mt-4">
-        <Seachbar searchCallback={this.props.searchCallback}/>
+        <Seachbar
+          searchCallback={this.props.searchCallback}
+          resetResults={this.props.resetResults}/>
         <div className="search-results-container container">
           {body}
         </div>
