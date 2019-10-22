@@ -11,35 +11,17 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: {
-        name: 'search',
-        params: {}
-      },
       projects: [],
       searchResults: ''
     };
-    this.setView = this.setView.bind(this);
     this.getProjects = this.getProjects.bind(this);
     this.searchProjects = this.searchProjects.bind(this);
-  }
-
-  setView(name, params) {
-    this.setState({
-      view: {
-        name: name,
-        params: params
-      }
-    });
   }
 
   searchProjects(value, field = 'name') {
     let searchedProjects = this.state.projects.filter(e => e[field].includes(value));
 
     this.setState({
-      view: {
-        name: 'search',
-        params: {}
-      },
       searchResults: searchedProjects
     });
 
@@ -62,7 +44,7 @@ export default class App extends React.Component {
         <div className="header-container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link className="prov-logo navbar-brand" to="/">
-              <img src="/images/logo.png" style={{ width: '30%' }}/>
+              <img src="/images/logo.png" style={{ width: '30%' }} />
             </Link>
             <button
               className="navbar-toggler"
@@ -110,7 +92,7 @@ export default class App extends React.Component {
           <Route path="/user" component={UserPage} />
           <Route path="/detail/:id" render={props =>
             <ProjectDetails {...props}
-              projectID={this.state.location}/>} />
+              projectID={this.state.location} />} />
         </Switch>
       </Router>
     );

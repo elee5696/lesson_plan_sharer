@@ -11,7 +11,7 @@ export default class ProvPage extends React.Component {
   render() {
     let body =
       <ProjectList
-        projects={this.props.results ? this.props.result : this.props.projects} />;
+        projects={this.props.results ? this.props.results : this.props.projects} />;
 
     return (
       <div className="prov-page-container container mt-4">
