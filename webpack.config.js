@@ -21,13 +21,16 @@ module.exports = {
           options: {
             plugins: [
               '@babel/plugin-transform-react-jsx'
+            ],
+            presets: [
+              [ '@babel/preset-env' ]
             ]
           }
         }
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
