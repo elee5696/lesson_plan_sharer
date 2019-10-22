@@ -120,7 +120,7 @@ body {
   margin-bottom: 27px
 } */
 
-.uploadPicButton {
+.uploadPicButton, .projectSubmitButton {
   color: white;
   background-color:#f8b1d1;
   border-radius: 10%;
