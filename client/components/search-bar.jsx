@@ -20,10 +20,14 @@ export default class Searchbar extends React.Component {
 
   onSubmit() {
     event.preventDefault();
-    this.props.searchCallback(this.state.value, this.state.filter === 'Search' ? undefined : this.state.filter);
+    this.props.searchCallback(this.state.value, this.state.filter === 'Search' ? 'name' : this.state.filter);
   }
 
   setFilter(event) {
+    if (event.target.innerHTML === 'Remove') {
+      this.props.resetResults();
+    }
+
     this.setState({
       filter: event.target.innerHTML.toLowerCase() === 'remove' ? 'Search' : event.target.innerHTML.toLowerCase()
     });

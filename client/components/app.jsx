@@ -16,15 +16,21 @@ export default class App extends React.Component {
     };
     this.getProjects = this.getProjects.bind(this);
     this.searchProjects = this.searchProjects.bind(this);
+    this.resetResults = this.resetResults.bind(this);
   }
 
-  searchProjects(value, field = 'name') {
+  searchProjects(value = '', field = 'name') {
     let searchedProjects = this.state.projects.filter(e => e[field].includes(value));
 
     this.setState({
       searchResults: searchedProjects
     });
+  }
 
+  resetResults() {
+    this.setState({
+      searchResults: ''
+    });
   }
 
   getProjects() {
@@ -87,6 +93,7 @@ export default class App extends React.Component {
             <ProvPage {...props}
               projects={this.state.projects}
               results={this.state.searchResults}
+              resetResults={this.resetResults}
               getProjectCallback={this.getProjects}
               searchCallback={this.searchProjects} />} />
           <Route path="/user" component={UserPage} />
