@@ -1,7 +1,6 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
 import ListBubble from './list-bubble';
-// import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 class ProjectSubmit extends React.Component {
   constructor(props) {
@@ -18,6 +17,7 @@ class ProjectSubmit extends React.Component {
       'goals': '',
       'materials': ''
     };
+    this.id = null;
     this.materialsArray = [];
     this.goalsArray = [];
     this.image = null;
@@ -30,6 +30,7 @@ class ProjectSubmit extends React.Component {
     this.handleMaterialChange = this.handleMaterialChange.bind(this);
     this.handleOutcomesChange = this.handleOutcomesChange.bind(this);
     this.handleMaterialSubmit = this.handleMaterialSubmit.bind(this);
+    this.goToDetails = this.goToDetails.bind(this);
   }
 
   handleProjectTitleandImageChange(event) {
@@ -37,6 +38,7 @@ class ProjectSubmit extends React.Component {
       name: event.target.value,
       image: this.image
     });
+
   }
 
   handleSubmit(event) {
@@ -58,6 +60,10 @@ class ProjectSubmit extends React.Component {
       },
       body: body
     })
+      .then(resp => resp.json())
+      .then(response => {
+        this.props.history.push(`/detail/${response}`);
+      })
       .catch(error => console.error(error));
   }
 
@@ -116,16 +122,20 @@ class ProjectSubmit extends React.Component {
   }
 
   componentDidMount() {
-    const regex = '[\\s]';
-    let pictureName = this.props.location.state.file.name;
-    let pictureHasSpaces = pictureName.match(regex);
-    if (pictureHasSpaces) {
-      let pictureBrokenUp = pictureName.split(' ');
-      pictureName = pictureBrokenUp.join('');
+    if (this.props.location.state) {
+      const regex = '[\\s]';
+      let pictureName = this.props.location.state.file.name;
+      let pictureHasSpaces = pictureName.match(regex);
+      if (pictureHasSpaces) {
+        let pictureBrokenUp = pictureName.split(' ');
+        pictureName = pictureBrokenUp.join('');
+      }
+      this.image = pictureName;
     }
-    this.image = pictureName;
   }
-
+  goToDetails() {
+    return this.id;
+  }
   render() {
     return (
       <div className= "container row m-0 p-0 col-sm-10 col-md-12">
@@ -200,7 +210,9 @@ class ProjectSubmit extends React.Component {
               </div>
               <button onClick={this.handleSubmit}
                 type="submit"
-                className="btn btn-secondary btn-lg">Submit</button>
+                className="projectSubmitButton btn btn-secondary btn-lg"
+                style={{ color: 'white' }}>
+                Submit</button>
             </div>
           </form>
         </div>
