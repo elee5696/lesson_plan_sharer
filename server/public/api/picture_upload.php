@@ -1,5 +1,4 @@
 <?php
-$picture_path = 'NULL';
 
 if($_FILES['picture']) {
 
@@ -10,9 +9,11 @@ if($_FILES['picture']) {
   $file_type = $_FILES['picture']['type'];
 
   $filearray = explode('.', $picture_uploaded);
+  $filestart = $filearray[0];
   $fileend = end($filearray);
   $file_ext= strtolower($fileend);
   $extentions = array("jpeg", "jpg", "png");
+
 
   if(in_array($file_ext, $extentions)=== false){
     $errors++;
@@ -30,10 +31,18 @@ if($_FILES['picture']) {
     $picture_uploaded = implode($picNameArray);
   }
 
-  if(empty($errors)==true){
-    move_uploaded_file($picture_tempName, "../images/$picture_uploaded");
-    header('Location: /submitForm');
-    echo $picture_uploaded;
+  if( empty($errors) === true ){
+    $name = $picture_uploaded;
+    $i = 1;
+
+    while(file_exists('../images/' . $name))
+    {
+      $name = $filestart.$i;
+      $name = $name.".".$file_ext;
+      $i++;
+    }
+
+    move_uploaded_file($picture_tempName, "../images/$name");
   } else {
     throw new Exception('File could not be uploaded');
   }

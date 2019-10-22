@@ -73,7 +73,7 @@ export default class App extends React.Component {
                   <Link to="/provs" className="nav-link">Provs</Link>
                 </li>
                 <li className='nav-item'>
-                  <Link to="/submitPicture" className="nav-link">Submit</Link>
+                  <Link to="/submit" className="nav-link">Submit</Link>
                 </li>
                 <li className='nav-item'>
                   <Link to="/user" className="nav-link">User</Link>
