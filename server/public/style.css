@@ -100,16 +100,16 @@ body {
   cursor: pointer;
 }
 
-.uploadPicButton {
+/* .uploadPicButton {
   border-style: none;
   width: 110px;
   height: 35px;
-}
+} */
 
-.next-page-button-container {
+/* .next-page-button-container {
   margin-top: 315px;
   margin-left: 100px;
-}
+} */
 
 .inputButton {
   border: 2px solid #f8b1d1;
@@ -170,12 +170,10 @@ body {
   font-size: 2rem;
 }
 .submittedImage {
-width: 20rem;
-height: 20rem;
-margin: 22px;
+  width: 20rem;
+  height: 20rem;
+  margin: 22px;
 }
-
-
 
 @media (min-height: 1024px) {
   .next-page-button-container {
@@ -218,5 +216,27 @@ margin: 22px;
 @media (max-width: 766px) {
   .project-media-container {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerbox {
+    padding-left: 30px;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 967px) {
+  .headerbox {
+    padding-left: 130px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .headerbox {
+    padding-left: 220px;
+  }
+
+  .search-bar-container {
+    width: 800px;
   }
 }
