@@ -37,17 +37,12 @@ class PictureUploadForm extends React.Component {
 
   render() {
     if (this.state.imagePreviewUrl) {
-      const style = {
-        width: '20rem',
-        height: '20rem',
-        margin: '25px 0 0 4px'
-      };
 
       const styleNextPageButtondiv = {
         margin: '100 0 0 70px'
       };
 
-      const imagePreview = <img style ={style} src={this.state.imagePreviewUrl}/>;
+      const imagePreview = <img className= "submittedImage" src={this.state.imagePreviewUrl}/>;
 
       return (
         <div className="col picForm container p-0">
@@ -57,12 +52,12 @@ class PictureUploadForm extends React.Component {
           <div className="chooseFileButton-div col d-flex justify-content-center">
             <form id="pictureForm">
               <input className="inputButton" type="file" name="picture" onChange={this.onChange}></input>
-              <div style={style}>
+              <div>
                 {imagePreview}
               </div>
               <div style={styleNextPageButtondiv} className="justify-content-center">
                 <div className = "nextPageDiv" style={{ margin: '8rem' }}>
-                  <button className="uploadPicButton" onClick={this.onSubmit}>
+                  <button className="uploadPicButton btn" onClick={this.onSubmit}>
                     <Link style={{ color: 'white' }} to={{
                       pathname: '/submit2',
                       state: {
@@ -89,9 +84,9 @@ class PictureUploadForm extends React.Component {
               <input className="inputButton" type="file" name="picture" onChange={this.onChange}></input>
               <div>
               </div>
-              <div className="next-page-button-container justify-content-center">
-                <div className="m-5">
-                  <button className="uploadPicButton" onClick={this.onSubmit}>Next Page</button>
+              <div className="next-page-button-container container ">
+                <div className="">
+                  <button className=" uploadPicButton btn" onClick={this.onSubmit}>Next Page</button>
                 </div>
               </div>
             </form>

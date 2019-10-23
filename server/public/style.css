@@ -102,6 +102,8 @@ body {
 
 .uploadPicButton {
   border-style: none;
+  width: 110px;
+  height: 35px;
 }
 
 .next-page-button-container {
@@ -149,18 +151,6 @@ body {
   background-color: #ffebf4 !important;
 }
 
-@media (max-width: 766px) {
-  .project-media-container {
-    display: none;
-  }
-}
-
-@media (min-width: 766px) {
-  .project-card-container {
-    display: none;
-  }
-}
-
 .write-button-container {
   right: 10%;
   bottom: 10%;
@@ -178,4 +168,55 @@ body {
 
 .write-button-pen {
   font-size: 2rem;
+}
+.submittedImage {
+width: 20rem;
+height: 20rem;
+margin: 22px;
+}
+
+
+
+@media (min-height: 1024px) {
+  .next-page-button-container {
+    margin-top: 600px;
+    margin-left: 70px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .picForm-div {
+   margin-top: 100px;
+  }
+  .select-photo-text {
+    font-size: 30px;
+  }
+  .inputButton {
+    margin-top: 25px;
+    width: 530px;
+    height: 35px;
+  }
+  .uploadPicButton {
+    margin-top: 250px;
+    width: 250px;
+    height: 100px;
+  }
+  .submittedImage {
+    width: 33rem;
+    height: 30rem;
+  }
+
+}
+
+@media (min-width: 766px) {
+  .project-card-container {
+    display: none;
+  }
+}
+
+@media (max-width: 766px) {
+  .project-media-container {
+    display: none;
+  }
 }
