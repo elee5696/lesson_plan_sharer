@@ -8,6 +8,7 @@ export default class ProjectDetails extends React.Component {
     this.state = {
       project: null
     };
+    // let x = 1;
   }
 
   componentDidMount() {
@@ -42,12 +43,12 @@ export default class ProjectDetails extends React.Component {
           <div className="project-image-container row justify-content-center mb-3">
             <img
               className="project-image p-0"
-              style={{ width: '90%', maxWidth: '450px', height: '40%' }}
+              style={{ width: '90%', maxWidth: '550px', height: '40%' }}
               src={this.state.project.image}>
             </img>
           </div>
           <div className="project-title-container col-10 mb-3 p-0">
-            <h1 className="project-title">{this.state.project.name}</h1>
+            <h1 className="project-title text-capitalize">{this.state.project.name}</h1>
           </div>
           <div className="project-desc-container col-12 mb-3">
             <div className="project-desc-header-container row mb-2">
@@ -95,7 +96,7 @@ export default class ProjectDetails extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="materials p-0">
+            <div className="materials p-0 ml-2">
               <div className="project-materials-header-container col mb-2 p-0">
                 <h1 className="project-materials-header">Materials</h1>
               </div>
