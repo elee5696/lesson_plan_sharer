@@ -138,9 +138,9 @@ class ProjectSubmit extends React.Component {
   }
   render() {
     return (
-      <div className= "container row m-0 p-0 col-sm-10 col-md-12">
-        <div className="spacer col col-sm-0 col-md-1"></div>
-        <div className="form container col col-sm-10 col-md-10 d-flex justify-content-center m-0">
+      <div className= " submitForm container row p-0 col-md-10 justify-content-center">
+        <div className="spacer col col-md-1"></div>
+        <div className="form container col col-md-8 d-flex justify-content-center m-0">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label >Project Title</label>
@@ -150,15 +150,15 @@ class ProjectSubmit extends React.Component {
                 className="form-control projectEntry"
                 placeholder="Project Entry"></input>
             </div>
-            <div className="form-group">
+            <div className="description form-group">
               <label >Description</label>
               <textarea onChange={this.handleDescriptionChange}
                 className="form-control descriptionBox" placeholder="Description Text" rows="3"></textarea>
             </div>
             <div>
-              <div className="form-group inline">
-                <label className="col-sm-2 col-form-label">Goals</label>
-                <div className="col-sm-10 col-md-10 p-0">
+              <div className="goals form-group inline">
+                <label className="col-form-label">Goals</label>
+                <div className="col-md-8 p-0">
                   <input type="text"
                     className="form-control"
                     id="goalSubmit"
@@ -175,10 +175,10 @@ class ProjectSubmit extends React.Component {
               </div>
             </div>
             <div>
-              <div className="form-group inline ">
+              <div className="materials form-group inline ">
                 <label
-                  className="col-sm-2 col-form-label">Materials</label>
-                <div className="col-sm-10 col-md-10 p-0">
+                  className="col-form-label">Materials</label>
+                <div className="col-md-8 p-0">
                   <input onChange={this.handleMaterialChange}
                     type="text" className="form-control" id="materialSubmit"
                     placeholder="Materials Entry" value={this.state.materials}></input>
@@ -192,7 +192,7 @@ class ProjectSubmit extends React.Component {
               </div>
             </div>
             <div>
-              <div className="form-group">
+              <div className="set-up form-group">
                 <label>Set-Up</label>
                 <textarea onChange={this.handleSetUpChange}
                   type="text"
@@ -200,7 +200,7 @@ class ProjectSubmit extends React.Component {
                   placeholder="Set-Up Entry" />
                 <small className="text-muted"> Separate instructions with commas</small>
               </div>
-              <div className="form-group">
+              <div className="outcomes form-group">
                 <label>Outcomes</label>
                 <textarea onChange= {this.handleOutcomesChange}
                   className="form-control outcomeBox"
@@ -216,7 +216,7 @@ class ProjectSubmit extends React.Component {
             </div>
           </form>
         </div>
-        <div className="spacer col col-sm-0 col-md-1"></div>
+        <div className="spacer col-md-1"></div>
       </div>
     );
   }
