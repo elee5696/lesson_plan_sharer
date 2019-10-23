@@ -36,6 +36,14 @@ class PictureUploadForm extends React.Component {
   }
 
   render() {
+    if (!this.props.userData) {
+      return (
+        <div className="container">
+          <h1 className="d-flex justify-content-center">Please Log-In</h1>
+        </div>
+      );
+    }
+
     const styleNextPageButtondiv = {
       margin: '100 0 0 70px'
     };

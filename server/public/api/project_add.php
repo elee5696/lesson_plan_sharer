@@ -11,15 +11,16 @@ $description = $_POST['description'];
 $outcomes = $_POST['outcomes'];
 $image = $_POST['image'];
 $set_up = $_POST['set_up'];
+$user_id = $_POST['user_id']
 
 $goals = $_POST['goals'];
 $materials = $_POST['materials'];
 
 $query =
 "INSERT INTO
-`projects` (`name`, `description`, `outcomes`, `set_up`)
+`projects` (`name`, `description`, `outcomes`, `set_up`, `user_id`)
 VALUES
-('$name', '$description', '$outcomes', '$set_up')";
+('$name', '$description', '$outcomes', '$set_up', '$user_id)";
 
 $result = mysqli_query($conn, $query);
 if(!$result) {
