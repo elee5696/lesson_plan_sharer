@@ -20,6 +20,8 @@ switch($method) {
   case 'PATCH':
     require('project_patch_rate.php');
     break;
+  case 'PUT':
+    require('project_edit.php');
   default:
     throw new Exception('Cannot ' . $method . ' /api/project.php');
 }
