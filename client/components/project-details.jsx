@@ -8,6 +8,7 @@ export default class ProjectDetails extends React.Component {
     this.state = {
       project: null
     };
+    // let x = 1;
   }
 
   componentDidMount() {
