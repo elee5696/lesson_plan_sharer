@@ -50,7 +50,8 @@ class ProjectSubmit extends React.Component {
       outcomes: this.state.outcomes,
       goals: this.state.goalsToSubmit,
       materials: this.state.materialsToSubmit,
-      image: `/images/${this.state.image}`
+      image: `/images/${this.state.image}`,
+      user_id: this.props.userData.id
 
     });
     fetch(`/api/project.php`, {
@@ -137,6 +138,13 @@ class ProjectSubmit extends React.Component {
     return this.id;
   }
   render() {
+    if (!this.props.userData) {
+      return (
+        <div className="container">
+          <h1 className="d-flex justify-content-center">Please Log-In</h1>
+        </div>
+      );
+    }
     return (
       <div className= " submitForm container row p-0 col-md-10 justify-content-center">
         <div className="spacer col col-md-1"></div>

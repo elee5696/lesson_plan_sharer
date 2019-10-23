@@ -32,17 +32,17 @@ if($_FILES['picture']) {
   }
 
   if( empty($errors) === true ){
-    $name = $picture_uploaded;
+    $filename = $picture_uploaded;
     $i = 1;
 
-    while(file_exists('../images/' . $name))
+    while(file_exists('../images/' . $filename))
     {
-      $name = $filestart.$i;
-      $name = $name.".".$file_ext;
+      $filename = $filestart.$i;
+      $filename = $filename.".".$file_ext;
       $i++;
     }
 
-    move_uploaded_file($picture_tempName, "../images/$name");
+    move_uploaded_file($picture_tempName, "../images/$filename");
   } else {
     throw new Exception('File could not be uploaded');
   }

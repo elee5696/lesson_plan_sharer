@@ -14,7 +14,7 @@ if (empty($_GET['id'])) {
   $whereClause = " WHERE project_id={$id}";
 }
 
-$query = "SELECT `id`, name, description, set_up, outcomes, goals, materials
+$query = "SELECT `id`, name, description, set_up, outcomes, goals, materials, `user_id`
 FROM projects
 JOIN
 (SELECT mt.materials, gt.goals, gt.project_id

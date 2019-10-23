@@ -58,7 +58,7 @@ export default class Carousel extends React.Component {
       <div className="container col-12">
         <div className="carousel-body col mt-3 container d-flex justify-content-center">
           <div>
-            <div className="carousel-image-container mb-3 p-0">
+            <div className="carousel-image-containerprov mb-3 p-0">
               <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}>
                 <img
                   className="carousel-image"
