@@ -327,7 +327,6 @@ body {
 }
 
 .user-profile-pic {
-  cursor: pointer;
   border: 2px solid #f8b1d1;
   border-radius: 50%;
 }
