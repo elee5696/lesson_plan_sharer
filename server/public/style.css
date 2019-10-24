@@ -69,9 +69,14 @@ body {
   text-decoration: none;
 }
 
-.searchButton, .uploadPicButton, .projectSubmitButton {
+.searchButton, .uploadPicButton, .projectSubmitButton, .editUserButton {
   background:#f8b1d1;
   color: white;
+}
+
+.editUserButton {
+  height: 30px;
+  max-width: 100px;
 }
 
 .searchButton:hover, .write-button-container:hover {
@@ -130,9 +135,31 @@ body {
 .projects-amount-key,
 .projects-amount-value,
 .points-amount-key,
-.points-amount-value {
+.points-amount-value,
+.name-key,
+.name-value,
+.member-since-key {
   font-weight: 500;
   font-size: 18px;
+}
+
+.username-key-value-container,
+.experience-key-value-container,
+.about-me-key-value-container,
+.about-me-key-value-container,
+.projects-amount-key-value-container,
+.points-amount-key-value-container,
+.name-key-value-container,
+.member-since-key-value-container {
+  border-bottom: 1px solid  #f8b1d1;
+}
+
+.username-value-text,
+.name-value-text,
+.experience-value-text,
+.about-me-text,
+.projects-amount-value-text {
+  font-weight: 200;
 }
 
 .carousel-image {
