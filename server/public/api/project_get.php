@@ -14,7 +14,7 @@ if (empty($_GET['id'])) {
   $whereClause = " WHERE project_id={$id}";
 }
 
-$query = "SELECT `id`, name, description, set_up, outcomes, goals, materials, `user_id`
+$query = "SELECT `id`, name, description, `set_up`, `outcomes`, `goals`, `materials`, `user_id`
 FROM projects
 JOIN
 (SELECT mt.materials, gt.goals, gt.project_id
@@ -91,7 +91,28 @@ foreach($output as &$project) {
   }
 }
 
-$encodedJson= json_encode($output);
+$query = "SELECT * FROM `user_table`";
 
-print_r($encodedJson) ;
+$result = mysqli_query($conn, $query);
+if(!$result) {
+throw new Exception('query failed');
+}
+
+$user_data = [];
+while($row = mysqli_fetch_assoc($result)){
+  $user_data[] = $row;
+}
+
+foreach($output as &$project) {
+  foreach($user_data as $user) {
+    if($project['user_id'] === $user['id']) {
+      $project['user_data'] = $user;
+    }
+  }
+}
+
+$encodedJson = json_encode($output);
+
+print_r($encodedJson);
+
 ?>
