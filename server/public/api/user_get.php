@@ -17,7 +17,13 @@ $query =
 
 $result = mysqli_query($conn, $query);
 if(!$result) {
-throw new Exception('query failed');
+  throw new Exception('query failed');
+}
+
+if(mysqli_num_rows($result) === 0){
+  $output = false;
+  print_r(json_encode($output));
+  exit();
 }
 
 $output = [];

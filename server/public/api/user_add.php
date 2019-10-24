@@ -11,6 +11,20 @@ $about_me = $_POST['about_me'];
 require('picture_upload.php');
 
 $query =
+"SELECT * FROM user_table WHERE `username`='$username'";
+
+$result = mysqli_query($conn, $query);
+if(!$result) {
+  throw new Exception('query failed');
+}
+
+if(mysqli_num_rows($result) > 0){
+  $output = false;
+  print_r(json_encode($output));
+  exit();
+}
+
+$query =
 "INSERT INTO
 `user_table` (`name`, `username`, `years`, `about_me`, `avatar`, `creation`)
 VALUES
