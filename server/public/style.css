@@ -326,15 +326,16 @@ body {
   }
 }
 
+.user-profile-pic {
+  cursor: pointer;
+  border: 2px solid #f8b1d1;
+  border-radius: 50%;
+}
 
-/* @media(min-width: 700px){
-  .details-info-container{
-  }
-  @media(min-width: 1092px){
-    .details-info-container{
-      margin-left: 160px;
-      margin-right: 15px
-    }
-  }
-
-} */
+.login-username, #username, #name, #years, #about{
+  background: #f3f0f0;
+  border: 1px solid #f8b1d1
+}
+#about{
+  border: 1px solid #f8b1d1
+}
