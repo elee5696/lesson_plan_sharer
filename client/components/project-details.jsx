@@ -8,7 +8,6 @@ export default class ProjectDetails extends React.Component {
     this.state = {
       project: null
     };
-    // let x = 1;
   }
 
   componentDidMount() {
@@ -50,6 +49,9 @@ export default class ProjectDetails extends React.Component {
           <div className="details-info-container">
             <div className="project-title-container col-10 mb-3 p-0">
               <h1 className="project-title text-capitalize">{this.state.project.name}</h1>
+            </div>
+            <div className="author-details text-muted mb-5">
+              <h5>{this.state.project.user_data.name} | {this.state.project.user_data.username}</h5>
             </div>
             <div className="project-desc-container col-12 mb-3">
               <div className="project-desc-header-container row mb-2">

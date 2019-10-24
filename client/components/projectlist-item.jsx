@@ -6,7 +6,7 @@ export default class ProjectListItem extends React.Component {
 
   render() {
     return (
-      <Link to={`/detail/${this.props.id}`}>
+      <Link to={`/detail/${this.props.id}`} className="project-card">
         <div
           className="card project-card-container container card col p-0 mb-4"
           style={{ minWidth: '150px' }}>

@@ -33,22 +33,24 @@ export default class LogInPage extends React.Component {
       <div className="container">
         <div className="log-in-form d-flex justify-content-center">
           <form>
-            <div>Username :</div>
+            <div className="mb-3">Username :</div>
             <input
               type="text"
               className="mr-3"
               value={this.state.name}
               onChange={this.onChange} />
-            <button
-              type="button"
-              onClick={this.onSubmit}
-              className="btn searchButton shadow-none">Log-In
-            </button>
-            <button
-              type="button"
-              onClick={this.onCreate}
-              className="btn searchButton shadow-none ml-3">Sign-Up
-            </button>
+            <div className="button-container mt-3">
+              <button
+                type="button"
+                onClick={this.onSubmit}
+                className="btn searchButton shadow-none">Log-In
+              </button>
+              <button
+                type="button"
+                onClick={this.onCreate}
+                className="btn searchButton shadow-none ml-3">Sign-Up
+              </button>
+            </div>
           </form>
         </div>
       </div>

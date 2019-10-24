@@ -132,7 +132,8 @@ export default class App extends React.Component {
           <Route exact path="/" render={props =>
             <Homepage {...props}
               getProjectCallback={this.getProjects}
-              projects={this.state.projects} />} />
+              projects={this.state.projects}
+              searchCallback={this.searchProjects} />} />
           <Route path="/submit" render={props =>
             <PictureUploadForm {...props}
               userData={this.state.currentUser} />} />
