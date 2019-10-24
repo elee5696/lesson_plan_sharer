@@ -25,6 +25,15 @@ export default class App extends React.Component {
     this.signUp = this.signUp.bind(this);
   }
 
+  componentDidMount() {
+    const activeSession = window.sessionStorage.getItem('currentUser');
+    if (activeSession) {
+      this.setState({
+        currentUser: JSON.parse(activeSession)
+      });
+    }
+  }
+
   searchProjects(value = '', field = 'name') {
     let searchedProjects = this.state.projects.filter(e => e[field].includes(value));
 
@@ -57,8 +66,10 @@ export default class App extends React.Component {
         this.setState({
           currentUser: userData
         });
+        window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
       })
       .catch(err => console.error(err));
+
   }
 
   signUp(data) {
@@ -80,6 +91,8 @@ export default class App extends React.Component {
     this.setState({
       currentUser: ''
     });
+    window.sessionStorage.removeItem('currentUser');
+
   }
 
   render() {
