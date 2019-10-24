@@ -17,7 +17,8 @@ export default class Homepage extends React.Component {
         </div>
         <div className="search-bar-carousel-container container p-0 mt-5">
           <div className="search-bar-container container">
-            <Searchbar searchCallback={this.props.searchCallback} />
+            <Searchbar
+              searchCallback={this.props.searchCallback} />
           </div>
           <div className="feature-container">
             <div className="headerbox featured-posts mt-5">

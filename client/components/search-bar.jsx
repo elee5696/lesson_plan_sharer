@@ -25,12 +25,12 @@ export default class Searchbar extends React.Component {
   }
 
   setFilter(event) {
-    if (event.target.innerHTML === 'Remove') {
+    if (event.target.innerHTML === 'Reset') {
       this.props.resetResults();
     }
 
     this.setState({
-      filter: event.target.innerHTML.toLowerCase() === 'remove' ? 'Search' : event.target.innerHTML.toLowerCase()
+      filter: event.target.innerHTML.toLowerCase() === 'reset' ? 'Search' : event.target.innerHTML.toLowerCase()
     });
   }
 
