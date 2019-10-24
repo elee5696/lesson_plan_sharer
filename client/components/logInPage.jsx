@@ -36,7 +36,7 @@ export default class LogInPage extends React.Component {
             <div className="mb-3">Username :</div>
             <input
               type="text"
-              className="mr-3"
+              className="mr-3 login-username"
               value={this.state.name}
               onChange={this.onChange} />
             <div className="button-container mt-3">

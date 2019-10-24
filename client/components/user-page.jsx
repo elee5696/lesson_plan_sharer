@@ -10,7 +10,6 @@ export default class UserPage extends React.Component {
     event.preventDefault();
     this.props.logOutCallback();
   }
-
   render() {
     if (!this.props.userData) {
       return (
@@ -22,10 +21,14 @@ export default class UserPage extends React.Component {
     return (
       <div className="entire-page-container container row m-0 p-0">
         <div className="spacer col col-1 p-0"></div>
-        <div className="content-container col-10 mt-3 p-0">
-          <div className="user-pic-enter-info-container row ml-0 mb-3">
+        <div className="content-container col-10 mt-5 p-0">
+          <div className="user-pic-enter-info-container row ml-0">
             <div className="pic col-2 p-0">
-              <img src={this.props.userData.avatar} style={{ width: '4rem' }}></img>
+              <img src={this.props.userData.avatar} className="user-profile-pic" style={{ width: '4rem' }}></img>
+              <p className="edit ml-3 mt-1">Edit</p>
+            </div>
+            <div className="enter-info col-10 p-0">
+              <p className="enter-info-text ml-4 mt-2">Enter your info and add an optional profile picture.</p>
             </div>
           </div>
           <div className="username-key-value-container row ml-0 mb-3">

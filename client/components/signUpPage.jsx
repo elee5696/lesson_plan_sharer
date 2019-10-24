@@ -59,7 +59,7 @@ export default class SignUpPage extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="container d-flex justify-content-center">
+        <div className="container d-flex justify-content-center p-0 ml-5 mt-5">
           <form>
             <div>
               Username:
