@@ -83,6 +83,7 @@ export default class App extends React.Component {
         this.setState({
           currentUser: userData
         });
+        window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
       })
       .catch(err => console.error(err));
   }
