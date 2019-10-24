@@ -120,7 +120,7 @@ throw new Exception('query failed');
 
 $review_data = [];
 while($row = mysqli_fetch_assoc($result)){
-  $user_data[] = $row;
+  $review_datas[] = $row;
 }
 
 foreach($output as &$project) {
