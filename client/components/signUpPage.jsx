@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 export default class SignUpPage extends React.Component {
   constructor(props) {
@@ -22,7 +23,6 @@ export default class SignUpPage extends React.Component {
       formData.append(`${key}`, this.state[key]);
     }
     this.props.signUpCallback(formData);
-    this.props.history.push(`/user`);
   }
 
   onChange(event) {
@@ -57,8 +57,18 @@ export default class SignUpPage extends React.Component {
   }
 
   render() {
+    let error = this.props.error;
+    let user = this.props.currentUser;
+
+    let redirect = null;
+
+    if (!error && user) {
+      redirect = <Redirect to='/user' />;
+    }
+
     return (
       <div className="container">
+        {redirect}
         <div className="container d-flex justify-content-center p-0 ml-5 mt-5">
           <form>
             <div>
@@ -69,6 +79,11 @@ export default class SignUpPage extends React.Component {
               type="text"
               onChange={this.onChange}
               value={this.state.username}/>
+            {
+              error && !user
+                ? <div>Username taken</div>
+                : null
+            }
             <div>
               Name:
             </div>

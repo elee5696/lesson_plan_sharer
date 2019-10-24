@@ -15,7 +15,8 @@ export default class App extends React.Component {
     this.state = {
       projects: [],
       searchResults: '',
-      currentUser: ''
+      currentUser: '',
+      error: false
     };
     this.getProjects = this.getProjects.bind(this);
     this.searchProjects = this.searchProjects.bind(this);
@@ -63,27 +64,43 @@ export default class App extends React.Component {
     fetch(`api/user.php?username=${user}`)
       .then(res => res.json())
       .then(userData => {
-        this.setState({
-          currentUser: userData
-        });
-        window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
+        if (!userData) {
+          this.setState({
+            error: true
+          });
+          return false;
+        } else {
+          this.setState({
+            currentUser: userData,
+            error: false
+          });
+          window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
+          return true;
+        }
       })
       .catch(err => console.error(err));
-
   }
 
   signUp(data) {
-
     fetch('/api/user.php', {
       'method': 'POST',
       'body': data
     })
       .then(res => res.json())
       .then(userData => {
-        this.setState({
-          currentUser: userData
-        });
-        window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
+        if (!userData) {
+          this.setState({
+            error: true
+          });
+          return false;
+        } else {
+          this.setState({
+            currentUser: userData,
+            error: false
+          });
+          window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
+          return true;
+        }
       })
       .catch(err => console.error(err));
   }
@@ -167,10 +184,14 @@ export default class App extends React.Component {
               logOutCallback={this.logOut} />} />
           <Route path="/login" render={props =>
             <LogInPage {...props}
-              logInCallback={this.logIn} />} />
+              logInCallback={this.logIn}
+              currentUser={this.state.currentUser}
+              error={this.state.error} />} />
           <Route path="/signup" render={props =>
             <SignUpPage {...props}
-              signUpCallback={this.signUp} />} />
+              signUpCallback={this.signUp}
+              currentUser={this.state.currentUser}
+              error={this.state.error} />} />
           <Route path="/detail/:id" render={props =>
             <ProjectDetails {...props}
               projectID={this.state.location} />} />
