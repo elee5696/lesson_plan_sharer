@@ -1,15 +1,31 @@
 import React from 'react';
+import EditProfile from './profileEdit';
 
 export default class UserPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      field: ''
+    };
     this.logOut = this.logOut.bind(this);
+    this.editProject = this.editProject.bind(this);
+    this.cancelEdit = this.cancelEdit.bind(this);
+
   }
 
   logOut(event) {
     event.preventDefault();
     this.props.logOutCallback();
   }
+
+  editProject(event) {
+    this.setState({ field: event.target.id });
+  }
+
+  cancelEdit() {
+    this.setState({ field: '' });
+  }
+
   render() {
     if (!this.props.userData) {
       return (
@@ -18,9 +34,9 @@ export default class UserPage extends React.Component {
         </div>
       );
     }
+
     return (
       <div className="entire-page-container container row m-0 p-0">
-        <div className="spacer col col-1 p-0"></div>
         <div className="content-container col-10 mt-5 p-0">
           <div className="user-pic-enter-info-container row ml-0">
             <div className="pic col-2 p-0">
@@ -31,83 +47,99 @@ export default class UserPage extends React.Component {
               <p className="enter-info-text ml-4 mt-2">Enter your info and add an optional profile picture.</p>
             </div>
           </div>
-          <div className="username-key-value-container col ml-0 mb-3">
-            <div className="username-key row p-0">
-              <p className="col">Username: </p>
-              <button
-                type="button"
-                className="btn searchButton shadow-none">
-                Edit
-              </button>
-            </div>
-            <div className="username-value row p-0">
-              <p className="col">{this.props.userData.username}</p>
-            </div>
-          </div>
-          <div className="name-key-value-container col ml-0 mb-3">
-            <div className="name-key row p-0">
-              <p className="col">Name: </p>
-              <button
-                type="button"
-                className="btn searchButton shadow-none">
-                Edit
-              </button>
-            </div>
-            <div className="name-value row p-0">
-              <p className="col">{this.props.userData.name}</p>
-            </div>
-          </div>
-          <div className="experience-key-value-container col ml-0 mb-3">
-            <div className="experience-key row p-0">
-              <p className="col">Experience:</p>
-              <button
-                type="button"
-                className="btn searchButton shadow-none">
-                Edit
-              </button>
-            </div>
-            <div className="experience-value row p-0">
-              <p className="col">{this.props.userData.years + ' years'}</p>
-            </div>
-            <div className="about-me-key-value-container col ml-0 mb-3">
-              <div className="about-me-key row p-0">
-                <p className="col">About Me:</p>
-                <button
-                  type="button"
-                  className="btn searchButton shadow-none">
-                  Edit
-                </button>
-              </div>
-              <div className="about-me-value row p-0">
-                <p className="col">{this.props.userData.about_me}</p>
-              </div>
-
-              <div className="projects-amount-key-value-container col ml-0 mb-3">
-                <div className="projects-amount-key row p-0">
-                  <p className="col">Amount of Projects:</p>
+          {
+            this.state.field === 'username'
+              ? <EditProfile field="username" cancelCallback={this.cancelEdit}/>
+              : <div className="username-key-value-container col ml-0 mb-3">
+                <div className="username-key row p-0">
+                  <p className="col">Username: </p>
                   <button
+                    id="username"
+                    onClick={this.editProject}
+                    type="button"
+                    className="btn searchButton shadow-none">
+                    Edit
+                  </button>
+                </div>
+                <div className="username-value row p-0">
+                  <p className="col">{this.props.userData.username}</p>
+                </div>
+              </div>
+          }
+          {
+            this.state.field === 'name'
+              ? <EditProfile field="name" cancelCallback={this.cancelEdit}/>
+              : <div className="name-key-value-container col ml-0 mb-3">
+                <div className="name-key row p-0">
+                  <p className="col">Name: </p>
+                  <button
+                    id="name"
+                    onClick={this.editProject}
                     type="button"
                     className="btn searchButton shadow-none">
                   Edit
                   </button>
                 </div>
-                <div className="projects-amount-value col-6 p-0">
-                  <p>{this.props.userData.total_projects}</p>
-                </div>
-                <div>
-                  <button
-                    type="button"
-                    className="btn searchButton shadow-none"
-                    onClick={this.logOut}>
-            Log-out
-                  </button>
+                <div className="name-value row p-0">
+                  <p className="col">{this.props.userData.name}</p>
                 </div>
               </div>
+          }
+          {
+            this.state.field === 'years'
+              ? <EditProfile field="years" cancelCallback={this.cancelEdit}/>
+              : <div className="experience-key-value-container col ml-0 mb-3">
+                <div className="experience-key row p-0">
+                  <p className="col">Experience:</p>
+                  <button
+                    id="years"
+                    onClick={this.editProject}
+                    type="button"
+                    className="btn searchButton shadow-none">
+                  Edit
+                  </button>
+                </div>
+                <div className="experience-value row p-0">
+                  <p className="col">{this.props.userData.years + ' years'}</p>
+                </div>
+              </div>
+          }
+          {
+            this.state.field === 'about_me'
+              ? <EditProfile field="about_me" cancelCallback={this.cancelEdit}/>
+              : <div className="about-me-key-value-container col ml-0 mb-3">
+                <div className="about-me-key row p-0">
+                  <p className="col">About Me:</p>
+                  <button
+                    id="about_me"
+                    onClick = {this.editProject}
+                    type="button"
+                    className="btn searchButton shadow-none">
+                  Edit
+                  </button>
+                </div>
+                <div className="about-me-value row p-0">
+                  <p className="col">{this.props.userData.about_me}</p>
+                </div>
+              </div>
+          }
+          <div className="projects-amount-key-value-container col ml-0 mb-3">
+            <div className="projects-amount-key row p-0">
+              <p className="col">Amount of Projects:</p>
+            </div>
+            <div className="projects-amount-value col-6 p-0">
+              <p>{this.props.userData.total_projects}</p>
             </div>
           </div>
+          <button
+            type="button"
+            className="btn searchButton shadow-none"
+            onClick={this.logOut}>
+              Log-out
+          </button>
         </div>
-        <div className="spacer col-1 p-0"></div>
       </div>
+
     );
   }
 }
