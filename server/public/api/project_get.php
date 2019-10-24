@@ -111,6 +111,26 @@ foreach($output as &$project) {
   }
 }
 
+$query = "SELECT * FROM `reviews`";
+
+$result = mysqli_query($conn, $query);
+if(!$result) {
+throw new Exception('query failed');
+}
+
+$review_data = [];
+while($row = mysqli_fetch_assoc($result)){
+  $user_data[] = $row;
+}
+
+foreach($output as &$project) {
+  foreach($review_data as $review) {
+    if($project['project_id'] === $review['project_id']) {
+      $project['user_data'] = $review;
+    }
+  }
+}
+
 $encodedJson = json_encode($output);
 
 print_r($encodedJson);
