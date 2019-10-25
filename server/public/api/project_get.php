@@ -35,7 +35,7 @@ throw new Exception('query failed');
 }
 
 $output = [];
-while($row=mysqli_fetch_assoc($result)){
+while($row = mysqli_fetch_assoc($result)){
 
   $row["goals"] = explode(',', $row["goals"]);
   $row["materials"]= explode(',', $row["materials"]);
@@ -50,7 +50,7 @@ throw new Exception('query failed');
 }
 
 $image_data = [];
-while($row=mysqli_fetch_assoc($result)){
+while($row = mysqli_fetch_assoc($result)){
   $image_data[]=$row;
 }
 
@@ -68,13 +68,13 @@ foreach($output as &$project) {
 
 $query = "SELECT `rating`, `project_id`, `count` FROM `project_rating`";
 
-$result=mysqli_query($conn, $query);
+$result = mysqli_query($conn, $query);
 if(!$result) {
 throw new Exception('query failed');
 }
 
 $rating_data = [];
-while($row=mysqli_fetch_assoc($result)){
+while($row = mysqli_fetch_assoc($result)){
   $rating_data[]=$row;
 }
 
@@ -107,6 +107,28 @@ foreach($output as &$project) {
   foreach($user_data as $user) {
     if($project['user_id'] === $user['id']) {
       $project['user_data'] = $user;
+    }
+  }
+}
+
+$query =
+"SELECT user_id, username, project_id, `comment`, `time`, avatar
+  FROM `reviews` JOIN user_table ON id=user_id ORDER BY `time` DESC";
+
+$result = mysqli_query($conn, $query);
+if(!$result) {
+throw new Exception('query failed');
+}
+
+$review_data = [];
+while($row = mysqli_fetch_assoc($result)){
+  $review_data[] = $row;
+}
+
+foreach($output as &$project) {
+  foreach($review_data as $review) {
+    if($project['id'] === $review['project_id']) {
+      $project['reviews'][] = $review;
     }
   }
 }
