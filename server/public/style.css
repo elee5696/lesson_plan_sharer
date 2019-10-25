@@ -59,23 +59,31 @@ body {
 }
 
 
-.project-tile-container {
+.project-media-container,
+.project-card-container {
   color: black;
 }
 
-.project-tile-container:hover {
+.project-card:hover {
   color: black;
   text-decoration: none;
 }
 
-.searchButton {
+
+.searchButton, .uploadPicButton, .projectSubmitButton, .editProjectButton,.editUserButton {
   background:#f8b1d1;
   color: white;
+}
+
+.editUserButton {
+  height: 30px;
+  max-width: 100px;
 }
 
 .searchButton:hover, .write-button-container:hover {
   background: #ff70b3;
   color: white;
+  text-decoration: none;
 }
 
 .searchBar{
@@ -94,21 +102,21 @@ body {
   color: #F5F5F5;
 }
 
-.star-rating__star:hover {
+.star-rating__star:hover,
+.back-button-container {
   cursor: pointer;
 }
 
-.uploadPicButton, .projectSubmitButton {
-  color: white;
-  background-color:#f8b1d1;
-  border-radius: 10%;
+/* .uploadPicButton {
   border-style: none;
-}
+  width: 110px;
+  height: 35px;
+} */
 
-.next-page-button-container {
+/* .next-page-button-container {
   margin-top: 315px;
-  margin-left: 70px;
-}
+  margin-left: 100px;
+} */
 
 .inputButton {
   border: 2px solid #f8b1d1;
@@ -128,9 +136,31 @@ body {
 .projects-amount-key,
 .projects-amount-value,
 .points-amount-key,
-.points-amount-value {
+.points-amount-value,
+.name-key,
+.name-value,
+.member-since-key {
   font-weight: 500;
   font-size: 18px;
+}
+
+.username-key-value-container,
+.experience-key-value-container,
+.about-me-key-value-container,
+.about-me-key-value-container,
+.projects-amount-key-value-container,
+.points-amount-key-value-container,
+.name-key-value-container,
+.member-since-key-value-container {
+  border-bottom: 1px solid  #f8b1d1;
+}
+
+.username-value-text,
+.name-value-text,
+.experience-value-text,
+.about-me-text,
+.projects-amount-value-text {
+  font-weight: 200;
 }
 
 .carousel-image {
@@ -142,25 +172,12 @@ body {
 }
 
 .project-list-item-image-container {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
 }
 
 .filter-item:hover {
   background-color: #ffebf4 !important;
-}
-
-@media (max-width: 576px) {
-  .project-tile-container {
-    width: 200px;
-  }
-}
-
-@media (max-width: 280px){
-  .project-list-item-image-container {
-    width: 100%;
-    height: 100%;
-  }
 }
 
 .write-button-container {
@@ -180,4 +197,164 @@ body {
 
 .write-button-pen {
   font-size: 2rem;
+}
+.submittedImage {
+  width: 20rem;
+  height: 20rem;
+  margin: 22px;
+}
+
+.submitForm {
+  margin-top: 40px;
+}
+
+@media (min-height: 1024px) {
+  .description {
+    margin-top: 24px;
+  }
+  .goals {
+    margin-top: 24px;
+  }
+  .materials {
+    margin-top: 24px;
+  }
+  .set-up {
+    margin-top: 24px;
+  }
+  .outcomes {
+    margin-top: 24px;
+    margin-bottom: 50px;
+  }
+  .spacer {
+    width: 0px;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .submitForm {
+  margin-top: 30px;
+  }
+  .description {
+    margin-top: 60px;
+    width: 100%;
+  }
+  .goals {
+    margin-top: 60px;
+  }
+  .materials {
+    margin-top: 60px;
+  }
+  .set-up {
+    margin-top: 60px;
+  }
+  .outcomes {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+  .spacer {
+    width: 0px;
+  }
+}
+
+
+@media (min-height: 1024px) {
+  .next-page-button-container {
+    margin-top: 600px;
+    margin-left: 70px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .picForm-div {
+   margin-top: 100px;
+  }
+  .select-photo-text {
+    font-size: 30px;
+  }
+  .inputButton {
+    margin-top: 25px;
+    width: 530px;
+    height: 35px;
+  }
+  .uploadPicButton {
+    margin-top: 250px;
+    width: 250px;
+    height: 100px;
+  }
+  .submittedImage {
+    width: 33rem;
+    height: 30rem;
+  }
+
+}
+
+@media (min-width: 577px) {
+  .submitForm {
+    margin-left: 25px;
+  }
+}
+
+@media (min-width: 630px) {
+  .submitForm {
+    margin-left: 80px;
+  }
+}
+
+@media (min-width: 1418px) {
+  .submitForm {
+    margin-left: 110px;
+  }
+}
+
+
+
+@media (min-width: 766px) {
+  .project-card-container {
+    display: none;
+  }
+}
+
+@media (max-width: 766px) {
+  .project-media-container {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerbox {
+    padding-left: 30px;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 967px) {
+  .headerbox {
+    padding-left: 130px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .headerbox {
+    padding-left: 220px;
+  }
+
+  .search-bar-container {
+    width: 800px;
+  }
+}
+@media (min-width: 1024px){
+  .details-info-container{
+    margin-left: 145px;
+
+  }
+  .project-outcomes-container{
+    padding: 0px;
+    margin-right: 15px;
+  }
+}
+
+.user-profile-pic {
+  border: 2px solid #f8b1d1;
+  border-radius: 50%;
 }

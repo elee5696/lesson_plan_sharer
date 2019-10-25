@@ -4,19 +4,37 @@ import ProjectDetails from './project-details';
 import ProjectSubmit from './projectSubmit';
 import ProvPage from './prov-page';
 import UserPage from './user-page';
+import LogInPage from './logInPage';
+import SignUpPage from './signUpPage';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 import PictureUploadForm from './picture-upload';
+import EditProjectSubmit from './editProjectSubmit';
+import EditPictureUpload from './editPicture-upload';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       projects: [],
-      searchResults: ''
+      searchResults: '',
+      currentUser: '',
+      error: false
     };
     this.getProjects = this.getProjects.bind(this);
     this.searchProjects = this.searchProjects.bind(this);
     this.resetResults = this.resetResults.bind(this);
+    this.logIn = this.logIn.bind(this);
+    this.logOut = this.logOut.bind(this);
+    this.signUp = this.signUp.bind(this);
+  }
+
+  componentDidMount() {
+    const activeSession = window.sessionStorage.getItem('currentUser');
+    if (activeSession) {
+      this.setState({
+        currentUser: JSON.parse(activeSession)
+      });
+    }
   }
 
   searchProjects(value = '', field = 'name') {
@@ -42,8 +60,61 @@ export default class App extends React.Component {
         });
       })
       .catch(err => console.error(err));
+
   }
 
+  logIn(user) {
+    fetch(`api/user.php?username=${user}`)
+      .then(res => res.json())
+      .then(userData => {
+        if (!userData) {
+          this.setState({
+            error: true
+          });
+          return false;
+        } else {
+          this.setState({
+            currentUser: userData,
+            error: false
+          });
+          window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
+          return true;
+        }
+      })
+      .catch(err => console.error(err));
+  }
+
+  signUp(data) {
+    fetch('/api/user.php', {
+      'method': 'POST',
+      'body': data
+    })
+      .then(res => res.json())
+      .then(userData => {
+        if (!userData) {
+          this.setState({
+            error: true
+          });
+          return false;
+        } else {
+          this.setState({
+            currentUser: userData,
+            error: false
+          });
+          window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
+          return true;
+        }
+      })
+      .catch(err => console.error(err));
+  }
+
+  logOut() {
+    this.setState({
+      currentUser: ''
+    });
+    window.sessionStorage.removeItem('currentUser');
+
+  }
   render() {
     return (
       <Router>
@@ -72,12 +143,20 @@ export default class App extends React.Component {
                 <li className='nav-item'>
                   <Link to="/provs" className="nav-link">Provs</Link>
                 </li>
-                <li className='nav-item'>
-                  <Link to="/submitPicture" className="nav-link">Submit</Link>
-                </li>
-                <li className='nav-item'>
-                  <Link to="/user" className="nav-link">User</Link>
-                </li>
+                {
+                  this.state.currentUser
+                    ? <div>
+                      <li className='nav-item'>
+                        <Link to="/submit" className="nav-link">Submit</Link>
+                      </li>
+                      <li className='nav-item'>
+                        <Link to="/user" className="nav-link">User</Link>
+                      </li>
+                    </div>
+                    : <li className='nav-item'>
+                      <Link to="/login" className="nav-link">Log-In</Link>
+                    </li>
+                }
               </ul>
             </div>
           </nav>
@@ -86,9 +165,9 @@ export default class App extends React.Component {
           <Route exact path="/" render={props =>
             <Homepage {...props}
               getProjectCallback={this.getProjects}
-              projects={this.state.projects} />} />
-          <Route path="/submit" component={PictureUploadForm} />
-          <Route path="/submit2" component={ProjectSubmit} />
+              projects={this.state.projects}
+              searchCallback={this.searchProjects} />} />
+
           <Route path="/provs" render={props =>
             <ProvPage {...props}
               projects={this.state.projects}
@@ -96,10 +175,43 @@ export default class App extends React.Component {
               resetResults={this.resetResults}
               getProjectCallback={this.getProjects}
               searchCallback={this.searchProjects} />} />
-          <Route path="/user" component={UserPage} />
+
+          <Route path="/user" render={props =>
+            <UserPage {...props}
+              userData={this.state.currentUser}
+              logOutCallback={this.logOut} />} />
+
+          <Route path="/login" render={props =>
+            <LogInPage {...props}
+              logInCallback={this.logIn}
+              currentUser={this.state.currentUser}
+              error={this.state.error} />} />
+          <Route path="/signup" render={props =>
+            <SignUpPage {...props}
+              signUpCallback={this.signUp}
+              currentUser={this.state.currentUser}
+              error={this.state.error} />} />
           <Route path="/detail/:id" render={props =>
             <ProjectDetails {...props}
+              userData={this.state.currentUser}
               projectID={this.state.location} />} />
+
+          <Route path="/editSubmissionImage" render={props =>
+            <EditPictureUpload {...props}
+              userData={this.state.currentUser} />} />
+
+          <Route path="/editSubmission" render={props =>
+            <EditProjectSubmit {...props}
+              userData={this.state.currentUser} />} />
+
+          <Route path="/submit" render={props =>
+            <PictureUploadForm {...props}
+              userData={this.state.currentUser} />} />
+
+          <Route path="/submit2" render={props =>
+            <ProjectSubmit {...props}
+              userData={this.state.currentUser} />} />
+
         </Switch>
       </Router>
     );

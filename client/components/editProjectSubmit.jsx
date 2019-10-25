@@ -1,8 +1,9 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
 import ListBubble from './list-bubble';
+import { Link } from 'react-router-dom';
 
-class ProjectSubmit extends React.Component {
+class EditProjectSubmit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,6 +34,8 @@ class ProjectSubmit extends React.Component {
     this.handleOutcomesChange = this.handleOutcomesChange.bind(this);
     this.handleMaterialSubmit = this.handleMaterialSubmit.bind(this);
     this.goToDetails = this.goToDetails.bind(this);
+    this.deleteGoal = this.deleteGoal.bind(this);
+    this.deleteMaterial = this.deleteMaterial.bind(this);
   }
 
   handleProjectTitleandImageChange(event) {
@@ -46,6 +49,7 @@ class ProjectSubmit extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     let body = JSON.stringify({
+      project_id: this.id,
       name: this.state.name,
       description: this.state.description,
       set_up: this.state.set_up,
@@ -57,7 +61,7 @@ class ProjectSubmit extends React.Component {
 
     });
     fetch(`/api/project.php`, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-type': 'application/json'
       },
@@ -135,6 +139,38 @@ class ProjectSubmit extends React.Component {
       }
       this.image = pictureName;
     }
+    let edit = this.props.location.state.projectToEdit;
+
+    this.setState({
+      'name': edit.name,
+      'description': edit.description,
+      'set_up': edit.set_up,
+      'outcomes': edit.outcomes,
+      'rating': edit.rating,
+      'goalsToSubmit': edit.goals,
+      'materialsToSubmit': edit.materials,
+      'goals': '',
+      'materials': '',
+      'image': this.image,
+      'userId': edit.user_id
+    });
+    this.id = edit.id;
+    this.goalsArray = edit.goals;
+    this.materialsArray = edit.materials;
+  }
+
+  deleteGoal(text) {
+    let newGoalsArray = this.goalsArray.filter(item => {
+      return item !== text;
+    });
+    this.goalsArray = newGoalsArray;
+
+  }
+  deleteMaterial(text) {
+    let newMaterialsArray = this.materialsArray.filter(item => {
+      return item !== text;
+    });
+    this.materialsArray = newMaterialsArray;
   }
   goToDetails() {
     return this.id;
@@ -157,12 +193,14 @@ class ProjectSubmit extends React.Component {
               <input
                 onChange={this.handleProjectTitleandImageChange}
                 type="text"
+                value={this.state.name}
                 className="form-control projectEntry"
                 placeholder="Project Entry"></input>
             </div>
             <div className="description form-group">
               <label >Description</label>
               <textarea onChange={this.handleDescriptionChange}
+                value={this.state.description}
                 className="form-control descriptionBox" placeholder="Description Text" rows="3"></textarea>
             </div>
             <div>
@@ -179,7 +217,7 @@ class ProjectSubmit extends React.Component {
                 </div>
                 <div className="row goal-bubble-container">
                   {this.state.goalsToSubmit.map((goal, index) => {
-                    return <ListBubble text={goal} key={index}/>;
+                    return <ListBubble text={goal} key={index} deleteGoal ={this.deleteGoal}/>;
                   })}
                 </div>
               </div>
@@ -196,7 +234,7 @@ class ProjectSubmit extends React.Component {
                 </div>
                 <div className="row materials-bubble-container">
                   {this.state.materialsToSubmit.map((material, index) => {
-                    return <ListBubble text={material} key={index} />;
+                    return <ListBubble text={material} key={index} deleteMaterial = {this.deleteMaterial}/>;
                   })}
                 </div>
               </div>
@@ -205,6 +243,7 @@ class ProjectSubmit extends React.Component {
               <div className="set-up form-group">
                 <label>Set-Up</label>
                 <textarea onChange={this.handleSetUpChange}
+                  value= {this.state.set_up}
                   type="text"
                   className="form-control setUpEntry" id="setUp"
                   placeholder="Set-Up Entry" />
@@ -213,16 +252,20 @@ class ProjectSubmit extends React.Component {
               <div className="outcomes form-group">
                 <label>Outcomes</label>
                 <textarea onChange= {this.handleOutcomesChange}
+                  value = {this.state.outcomes}
                   className="form-control outcomeBox"
                   id="outcomeBox"
                   placeholder="Outcome Entries"
                   rows="3"></textarea>
               </div>
-              <button onClick={this.handleSubmit}
-                type="submit"
-                className="projectSubmitButton btn btn-secondary btn-lg"
-                style={{ color: 'white' }}>
-                Submit</button>
+              <Link to={`/detail/${this.id}`}>
+                <button onClick={this.handleSubmit}
+                  type="submit"
+                  className="projectSubmitButton btn btn-secondary btn-lg"
+                  style={{ color: 'white' }}>
+                  Submit Changes</button>
+              </Link>
+
             </div>
           </form>
         </div>
@@ -231,4 +274,4 @@ class ProjectSubmit extends React.Component {
     );
   }
 }
-export default ProjectSubmit;
+export default EditProjectSubmit;

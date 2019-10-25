@@ -36,70 +36,57 @@ class PictureUploadForm extends React.Component {
   }
 
   render() {
-    if (this.state.imagePreviewUrl) {
-      const style = {
-        width: '20rem',
-        height: '20rem',
-        margin: '25px 0 0 4px'
-      };
-
-      const styleNextPageButtondiv = {
-        margin: '100 0 0 70px'
-      };
-
-      const imagePreview = <img style ={style} src={this.state.imagePreviewUrl}/>;
-
+    if (!this.props.userData) {
       return (
-        <div className="col picForm container p-0">
-          <div className="select-photo-text d-flex justify-content-center mt-5">
-            <div className="picForm-div select-photo">Select a photo for your project page</div>
-          </div>
-          <div className="chooseFileButton-div col d-flex justify-content-center">
-            <form id="pictureForm">
-              <input className="inputButton" type="file" name="picture" onChange={this.onChange}></input>
-              <div style={style}>
-                {imagePreview}
-              </div>
-              <div style={styleNextPageButtondiv} className="justify-content-center">
-                <div style={{ margin: '8rem' }}>
-                  <button className="uploadPicButton" onClick={this.onSubmit}>
-                    <Link style={{ color: 'white' }} to={{
-                      pathname: '/submit2',
-                      state: {
-                        file: this.state.file
-                      }
-                    }}
-                    >
-                    Next Page
-                    </Link></button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="col picForm container p-0">
-          <div className="select-photo-text d-flex justify-content-center mt-5">
-            <div className="picForm-div select-photo">Select a photo for your project page</div>
-          </div>
-          <div className="chooseFileButton-div col d-flex justify-content-center">
-            <form id="pictureForm">
-              <input className="inputButton" type="file" name="picture" onChange={this.onChange}></input>
-              <div>
-              </div>
-              <div className="next-page-button-container justify-content-center">
-                <div className="m-5">
-                  <button className="uploadPicButton" onClick={this.onSubmit}>Next Page</button>
-                </div>
-              </div>
-            </form>
-          </div>
+        <div className="container">
+          <h1 className="d-flex justify-content-center">Please Log-In</h1>
         </div>
       );
     }
+
+    const styleNextPageButtondiv = {
+      margin: '100 0 0 70px'
+    };
+
+    const imagePreview = <img className= "submittedImage" src={this.state.imagePreviewUrl}/>;
+
+    return (
+      <div className="col picForm container p-0">
+        <div className="select-photo-text d-flex justify-content-center mt-5">
+          <div className="picForm-div select-photo">Select a photo for your project page</div>
+        </div>
+        <div className="chooseFileButton-div col d-flex justify-content-center mt-4">
+          <form id="pictureForm">
+            <div className="d-flex justify-content-center">
+              <input
+                className="inputButton p-0"
+                type="file"
+                name="picture"
+                onChange={this.onChange}></input>
+            </div>
+            <div>
+              {this.state.imagePreviewUrl ? imagePreview : null}
+            </div>
+            <div style={styleNextPageButtondiv}>
+              <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '8rem' }}>
+                <button className="uploadPicButton btn" style={{ width: '140px' }} onClick={this.onSubmit}>
+                  {
+                    this.state.imagePreviewUrl
+                      ? <Link style={{ color: 'white' }} to={{
+                        pathname: '/submit2',
+                        state: {
+                          file: this.state.file
+                        }
+                      }}>Next Page</Link>
+                      : 'Next Page'
+                  }
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
   }
 }
-
 export default PictureUploadForm;

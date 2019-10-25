@@ -12,18 +12,19 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 switch($method) {
   case 'GET':
-    require('project_get.php');
+    require('user_get.php');
     break;
   case 'POST':
-    require('project_add.php');
+    require('user_add.php');
     break;
   case 'PATCH':
-    require('project_patch_rate.php');
+    require('user_update.php');
     break;
-  case 'PUT':
-    require('project_edit.php');
   default:
-    throw new Exception('Cannot ' . $method . ' /api/project.php');
+    throw new Exception('Cannot ' . $method . ' /api/user.php');
 }
+
+
+
 
 ?>

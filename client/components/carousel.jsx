@@ -55,28 +55,31 @@ export default class Carousel extends React.Component {
       return <h1>Page loading...</h1>;
     }
     return (
-      <div className="container">
-        <div className="featured-posts row">
-          <h3 className="featured-posts-text mt-5">Featured Provs</h3>
-        </div>
-        <div className="carousel-body row mt-3">
-          <div className="carousel-image-container col-12 mb-3 p-0">
-            <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}>
-              <img className="carousel-image" src={this.props.projects[this.state.currentImagesIndex].image} style={{ width: '100%' }}></img>
-            </Link>
-          </div>
-          <div className="carousel-circles-container row col d-flex justify-content-center">
-            {this.props.projects.map((project, circleIndex) => {
-              var className = this.state.currentImagesIndex === circleIndex ? 'fas grey-icon' : 'far';
-              var circleHandleClick = () => this.goToProject(circleIndex);
-              return (
-                <i key={circleIndex}
-                  onClick={circleHandleClick}
-                  className={`btn ${className} fa-circle`}>
-                </i>
-              );
-            })
-            }
+      <div className="container col-12">
+        <div className="carousel-body col mt-3 container d-flex justify-content-center">
+          <div>
+            <div className="carousel-image-containerprov mb-3 p-0">
+              <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                <img
+                  className="carousel-image"
+                  src={this.props.projects[this.state.currentImagesIndex].image}
+                  style={{ width: '100%', maxWidth: '700px', maxHeight: '500px' }}></img>
+              </Link>
+            </div>
+            <div className="carousel-circles-container row col d-flex justify-content-center">
+              {this.props.projects.map((project, circleIndex) => {
+                var className = this.state.currentImagesIndex === circleIndex ? 'fas grey-icon' : 'far';
+                var circleHandleClick = () => this.goToProject(circleIndex);
+                return (
+                  <i
+                    key={circleIndex}
+                    onClick={circleHandleClick}
+                    className={`btn ${className} fa-circle`}>
+                  </i>
+                );
+              })
+              }
+            </div>
           </div>
         </div>
       </div>

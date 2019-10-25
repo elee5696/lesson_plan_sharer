@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Searchbar extends React.Component {
   constructor(props) {
@@ -24,12 +25,12 @@ export default class Searchbar extends React.Component {
   }
 
   setFilter(event) {
-    if (event.target.innerHTML === 'Remove') {
+    if (event.target.innerHTML === 'Reset') {
       this.props.resetResults();
     }
 
     this.setState({
-      filter: event.target.innerHTML.toLowerCase() === 'remove' ? 'Search' : event.target.innerHTML.toLowerCase()
+      filter: event.target.innerHTML.toLowerCase() === 'reset' ? 'Search' : event.target.innerHTML.toLowerCase()
     });
   }
 
@@ -43,17 +44,22 @@ export default class Searchbar extends React.Component {
           onChange={this.onChange}
           value={this.state.value} />
         <div className="btn-group">
-          <button
-            className="btn searchButton shadow-none ml-2"
-            type="button"
-            onClick={this.onSubmit}>{this.state.filter}</button>
+          <Link to="/provs">
+            <button
+              className="btn searchButton shadow-none ml-2"
+              type="button"
+              onClick={this.onSubmit}>
+              {this.state.filter}
+            </button>
+          </Link>
           <button
             type="button"
             className="btn dropdown-toggle shadow-none dropdown-toggle-split searchButton"
             data-toggle="dropdown">
           </button>
-          <div className="dropdown-menu dropdown-menu-right">
+          <div className="dropdown-menu dropdown-menu-right pl-2">
             <span className="m-1">Filter:</span>
+            <div className="dropdown-divider"></div>
             <div
               className="filter-item m-1"
               onClick={this.setFilter}>Name</div>
@@ -66,9 +72,10 @@ export default class Searchbar extends React.Component {
             <div
               className="filter-item m-1"
               onClick={this.setFilter}>Rating</div>
+            <div className="dropdown-divider"></div>
             <div
               className="filter-item m-1"
-              onClick={this.setFilter}>Remove</div>
+              onClick={this.setFilter}>Reset</div>
           </div>
         </div>
       </div>
