@@ -23,6 +23,7 @@ export default class App extends React.Component {
     this.getProjects = this.getProjects.bind(this);
     this.searchProjects = this.searchProjects.bind(this);
     this.resetResults = this.resetResults.bind(this);
+    this.userUpdate = this.userUpdate.bind(this);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
     this.signUp = this.signUp.bind(this);
@@ -80,6 +81,16 @@ export default class App extends React.Component {
           window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
           return true;
         }
+      })
+      .catch(err => console.error(err));
+  }
+
+  userUpdate(data) {
+    fetch(`/api/user.php`, data)
+      .then(res => res.json())
+      .then(userData => {
+        this.setState({ currentUser: userData });
+        window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
       })
       .catch(err => console.error(err));
   }
@@ -179,8 +190,8 @@ export default class App extends React.Component {
           <Route path="/user" render={props =>
             <UserPage {...props}
               userData={this.state.currentUser}
-              logOutCallback={this.logOut} />} />
-
+              logOutCallback={this.logOut}
+              userUpdateCallback={this.userUpdate} />} />
           <Route path="/login" render={props =>
             <LogInPage {...props}
               logInCallback={this.logIn}
