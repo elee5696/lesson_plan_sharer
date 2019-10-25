@@ -1,30 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default class editButton extends React.Component {
+export default class EditButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: null,
-      description: null,
-      set_up: null,
-      outcomes: null,
-      goals: null,
-      materials: null,
-      image: null,
-      user_id: null
+      project: this.props.project,
+      user_id: this.props.userData,
+      currentUser: this.props.currentUser
+
     };
+    this.renderSubmit = this.renderSubmit.bind(this);
     this.submitEdit = this.submitEdit.bind(this);
   }
-  getInfo() {
-    this.setState({
-      name: this.props.projectName,
-      description: this.props.projectDescription,
-      set_up: this.props.set_up,
-      outcomes: this.props.outcomes,
-      goals: this.props.goals,
-      materials: this.props.materials,
-      image: this.props.image
-    });
+  componentDidMount() {
+    // this.setState({
+    //   project: this.props.project,
+    //   user_id: this.props.user_data.id,
+    //   currentUser: this.props
+    // });
+    // console.log(this.props);
   }
   submitEdit() {
     const body = JSON.stringify({
@@ -47,14 +42,21 @@ export default class editButton extends React.Component {
   }
   renderSubmit() {
     return (
-      <button onClick={this.submitEdit}> Submit Changes</button>
+      <button className ="editProjectButton btn" onClick={this.submitEdit} > Submit Changes</button>
     );
   }
   render() {
-    if (this.props.user_id === this.props.project.id) {
-      return (
-        <button>Edit This Project</button>
-      );
-    }
+
+    return (
+      <Link to={{
+        pathname: '/editSubmissionImage',
+        state: {
+          projectToEdit: this.props.project
+        }
+      }} >
+        <button className="editProjectButton btn"> Edit This Project</button>
+      </Link>
+    );
   }
+
 }

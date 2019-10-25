@@ -8,6 +8,8 @@ import LogInPage from './logInPage';
 import SignUpPage from './signUpPage';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 import PictureUploadForm from './picture-upload';
+import EditProjectSubmit from './editProjectSubmit';
+import EditPictureUpload from './editPicture-upload';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -58,6 +60,7 @@ export default class App extends React.Component {
         });
       })
       .catch(err => console.error(err));
+
   }
 
   logIn(user) {
@@ -112,7 +115,6 @@ export default class App extends React.Component {
     window.sessionStorage.removeItem('currentUser');
 
   }
-
   render() {
     return (
       <Router>
@@ -143,14 +145,14 @@ export default class App extends React.Component {
                 </li>
                 {
                   this.state.currentUser
-                    ? <>
+                    ? <div>
                       <li className='nav-item'>
                         <Link to="/submit" className="nav-link">Submit</Link>
                       </li>
                       <li className='nav-item'>
                         <Link to="/user" className="nav-link">User</Link>
                       </li>
-                    </>
+                    </div>
                     : <li className='nav-item'>
                       <Link to="/login" className="nav-link">Log-In</Link>
                     </li>
@@ -165,12 +167,7 @@ export default class App extends React.Component {
               getProjectCallback={this.getProjects}
               projects={this.state.projects}
               searchCallback={this.searchProjects} />} />
-          <Route path="/submit" render={props =>
-            <PictureUploadForm {...props}
-              userData={this.state.currentUser} />} />
-          <Route path="/submit2" render={props =>
-            <ProjectSubmit {...props}
-              userData={this.state.currentUser} />} />
+
           <Route path="/provs" render={props =>
             <ProvPage {...props}
               projects={this.state.projects}
@@ -178,10 +175,12 @@ export default class App extends React.Component {
               resetResults={this.resetResults}
               getProjectCallback={this.getProjects}
               searchCallback={this.searchProjects} />} />
+
           <Route path="/user" render={props =>
             <UserPage {...props}
               userData={this.state.currentUser}
               logOutCallback={this.logOut} />} />
+
           <Route path="/login" render={props =>
             <LogInPage {...props}
               logInCallback={this.logIn}
@@ -194,7 +193,25 @@ export default class App extends React.Component {
               error={this.state.error} />} />
           <Route path="/detail/:id" render={props =>
             <ProjectDetails {...props}
+              userData={this.state.currentUser}
               projectID={this.state.location} />} />
+
+          <Route path="/editSubmissionImage" render={props =>
+            <EditPictureUpload {...props}
+              userData={this.state.currentUser} />} />
+
+          <Route path="/editSubmission" render={props =>
+            <EditProjectSubmit {...props}
+              userData={this.state.currentUser} />} />
+
+          <Route path="/submit" render={props =>
+            <PictureUploadForm {...props}
+              userData={this.state.currentUser} />} />
+
+          <Route path="/submit2" render={props =>
+            <ProjectSubmit {...props}
+              userData={this.state.currentUser} />} />
+
         </Switch>
       </Router>
     );
