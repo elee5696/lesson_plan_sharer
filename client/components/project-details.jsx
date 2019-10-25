@@ -152,7 +152,7 @@ export default class ProjectDetails extends React.Component {
             </div>
             <div className="project-reviews">
               {
-                this.props.currentUser
+                this.props.userData
                   ? <div className="mb-3">
                     <CommentInput
                       currentUser={this.props.userData.id}
