@@ -77,32 +77,6 @@ FROM goals WHERE `name` = '$material'";
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $result = mysqli_query($conn, $editProjectsQuery);
 if (!$result) {
   throw new Exception('query failed');
@@ -110,7 +84,7 @@ if (!$result) {
 
 
 
-// print('it worked!!');
+    // print('it worked!!');
 
 
 

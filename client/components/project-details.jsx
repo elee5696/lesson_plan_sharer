@@ -1,6 +1,7 @@
 import React from 'react';
 import ListBubble from './list-bubble';
 import Ratings from './ratings';
+import EditButton from './editButton';
 
 export default class ProjectDetails extends React.Component {
   constructor(props) {
@@ -8,6 +9,8 @@ export default class ProjectDetails extends React.Component {
     this.state = {
       project: null
     };
+    this.verified = null;
+    this.verifyUser = this.verifyUser.bind(this);
   }
 
   componentDidMount() {
@@ -20,13 +23,19 @@ export default class ProjectDetails extends React.Component {
         });
       })
       .catch(err => console.error(err));
+    this.verifyUser();
   }
-
+  verifyUser() {
+    if (this.state.user_id === this.state.currentUser) {
+      this.verified = true;
+    } else {
+      this.verified = false;
+    }
+  }
   render() {
     if (this.state.project === null) {
       return <div className="page-loading">Page loading...</div>;
     }
-
     let setupSteps = this.state.project.set_up.split(',');
 
     return (
@@ -37,6 +46,16 @@ export default class ProjectDetails extends React.Component {
             className="back-button col-10">{'< Back'}
           </div>
         </div>
+        {
+          this.verified
+            ? <div>
+              <EditButton
+                userData={this.state.project.user_data.id}
+                project={this.state.project}
+                currentUser={this.props.userData.id} />
+            </div>
+            : null
+        }
         <div className="spacer col col-1 p-0"></div>
         <div className="col-10 p-0">
           <div className="project-image-container row justify-content-center mb-3">

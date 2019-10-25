@@ -69,7 +69,8 @@ body {
   text-decoration: none;
 }
 
-.searchButton, .uploadPicButton, .projectSubmitButton, .editUserButton {
+
+.searchButton, .uploadPicButton, .projectSubmitButton, .editProjectButton,.editUserButton {
   background:#f8b1d1;
   color: white;
 }
