@@ -357,11 +357,3 @@ body {
   border: 2px solid #f8b1d1;
   border-radius: 50%;
 }
-
-.login-username, #username, #name, #years, #about{
-  background: #f3f0f0;
-  border: 1px solid #f8b1d1
-}
-#about{
-  border: 1px solid #f8b1d1
-}
