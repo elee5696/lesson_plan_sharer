@@ -197,8 +197,9 @@ DROP TABLE IF EXISTS `reviews`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reviews` (
   `user_id` mediumint(8) NOT NULL,
+  `project_id` mediumint(8) NOT NULL,
   `comment` varchar(255) NOT NULL,
-  `time` date NOT NULL
+  `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -208,6 +209,7 @@ CREATE TABLE `reviews` (
 
 LOCK TABLES `reviews` WRITE;
 /*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
+INSERT INTO `reviews` VALUES (103,1,'Great project! My kids really liked working with natural materials.','2019-10-25 00:00:00'),(109,1,'Nice Work!','2019-10-25 00:00:00'),(103,1,'Hello!','2019-10-25 00:00:00'),(103,1,'Woo','2019-10-25 03:20:35'),(103,1,'OMG','2019-10-25 03:20:41');
 /*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +238,7 @@ CREATE TABLE `user_table` (
 
 LOCK TABLES `user_table` WRITE;
 /*!40000 ALTER TABLE `user_table` DISABLE KEYS */;
-INSERT INTO `user_table` VALUES (101,'Anjaleena Barclay',12,'I love what I do, and would love to do it my entire life!','/images/apple.jpg','2019-10-23 20:00:55','ProvPro'),(102,'Dan Paschal',5,'I love PHP','/images/apple.jpg','2019-10-23 20:17:51','phpfan'),(103,'Edward Lee',12,'node node node','/images/memed-io-output.jpeg','2019-10-23 22:33:39','elee5696'),(109,'Brena Patel',1,'React!','/images/dreamcatcher.jpeg','2019-10-23 22:57:18','BPatel'),(110,'Anjaleena Barclay',2,'PHP!','/images/flower.jpg','2019-10-23 22:57:51','ABarclay'),(116,'q',1,'1','/images/dreamcatcher5.jpeg','2019-10-24 21:36:43','qqqqqq');
+INSERT INTO `user_table` VALUES (101,'Anjaleena Barclay',12,'I love what I do, and would love to do it my entire life!','/images/apple.jpg','2019-10-23 20:00:55','ProvPro'),(102,'Dan Paschal',5,'I love PHP','/images/apple.jpg','2019-10-23 20:17:51','phpfan'),(103,'Edward Lee',12,'node node node','/images/memed-io-output.jpeg','2019-10-23 22:33:39','elee5696'),(109,'Brena Patel',1,'React!','/images/dreamcatcher.jpeg','2019-10-23 22:57:18','BPatel'),(110,'Anjaleena Barclay',2,'PHP!','/images/flower.jpg','2019-10-23 22:57:51','ABarclay');
 /*!40000 ALTER TABLE `user_table` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -249,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-24 22:13:49
+-- Dump completed on 2019-10-25  3:41:01
