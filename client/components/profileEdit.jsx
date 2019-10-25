@@ -19,17 +19,21 @@ export default class EditProfile extends React.Component {
 
   submitEdit() {
     const body = JSON.stringify({
+      'id': this.props.id,
       'field': this.props.field,
       'value': this.state.value
     });
     const data = {
       method: 'PATCH',
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
       },
       body: body
     };
-    fetch(`/api/user.php`, data);
+
+    this.props.userUpdateCallback(data);
+    this.props.cancelCallback();
   }
 
   render() {
