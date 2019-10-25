@@ -27,8 +27,9 @@ body {
 .project-setup-steps,
 .project-outcomes-text,
 .rating-text,
-.rating-details-input {
-  font-size: 18px;
+.rating-details-input,
+.rating-score-input {
+  font-size: 17px;
   font-weight: 200;
 }
 
@@ -153,8 +154,13 @@ body {
 .projects-amount-key-value-container,
 .points-amount-key-value-container,
 .name-key-value-container,
-.member-since-key-value-container {
+.member-since-key-value-container,
+.comment-container {
   border-bottom: 1px solid  #f8b1d1;
+}
+
+.comment-container {
+  border-bottom: 1px solid #f8b1d1;
 }
 
 .username-value-text,
@@ -374,11 +380,12 @@ body {
 }
 
 .login-to-leave-review {
-  border: 1px solid black;
+  border: 1px solid #f8b1d1;
 }
 
 .comment-date {
   color: #6c757d;
+  font-size: 12px;
 }
 
 .textarea {

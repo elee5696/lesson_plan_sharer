@@ -4,8 +4,8 @@ export default class Comment extends React.Component {
 
   render() {
     return (
-      <div className="comment-container">
-        <div className="user-info d-flex flex-row">
+      <div className="comment-container mb-2 p-1">
+        <div className="user-info d-flex flex-row mb-3">
           <div className="user-pic-container mr-3">
             <img className="comment-user-pic mb-3"
               src={this.props.avatar}

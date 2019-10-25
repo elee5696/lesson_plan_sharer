@@ -139,7 +139,7 @@ export default class ProjectDetails extends React.Component {
                 <h5 className="col project-outcomes-text ">{this.state.project.outcomes}</h5>
               </div>
             </div>
-            <div className="project-rating-container col-10 mb-4 p-0">
+            <div className="project-rating-container col-10 mb-3 p-0">
               <div className="project-rating-header-container row mb-2">
                 <h1 className="project-rating-header col-10">Feedback</h1>
               </div>
@@ -153,14 +153,14 @@ export default class ProjectDetails extends React.Component {
             <div className="project-reviews">
               {
                 this.props.userData
-                  ? <div className="mb-3">
+                  ? <div className="mb-2">
                     <CommentInput
                       currentUser={this.props.userData.id}
                       currentProject={this.state.project.id} />
                   </div>
-                  : <div className="login-to-leave-review"><h4 className="m-2">Please log in to leave a review.</h4></div>
+                  : <div className="login-to-leave-review"><h5 className="m-2">Please log in to leave a review.</h5></div>
               }
-              <div className="review-header mt-3 mb-3">
+              <div className="review-header mt-2 mb-3">
                 <h5>Reviews</h5>
               </div>
               <div className="comment-list">
