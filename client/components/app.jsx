@@ -145,14 +145,14 @@ export default class App extends React.Component {
                 </li>
                 {
                   this.state.currentUser
-                    ? <div>
+                    ? <>
                       <li className='nav-item'>
                         <Link to="/submit" className="nav-link">Submit</Link>
                       </li>
                       <li className='nav-item'>
                         <Link to="/user" className="nav-link">User</Link>
                       </li>
-                    </div>
+                    </>
                     : <li className='nav-item'>
                       <Link to="/login" className="nav-link">Log-In</Link>
                     </li>

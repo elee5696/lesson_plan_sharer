@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 export default class LogInPage extends React.Component {
   constructor(props) {
@@ -9,7 +9,6 @@ export default class LogInPage extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onCreate = this.onCreate.bind(this);
   }
 
   onChange(event) {
@@ -21,10 +20,6 @@ export default class LogInPage extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     this.props.logInCallback(this.state.name);
-  }
-
-  onCreate(event) {
-    event.preventDefault();
   }
 
   render() {
@@ -58,11 +53,12 @@ export default class LogInPage extends React.Component {
                 onClick={this.onSubmit}
                 className="btn searchButton shadow-none">Log-In
               </button>
-              <button
-                type="button"
-                onClick={this.onCreate}
-                className="btn searchButton shadow-none ml-3">Sign-Up
-              </button>
+              <Link to="/signup">
+                <button
+                  type="button"
+                  className="btn searchButton shadow-none ml-3">Sign-Up
+                </button>
+              </Link>
             </div>
           </form>
         </div>
