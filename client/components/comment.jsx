@@ -6,10 +6,11 @@ export default class Comment extends React.Component {
     return (
       <div className="comment-container">
         <div className="user-info d-flex flex-row">
-          <div className="user-pic mr-3">
+          <div className="user-pic-container mr-3">
             <img className="comment-user-pic mb-3"
               src={this.props.avatar}
-              style={{ height: '50px', width: 'auto' }}/>
+              style={{ height: '100%', width: '100%' }}
+            />
           </div>
           <div className="user-name mt-3">
             <h6 className="user-name-input">{this.props.username}</h6>

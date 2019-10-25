@@ -41,7 +41,9 @@ export default class UserPage extends React.Component {
         <div className="content-container col-10 mt-4 p-0">
           <div className="user-pic-enter-info-container row ml-0">
             <div className="pic col-2 p-0">
-              <img src={this.props.userData.avatar} className="user-profile-pic mb-2" style={{ width: '4rem' }}></img>
+              <div className="user-avatar-container mb-2">
+                <img src={this.props.userData.avatar} className="user-profile-pic mb-2" style={{ width: '100%', height: '100%' }}></img>
+              </div>
               <button
                 type="button"
                 className="btn editUserButton btn-sm shadow-none row ml-2">
