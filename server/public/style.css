@@ -26,8 +26,10 @@ body {
 .project-desc-text,
 .project-setup-steps,
 .project-outcomes-text,
-.rating-text {
+.rating-text,
+.rating-details-input {
   font-size: 18px;
+  font-weight: 200;
 }
 
 .project-goals-header,
@@ -354,7 +356,19 @@ body {
   }
 }
 
-.user-profile-pic {
+.user-profile-pic, .comment-user-pic {
   border: 2px solid #f8b1d1;
   border-radius: 50%;
+}
+
+.login-to-leave-review {
+  border: 1px solid black;
+}
+
+.comment-date {
+  color: #6c757d;
+}
+
+.textarea {
+  width: 100%;
 }

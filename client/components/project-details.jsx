@@ -62,7 +62,7 @@ export default class ProjectDetails extends React.Component {
             <div className="project-title-container col-10 mb-3 p-0">
               <h1 className="project-title text-capitalize">{this.state.project.name}</h1>
             </div>
-            <div className="author-details text-muted mb-5">
+            <div className="author-details text-muted mb-4">
               <h5>{this.state.project.user_data.name} | {this.state.project.user_data.username}</h5>
             </div>
             <div className="project-desc-container col-12 mb-3">
@@ -139,8 +139,8 @@ export default class ProjectDetails extends React.Component {
                 <h5 className="col project-outcomes-text ">{this.state.project.outcomes}</h5>
               </div>
             </div>
-            <div className="project-rating-container col-10 mb-2 p-0">
-              <div className="project-rating-header-container row">
+            <div className="project-rating-container col-10 mb-4 p-0">
+              <div className="project-rating-header-container row mb-2">
                 <h1 className="project-rating-header col-10">Feedback</h1>
               </div>
               <div className="project-rating-body mb-2">
@@ -158,10 +158,10 @@ export default class ProjectDetails extends React.Component {
                       currentUser={this.props.userData.id}
                       currentProject={this.state.project.id} />
                   </div>
-                  : <div><h3>Log-in to leave a review</h3></div>
+                  : <div className="login-to-leave-review"><h4 className="m-2">Please log in to leave a review.</h4></div>
               }
-              <div className="review-header">
-                <h2>Reviews</h2>
+              <div className="review-header mt-3">
+                <h4>Reviews</h4>
               </div>
               <div className="comment-list">
                 {
