@@ -10,8 +10,6 @@ export default class EditButton extends React.Component {
       currentUser: this.props.currentUser
 
     };
-    this.renderSubmit = this.renderSubmit.bind(this);
-    this.submitEdit = this.submitEdit.bind(this);
   }
 
   render() {

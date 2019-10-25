@@ -23,9 +23,11 @@ SET `user_id` = '$userId', `name` = '$name', `description` = '$desc',
 `outcomes` = '$outcomes', `set_up` = '$set_up'
 WHERE `id` = '$id'";
 
-// $editImageQuery = "UPDATE images
-// SET `fileName` = '$image'
-// WHERE `project_id` = '$id'";
+$editImageQuery = "UPDATE images
+SET `fileName` = '$image'
+WHERE `project_id` = '$id'";
+
+$pictureChange =  mysqli_query($conn, $editImageQuery);
 
 
 if($goals){
@@ -36,9 +38,6 @@ if($goals){
       WHERE project_id = '$id'";
     $runDeleteGoal =  mysqli_query($conn, $deleteGoals);
   }
-
-
-
   foreach ($goals as $goal) {
   $goalQuery = "SELECT `id`
   FROM goals WHERE `name` = '$goal'";
@@ -81,32 +80,52 @@ if($goals){
 }
 
 
-// if ($materials) {
-//   foreach ($materials as $material) {
-//     $materialQuery = "SELECT `id`
-// FROM materials WHERE `name` = '$material'";
-//     $result = mysqli_query($conn, $materialQuery);
-//     $queryResult = mysqli_num_rows($result);
 
-//     if (!$queryResult) {
-//       $insertMaterial = "INSERT INTO materials (`name`)
-//   SELECT * FROM (SELECT '$material') AS tmp ";
-//       $materialResult = mysqli_query($conn, $insertMaterial);
-//       $insertProject_Material = "INSERT INTO `project_material` (`project_id`, `material_id`)
-//   VALUES ($project_id, $material_id)";
-//       $projMaterialResult = mysqli_query($conn, $insertProject_Material);
+if ($materials) {
 
-//     } else {
-//       while ($row = mysqli_fetch_assoc($result)) {
-//         $material_id = $row['id'];
-//       }
-//       $updateMaterials = "UPDATE project_material
-//     SET `material_id` = `$material_id`
-//     WHERE `project_id` = '$id'";
-//     }
-//   }
-// }
+  $timesToDelete = count($materials);
+  for ($index = 0; $index < $timesToDelete; $index++) {
+    $deleteMaterials = "DELETE FROM project_material
+      WHERE project_id = '$id'";
+    $runDeleteMaterials =  mysqli_query($conn, $deleteMaterials);
+  }
+  foreach ($materials as $material) {
+    $materialQuery = "SELECT `id`
+  FROM materials WHERE `name` = '$material'";
+    $result = mysqli_query($conn, $materialQuery);
+    $queryResult = mysqli_num_rows($result);
 
+    if (!$queryResult) {
+      $insertMaterial = "INSERT INTO materials (`name`)
+    VALUES ('$material')";
+      $materialResult = mysqli_query($conn, $insertMaterial);
+
+      $getIdQuery = "SELECT `id` FROM materials WHERE `name` = '$material'";
+
+      $materialIdResult = mysqli_query($conn, $getIdQuery);
+
+      $material_id = '';
+      while ($row = mysqli_fetch_assoc($materialIdResult)) {
+        $material_id = $row['id'];
+      }
+
+      $insertProject_Material = "INSERT INTO `project_material` (`project_id`, `material_id`)
+    VALUES ($id, $material_id)";
+
+      $projMaterialResult = mysqli_query($conn, $insertProject_Material);
+    } else {
+
+      $material_id = '';
+      while ($row = mysqli_fetch_assoc($result)) {
+        $material_id = $row['id'];
+      }
+      $insertMaterialToProjectIds = "INSERT INTO project_materials (`project_id`,`material_id`)
+      VALUES ('$id', $material_id)";
+
+      $materialResult = mysqli_query($conn, $insertMaterialToProjectIds);
+    }
+  }
+}
 
 
 $result = mysqli_query($conn, $editProjectsQuery);
@@ -115,9 +134,7 @@ if (!$result) {
 }
 
 
-
-    // print('it worked!!');
-
+print($id);
 
 
 

@@ -22,6 +22,7 @@ switch($method) {
     break;
   case 'PUT':
     require('project_edit.php');
+    break;
   default:
     throw new Exception('Cannot ' . $method . ' /api/project.php');
 }
