@@ -57,7 +57,10 @@ export default class UserPage extends React.Component {
           </div>
           {
             this.state.field === 'username'
-              ? <EditProfile field="username" cancelCallback={this.cancelEdit} />
+              ? <EditProfile field="username"
+                id={this.props.userData.id}
+                cancelCallback={this.cancelEdit}
+                userUpdateCallback={this.props.userUpdateCallback} />
               : <div className="username-key-value-container col ml-0 mb-3">
                 <div className="username-key row p-0">
                   <p className="col-8 p-0 m-0">Username: </p>
@@ -76,7 +79,7 @@ export default class UserPage extends React.Component {
           }
           {
             this.state.field === 'name'
-              ? <EditProfile field="name" cancelCallback={this.cancelEdit} />
+              ? <EditProfile field="name" id={this.props.userData.id}cancelCallback={this.cancelEdit} />
               : <div className="name-key-value-container col ml-0 mb-3">
                 <div className="name-key row p-0">
                   <p className="col-8 p-0 m-0">Name: </p>
@@ -95,7 +98,7 @@ export default class UserPage extends React.Component {
           }
           {
             this.state.field === 'years'
-              ? <EditProfile field="years" cancelCallback={this.cancelEdit} />
+              ? <EditProfile field="years" id={this.props.userData.id} cancelCallback={this.cancelEdit} />
               : <div className="experience-key-value-container col ml-0 mb-3">
                 <div className="experience-key row p-0">
                   <p className="col-8 p-0 m-0">Experience:</p>
@@ -114,7 +117,7 @@ export default class UserPage extends React.Component {
           }
           {
             this.state.field === 'about_me'
-              ? <EditProfile field="about_me" cancelCallback={this.cancelEdit} />
+              ? <EditProfile field="about_me" id={this.props.userData.id} cancelCallback={this.cancelEdit} />
               : <div className="about-me-key-value-container col ml-0 mb-3">
                 <div className="about-me-key row p-0">
                   <p className="col-8 p-0 m-0">About Me:</p>
