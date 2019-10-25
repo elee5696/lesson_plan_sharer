@@ -12,6 +12,8 @@ $user_id = $_POST['user_id'];
 $comment = $_POST['comment'];
 $project_id = $_POST['project_id'];
 
+print_r($_POST);
+
 $query =
 "INSERT INTO `reviews`
   (`user_id`, `project_id` , `comment`, `time`)

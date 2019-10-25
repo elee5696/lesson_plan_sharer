@@ -25,7 +25,6 @@ export default class LogInPage extends React.Component {
 
   onCreate(event) {
     event.preventDefault();
-    this.props.history.push(`/signup`);
   }
 
   render() {
