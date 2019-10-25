@@ -60,14 +60,14 @@ export default class ProjectDetails extends React.Component {
           </div>
           <div className="details-info-container">
             <div className="project-title-container col-10 mb-3 p-0">
-              <h1 className="project-title text-capitalize">{this.state.project.name}</h1>
+              <h2 className="project-title text-capitalize">{this.state.project.name}</h2>
             </div>
             <div className="author-details text-muted mb-4">
               <h5>{this.state.project.user_data.name} | {this.state.project.user_data.username}</h5>
             </div>
             <div className="project-desc-container col-12 mb-3">
               <div className="project-desc-header-container row mb-2">
-                <h1 className="project-desc-header">Description</h1>
+                <h2 className="project-desc-header">Description</h2>
               </div>
               <div className="project-desc-body row">
                 <h3 className="project-desc-text">{this.state.project.description}</h3>
@@ -160,8 +160,8 @@ export default class ProjectDetails extends React.Component {
                   </div>
                   : <div className="login-to-leave-review"><h4 className="m-2">Please log in to leave a review.</h4></div>
               }
-              <div className="review-header mt-3">
-                <h4>Reviews</h4>
+              <div className="review-header mt-3 mb-3">
+                <h5>Reviews</h5>
               </div>
               <div className="comment-list">
                 {
