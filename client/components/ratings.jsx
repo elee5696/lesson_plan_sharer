@@ -54,15 +54,15 @@ export default class Ratings extends React.Component {
 
     return (
       <div className="star-rating">
-        <div className="row star-rating-container ml-0">
+        <div className="row star-rating-container ml-0 mb-2">
           {stars}
           <div className="rating-number-container ml-2">
-            <p className="mr-3">{(parseFloat(this.state.rating)).toFixed(2)}/5</p>
+            <h6 className="mr-3 rating-score-input">{(parseFloat(this.state.rating)).toFixed(2)}/5</h6>
           </div>
         </div>
         {this.state.rated ? <p>Rated</p> : null }
-        <div className="ml-0 row rating-details-container">
-          <p>Total Ratings: { this.state.total ? this.state.total : this.props.rating_count }</p>
+        <div className="ml-0 mb-2 row rating-details-container">
+          <h6 className="rating-details-input">Total Ratings: { this.state.total ? this.state.total : this.props.rating_count }</h6>
         </div>
       </div>
     );

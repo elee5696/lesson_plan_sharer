@@ -26,8 +26,11 @@ body {
 .project-desc-text,
 .project-setup-steps,
 .project-outcomes-text,
-.rating-text {
-  font-size: 18px;
+.rating-text,
+.rating-details-input,
+.rating-score-input {
+  font-size: 17px;
+  font-weight: 200;
 }
 
 .project-goals-header,
@@ -151,8 +154,13 @@ body {
 .projects-amount-key-value-container,
 .points-amount-key-value-container,
 .name-key-value-container,
-.member-since-key-value-container {
+.member-since-key-value-container,
+.comment-container {
   border-bottom: 1px solid  #f8b1d1;
+}
+
+.comment-container {
+  border-bottom: 1px solid #f8b1d1;
 }
 
 .username-value-text,
@@ -168,7 +176,7 @@ body {
 }
 
 .grey-icon {
-  color: rgb(172, 165, 165);
+  color: rgb(224, 217, 217);
 }
 
 .project-list-item-image-container {
@@ -354,7 +362,32 @@ body {
   }
 }
 
-.user-profile-pic {
+.user-profile-pic, .comment-user-pic {
   border: 2px solid #f8b1d1;
   border-radius: 50%;
+}
+
+.user-pic-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user-avatar-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.login-to-leave-review {
+  border: 1px solid #f8b1d1;
+}
+
+.comment-date {
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.textarea {
+  width: 100%;
 }
