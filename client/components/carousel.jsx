@@ -82,7 +82,7 @@ export default class Carousel extends React.Component {
                   <i
                     key={circleIndex}
                     onClick={circleHandleClick}
-                    className={`btn ${className} fa-circle`}>
+                    className={`${className} fa-circle ml-2`}>
                   </i>
                 );
               })
