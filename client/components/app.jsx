@@ -39,11 +39,10 @@ export default class App extends React.Component {
   }
 
   searchProjects(value = '', field = 'name') {
-    let searchedProjects = this.state.projects.filter(e => e[field].includes(value));
-
-    this.setState({
-      searchResults: searchedProjects
-    });
+    fetch(`/api/project.php?field=${field}&value=${value}`)
+      .then(res => res.json())
+      .then(results => this.setState({ searchResults: results }))
+      .catch(err => console.error(err));
   }
 
   resetResults() {
@@ -72,14 +71,12 @@ export default class App extends React.Component {
           this.setState({
             error: true
           });
-          return false;
         } else {
           this.setState({
             currentUser: userData,
             error: false
           });
           window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
-          return true;
         }
       })
       .catch(err => console.error(err));

@@ -28,6 +28,7 @@ if(mysqli_num_rows($result) === 0){
 
 $output = [];
 while($row = mysqli_fetch_assoc($result)){
+  $row["id"] = intval($row["id"]);
   $output = $row;
 }
 

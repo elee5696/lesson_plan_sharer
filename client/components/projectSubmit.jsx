@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import ListBubble from './list-bubble';
 
 class ProjectSubmit extends React.Component {
@@ -16,13 +16,13 @@ class ProjectSubmit extends React.Component {
       'materialsToSubmit': [],
       'goals': '',
       'materials': '',
-      'userId': ''
+      'userId': '',
+      'location': ''
     };
     this.id = null;
     this.materialsArray = [];
     this.goalsArray = [];
     this.image = null;
-    this.location = null;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGoalSubmit = this.handleGoalSubmit.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -65,7 +65,9 @@ class ProjectSubmit extends React.Component {
     })
       .then(resp => resp.json())
       .then(response => {
-        this.location = (`/detail/${response}`); // redirect instead of history.push
+        this.setState({
+          location: response
+        }); // redirect instead of history.push
       })
       .catch(error => console.error(error));
   }
@@ -147,8 +149,16 @@ class ProjectSubmit extends React.Component {
         </div>
       );
     }
+
+    let redirect = null;
+
+    if (this.state.location) {
+      redirect = <Redirect to={`/detail/${this.state.location}`} />;
+    }
+
     return (
       <div className= " submitForm container row p-0 col-md-10 justify-content-center">
+        {redirect}
         <div className="spacer col col-md-1"></div>
         <div className="form container col col-md-8 d-flex justify-content-center m-0">
           <form onSubmit={this.handleSubmit}>
