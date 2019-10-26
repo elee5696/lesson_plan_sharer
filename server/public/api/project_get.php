@@ -91,7 +91,7 @@ ON
 if (isset($_GET['field']) && isset($_GET['value'])) {
   $field = $_GET['field'];
   $value = $_GET['value'];
-  $whereClause = " WHERE $field LIKE ?";
+  $whereClause = " WHERE p.$field LIKE ?";
   if($field === 'user') {
     $whereClause = " WHERE u.name LIKE ? OR username LIKE ?";
   }
@@ -112,10 +112,10 @@ $stmt = $conn->prepare($query);
 
 if (isset($_GET['field']) && isset($_GET['value'])) {
   if($field === 'user') {
-    $strval = "%".$_GET['value']."%";
+    $strval = "%".$value."%";
     $stmt->bind_param("ss", $strval, $strval);
   } else {
-    $strval = "%".$_GET['value']."%";
+    $strval = "%".$value."%";
     $stmt->bind_param("s", $strval);
   }
 }
