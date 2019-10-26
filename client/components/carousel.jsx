@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import $ from 'jquery';
+
+// $(document).ready(swipeCarousel());
 
 export default class Carousel extends React.Component {
   constructor(props) {
@@ -34,6 +37,14 @@ export default class Carousel extends React.Component {
     }
   }
 
+  handleSwipeRight(event) {
+    $(event.target).addClass('swiperight');
+  }
+
+  handleSwipeLeft(event) {
+    $(event.target).addClass('swipeleft');
+  }
+
   goToProject(circleIndex) {
     this.setState({
       currentImagesIndex: circleIndex
@@ -50,13 +61,20 @@ export default class Carousel extends React.Component {
   //   clearInterval(this.state.interval);
   // }
 
+  componentDidMount() {
+    // let swiperight = $.fn.swiperight;
+    // let swipeleft = $.fn.swipeleft;
+    $('#homepage-carousel').on('swiperight', this.handleSwipeRight);
+    $('#homepage-carousel').on('swipeleft', this.handleSwipeLeft);
+  }
+
   render() {
     if (this.props.projects.length === 0) {
       return <h1>Page loading...</h1>;
     }
     return (
       <div className="container col-12">
-        <div className="carousel-body col mt-3 container d-flex justify-content-center">
+        <div id="homepage-carousel" className="carousel-body col mt-3 container d-flex justify-content-center" data-touch="true">
           <div>
             <div className="carousel-image-containerprov mb-3 p-0">
               <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}>
