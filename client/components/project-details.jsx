@@ -40,10 +40,10 @@ export default class ProjectDetails extends React.Component {
           </div>
         </div>
         {
-          this.state.project.user_id === this.props.userData.id
+          this.state.project.author_data.id === this.props.userData.id
             ? <div>
               <EditButton
-                userData={this.state.project.user_data.id}
+                userData={this.state.project.author_data.id}
                 project={this.state.project}
                 currentUser={this.props.userData.id} />
             </div>
@@ -63,7 +63,7 @@ export default class ProjectDetails extends React.Component {
               <h1 className="project-title text-capitalize">{this.state.project.name}</h1>
             </div>
             <div className="author-details text-muted mb-5">
-              <h5>{this.state.project.user_data.name} | {this.state.project.user_data.username}</h5>
+              <h5>{this.state.project.author_data.name} | {this.state.project.author_data.username}</h5>
             </div>
             <div className="project-desc-container col-12 mb-3">
               <div className="project-desc-header-container row mb-2">
@@ -146,8 +146,8 @@ export default class ProjectDetails extends React.Component {
               <div className="project-rating-body mb-2">
                 <Ratings
                   id={this.state.project.id}
-                  rating={this.state.project.rating}
-                  rating_count={this.state.project.rating_count} />
+                  rating={this.state.project.rating_data.rating}
+                  rating_count={this.state.project.rating_data.count} />
               </div>
             </div>
             <div className="project-reviews">
