@@ -43,6 +43,7 @@ class EditProjectSubmit extends React.Component {
       name: event.target.value,
       image: this.image,
       userId: this.props.userData.id
+
     });
   }
 
@@ -60,18 +61,20 @@ class EditProjectSubmit extends React.Component {
       user_id: this.state.userId
 
     });
+
     fetch(`/api/project.php`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
       },
       body: body
-    })
-      .then(resp => resp.json())
-      .then(response => {
-        this.location = (`/detail/${response}`); // redirect instead of history.push
-      })
-      .catch(error => console.error(error));
+    });
+    // .then(resp => resp.json())
+    // .then(response => console.log(response));
+    // .then(response => {
+    //   this.location = (`/detail/${response}`); // redirect instead of history.push
+    // })
+    // .catch(error => console.error(error));
   }
 
   handleDescriptionChange(event) {
@@ -151,7 +154,7 @@ class EditProjectSubmit extends React.Component {
       'materialsToSubmit': edit.materials,
       'goals': '',
       'materials': '',
-      'image': this.image,
+      'image': this.props.location.state.file.name,
       'userId': edit.user_id
     });
     this.id = edit.id;
