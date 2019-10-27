@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
 import ListBubble from './list-bubble';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class EditProjectSubmit extends React.Component {
   constructor(props) {
@@ -68,13 +68,13 @@ class EditProjectSubmit extends React.Component {
         'Content-type': 'application/json'
       },
       body: body
-    });
-    // .then(resp => resp.json())
-    // .then(response => console.log(response));
-    // .then(response => {
-    //   this.location = (`/detail/${response}`); // redirect instead of history.push
-    // })
-    // .catch(error => console.error(error));
+    })
+      .then(resp => resp.json())
+      .then(response => {
+        const location = `/detail/${response}`;
+        return <Redirect to= {location} />;
+      })
+      .catch(error => console.error(error));
   }
 
   handleDescriptionChange(event) {

@@ -67,7 +67,9 @@ class ProjectSubmit extends React.Component {
       .then(response => {
         this.setState({
           location: response
-        }); // redirect instead of history.push
+        });
+        const location = `/detail/${response}`;
+        return <Redirect to={location} />;
       })
       .catch(error => console.error(error));
   }
