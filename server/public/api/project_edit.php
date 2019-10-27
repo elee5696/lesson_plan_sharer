@@ -134,9 +134,4 @@ if (!$result) {
 }
 
 
-print($id);
-
-
-
-
 ?>
