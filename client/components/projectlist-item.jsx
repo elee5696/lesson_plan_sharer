@@ -1,5 +1,6 @@
 import React from 'react';
-import Ratings from './ratings';
+// import Ratings from './ratings';
+import StarsRating from './stars';
 import { Link } from 'react-router-dom';
 
 export default class ProjectListItem extends React.Component {
@@ -21,11 +22,17 @@ export default class ProjectListItem extends React.Component {
             <h3 className="car-title text-capitalize mb-3" >
               {this.props.projectName}
             </h3>
-            <Ratings
+            <StarsRating
               id={this.props.id}
               rating={this.props.rating}
               rating_count={this.props.rating_count} />
+            <div className="user-name-box">
+              <h6 className="user-name-info font-weight-bold">
+                Author: {this.props.username}
+              </h6>
+            </div>
           </div>
+
         </div>
 
         <div
@@ -41,9 +48,9 @@ export default class ProjectListItem extends React.Component {
             </div>
             <div className="media-body" >
               <div className="project-info col" >
-                <h3 className="project-name text-capitalize mt-3" >
+                <h5 className="project-name text-capitalize mt-3" >
                   {this.props.projectName}
-                </h3>
+                </h5>
                 <div
                   className="desc-box mt-3 mb-5"
                   style={{ height: '20%', fontSize: '0.9rem' }}>
@@ -51,10 +58,16 @@ export default class ProjectListItem extends React.Component {
                     {this.props.projectDescription}
                   </p>
                 </div>
-                <Ratings
+
+                <StarsRating
                   id={this.props.id}
                   rating={this.props.rating}
-                  rating_count={this.props.rating_count} />
+                  rating_count={this.props.rating_count}/>
+                <div className="user-name-box">
+                  <h6 className="user-name-info font-weight-bold">
+                   Author: {this.props.username}
+                  </h6>
+                </div>
               </div>
             </div>
           </div>

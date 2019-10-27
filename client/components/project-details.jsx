@@ -23,6 +23,7 @@ export default class ProjectDetails extends React.Component {
         });
       })
       .catch(err => console.error(err));
+
   }
 
   render() {
