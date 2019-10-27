@@ -1,24 +1,48 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import $ from 'jquery';
-
-// $(document).ready(swipeCarousel());
 
 export default class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentImagesIndex: 0,
-      interval: null
+      touchStart: null,
+      touchEnd: null
     };
     this.handleSlideLeft = this.handleSlideLeft.bind(this);
     this.handleSlideRight = this.handleSlideRight.bind(this);
+    this.handleTouchStart = this.handleTouchStart.bind(this);
+    this.handleTouchEnd = this.handleTouchEnd.bind(this);
+  }
+
+  //   componentDidUpdate() {
+  //   console.log("comp did update", this.state);
+  // }
+
+  handleTouchStart(event) {
+    // console.log('touchstart', event.touches[0]);
+    const newStart = event.touches[0].clientX;
+    this.setState({
+      touchStart: newStart
+    });
+  }
+  handleTouchEnd(event) {
+    // console.log('touchend', event.changedTouches[0]);
+    const touchEnd = event.changedTouches[0].clientX;
+    if (this.state.touchStart - touchEnd > -400) {
+      // console.log('swipe right', this.state.touchStart - touchEnd);
+      this.handleSlideRight();
+    } else {
+      // console.log('swipe left', this.state.touchStart - touchEnd);
+      this.handleSlideLeft();
+    }
   }
 
   handleSlideRight() {
     this.setState({
       currentImagesIndex: this.state.currentImagesIndex + 1
     });
+    // console.log('I swiped right');
     if (this.state.currentImagesIndex === this.props.projects.length - 1) {
       this.setState({
         currentImagesIndex: 0
@@ -30,6 +54,7 @@ export default class Carousel extends React.Component {
     this.setState({
       currentImagesIndex: this.state.currentImagesIndex - 1
     });
+    // console.log('I swiped left');
     if (this.state.currentImagesIndex === 0) {
       this.setState({
         currentImagesIndex: this.props.projects.length - 1
@@ -43,28 +68,16 @@ export default class Carousel extends React.Component {
     });
   }
 
-  componentDidMount() {
-    // let swiperight = $.fn.swiperight;
-    // // let swipeleft = $.fn.swipeleft;
-    // $('#homepage-carousel').on('swiperight', this.handleSwipeRight);
-    // $('#homepage-carousel').on('swipeleft', this.handleSwipeLeft);
-  }
-
-  // handleSwipeRight(event) {
-  //   $(event.target).addClass('swiperight', event);
-  // }
-
-  // handleSwipeLeft(event) {
-  //   $(event.target).addClass('swipeleft');
-  // }
-
   render() {
     if (this.props.projects.length === 0) {
       return <h1>Page loading...</h1>;
     }
     return (
       <div className="container col-12">
-        <div id="homepage-carousel" className="carousel-body col mt-3 container d-flex justify-content-center">
+        <div
+          className="carousel-body col mt-3 container d-flex justify-content-center"
+          onTouchStart={this.handleTouchStart}
+          onTouchEnd={this.handleTouchEnd}>
           <div>
             <div className="carousel-image-containerprov mb-3 p-0">
               <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}>
