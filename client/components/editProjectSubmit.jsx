@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
 import ListBubble from './list-bubble';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class EditProjectSubmit extends React.Component {
   constructor(props) {
@@ -43,6 +43,7 @@ class EditProjectSubmit extends React.Component {
       name: event.target.value,
       image: this.image,
       userId: this.props.userData.id
+
     });
   }
 
@@ -60,6 +61,7 @@ class EditProjectSubmit extends React.Component {
       user_id: this.state.userId
 
     });
+
     fetch(`/api/project.php`, {
       method: 'PUT',
       headers: {
@@ -69,7 +71,8 @@ class EditProjectSubmit extends React.Component {
     })
       .then(resp => resp.json())
       .then(response => {
-        this.location = (`/detail/${response}`); // redirect instead of history.push
+        const location = `/detail/${response}`;
+        return <Redirect to= {location} />;
       })
       .catch(error => console.error(error));
   }
@@ -151,7 +154,7 @@ class EditProjectSubmit extends React.Component {
       'materialsToSubmit': edit.materials,
       'goals': '',
       'materials': '',
-      'image': this.image,
+      'image': this.props.location.state.file.name,
       'userId': edit.user_id
     });
     this.id = edit.id;

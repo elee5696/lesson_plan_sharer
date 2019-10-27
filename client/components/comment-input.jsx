@@ -32,20 +32,21 @@ export default class CommentInput extends React.Component {
 
   render() {
     return (
-      <div className="comment-input-container">
-        <div className="header">
-          <h2>Leave a review</h2>
+      <div className="comment-input-container container p-0">
+        <div className="header row leave-review-header mb-3 m-0">
+          <h5>Leave a Review</h5>
         </div>
-        <form className="d-flex">
+        <form>
           <div>
-            <textarea
+            <textarea className="textarea"
               type="text"
               onChange={this.onChange}
               value={this.state.value} />
           </div>
-          <div>
+          <div className="leave-review-button container row m-0 p-0">
+            <div className="empty-col-for-button col-7"></div>
             <button
-              className="btn searchButton shadow-none"
+              className="btn searchButton shadow-none col-5"
               onClick={this.onSubmit}>
               Review
             </button>

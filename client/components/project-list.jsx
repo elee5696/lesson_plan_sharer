@@ -29,9 +29,10 @@ export default class ProjectList extends React.Component {
               projectImage={project.image}
               projectName={project.name}
               projectDescription={project.description}
-              rating={project.rating}
-              rating_count={project.rating_count}
-              username={project.user_data.name}
+              rating={project.rating_data.rating}
+              rating_count={project.rating_data.count}
+              username={project.author_data.name}
+
             />
           );
         })}

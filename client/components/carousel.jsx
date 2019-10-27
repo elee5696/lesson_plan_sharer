@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import $ from 'jquery';
+
+// $(document).ready(swipeCarousel());
 
 export default class Carousel extends React.Component {
   constructor(props) {
@@ -40,14 +43,19 @@ export default class Carousel extends React.Component {
     });
   }
 
-  // componentDidMount() {
-  //  this.setState({
-  //    interval: setInterval(this.handleSlideRight, 3000)
-  //  })
+  componentDidMount() {
+    // let swiperight = $.fn.swiperight;
+    // // let swipeleft = $.fn.swipeleft;
+    // $('#homepage-carousel').on('swiperight', this.handleSwipeRight);
+    // $('#homepage-carousel').on('swipeleft', this.handleSwipeLeft);
+  }
+
+  // handleSwipeRight(event) {
+  //   $(event.target).addClass('swiperight', event);
   // }
 
-  // componentWillUnmount() {
-  //   clearInterval(this.state.interval);
+  // handleSwipeLeft(event) {
+  //   $(event.target).addClass('swipeleft');
   // }
 
   render() {
@@ -56,7 +64,7 @@ export default class Carousel extends React.Component {
     }
     return (
       <div className="container col-12">
-        <div className="carousel-body col mt-3 container d-flex justify-content-center">
+        <div id="homepage-carousel" className="carousel-body col mt-3 container d-flex justify-content-center">
           <div>
             <div className="carousel-image-containerprov mb-3 p-0">
               <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}>
@@ -74,7 +82,7 @@ export default class Carousel extends React.Component {
                   <i
                     key={circleIndex}
                     onClick={circleHandleClick}
-                    className={`btn ${className} fa-circle`}>
+                    className={`${className} fa-circle ml-2`}>
                   </i>
                 );
               })
