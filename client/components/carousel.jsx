@@ -15,10 +15,6 @@ export default class Carousel extends React.Component {
     this.handleTouchEnd = this.handleTouchEnd.bind(this);
   }
 
-  //   componentDidUpdate() {
-  //   console.log("comp did update", this.state);
-  // }
-
   handleTouchStart(event) {
     // console.log('touchstart', event.touches[0]);
     const newStart = event.touches[0].clientX;
@@ -29,10 +25,11 @@ export default class Carousel extends React.Component {
   handleTouchEnd(event) {
     // console.log('touchend', event.changedTouches[0]);
     const touchEnd = event.changedTouches[0].clientX;
-    if (this.state.touchStart - touchEnd > -400) {
+    if (this.state.touchStart - touchEnd > 50) {
       // console.log('swipe right', this.state.touchStart - touchEnd);
       this.handleSlideRight();
-    } else {
+    }
+    if (this.state.touchStart - touchEnd < -50) {
       // console.log('swipe left', this.state.touchStart - touchEnd);
       this.handleSlideLeft();
     }
