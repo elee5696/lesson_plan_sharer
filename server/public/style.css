@@ -216,6 +216,11 @@ body {
   margin-top: 40px;
 }
 
+.editButton-div {
+  position: inherit;
+  left: 80%;
+}
+
 @media (min-height: 1024px) {
   .description {
     margin-top: 24px;
