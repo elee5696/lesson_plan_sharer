@@ -7,6 +7,7 @@ export default class UserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: '',
       field: ''
     };
     this.logOut = this.logOut.bind(this);
