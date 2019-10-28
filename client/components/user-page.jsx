@@ -1,16 +1,18 @@
 import React from 'react';
 import EditProfile from './profileEdit';
+import UserPhotoUpdate from './user-photo-update';
 
 export default class UserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      field: ''
+      field: '',
+      modal: false
     };
     this.logOut = this.logOut.bind(this);
     this.editProject = this.editProject.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
-
+    this.handleUpdateModal = this.handleUpdateModal.bind(this);
   }
 
   logOut(event) {
@@ -24,6 +26,12 @@ export default class UserPage extends React.Component {
 
   cancelEdit() {
     this.setState({ field: '' });
+  }
+
+  handleUpdateModal() {
+    this.setState({
+      modal: true
+    });
   }
 
   render() {
@@ -43,10 +51,14 @@ export default class UserPage extends React.Component {
             <div className="pic col-2 p-0">
               <div className="user-avatar-container mb-2">
                 <img src={this.props.userData.avatar} className="user-profile-pic mb-2" style={{ width: '100%', height: '100%' }}></img>
+
+                {this.state.modal && <UserPhotoUpdate
+                />}
               </div>
               <button
                 type="button"
-                className="btn editUserButton btn-sm shadow-none row ml-2">
+                className="btn editUserButton btn-sm shadow-none row ml-2"
+                onClick={this.handleUpdateModal}>
                 Edit
               </button>
             </div>
