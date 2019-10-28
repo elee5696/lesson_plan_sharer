@@ -159,7 +159,7 @@ class ProjectSubmit extends React.Component {
     }
 
     return (
-      <div className= "submitForm container row p-0 col-md-10 justify-content-center">
+      <div className= "submitForm container row p-0 justify-content-center">
         {redirect}
         <div className="spacer col col-md-1"></div>
         <div className="form container col col-md-8 d-flex justify-content-center m-0">
