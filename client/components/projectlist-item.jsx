@@ -1,5 +1,4 @@
 import React from 'react';
-// import Ratings from './ratings';
 import StarsRating from './stars';
 import { Link } from 'react-router-dom';
 
@@ -32,7 +31,6 @@ export default class ProjectListItem extends React.Component {
               </h6>
             </div>
           </div>
-
         </div>
 
         <div
