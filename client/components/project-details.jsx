@@ -159,7 +159,7 @@ export default class ProjectDetails extends React.Component {
                       currentUser={this.props.userData.id}
                       currentProject={this.state.project.id} />
                   </div>
-                  : <div className="login-to-leave-review"><h5 className="m-2">Please log in to leave a review.</h5></div>
+                  : <div className="login-to-leave-review mb-3"><h5 className="m-2">Please log in to leave a review.</h5></div>
               }
               <div className="review-header mt-2 mb-3">
                 <h5>Reviews</h5>

@@ -159,7 +159,7 @@ class ProjectSubmit extends React.Component {
     }
 
     return (
-      <div className= " submitForm container row p-0 col-md-10 justify-content-center">
+      <div className= "submitForm container row p-0 col-md-10 justify-content-center">
         {redirect}
         <div className="spacer col col-md-1"></div>
         <div className="form container col col-md-8 d-flex justify-content-center m-0">
@@ -189,9 +189,13 @@ class ProjectSubmit extends React.Component {
                     placeholder="Goals Entry"></input>
                   <button onClick={this.handleGoalSubmit}>+</button>
                 </div>
-                <div className="row goal-bubble-container">
+                <div className="goal-bubble-container row justify-content-center">
                   {this.state.goalsToSubmit.map((goal, index) => {
-                    return <ListBubble text={goal} key={index}/>;
+                    return <ListBubble
+                      text={goal}
+                      key={index}
+                      minWidth="140px"
+                      maxWidth="140px"/>;
                   })}
                 </div>
               </div>
@@ -206,9 +210,13 @@ class ProjectSubmit extends React.Component {
                     placeholder="Materials Entry" value={this.state.materials}></input>
                   <button onClick={this.handleMaterialSubmit}>+</button>
                 </div>
-                <div className="row materials-bubble-container">
+                <div className="row materials-bubble-container justify-content-center">
                   {this.state.materialsToSubmit.map((material, index) => {
-                    return <ListBubble text={material} key={index} />;
+                    return <ListBubble
+                      text={material}
+                      key={index}
+                      minWidth="140px"
+                      maxWidth="140px" />;
                   })}
                 </div>
               </div>
