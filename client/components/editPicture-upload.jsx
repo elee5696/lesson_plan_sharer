@@ -59,7 +59,7 @@ class EditPictureUpload extends React.Component {
 
     return (
       <div className="col picForm container p-0">
-        <div className="select-photo-text d-flex justify-content-center mt-5">
+        <div className="select-photo-text d-flex justify-content-center">
           <div className="picForm-div select-photo">Select a photo for your project page</div>
         </div>
         <div className="chooseFileButton-div col d-flex justify-content-center mt-4">
@@ -75,7 +75,7 @@ class EditPictureUpload extends React.Component {
               {this.state.imagePreviewUrl ? imagePreview : null}
             </div>
             <div style={styleNextPageButtondiv}>
-              <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '8rem' }}>
+              <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '4rem' }}>
                 <button className="uploadPicButton btn" style={{ width: '140px' }} onClick={this.onSubmit}>
                   {
                     this.state.imagePreviewUrl
