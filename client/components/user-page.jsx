@@ -7,14 +7,11 @@ export default class UserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: '',
-      field: '',
-      modal: false
+      field: ''
     };
     this.logOut = this.logOut.bind(this);
     this.editProject = this.editProject.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
-    this.handleUpdateModal = this.handleUpdateModal.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -52,12 +49,6 @@ export default class UserPage extends React.Component {
     this.setState({ field: '' });
   }
 
-  handleUpdateModal() {
-    this.setState({
-      modal: true
-    });
-  }
-
   render() {
 
     if (!this.state.user && !this.props.currentUser) {
@@ -88,9 +79,9 @@ export default class UserPage extends React.Component {
                 this.state.user.id === this.props.currentUser.id
                   ? <button
                     type="button"
+                    id="avatar"
                     className="btn editUserButton btn-sm shadow-none row ml-2"
-                    onClick={this.handleUpdateModal}>
-                  Edit
+                    onClick={this.editProject}>Edit
                   </button>
                   : null
               }
@@ -288,8 +279,7 @@ export default class UserPage extends React.Component {
                   onClick={this.logOut}>
                 Log-out
                 </button>
-                : null
-            }
+                : null }
           </div>
         </div>
         <div className="spacer col-1 p-0"></div>
