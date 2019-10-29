@@ -1,4 +1,5 @@
 body {
+  scroll-behavior: smooth;
   font-family: 'Work Sans', sans-serif !important;
 }
 
@@ -241,7 +242,6 @@ body {
   .spacer {
     width: 0px;
   }
-
 }
 
 @media (min-width: 1024px) {
@@ -320,8 +320,6 @@ body {
     margin-left: 110px;
   }
 }
-
-
 
 @media (min-width: 766px) {
   .project-card-container {

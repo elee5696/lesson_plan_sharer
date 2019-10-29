@@ -158,7 +158,7 @@ export default class App extends React.Component {
                         <Link to="/submit" className="nav-link">Submit</Link>
                       </li>
                       <li className='nav-item'>
-                        <Link to="/user" className="nav-link">User</Link>
+                        <Link to={`/user/${this.state.currentUser.id}`} className="nav-link">User</Link>
                       </li>
                     </>
                     : <li className='nav-item'>
@@ -184,21 +184,24 @@ export default class App extends React.Component {
               getProjectCallback={this.getProjects}
               searchCallback={this.searchProjects} />} />
 
-          <Route path="/user" render={props =>
+          <Route path="/user/:id" render={props =>
             <UserPage {...props}
-              userData={this.state.currentUser}
+              currentUser={this.state.currentUser}
               logOutCallback={this.logOut}
               userUpdateCallback={this.userUpdate} />} />
+
           <Route path="/login" render={props =>
             <LogInPage {...props}
               logInCallback={this.logIn}
               currentUser={this.state.currentUser}
               error={this.state.error} />} />
+
           <Route path="/signup" render={props =>
             <SignUpPage {...props}
               signUpCallback={this.signUp}
               currentUser={this.state.currentUser}
               error={this.state.error} />} />
+
           <Route path="/detail/:id" render={props =>
             <ProjectDetails {...props}
               userData={this.state.currentUser}

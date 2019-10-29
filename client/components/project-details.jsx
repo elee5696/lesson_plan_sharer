@@ -4,6 +4,7 @@ import Ratings from './ratings';
 import EditButton from './editButton';
 import Comment from './comment';
 import CommentInput from './comment-input';
+import { Link } from 'react-router-dom';
 
 export default class ProjectDetails extends React.Component {
   constructor(props) {
@@ -64,7 +65,9 @@ export default class ProjectDetails extends React.Component {
               <h2 className="project-title text-capitalize">{this.state.project.name}</h2>
             </div>
             <div className="author-details text-muted mb-4">
-              <h5>{this.state.project.author_data.name} | {this.state.project.author_data.username}</h5>
+              <Link to={`/user/${this.state.project.author_data.id}`}>
+                <h5>{this.state.project.author_data.name} | {this.state.project.author_data.username}</h5>
+              </Link>
             </div>
             <div className="project-desc-container col-12 mb-3">
               <div className="project-desc-header-container row mb-2">
@@ -159,7 +162,7 @@ export default class ProjectDetails extends React.Component {
                       currentUser={this.props.userData.id}
                       currentProject={this.state.project.id} />
                   </div>
-                  : <div className="login-to-leave-review"><h5 className="m-2">Please log in to leave a review.</h5></div>
+                  : <div className="login-to-leave-review mb-3"><h5 className="m-2">Please log in to leave a review.</h5></div>
               }
               <div className="review-header mt-2 mb-3">
                 <h5>Reviews</h5>
@@ -174,6 +177,7 @@ export default class ProjectDetails extends React.Component {
                           text={e.comment}
                           avatar={e.avatar}
                           username={e.username}
+                          user_id={e.user_id}
                           time={e.time} />
                       );
                     })

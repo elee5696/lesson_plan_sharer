@@ -187,12 +187,12 @@ class EditProjectSubmit extends React.Component {
       );
     }
     return (
-      <div className= " submitForm container row p-0 col-md-10 justify-content-center">
+      <div className= "submitForm container row p-0 col-md-10 justify-content-center">
         <div className="spacer col col-md-1"></div>
         <div className="form container col col-md-8 d-flex justify-content-center m-0">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label >Project Title</label>
+              <label>Project Title</label>
               <input
                 onChange={this.handleProjectTitleandImageChange}
                 type="text"
@@ -201,7 +201,7 @@ class EditProjectSubmit extends React.Component {
                 placeholder="Project Entry"></input>
             </div>
             <div className="description form-group">
-              <label >Description</label>
+              <label>Description</label>
               <textarea onChange={this.handleDescriptionChange}
                 value={this.state.description}
                 className="form-control descriptionBox" placeholder="Description Text" rows="3"></textarea>
@@ -218,15 +218,20 @@ class EditProjectSubmit extends React.Component {
                     placeholder="Goals Entry"></input>
                   <button onClick={this.handleGoalSubmit}>+</button>
                 </div>
-                <div className="row goal-bubble-container">
+                <div className="row goal-bubble-container justify-content-center">
                   {this.state.goalsToSubmit.map((goal, index) => {
-                    return <ListBubble text={goal} key={index} deleteGoal ={this.deleteGoal}/>;
+                    return <ListBubble
+                      text={goal}
+                      key={index}
+                      minWidth="140px"
+                      maxWidth="140px"
+                      deleteGoal ={this.deleteGoal}/>;
                   })}
                 </div>
               </div>
             </div>
             <div>
-              <div className="materials form-group inline ">
+              <div className="materials form-group inline">
                 <label
                   className="col-form-label">Materials</label>
                 <div className="col-md-8 p-0">
@@ -235,9 +240,14 @@ class EditProjectSubmit extends React.Component {
                     placeholder="Materials Entry" value={this.state.materials}></input>
                   <button onClick={this.handleMaterialSubmit}>+</button>
                 </div>
-                <div className="row materials-bubble-container">
+                <div className="row materials-bubble-container justify-content-center">
                   {this.state.materialsToSubmit.map((material, index) => {
-                    return <ListBubble text={material} key={index} deleteMaterial = {this.deleteMaterial}/>;
+                    return <ListBubble
+                      text={material}
+                      key={index}
+                      minWidth="140px"
+                      maxWidth="140px"
+                      deleteMaterial = {this.deleteMaterial}/>;
                   })}
                 </div>
               </div>
@@ -268,7 +278,6 @@ class EditProjectSubmit extends React.Component {
                   style={{ color: 'white' }}>
                   Submit Changes</button>
               </Link>
-
             </div>
           </form>
         </div>
