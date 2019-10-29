@@ -13,6 +13,7 @@ export default class Carousel extends React.Component {
     this.handleSlideRight = this.handleSlideRight.bind(this);
     this.handleTouchStart = this.handleTouchStart.bind(this);
     this.handleTouchEnd = this.handleTouchEnd.bind(this);
+    this.shuffleCarouselItems = this.shuffleCarouselItems.bind(this);
   }
 
   handleTouchStart(event) {
@@ -65,6 +66,16 @@ export default class Carousel extends React.Component {
     });
   }
 
+  shuffleCarouselItems(array) {
+    for (let arrayIndex = array.length - 1; arrayIndex > 0; arrayIndex--) {
+      const randomIndex = Math.floor(Math.random() * (arrayIndex + 1));
+      let temp = array[arrayIndex];
+      array[arrayIndex] = array[randomIndex];
+      array[randomIndex] = temp;
+    }
+    return array;
+  }
+
   render() {
     if (this.props.projects.length === 0) {
       return <h1>Page loading...</h1>;
@@ -85,7 +96,7 @@ export default class Carousel extends React.Component {
               </Link>
             </div>
             <div className="carousel-circles-container row col d-flex justify-content-center">
-              {this.props.projects.map((project, circleIndex) => {
+              {this.shuffleCarouselItems(this.props.projects).slice(0, 5).map((project, circleIndex) => {
                 var className = this.state.currentImagesIndex === circleIndex ? 'fas grey-icon' : 'far';
                 var circleHandleClick = () => this.goToProject(circleIndex);
                 return (
