@@ -5,10 +5,6 @@ import WriteButton from './write-button';
 
 export default class Homepage extends React.Component {
 
-  componentDidMount() {
-    this.props.getProjectCallback();
-  }
-
   render() {
     return (
       <div className="entire-page-container container row col m-0 p-0">

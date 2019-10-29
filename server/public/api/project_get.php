@@ -123,8 +123,16 @@ if (isset($_GET['field']) && isset($_GET['value'])) {
 }
 
 $stmt->execute();
+
+
 $result = $stmt->get_result();
+$num = mysqli_num_rows($result);
 $stmt->close();
+
+if($num <= 0 ) {
+  throw new Exception( 'no projects' );
+  exit();
+}
 
 $output = [];
 while($row = mysqli_fetch_assoc($result)){

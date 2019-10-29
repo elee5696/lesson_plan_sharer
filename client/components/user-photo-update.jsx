@@ -45,7 +45,7 @@ export default class UserPhotoUpdate extends React.Component {
 
     return (
       <div
-        className="modal user-pic-update-modal"
+        className="modal user-pic edit-modal"
         tabIndex="-1"
         role="dialog"
         style={{ display: 'block' }}>
@@ -84,7 +84,6 @@ export default class UserPhotoUpdate extends React.Component {
             </div>
           </div>
         </div>
-
       </div>
     );
   }
