@@ -60,10 +60,6 @@ export default class Ratings extends React.Component {
             <h6 className="mr-3 rating-score-input">{(parseFloat(this.state.rating)).toFixed(2)}/5</h6>
           </div>
         </div>
-        {this.state.rated ? <p>Rated</p> : null }
-        <div className="ml-0 mb-2 row rating-details-container">
-          <h6 className="rating-details-input">Total Ratings: { this.state.total ? this.state.total : this.props.rating_count }</h6>
-        </div>
       </div>
     );
   }

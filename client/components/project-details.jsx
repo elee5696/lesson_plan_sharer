@@ -163,6 +163,10 @@ export default class ProjectDetails extends React.Component {
                   id={this.state.project.id}
                   rating={this.state.project.rating_data.rating}
                   rating_count={this.state.project.rating_data.count} />
+                {this.state.rated ? <p>Rated</p> : null }
+                <div className="ml-0 mb-2 row rating-details-container">
+                  <h6 className="rating-details-input">Total Ratings: { this.state.total ? this.state.total : this.state.project.rating_data.count }</h6>
+                </div>
               </div>
             </div>
             <div className="project-reviews">
