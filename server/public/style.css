@@ -74,7 +74,7 @@ body {
 }
 
 
-.searchButton, .uploadPicButton, .projectSubmitButton, .editProjectButton,.editUserButton {
+.searchButton, .uploadPicButton, .projectSubmitButton, .editProjectButton,.editUserButton, .addYoutubeVid {
   background:#f8b1d1;
   color: white;
 }

@@ -13,7 +13,14 @@ class EditPictureUpload extends React.Component {
       projectToEdit: {}
     };
     this.onSubmit = this.onSubmit.bind(this);
+    this.onYouTubeChange = this.onYouTubeChange.bind(this);
     this.onChange = this.onChange.bind(this);
+  }
+  onYouTubeChange(event) {
+    this.setState({
+      youtubeVideo: event.target.value
+    });
+
   }
 
   onSubmit(event) {
@@ -75,6 +82,9 @@ class EditPictureUpload extends React.Component {
               {this.state.imagePreviewUrl ? imagePreview : null}
             </div>
             <div style={styleNextPageButtondiv}>
+              <input onChange={this.onYouTubeChange} className="youtube-link w-100"
+                value={this.state.youtubeVideo}
+                placeholder="Place A YouTube Video link here (optional)"></input>
               <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '4rem' }}>
                 <button className="uploadPicButton btn" style={{ width: '140px' }} onClick={this.onSubmit}>
                   {
@@ -83,6 +93,7 @@ class EditPictureUpload extends React.Component {
                         pathname: '/editSubmission',
                         state: {
                           file: this.state.file,
+                          youtubeVideoUrl: this.state.youtubeVideo,
                           projectToEdit: this.state.projectToEdit
                         }
                       }}>Next Page</Link>

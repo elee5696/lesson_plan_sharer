@@ -17,12 +17,14 @@ class ProjectSubmit extends React.Component {
       'goals': '',
       'materials': '',
       'userId': '',
-      'location': ''
+      'location': '',
+      'YouTubeVideo': ''
     };
     this.id = null;
     this.materialsArray = [];
     this.goalsArray = [];
     this.image = null;
+    this.YouTubeVideo = null;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGoalSubmit = this.handleGoalSubmit.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -39,7 +41,9 @@ class ProjectSubmit extends React.Component {
     this.setState({
       name: event.target.value,
       image: this.image,
-      userId: this.props.userData.id
+      userId: this.props.userData.id,
+      YouTubeVideo: this.YouTubeVideo
+
     });
   }
 
@@ -53,7 +57,8 @@ class ProjectSubmit extends React.Component {
       goals: this.state.goalsToSubmit,
       materials: this.state.materialsToSubmit,
       image: `/images/${this.state.image}`,
-      user_id: this.state.userId
+      user_id: this.state.userId,
+      youtubeLink: this.YouTubeVideo
 
     });
     fetch(`/api/project.php`, {
@@ -138,6 +143,8 @@ class ProjectSubmit extends React.Component {
         pictureName = pictureBrokenUp.join('');
       }
       this.image = pictureName;
+      this.YouTubeVideo = this.props.location.state.youtubeVideoUrl;
+
     }
   }
   goToDetails() {

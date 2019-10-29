@@ -9,10 +9,19 @@ class PictureUploadForm extends React.Component {
     this.state = {
       inputValue: null,
       file: null,
-      imagePreviewUrl: null
+      imagePreviewUrl: null,
+      youtubeVideo: ''
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onYouTubeChange = this.onYouTubeChange.bind(this);
+    // this.addVideo = this.addVideo.bind(this);
+  }
+  onYouTubeChange(event) {
+    this.setState({
+      youtubeVideo: event.target.value
+    });
+
   }
 
   onSubmit(event) {
@@ -67,15 +76,24 @@ class PictureUploadForm extends React.Component {
             <div>
               {this.state.imagePreviewUrl ? imagePreview : null}
             </div>
+            <div>
+
+            </div>
             <div style={styleNextPageButtondiv}>
+
+              <input onChange={this.onYouTubeChange} className="youtube-link w-100"
+                value={this.state.youtubeVideo}
+                placeholder="Place A YouTube Video link here (optional)"></input>
               <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '4rem' }}>
+
                 <button className="uploadPicButton btn" style={{ width: '140px' }} onClick={this.onSubmit}>
                   {
                     this.state.imagePreviewUrl
                       ? <Link style={{ color: 'white' }} to={{
                         pathname: '/submit2',
                         state: {
-                          file: this.state.file
+                          file: this.state.file,
+                          youtubeVideoUrl: this.state.youtubeVideo
                         }
                       }}>Next Page</Link>
                       : 'Next Page'

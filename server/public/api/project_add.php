@@ -4,8 +4,8 @@ if (defined(INTERNAL)) {
   exit('Direct access is not allowed');
 }
 
-$stmt = $conn->prepare("INSERT INTO projects (`name`, `description`, `outcomes`, `set_up`, `user_id`) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssi", $name, $description, $outcomes, $set_up, $user_id);
+$stmt = $conn->prepare("INSERT INTO projects (`name`, `description`, `outcomes`, `set_up`, `user_id`,`youtubeLink`) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssis", $name, $description, $outcomes, $set_up, $user_id, $youtubeLink);
 
 $_POST = get_body();
 $name = $_POST['name'];
@@ -13,6 +13,7 @@ $description = $_POST['description'];
 $outcomes = $_POST['outcomes'];
 $set_up = $_POST['set_up'];
 $user_id = $_POST['user_id'];
+$youtubeLink = $_POST['youtubeLink'];
 
 $stmt->execute();
 $stmt->close();

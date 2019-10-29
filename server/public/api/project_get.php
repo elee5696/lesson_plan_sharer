@@ -13,6 +13,7 @@ $query =
     outcomes,
     goals,
     materials,
+    youtubeLink,
     user_id,
     image,
     username,
@@ -30,6 +31,7 @@ JOIN
         `goals`,
         `materials`,
         `user_id`,
+        `youtubeLink`,
         `filename` AS image
     FROM
         projects AS p
