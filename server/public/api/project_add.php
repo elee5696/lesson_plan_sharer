@@ -32,7 +32,7 @@ while( $row = mysqli_fetch_assoc($result) ) {
 }
 
 if ((!$result)) {
-throw new Exception( mysqli_error( $conn ) );
+  throw new Exception( mysqli_error( $conn ) );
 }
 
 $stmt = $conn->prepare("INSERT INTO images (`filename`, `project_id`) VALUES (?, ?)");
