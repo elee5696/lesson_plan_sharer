@@ -61,7 +61,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'/images/stick-figure.png',1,NULL),(2,'/images/name-beads.png',2,NULL),(4,'/images/flower.jpg',8,NULL),(5,'/images/craft.jpg',9,NULL),(6,'/images/craft2.jpg',10,NULL),(7,'/images/craft3.jpeg',11,NULL),(8,'/images/craft4.jpeg',12,NULL),(9,'/images/craft5.jpg',13,NULL),(10,'/images/craft6.jpeg',14,NULL),(11,'/images/Screenshot_20191025_130509.png',15,NULL),(12,'/images/ScreenShot2019-10-13at8.39.31PM.png',16,NULL),(13,'/images/Screenshot_20191025_130509.png',17,NULL),(14,'/images/Screenshot_20191025_130509.png',18,NULL),(15,'/images/Screenshot_20191025_130509.png',19,NULL),(16,'/images/Screenshot_20191025_130509.png',20,NULL),(17,'/images/Screenshot_20191025_130509.png',21,NULL),(18,'/images/Screenshot_20191025_130509.png',22,NULL),(19,'/images/6820517-tulip-fields.jpg',22,NULL),(20,'/images/6820517-tulip-fields.jpg',22,NULL),(21,'/images/beautiful-flower-field-background-1.jpg',22,NULL),(22,'/images/beautiful-flower-field-background-1.jpg',22,NULL),(23,'/images/beautiful-flower-field-background-1.jpg',22,NULL),(24,'/images/6820517-tulip-fields.jpg',23,NULL);
+INSERT INTO `images` VALUES (1,'/images/stick-figure.png',1,NULL),(2,'/images/name-beads.png',2,NULL),(4,'/images/flower.jpg',8,NULL),(5,'/images/craft.jpg',9,NULL),(6,'/images/craft2.jpg',10,NULL),(7,'/images/craft3.jpeg',11,NULL),(8,'/images/craft4.jpeg',12,NULL),(9,'/images/craft5.jpg',13,NULL),(10,'/images/craft6.jpeg',14,NULL),(11,'/images/Screenshot_20191025_130509.png',15,NULL),(12,'/images/ScreenShot2019-10-13at8.39.31PM.png',16,NULL),(13,'/images/Screenshot_20191025_130509.png',17,NULL),(14,'/images/Screenshot_20191025_130509.png',18,NULL),(15,'/images/Screenshot_20191025_130509.png',19,NULL),(16,'/images/Screenshot_20191025_130509.png',20,NULL),(17,'/images/Screenshot_20191025_130509.png',21,NULL),(23,'/images/beautiful-flower-field-background-1.jpg',22,NULL),(24,'/images/6820517-tulip-fields.jpg',23,NULL);
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,7 +156,7 @@ CREATE TABLE `project_rating` (
 
 LOCK TABLES `project_rating` WRITE;
 /*!40000 ALTER TABLE `project_rating` DISABLE KEYS */;
-INSERT INTO `project_rating` VALUES (1,4.83051,59,285),(2,4.97661,171,851),(8,5,4,20),(9,0,0,0),(10,0,0,0),(11,0,0,0),(12,0,0,0),(13,0,0,0),(14,0,0,0),(15,0,0,0),(22,0,0,0),(22,0,0,0),(22,0,0,0),(22,0,0,0),(22,0,0,0),(22,0,0,0),(23,0,0,0);
+INSERT INTO `project_rating` VALUES (1,4.83051,59,285),(2,4.97661,171,851),(8,5,4,20),(9,0,0,0),(10,0,0,0),(11,0,0,0),(12,0,0,0),(13,0,0,0),(14,0,0,0),(15,0,0,0),(22,0,0,0),(23,0,0,0);
 /*!40000 ALTER TABLE `project_rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-28 18:33:09
+-- Dump completed on 2019-10-29 18:41:53
