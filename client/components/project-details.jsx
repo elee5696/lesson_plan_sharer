@@ -101,9 +101,12 @@ export default class ProjectDetails extends React.Component {
       <div className="entire-page-container container row col m-0 p-0">
         {this.state.modal ? modal : null}
         <div className="back-button-container mt-3 mb-3 col-12">
-          <div
-            onClick={this.props.history.goBack}
-            className="back-button float-left">{'< Back'}
+          <div>
+
+            <Link
+              to = "/provs"> {'<Back to Provs'}
+            </Link>
+
           </div>
           {
             this.state.project.author_data.id === this.props.userData.id
