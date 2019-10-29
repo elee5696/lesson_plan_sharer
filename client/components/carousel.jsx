@@ -17,21 +17,17 @@ export default class Carousel extends React.Component {
   }
 
   handleTouchStart(event) {
-    // console.log('touchstart', event.touches[0]);
     const newStart = event.touches[0].clientX;
     this.setState({
       touchStart: newStart
     });
   }
   handleTouchEnd(event) {
-    // console.log('touchend', event.changedTouches[0]);
     const touchEnd = event.changedTouches[0].clientX;
     if (this.state.touchStart - touchEnd > 50) {
-      // console.log('swipe right', this.state.touchStart - touchEnd);
       this.handleSlideRight();
     }
     if (this.state.touchStart - touchEnd < -50) {
-      // console.log('swipe left', this.state.touchStart - touchEnd);
       this.handleSlideLeft();
     }
   }
@@ -40,7 +36,6 @@ export default class Carousel extends React.Component {
     this.setState({
       currentImagesIndex: this.state.currentImagesIndex + 1
     });
-    // console.log('I swiped right');
     if (this.state.currentImagesIndex === this.props.projects.length - 1) {
       this.setState({
         currentImagesIndex: 0
@@ -52,7 +47,6 @@ export default class Carousel extends React.Component {
     this.setState({
       currentImagesIndex: this.state.currentImagesIndex - 1
     });
-    // console.log('I swiped left');
     if (this.state.currentImagesIndex === 0) {
       this.setState({
         currentImagesIndex: this.props.projects.length - 1
@@ -99,6 +93,7 @@ export default class Carousel extends React.Component {
               {this.shuffleCarouselItems(this.props.projects).slice(0, 5).map((project, circleIndex) => {
                 var className = this.state.currentImagesIndex === circleIndex ? 'fas grey-icon' : 'far';
                 var circleHandleClick = () => this.goToProject(circleIndex);
+                // console.log(this.shuffleCarouselItems(this.props.projects).slice(0, 5));
                 return (
                   <i
                     key={circleIndex}
