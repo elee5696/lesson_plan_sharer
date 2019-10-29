@@ -8,12 +8,12 @@ export default class Carousel extends React.Component {
       currentImagesIndex: 0,
       touchStart: null,
       touchEnd: null
+      // shuffledArray: []
     };
     this.handleSlideLeft = this.handleSlideLeft.bind(this);
     this.handleSlideRight = this.handleSlideRight.bind(this);
     this.handleTouchStart = this.handleTouchStart.bind(this);
     this.handleTouchEnd = this.handleTouchEnd.bind(this);
-    this.shuffleCarouselItems = this.shuffleCarouselItems.bind(this);
   }
 
   handleTouchStart(event) {
@@ -22,6 +22,7 @@ export default class Carousel extends React.Component {
       touchStart: newStart
     });
   }
+
   handleTouchEnd(event) {
     const touchEnd = event.changedTouches[0].clientX;
     if (this.state.touchStart - touchEnd > 50) {
@@ -60,18 +61,8 @@ export default class Carousel extends React.Component {
     });
   }
 
-  shuffleCarouselItems(array) {
-    for (let arrayIndex = array.length - 1; arrayIndex > 0; arrayIndex--) {
-      const randomIndex = Math.floor(Math.random() * (arrayIndex + 1));
-      let temp = array[arrayIndex];
-      array[arrayIndex] = array[randomIndex];
-      array[randomIndex] = temp;
-    }
-    return array;
-  }
-
   render() {
-    if (this.props.projects.length === 0) {
+    if (this.props.shuffledArray.length === 0) {
       return <h1>Page loading...</h1>;
     }
     return (
@@ -82,18 +73,18 @@ export default class Carousel extends React.Component {
           onTouchEnd={this.handleTouchEnd}>
           <div>
             <div className="carousel-image-containerprov mb-3 p-0">
-              <Link to={`/detail/${this.props.projects[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}>
+              <Link to={`/detail/${this.props.shuffledArray[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}>
                 <img
                   className="carousel-image"
-                  src={this.props.projects[this.state.currentImagesIndex].image}
+                  src={this.props.shuffledArray[this.state.currentImagesIndex].image}
                   style={{ width: '100%', maxWidth: '700px', maxHeight: '500px' }}></img>
               </Link>
             </div>
             <div className="carousel-circles-container row col d-flex justify-content-center">
-              {this.shuffleCarouselItems(this.props.projects).slice(0, 5).map((project, circleIndex) => {
+              {this.props.shuffledArray.slice(0, 5).map((project, circleIndex) => {
                 var className = this.state.currentImagesIndex === circleIndex ? 'fas grey-icon' : 'far';
                 var circleHandleClick = () => this.goToProject(circleIndex);
-                // console.log(this.shuffleCarouselItems(this.props.projects).slice(0, 5));
+                // console.log(this.shuffleCarouselItems(this.state.shuffledArray).slice(0, 5));
                 return (
                   <i
                     key={circleIndex}

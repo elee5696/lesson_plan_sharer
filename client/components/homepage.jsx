@@ -4,9 +4,35 @@ import Searchbar from './search-bar';
 import WriteButton from './write-button';
 
 export default class Homepage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shuffledArray: []
+    };
+  }
 
   componentDidMount() {
     this.props.getProjectCallback();
+
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.projects !== prevProps.projects) {
+      this.shuffleCarouselItems(this.props.projects);
+    }
+  }
+
+  shuffleCarouselItems(originalArray) {
+    const array = originalArray.slice();
+    for (let arrayIndex = array.length - 1; arrayIndex > 0; arrayIndex--) {
+      const randomIndex = Math.floor(Math.random() * (arrayIndex + 1));
+      let temp = array[arrayIndex];
+      array[arrayIndex] = array[randomIndex];
+      array[randomIndex] = temp;
+    }
+    // console.log(array);
+    this.setState({
+      shuffledArray: array
+    });
   }
 
   render() {
@@ -25,7 +51,8 @@ export default class Homepage extends React.Component {
               <h3 className="featured-posts-text">Featured Provs</h3>
             </div>
             <Carousel
-              projects={this.props.projects} />
+              projects={this.props.projects}
+              shuffledArray={this.state.shuffledArray} />
           </div>
           <WriteButton />
         </div>
