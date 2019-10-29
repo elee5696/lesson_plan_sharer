@@ -3,10 +3,19 @@ if (defined(INTERNAL)) {
   exit('Direct access is not allowed');
 }
 
+require('picture_upload.php');
 $_POST = get_body();
+
+if ($filename) {
+  $field = 'avatar';
+  $value = '/images/$filename';
+} else {
+  $field = $_POST['field'];
+  $value = $_POST['value'];
+}
+
 $id = $_POST['id'];
-$field = $_POST['field'];
-$value = $_POST['value'];
+
 
 $query =
 "UPDATE `user_table`
