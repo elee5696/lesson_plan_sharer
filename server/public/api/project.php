@@ -23,6 +23,9 @@ switch($method) {
   case 'PUT':
     require('project_edit.php');
     break;
+  case 'DELETE':
+    require('project_delete.php');
+    break;
   default:
     throw new Exception('Cannot ' . $method . ' /api/project.php');
 }
