@@ -8,7 +8,6 @@ export default class Carousel extends React.Component {
       currentImagesIndex: 0,
       touchStart: null,
       touchEnd: null
-      // shuffledArray: []
     };
     this.handleSlideLeft = this.handleSlideLeft.bind(this);
     this.handleSlideRight = this.handleSlideRight.bind(this);
@@ -84,7 +83,6 @@ export default class Carousel extends React.Component {
               {this.props.shuffledArray.slice(0, 5).map((project, circleIndex) => {
                 var className = this.state.currentImagesIndex === circleIndex ? 'fas grey-icon' : 'far';
                 var circleHandleClick = () => this.goToProject(circleIndex);
-                // console.log(this.shuffleCarouselItems(this.state.shuffledArray).slice(0, 5));
                 return (
                   <i
                     key={circleIndex}

@@ -29,7 +29,6 @@ export default class Homepage extends React.Component {
       array[arrayIndex] = array[randomIndex];
       array[randomIndex] = temp;
     }
-    // console.log(array);
     this.setState({
       shuffledArray: array
     });
