@@ -18,12 +18,14 @@ export default class App extends React.Component {
       projects: [],
       searchResults: '',
       currentUser: '',
-      error: false
+      error: false,
+      fetched: false
     };
     this.getProjects = this.getProjects.bind(this);
     this.searchProjects = this.searchProjects.bind(this);
     this.resetResults = this.resetResults.bind(this);
     this.userUpdate = this.userUpdate.bind(this);
+    this.deleteProject = this.deleteProject.bind(this);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
     this.signUp = this.signUp.bind(this);
@@ -36,6 +38,7 @@ export default class App extends React.Component {
         currentUser: JSON.parse(activeSession)
       });
     }
+    this.getProjects();
   }
 
   searchProjects(value = '', field = 'name') {
@@ -56,7 +59,8 @@ export default class App extends React.Component {
       .then(res => res.json())
       .then(fetchedProjects => {
         this.setState({
-          projects: fetchedProjects
+          projects: fetchedProjects,
+          fetched: true
         });
       })
       .catch(err => console.error(err));
@@ -122,6 +126,25 @@ export default class App extends React.Component {
     window.sessionStorage.removeItem('currentUser');
 
   }
+
+  deleteProject(projectId) {
+
+    let projects = [...this.state.projects];
+    const body = { id: parseInt(projectId) };
+
+    fetch('/api/project.php', {
+      method: 'DELETE',
+      body: JSON.stringify(body)
+    })
+      .then(res => res.json())
+      .then(res => {
+        projects = projects.filter(e => e.id !== projectId);
+        this.setState = {
+          projects: projects
+        };
+      });
+  }
+
   render() {
     return (
       <Router>
@@ -204,7 +227,10 @@ export default class App extends React.Component {
           <Route path="/detail/:id" render={props =>
             <ProjectDetails {...props}
               userData={this.state.currentUser}
-              projectID={this.state.location} />} />
+              projectID={this.state.location}
+              fetched={this.state.fetched}
+              getProjects={this.getProjects}
+              deleteProject={this.deleteProject} />} />
 
           <Route path="/edit" render={props =>
             <EditPictureUpload {...props}

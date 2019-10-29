@@ -4,15 +4,20 @@ import Ratings from './ratings';
 import EditButton from './editButton';
 import Comment from './comment';
 import CommentInput from './comment-input';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import YoutubePlayer from './youtubePlayer';
 
 export default class ProjectDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      project: null
+      project: null,
+      modal: false,
+      error: false,
+      deleted: false
     };
+    this.modalToggle = this.modalToggle.bind(this);
+    this.deleteProject = this.deleteProject.bind(this);
   }
 
   componentDidMount() {
@@ -24,19 +29,81 @@ export default class ProjectDetails extends React.Component {
           project: project[0]
         });
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        this.setState({
+          error: err
+        });
+      }
+      );
 
+    if (!this.props.fetched) {
+      this.props.getProjects();
+    }
+  }
+
+  deleteProject() {
+    const { id } = this.props.match.params;
+    this.props.deleteProject(id);
+    this.setState({ deleted: true });
+  }
+
+  modalToggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   render() {
+    if (this.state.deleted) {
+      return <Redirect to="/provs"></Redirect>;
+    }
+
+    if (this.state.error) {
+      return <div className="error">No Project Found with ID</div>;
+    }
+
     if (this.state.project === null) {
       return <div className="page-loading">Page loading...</div>;
     }
+
     let setupSteps = this.state.project.set_up.split(',');
+
+    const modal =
+      <div
+        className="modal profile-delete edit-modal"
+        tabIndex="-1"
+        role="dialog"
+        style={{ display: 'block' }}>
+        <div
+          className="modal-dialog modal-dialog-centered"
+          role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Delete This Project?</h5>
+            </div>
+            <div className="modal-body pt-0">
+              <p>Are you sure you want to delete this project?</p>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn searchButton"
+                onClick={this.deleteProject}>DELETE
+              </button>
+              <button
+                type="button"
+                className="btn btn-light"
+                onClick={this.modalToggle}>Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>;
 
     return (
 
       <div className="entire-page-container container row col m-0 p-0">
+        {this.state.modal ? modal : null}
         <div className="back-button-container mt-3 mb-3 col-12">
           <div
             onClick={this.props.history.goBack}
@@ -48,7 +115,8 @@ export default class ProjectDetails extends React.Component {
                 <EditButton
                   userData={this.state.project.author_data.id}
                   project={this.state.project}
-                  currentUser={this.props.userData.id} />
+                  currentUser={this.props.userData.id}
+                  modalToggle={this.modalToggle}/>
               </div>
               : null
           }
