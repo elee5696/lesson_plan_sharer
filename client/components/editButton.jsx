@@ -16,7 +16,7 @@ export default class EditButton extends React.Component {
 
     return (
       <Link to={{
-        pathname: '/editSubmissionImage',
+        pathname: '/edit',
         state: {
           projectToEdit: this.props.project
         }

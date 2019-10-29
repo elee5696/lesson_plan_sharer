@@ -6,7 +6,6 @@ if (defined(INTERNAL)) {
 
 $_PUT =get_body();
 
-print_r($_PUT);
 $id = $_PUT['project_id'];
 $userId = $_PUT['user_id'];
 $name = $_PUT['name'];

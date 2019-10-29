@@ -207,11 +207,11 @@ export default class App extends React.Component {
               userData={this.state.currentUser}
               projectID={this.state.location} />} />
 
-          <Route path="/editSubmissionImage" render={props =>
+          <Route path="/edit" render={props =>
             <EditPictureUpload {...props}
               userData={this.state.currentUser} />} />
 
-          <Route path="/editSubmission" render={props =>
+          <Route path="/edit2" render={props =>
             <EditProjectSubmit {...props}
               userData={this.state.currentUser} />} />
 

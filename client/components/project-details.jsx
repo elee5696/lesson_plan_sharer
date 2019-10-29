@@ -40,20 +40,19 @@ export default class ProjectDetails extends React.Component {
         <div className="back-button-container mt-3 mb-3 col-12">
           <div
             onClick={this.props.history.goBack}
-            className="back-button col-10">{'< Back'}
+            className="back-button float-left">{'< Back'}
           </div>
+          {
+            this.state.project.author_data.id === this.props.userData.id
+              ? <div className="editButton-div ml-5">
+                <EditButton
+                  userData={this.state.project.author_data.id}
+                  project={this.state.project}
+                  currentUser={this.props.userData.id} />
+              </div>
+              : null
+          }
         </div>
-        {
-          this.state.project.author_data.id === this.props.userData.id
-            ? <div className="editButton-div">
-              <EditButton
-                userData={this.state.project.author_data.id}
-                project={this.state.project}
-                currentUser={this.props.userData.id} />
-            </div>
-            : null
-        }
-        <div className="spacer col col-1 p-0"></div>
         <div className="col-10 p-0">
           <div className="project-image-container row justify-content-center mb-3">
             <img
@@ -202,7 +201,6 @@ export default class ProjectDetails extends React.Component {
             </div>
           </div>
         </div>
-        <div className="spacer col-1 p-0"></div>
       </div>
     );
   }
