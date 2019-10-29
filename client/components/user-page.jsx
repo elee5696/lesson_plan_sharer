@@ -16,9 +16,7 @@ export default class UserPage extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.match.url !== prevProps.match.url) {
-      this.getUser();
-    }
+
   }
 
   componentDidMount() {
@@ -73,7 +71,11 @@ export default class UserPage extends React.Component {
                   className="user-profile-pic mb-2"
                   style={{ width: '100%', height: '100%' }}></img>
                 {
-                  this.state.modal && <UserPhotoUpdate/>
+                  this.state.field === 'avatar' &&
+                  <UserPhotoUpdate
+                    id={this.state.user.id}
+                    cancelCallback={this.cancelEdit}
+                    userUpdateCallback={this.props.userUpdateCallback}/>
                 }
               </div>
               {
@@ -82,7 +84,8 @@ export default class UserPage extends React.Component {
                     type="button"
                     id="avatar"
                     className="btn editUserButton btn-sm shadow-none row ml-2"
-                    onClick={this.editProject}>Edit
+                    onClick={this.editProject}
+                  >Edit
                   </button>
                   : null
               }
@@ -144,7 +147,8 @@ export default class UserPage extends React.Component {
                       ? this.state.user.id
                       : this.props.currentUser.id
                   }
-                cancelCallback={this.cancelEdit} />
+                cancelCallback={this.cancelEdit}
+                userUpdateCallback={this.props.userUpdateCallback} />
               : <div className="name-key-value-container col ml-0 mb-3">
                 <div className="name-key row p-0">
                   <p className="col-8 p-0 m-0">Name: </p>
@@ -180,7 +184,8 @@ export default class UserPage extends React.Component {
                       ? this.state.user.id
                       : this.props.currentUser.id
                   }
-                cancelCallback={this.cancelEdit} />
+                cancelCallback={this.cancelEdit}
+                userUpdateCallback={this.props.userUpdateCallback} />
               : <div className="experience-key-value-container col ml-0 mb-3">
                 <div className="experience-key row p-0">
                   <p className="col-8 p-0 m-0">Experience:</p>
@@ -216,6 +221,7 @@ export default class UserPage extends React.Component {
                       ? this.state.user.id
                       : this.props.currentUser.id
                   }
+                userUpdateCallback={this.props.userUpdateCallback}
                 cancelCallback={this.cancelEdit} />
               : <div className="about-me-key-value-container col ml-0 mb-3">
                 <div className="about-me-key row p-0">

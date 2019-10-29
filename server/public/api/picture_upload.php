@@ -1,5 +1,4 @@
 <?php
-
 if($_FILES['picture']) {
 
   $errors=0;

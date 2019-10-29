@@ -394,3 +394,7 @@ body {
 .textarea {
   width: 100%;
 }
+
+.user-pic-update-modal {
+  background: rgba(0, 0, 0, 0.329);
+}

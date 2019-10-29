@@ -1,21 +1,17 @@
 <?php
-if (defined(INTERNAL)) {
-  exit('Direct access is not allowed');
-}
 
-require('picture_upload.php');
-$_POST = get_body();
+$post_body = get_body();
 
-if ($filename) {
+if (isset($_FILES['picture'])) {
+  require('picture_upload.php');
   $field = 'avatar';
-  $value = '/images/$filename';
+  $value = "/images/$filename";
+  $id = $_POST['id'];
 } else {
-  $field = $_POST['field'];
-  $value = $_POST['value'];
+  $field = $post_body['field'];
+  $value = $post_body['value'];
+  $id = $post_body['id'];
 }
-
-$id = $_POST['id'];
-
 
 $query =
 "UPDATE `user_table`
@@ -23,6 +19,8 @@ $query =
     `$field`='$value'
   WHERE
     `id`=$id";
+
+print $query;
 
 $result = mysqli_query($conn, $query);
 if(!$result) {
@@ -41,6 +39,7 @@ if(!$result) {
 
 $output = [];
 while($row = mysqli_fetch_assoc($result)){
+  $row['id'] = intval($row['id']);
   $output = $row;
 }
 

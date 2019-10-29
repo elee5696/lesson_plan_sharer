@@ -28,7 +28,7 @@ export default class LogInPage extends React.Component {
 
     let redirect = null;
     if (!error && user) {
-      redirect = <Redirect to='/user' />;
+      redirect = <Redirect to={`/user/${user.id}`} />;
     }
 
     return (
