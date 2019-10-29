@@ -15,12 +15,13 @@ export default class UserPhotoUpdate extends React.Component {
     event.preventDefault();
     const formData = new FormData();
     formData.append('picture', this.state.file);
-    fetch('/api/user.php', {
-      method: 'PATCH',
+    formData.append('id', this.props.id);
+    const data = {
+      method: 'POST',
       body: formData
-    })
-      .then(res => res.json());
-
+    };
+    this.props.userUpdateCallback(data);
+    this.props.cancelCallback();
   }
 
   onChange(event) {
@@ -36,37 +37,54 @@ export default class UserPhotoUpdate extends React.Component {
   }
 
   render() {
-    const imagePreview = <img className="userImage" src={this.state.imagePreviewUrl}/>;
+    const imagePreview =
+    <img
+      className="userImage"
+      src={this.state.imagePreviewUrl}
+      style={{ width: '90%', height: 'auto' }}/>;
 
     return (
-      <div className="modal user-pic-update-modal" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">Update Photo</h5>
-          </div>
-          <div className="modal-body">
-            <p>Please select a photo.</p>
-          </div>
-
-          <div className="modal-footer">
-            <form id="profilePicture">
-              <input
-                className="inputButton p-0"
-                type="file"
-                name="picture"
-                onChange={this.onChange}></input>
-              <div>
-                {this.state.imagePreviewUrl ? imagePreview : null}
-              </div>
-            </form>
-            <button type="button" className="btn btn-light" onClick={this.onSubmit}> {this.state.imagePreview}Save</button>
-            <button
-              type="button"
-              className="btn btn-light"
-              onClick={this.props.cancelCallback}>Cancel
-            </button>
+      <div
+        className="modal user-pic-update-modal"
+        tabIndex="-1"
+        role="dialog"
+        style={{ display: 'block' }}>
+        <div
+          className="modal-dialog modal-dialog-centered"
+          role="document" >
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Update Photo</h5>
+            </div>
+            <div className="modal-body pt-0">
+              <form id="profilePicture">
+                <input
+                  className="inputButton mt-3"
+                  type="file"
+                  name="picture"
+                  onChange={this.onChange}
+                  style={{ width: '100%' }}></input>
+                <div>
+                  {this.state.imagePreviewUrl ? imagePreview : null}
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn searchButton"
+                onClick={this.onSubmit}>
+                {this.state.imagePreview}Save
+              </button>
+              <button
+                type="button"
+                className="btn btn-light"
+                onClick={this.props.cancelCallback}>Cancel
+              </button>
+            </div>
           </div>
         </div>
+
       </div>
     );
   }
