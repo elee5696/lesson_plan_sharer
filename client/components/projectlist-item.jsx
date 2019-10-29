@@ -1,5 +1,5 @@
 import React from 'react';
-import StarsRating from './stars';
+import Ratings from './ratings';
 import { Link } from 'react-router-dom';
 
 export default class ProjectListItem extends React.Component {
@@ -21,7 +21,7 @@ export default class ProjectListItem extends React.Component {
             <h3 className="car-title text-capitalize mb-3" >
               {this.props.projectName}
             </h3>
-            <StarsRating
+            <Ratings
               id={this.props.id}
               rating={this.props.rating}
               rating_count={this.props.rating_count} />
@@ -57,7 +57,7 @@ export default class ProjectListItem extends React.Component {
                   </p>
                 </div>
 
-                <StarsRating
+                <Ratings
                   id={this.props.id}
                   rating={this.props.rating}
                   rating_count={this.props.rating_count}/>
