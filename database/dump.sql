@@ -16,6 +16,85 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `GOALSLIST`
+--
+
+DROP TABLE IF EXISTS `GOALSLIST`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `GOALSLIST` (
+  `ID` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(60) NOT NULL,
+  `PROJECT_ID` mediumint(8) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `GOALSLIST`
+--
+
+LOCK TABLES `GOALSLIST` WRITE;
+/*!40000 ALTER TABLE `GOALSLIST` DISABLE KEYS */;
+INSERT INTO `GOALSLIST` VALUES (1,'art',1),(2,'hands-on',1),(3,'creative',1),(4,'crafts',1),(5,'art',2),(6,'reading',2),(7,'cognitive',2),(8,'hands-on',2),(9,'creative',2),(10,'crafts',2),(11,'art',6),(12,'hands-on',6),(13,'creative',6),(14,'crafts',6),(15,'art',7),(16,'hands-on',7),(17,'creative',7),(18,'crafts',7),(19,'art',8),(20,'hands-on',8),(21,'creative',8),(22,'crafts',8),(23,'art',9),(24,'reading',9),(25,'cognitive',9),(26,'hands-on',9),(27,'creative',9),(28,'crafts',9),(29,'art',10),(30,'reading',10),(31,'cognitive',10),(32,'hands-on',10),(33,'creative',10),(34,'crafts',10),(35,'art',11),(36,'reading',11),(37,'cognitive',11),(38,'hands-on',11),(39,'creative',11),(40,'crafts',11);
+/*!40000 ALTER TABLE `GOALSLIST` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `MATERIALSLIST`
+--
+
+DROP TABLE IF EXISTS `MATERIALSLIST`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `MATERIALSLIST` (
+  `ID` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(60) NOT NULL,
+  `PROJECT_ID` mediumint(8) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MATERIALSLIST`
+--
+
+LOCK TABLES `MATERIALSLIST` WRITE;
+/*!40000 ALTER TABLE `MATERIALSLIST` DISABLE KEYS */;
+INSERT INTO `MATERIALSLIST` VALUES (1,'sticks',1),(2,'paper',1),(3,'glue',1),(4,'googly-eyes',1),(5,'glue',2),(6,'name-print-outs',2),(7,'letter-beads',2),(8,'sticks',6),(9,'paper',6),(10,'glue',6),(11,'googly-eyes',6),(12,'sticks',7),(13,'paper',7),(14,'glue',7),(15,'googly-eyes',7),(16,'sticks',8),(17,'paper',8),(18,'glue',8),(19,'googly-eyes',8),(20,'glue',9),(21,'name-print-outs',9),(22,'letter-beads',9),(23,'glue',10),(24,'name-print-outs',10),(25,'letter-beads',10),(26,'glue',11),(27,'name-print-outs',11),(28,'letter-beads',11);
+/*!40000 ALTER TABLE `MATERIALSLIST` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `PROJECTS`
+--
+
+DROP TABLE IF EXISTS `PROJECTS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `PROJECTS` (
+  `ID` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(60) NOT NULL,
+  `DESCRIPTION` varchar(200) NOT NULL,
+  `SET_UP` text NOT NULL,
+  `OUTCOMES` text NOT NULL,
+  `RATING` float DEFAULT NULL,
+  `IMAGE` varchar(30) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `PROJECTS`
+--
+
+LOCK TABLES `PROJECTS` WRITE;
+/*!40000 ALTER TABLE `PROJECTS` DISABLE KEYS */;
+INSERT INTO `PROJECTS` VALUES (1,'stick-figures','Students will create stick figures using natural materials','Lay out materials on the table, separate materials by category, lay out paper and glue','Students responded well to the hands on project. The use of natural materials helped provide tactile response.',4.85,'/images/stick-figure.png'),(2,'name-beads','Students will spell out their name using letter beads, with guidance of a name print out','Print out paper name print-outs, leave room for students to glue letter beads, supply letter beads (do dot sort by letter) and glue.','Students were able to train hand-eye coordination with the use of small letter beads, as well as training reading comprehension',3.32,'/images/name-beads.png'),(6,'stick-figures','students will create stick figures using natural materials.','lay out materials on the table,separate materials by category, lay out paper and glue','students responded well to the hands on project. The use of natural materials helped provide tactile repononse.',NULL,'/images/stick-figure.png'),(7,'stick-figures','students will create stick figures using natural materials.','lay out materials on the table,separate materials by category, lay out paper and glue','students responded well to the hands on project. The use of natural materials helped provide tactile repononse.',NULL,'/images/stick-figure.png'),(8,'stick-figures','students will create stick figures using natural materials.','lay out materials on the table,separate materials by category, lay out paper and glue','students responded well to the hands on project. The use of natural materials helped provide tactile repononse.',NULL,'/images/stick-figure.png'),(9,'name-beads','Students will spell out their name using letter beads, with guidance of a name print out','print out paper name print-outs, leave room for students to glue letter beads, supply letter beads (do not sort by letter) and glue','students were able to train hand-eye coordination with the use of small letter beads, as well as training reading comprehension',NULL,'/images/name-beads.png'),(10,'name-beads','Students will spell out their name using letter beads, with guidance of a name print out','print out paper name print-outs, leave room for students to glue letter beads, supply letter beads (do not sort by letter) and glue','students were able to train hand-eye coordination with the use of small letter beads, as well as training reading comprehension',NULL,'/images/name-beads.png'),(11,'name-beads','Students will spell out their name using letter beads, with guidance of a name print out','print out paper name print-outs, leave room for students to glue letter beads, supply letter beads (do not sort by letter) and glue','students were able to train hand-eye coordination with the use of small letter beads, as well as training reading comprehension',NULL,'/images/name-beads.png');
+/*!40000 ALTER TABLE `PROJECTS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `goals`
 --
 
@@ -252,4 +331,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-28 18:33:09
+-- Dump completed on 2019-10-29 18:25:54
