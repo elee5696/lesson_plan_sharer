@@ -231,7 +231,7 @@ class EditProjectSubmit extends React.Component {
               </div>
             </div>
             <div>
-              <div className="materials form-group inline ">
+              <div className="materials form-group inline">
                 <label
                   className="col-form-label">Materials</label>
                 <div className="col-md-8 p-0">
