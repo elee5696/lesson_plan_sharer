@@ -26,7 +26,7 @@ CREATE TABLE `goals` (
   `id` mediumint(8) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `goals` (
 
 LOCK TABLES `goals` WRITE;
 /*!40000 ALTER TABLE `goals` DISABLE KEYS */;
-INSERT INTO `goals` VALUES (1,'art'),(2,'hands-on'),(3,'creative'),(4,'crafts'),(7,'reading'),(8,'cognitive'),(10,'history'),(12,'flower'),(13,'craft'),(14,'dexterity'),(15,'thinking'),(16,'research'),(17,'nature'),(18,'asd'),(19,'3'),(20,'\'s');
+INSERT INTO `goals` VALUES (1,'art'),(2,'hands-on'),(3,'creative'),(4,'crafts'),(7,'reading'),(8,'cognitive'),(10,'history'),(12,'flower'),(13,'craft'),(14,'dexterity'),(15,'thinking'),(16,'research'),(17,'nature'),(18,'asd'),(19,'3'),(20,'\'s'),(21,'make project show vid'),(22,'get proj to have vid'),(23,'youtube video shown'),(24,'');
 /*!40000 ALTER TABLE `goals` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,7 +52,7 @@ CREATE TABLE `images` (
   `project_id` mediumint(8) NOT NULL,
   `url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +61,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'/images/stick-figure.png',1,NULL),(2,'/images/name-beads.png',2,NULL),(4,'/images/flower.jpg',8,NULL),(5,'/images/craft.jpg',9,NULL),(6,'/images/craft2.jpg',10,NULL),(7,'/images/craft3.jpeg',11,NULL),(8,'/images/craft4.jpeg',12,NULL),(9,'/images/craft5.jpg',13,NULL),(10,'/images/craft6.jpeg',14,NULL),(11,'/images/Screenshot_20191025_130509.png',15,NULL),(12,'/images/ScreenShot2019-10-13at8.39.31PM.png',16,NULL),(13,'/images/Screenshot_20191025_130509.png',17,NULL),(14,'/images/Screenshot_20191025_130509.png',18,NULL),(15,'/images/Screenshot_20191025_130509.png',19,NULL),(16,'/images/Screenshot_20191025_130509.png',20,NULL),(17,'/images/Screenshot_20191025_130509.png',21,NULL),(18,'/images/Screenshot_20191025_130509.png',22,NULL);
+INSERT INTO `images` VALUES (1,'/images/stick-figure.png',1,NULL),(2,'/images/name-beads.png',2,NULL),(4,'/images/flower.jpg',8,NULL),(5,'/images/craft.jpg',9,NULL),(6,'/images/craft2.jpg',10,NULL),(7,'/images/craft3.jpeg',11,NULL),(8,'/images/craft4.jpeg',12,NULL),(9,'/images/craft5.jpg',13,NULL),(10,'/images/craft6.jpeg',14,NULL),(11,'/images/Screenshot_20191025_130509.png',15,NULL),(12,'/images/ScreenShot2019-10-13at8.39.31PM.png',16,NULL),(13,'/images/Screenshot_20191025_130509.png',17,NULL),(14,'/images/Screenshot_20191025_130509.png',18,NULL),(15,'/images/Screenshot_20191025_130509.png',19,NULL),(16,'/images/Screenshot_20191025_130509.png',20,NULL),(17,'/images/Screenshot_20191025_130509.png',21,NULL),(18,'/images/Screenshot_20191025_130509.png',22,NULL),(19,'/images/6820517-tulip-fields.jpg',22,NULL),(20,'/images/6820517-tulip-fields.jpg',22,NULL),(21,'/images/beautiful-flower-field-background-1.jpg',22,NULL),(22,'/images/beautiful-flower-field-background-1.jpg',22,NULL),(23,'/images/beautiful-flower-field-background-1.jpg',22,NULL),(24,'/images/6820517-tulip-fields.jpg',23,NULL);
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,7 +76,7 @@ CREATE TABLE `materials` (
   `id` mediumint(8) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +85,7 @@ CREATE TABLE `materials` (
 
 LOCK TABLES `materials` WRITE;
 /*!40000 ALTER TABLE `materials` DISABLE KEYS */;
-INSERT INTO `materials` VALUES (1,'sticks'),(2,'paper'),(3,'glue'),(4,'googly-eyes'),(5,'name-print-outs'),(6,'letter-beads'),(8,'string'),(9,'flower'),(10,'pencil'),(11,'paint'),(12,'pipe cleaners'),(13,'glass'),(14,'lampshade'),(15,'scissors'),(16,'tape'),(17,'books'),(18,'bear stencil'),(19,'ads'),(20,'\'s');
+INSERT INTO `materials` VALUES (1,'sticks'),(2,'paper'),(3,'glue'),(4,'googly-eyes'),(5,'name-print-outs'),(6,'letter-beads'),(8,'string'),(9,'flower'),(10,'pencil'),(11,'paint'),(12,'pipe cleaners'),(13,'glass'),(14,'lampshade'),(15,'scissors'),(16,'tape'),(17,'books'),(18,'bear stencil'),(19,'ads'),(20,'\'s'),(21,'computer'),(22,'asdf'),(23,'ya');
 /*!40000 ALTER TABLE `materials` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `project_goals` (
 
 LOCK TABLES `project_goals` WRITE;
 /*!40000 ALTER TABLE `project_goals` DISABLE KEYS */;
-INSERT INTO `project_goals` VALUES (1,1),(1,2),(1,3),(1,4),(2,1),(2,7),(2,8),(2,2),(2,3),(2,4),(4,9),(5,9),(6,9),(7,1),(7,10),(7,11),(7,2),(8,12),(9,1),(10,2),(10,13),(10,1),(10,14),(11,14),(11,1),(11,3),(12,1),(12,15),(13,16),(13,17),(13,4),(14,1),(15,18),(15,18),(16,19),(22,20);
+INSERT INTO `project_goals` VALUES (1,1),(1,2),(1,3),(1,4),(2,1),(2,7),(2,8),(2,2),(2,3),(2,4),(4,9),(5,9),(6,9),(7,1),(7,10),(7,11),(7,2),(8,12),(9,1),(10,2),(10,13),(10,1),(10,14),(11,14),(11,1),(11,3),(12,1),(12,15),(13,16),(13,17),(13,4),(14,1),(15,18),(15,18),(16,19),(22,20),(22,21),(22,21),(22,22),(22,22),(22,22),(23,23),(23,24);
 /*!40000 ALTER TABLE `project_goals` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +131,7 @@ CREATE TABLE `project_material` (
 
 LOCK TABLES `project_material` WRITE;
 /*!40000 ALTER TABLE `project_material` DISABLE KEYS */;
-INSERT INTO `project_material` VALUES (1,1),(1,2),(1,3),(1,4),(2,3),(2,5),(2,6),(4,9),(6,9),(8,9),(9,10),(9,2),(9,11),(10,12),(11,11),(11,13),(11,14),(12,2),(12,15),(12,8),(12,3),(12,16),(13,2),(13,17),(13,15),(13,3),(14,11),(14,18),(15,19),(22,20);
+INSERT INTO `project_material` VALUES (1,1),(1,2),(1,3),(1,4),(2,3),(2,5),(2,6),(4,9),(6,9),(8,9),(9,10),(9,2),(9,11),(10,12),(11,11),(11,13),(11,14),(12,2),(12,15),(12,8),(12,3),(12,16),(13,2),(13,17),(13,15),(13,3),(14,11),(14,18),(15,19),(22,20),(22,21),(22,21),(22,22),(22,22),(22,22),(23,23);
 /*!40000 ALTER TABLE `project_material` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,7 +156,7 @@ CREATE TABLE `project_rating` (
 
 LOCK TABLES `project_rating` WRITE;
 /*!40000 ALTER TABLE `project_rating` DISABLE KEYS */;
-INSERT INTO `project_rating` VALUES (1,4.83051,59,285),(2,4.97661,171,851),(8,5,4,20),(9,0,0,0),(10,0,0,0),(11,0,0,0),(12,0,0,0),(13,0,0,0),(14,0,0,0),(15,0,0,0),(22,0,0,0);
+INSERT INTO `project_rating` VALUES (1,4.83051,59,285),(2,4.97661,171,851),(8,5,4,20),(9,0,0,0),(10,0,0,0),(11,0,0,0),(12,0,0,0),(13,0,0,0),(14,0,0,0),(15,0,0,0),(22,0,0,0),(22,0,0,0),(22,0,0,0),(22,0,0,0),(22,0,0,0),(22,0,0,0),(23,0,0,0);
 /*!40000 ALTER TABLE `project_rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,8 +174,9 @@ CREATE TABLE `projects` (
   `description` text NOT NULL,
   `set_up` text NOT NULL,
   `outcomes` text NOT NULL,
+  `youtubeLink` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +185,7 @@ CREATE TABLE `projects` (
 
 LOCK TABLES `projects` WRITE;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
-INSERT INTO `projects` VALUES (1,101,'stick-figures','students will create stick figures using natural materials','lay out materials on the table, separate materials by category, lay out paper and glue','Students responded well to the hands on project. The use of natural materials helped provide tactile response.'),(2,101,'name-beads','Students will spell out their name using letter beads, with guidance of a name print out.','Print out paper name print-outs, leave room for students to glue letter beads, supply letter beads (do not sort by letter) and glue.','Students were able to train hand-eye coordination with the use of small letter beads, as well as training reading comprehension.'),(8,102,'flower','flower','flower','flower'),(9,103,'Art','Art','art,pencil,paper,wow','Art'),(10,103,'Pipe Cleaner Art','Pipe Cleaners','pipe cleaners,fun','pipe cleaners'),(11,103,'Stain Glass Lampshade','Stain Glass Lampshade','lampshade,glass,paint,done','Stain Glass Lampshade'),(12,103,'Banner','Banner','cut,glue,tie,hang','Banner'),(13,103,'Insects','Insects','insects,create,play','Insects'),(14,103,'Bear Paint','Bear Paint','bear,paint,create','Bear Paint'),(15,103,'asd','asd','ads','ads'),(16,103,'asdas','asdasd','asd','asd'),(17,103,'\'s','\'s','\'s','\'s'),(18,103,'\'s','\'s\'','\'s','s\''),(19,103,'\'s','\'s','\'s','\'s'),(20,103,'\'s','\'s','\'s','\'s'),(21,103,'\'s','\'s','\'s','\'s'),(22,103,'\'s','\'s','\'s','\'s');
+INSERT INTO `projects` VALUES (1,101,'stick-figures','students will create stick figures using natural materials','lay out materials on the table, separate materials by category, lay out paper and glue','Students responded well to the hands on project. The use of natural materials helped provide tactile response.',NULL),(2,101,'name-beads','Students will spell out their name using letter beads, with guidance of a name print out.','Print out paper name print-outs, leave room for students to glue letter beads, supply letter beads (do not sort by letter) and glue.','Students were able to train hand-eye coordination with the use of small letter beads, as well as training reading comprehension.',NULL),(8,102,'flower','flower','flower','flower',NULL),(9,103,'Art','Art','art,pencil,paper,wow','Art',NULL),(10,103,'Pipe Cleaner Art','Pipe Cleaners','pipe cleaners,fun','pipe cleaners',NULL),(11,103,'Stain Glass Lampshade','Stain Glass Lampshade','lampshade,glass,paint,done','Stain Glass Lampshade',NULL),(12,103,'Banner','Banner','cut,glue,tie,hang','Banner',NULL),(13,103,'Insects','Insects','insects,create,play','Insects',NULL),(14,103,'Bear Paint','Bear Paint','bear,paint,create','Bear Paint',NULL),(15,103,'asd','asd','ads','ads',NULL),(16,103,'asdas','asdasd','asd','asd',NULL),(17,103,'\'s','\'s','\'s','\'s',NULL),(18,103,'\'s','\'s\'','\'s','s\'',NULL),(19,103,'\'s','\'s','\'s','\'s',NULL),(20,103,'\'s','\'s','\'s','\'s',NULL),(21,103,'\'s','\'s','\'s','\'s',NULL),(22,103,'\'s','\'s','\'s','\'s',NULL),(23,101,'sadfasfd','project with youtube video','sadf','sdafa','https://www.youtube.com/watch?v=rWF9wvDWOgA');
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-26  1:12:29
+-- Dump completed on 2019-10-28 18:33:09
