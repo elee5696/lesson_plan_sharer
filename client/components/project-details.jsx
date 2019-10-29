@@ -5,6 +5,7 @@ import EditButton from './editButton';
 import Comment from './comment';
 import CommentInput from './comment-input';
 import { Link } from 'react-router-dom';
+import YoutubePlayer from './youtubePlayer';
 
 export default class ProjectDetails extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ export default class ProjectDetails extends React.Component {
     let setupSteps = this.state.project.set_up.split(',');
 
     return (
+
       <div className="entire-page-container container row col m-0 p-0">
         <div className="back-button-container mt-3 mb-3 col-12">
           <div
@@ -74,8 +76,17 @@ export default class ProjectDetails extends React.Component {
                 <h2 className="project-desc-header">Description</h2>
               </div>
               <div className="project-desc-body row">
-                <h3 className="project-desc-text">{this.state.project.description}</h3>
+                <h3 className="col project-desc-text">{this.state.project.description}</h3>
               </div>
+              {
+                this.state.project.youtubeLink
+                  ? <div className="row">
+
+                    <YoutubePlayer className="col" video={this.state.project.youtubeLink} />
+                  </div>
+                  : null
+              }
+
             </div>
             <div className="project-goals-container mb-3">
               <div className="project-goals-header-container row mb-2 ml-1">
