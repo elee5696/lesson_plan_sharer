@@ -27,7 +27,7 @@ export default class ProjectListItem extends React.Component {
               rating_count={this.props.rating_count} />
             <div className="user-name-box">
               <h6 className="user-name-info font-weight-bold">
-                Author: {this.props.username}
+                {this.props.username}
               </h6>
             </div>
           </div>
@@ -63,7 +63,7 @@ export default class ProjectListItem extends React.Component {
                   rating_count={this.props.rating_count}/>
                 <div className="user-name-box">
                   <h6 className="user-name-info font-weight-bold">
-                   Author: {this.props.username}
+                    {this.props.username}
                   </h6>
                 </div>
               </div>

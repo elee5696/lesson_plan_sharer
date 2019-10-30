@@ -156,7 +156,7 @@ export default class ProjectDetails extends React.Component {
             </div>
             <div className="author-details text-muted mb-4">
               <Link to={`/user/${this.state.project.author_data.id}`}>
-                <h5>{this.state.project.author_data.name} | {this.state.project.author_data.username}</h5>
+                <h5> By: {this.state.project.author_data.name} | {this.state.project.author_data.username}</h5>
               </Link>
             </div>
             <div className="project-desc-container col-12 mb-3">
