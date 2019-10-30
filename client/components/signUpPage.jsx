@@ -104,19 +104,23 @@ export default class SignUpPage extends React.Component {
                 {this.state.about_me.length}/250
               </div>
               <div className="mt-4">Profile Photo:</div>
-              <input
-                id="avatar"
-                type="file"
-                name="picture"
-                onChange={this.onChange} />
-              <div className="d-flex justify-content-center my-4">
-                <button
-                  type="button"
-                  className="btn searchButton shadow-none"
-                  onClick={this.onSubmit}>
-                  Sign-Up
-                </button>
+              <div className="input-group mb-3">
+                <div className="custom-file">
+                  <input
+                    id="picture"
+                    className="p-0"
+                    type="file"
+                    name="picture"
+                    onChange={this.onChange} />
+                  <label className="custom-file-label" htmlFor="picture">{this.state.filename ? this.state.filename : 'Choose File'}</label>
+                </div>
               </div>
+              <button
+                type="button"
+                className="btn searchButton shadow-none"
+                onClick={this.onSubmit}>
+                Sign-Up
+              </button>
             </form>
           </div>
         </div>

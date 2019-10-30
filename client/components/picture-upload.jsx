@@ -30,12 +30,15 @@ class PictureUploadForm extends React.Component {
       'body': formData
     });
   }
+
   onChange(event) {
     const fileReader = new FileReader();
     const file = event.target.files[0];
+
     fileReader.onloadend = () => {
       this.setState({
         file: file,
+        filename: file.name,
         imagePreviewUrl: fileReader.result });
     };
     fileReader.readAsDataURL(file);
@@ -63,12 +66,16 @@ class PictureUploadForm extends React.Component {
         </div>
         <div className="chooseFileButton-div col d-flex justify-content-center mt-4">
           <form id="pictureForm">
-            <div className="d-flex justify-content-center">
-              <input
-                className="inputButton p-0"
-                type="file"
-                name="picture"
-                onChange={this.onChange}></input>
+            <div className="input-group">
+              <div className="custom-file">
+                <input
+                  id="picture"
+                  className="p-0"
+                  type="file"
+                  name="picture"
+                  onChange={this.onChange}/>
+                <label className="custom-file-label" htmlFor="picture">{this.state.filename ? this.state.filename : 'Choose File'}</label>
+              </div>
             </div>
             <div>
               {this.state.imagePreviewUrl ? imagePreview : null}
@@ -77,11 +84,12 @@ class PictureUploadForm extends React.Component {
               <div className="picForm-div select-photo">Place a video of your project</div>
             </div>
             <div className="mt-3" style={styleNextPageButtondiv}>
-              <input onChange={this.onYouTubeChange} className="youtube-link w-100 form-control"
+              <input
+                onChange={this.onYouTubeChange}
+                className="youtube-link w-100 form-control"
                 value={this.state.youtubeVideo}
                 placeholder="YouTube Link Here (optional)"></input>
-              <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '4rem' }}>
-
+              <div className="nextPageDiv d-flex justify-content-center">
                 <button className="uploadPicButton btn" style={{ width: '140px' }} onClick={this.onSubmit}>
                   {
                     this.state.imagePreviewUrl
