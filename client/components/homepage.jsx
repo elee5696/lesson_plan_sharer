@@ -22,8 +22,7 @@ export default class Homepage extends React.Component {
             </div>
             <div className="feature-container">
               <Carousel
-                projects={this.props.projects}
-                shuffledArray={this.state.shuffledArray} />
+                projects={this.props.projects}/>
             </div>
           </div>
           <WriteButton />
