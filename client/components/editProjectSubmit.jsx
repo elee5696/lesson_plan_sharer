@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
 import ListBubble from './list-bubble';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class EditProjectSubmit extends React.Component {
   constructor(props) {
@@ -17,13 +17,14 @@ class EditProjectSubmit extends React.Component {
       'materialsToSubmit': [],
       'goals': '',
       'materials': '',
-      'userId': ''
+      'userId': '',
+      'location': '',
+      'YoutubeVideo': ''
     };
     this.id = null;
     this.materialsArray = [];
     this.goalsArray = [];
     this.image = null;
-    this.location = null;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGoalSubmit = this.handleGoalSubmit.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -42,15 +43,15 @@ class EditProjectSubmit extends React.Component {
     this.setState({
       name: event.target.value,
       image: this.image,
-      userId: this.props.userData.id
-
+      userId: this.props.userData.id,
+      YoutubeVideo: this.YoutubeVideo
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     let body = JSON.stringify({
-      project_id: this.id,
+      id: this.id,
       name: this.state.name,
       description: this.state.description,
       set_up: this.state.set_up,
@@ -58,10 +59,11 @@ class EditProjectSubmit extends React.Component {
       goals: this.state.goalsToSubmit,
       materials: this.state.materialsToSubmit,
       image: `/images/${this.state.image}`,
-      user_id: this.state.userId
+      user_id: this.state.userId,
+      youtubeLink: this.YoutubeVideo
 
     });
-
+    this.props.updateProjectsCallback(body);
     fetch(`/api/project.php`, {
       method: 'PUT',
       headers: {
@@ -71,10 +73,12 @@ class EditProjectSubmit extends React.Component {
     })
       .then(resp => resp.json())
       .then(response => {
-        const location = `/detail/${response}`;
-        return <Redirect to= {location} />;
+        this.setState({
+          location: parseInt(response)
+        });
       })
       .catch(error => console.error(error));
+
   }
 
   handleDescriptionChange(event) {
@@ -141,6 +145,7 @@ class EditProjectSubmit extends React.Component {
         pictureName = pictureBrokenUp.join('');
       }
       this.image = pictureName;
+      this.YouTubeVideo = this.props.location.state.youtubeVideoUrl;
     }
     let edit = this.props.location.state.projectToEdit;
 
@@ -154,7 +159,7 @@ class EditProjectSubmit extends React.Component {
       'materialsToSubmit': edit.materials,
       'goals': '',
       'materials': '',
-      'image': this.props.location.state.file.name,
+      'image': this.image,
       'userId': edit.user_id
     });
     this.id = edit.id;
@@ -186,8 +191,15 @@ class EditProjectSubmit extends React.Component {
         </div>
       );
     }
+
+    let redirect = null;
+
+    if (this.state.location) {
+      redirect = <Redirect to={`/detail/${this.state.location}`} />;
+    }
     return (
       <div className= "submitForm container row p-0 col-md-10 justify-content-center">
+        {redirect}
         <div className="spacer col col-md-1"></div>
         <div className="form container col col-md-8 d-flex justify-content-center m-0">
           <form onSubmit={this.handleSubmit}>
@@ -271,13 +283,11 @@ class EditProjectSubmit extends React.Component {
                   placeholder="Outcome Entries"
                   rows="3"></textarea>
               </div>
-              <Link to={`/detail/${this.id}`}>
-                <button onClick={this.handleSubmit}
-                  type="submit"
-                  className="projectSubmitButton btn btn-secondary btn-lg"
-                  style={{ color: 'white' }}>
+              <button onClick={this.handleSubmit}
+                type="submit"
+                className="projectSubmitButton btn btn-secondary btn-lg"
+                style={{ color: 'white' }}>
                   Submit Changes</button>
-              </Link>
             </div>
           </form>
         </div>

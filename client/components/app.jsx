@@ -22,6 +22,7 @@ export default class App extends React.Component {
       fetched: false
     };
     this.getProjects = this.getProjects.bind(this);
+    this.getUpdatedProject = this.getUpdatedProject.bind(this);
     this.searchProjects = this.searchProjects.bind(this);
     this.resetResults = this.resetResults.bind(this);
     this.userUpdate = this.userUpdate.bind(this);
@@ -61,6 +62,21 @@ export default class App extends React.Component {
         this.setState({
           projects: fetchedProjects,
           fetched: true
+        });
+      })
+      .catch(err => console.error(err));
+  }
+
+  getUpdatedProject(projectToUpdate) {
+    let projects = [...this.state.projects];
+    projectToUpdate = JSON.parse(projectToUpdate);
+    projects = projects.filter(e => e.id !== projectToUpdate.id);
+    fetch(`/api/project.php?id=${projectToUpdate.id}`)
+      .then(res => res.json())
+      .then(project => {
+        projects.push(project[0]);
+        this.setState({
+          projects: projects
         });
       })
       .catch(err => console.error(err));
@@ -238,7 +254,9 @@ export default class App extends React.Component {
 
           <Route path="/edit2" render={props =>
             <EditProjectSubmit {...props}
-              userData={this.state.currentUser} />} />
+              userData={this.state.currentUser}
+              listOfProjects={this.state.projects}
+              updateProjectsCallback={this.getUpdatedProject} />} />
 
           <Route path="/submit" render={props =>
             <PictureUploadForm {...props}
