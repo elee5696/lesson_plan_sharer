@@ -45,7 +45,8 @@ export default class Homepage extends React.Component {
             <Searchbar
               searchCallback={this.props.searchCallback} />
           </div>
-          <div className="feature-container">
+          <div className="feature-container offset-sm-3"
+            style={{ minWidth: '400px', maxWidth: '400px' }}>
             <div className="headerbox featured-posts mt-5">
               <h3 className="featured-posts-text">Featured Provs</h3>
             </div>
