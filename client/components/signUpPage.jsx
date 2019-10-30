@@ -26,23 +26,10 @@ export default class SignUpPage extends React.Component {
   }
 
   onChange(event) {
-    let val = event.target.value;
     const fileReader = new FileReader();
     let file;
 
     switch (event.target.id) {
-      case 'name':
-        this.setState({ name: val });
-        break;
-      case 'username':
-        this.setState({ username: val });
-        break;
-      case 'years':
-        this.setState({ years: val });
-        break;
-      case 'about':
-        this.setState({ about_me: val });
-        break;
       case 'avatar':
         file = event.target.files[0];
         fileReader.onloadend = () => {
@@ -53,6 +40,8 @@ export default class SignUpPage extends React.Component {
         };
         fileReader.readAsDataURL(file);
         break;
+      default:
+        this.setState({ [event.target.id]: event.target.value });
     }
   }
 
@@ -104,7 +93,7 @@ export default class SignUpPage extends React.Component {
               About Me:
             </div>
             <textarea
-              id="about"
+              id="about_me"
               type="text"
               onChange={this.onChange}
               value={this.state.about_me} />

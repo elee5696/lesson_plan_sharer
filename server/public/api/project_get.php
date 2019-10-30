@@ -123,8 +123,6 @@ if (isset($_GET['field']) && isset($_GET['value'])) {
 }
 
 $stmt->execute();
-
-
 $result = $stmt->get_result();
 $num = mysqli_num_rows($result);
 $stmt->close();
@@ -175,8 +173,8 @@ foreach($output as &$project) {
 }
 
 $query =
-"SELECT user_id, username, project_id, `comment`, `time`, avatar
-  FROM `reviews` JOIN user_table ON id=user_id ORDER BY `time` DESC";
+"SELECT r.`id`,user_id, username, project_id, `comment`, `time`, avatar
+  FROM `reviews` as r JOIN user_table as u ON u.id=user_id ORDER BY `time` DESC";
 
 $result = mysqli_query($conn, $query);
 if(!$result) {
@@ -190,6 +188,7 @@ while($row = mysqli_fetch_assoc($result)){
 
 foreach($output as &$project) {
   foreach($review_data as $review) {
+    $review["id"] = intval($review['id']);
     $review["project_id"] = intval($review['project_id']);
     $review["user_id"] = intval($review["user_id"]);
     if($project['id'] === $review['project_id']) {

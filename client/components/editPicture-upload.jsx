@@ -1,6 +1,4 @@
 import React from 'react';
-// import ProjectSubmit from './projectSubmit';
-// import FormData from 'form-data';
 import { Link } from 'react-router-dom';
 
 class EditPictureUpload extends React.Component {

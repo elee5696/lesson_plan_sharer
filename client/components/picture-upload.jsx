@@ -1,6 +1,4 @@
 import React from 'react';
-// import ProjectSubmit from './projectSubmit';
-// import FormData from 'form-data';
 import { Link } from 'react-router-dom';
 
 class PictureUploadForm extends React.Component {
@@ -15,7 +13,6 @@ class PictureUploadForm extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onYouTubeChange = this.onYouTubeChange.bind(this);
-    // this.addVideo = this.addVideo.bind(this);
   }
   onYouTubeChange(event) {
     this.setState({

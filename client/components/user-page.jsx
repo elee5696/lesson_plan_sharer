@@ -11,16 +11,18 @@ export default class UserPage extends React.Component {
       field: ''
     };
     this.logOut = this.logOut.bind(this);
-    this.editProject = this.editProject.bind(this);
+    this.editUser = this.editUser.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-
+  componentWillMount() {
+    this.getUser();
   }
 
-  componentDidMount() {
-    this.getUser();
+  componentDidUpdate(prevProps) {
+    if (this.props.currentUser !== prevProps.currentUser) {
+      this.getUser();
+    }
   }
 
   getUser() {
@@ -40,7 +42,7 @@ export default class UserPage extends React.Component {
     this.props.logOutCallback();
   }
 
-  editProject(event) {
+  editUser(event) {
     this.setState({ field: event.target.id });
   }
 
@@ -84,7 +86,7 @@ export default class UserPage extends React.Component {
                     type="button"
                     id="avatar"
                     className="btn editUserButton btn-sm shadow-none row ml-2"
-                    onClick={this.editProject}
+                    onClick={this.editUser}
                   >Edit
                   </button>
                   : null
@@ -119,7 +121,7 @@ export default class UserPage extends React.Component {
                     this.state.user.id === this.props.currentUser.id
                       ? <button
                         id="username"
-                        onClick={this.editProject}
+                        onClick={this.editUser}
                         type="button"
                         className="btn editUserButton col-4 btn-sm shadow-none">
                       Edit
@@ -156,7 +158,7 @@ export default class UserPage extends React.Component {
                     this.state.user.id === this.props.currentUser.id
                       ? <button
                         id="name"
-                        onClick={this.editProject}
+                        onClick={this.editUser}
                         type="button"
                         className="btn editUserButton col-4 btn-sm shadow-none">
                       Edit
@@ -194,7 +196,7 @@ export default class UserPage extends React.Component {
                       ? <button
                         type="button"
                         id="years"
-                        onClick={this.editProject}
+                        onClick={this.editUser}
                         className="btn editUserButton col-4 btn-sm shadow-none">
                         Edit
                       </button>
@@ -230,7 +232,7 @@ export default class UserPage extends React.Component {
                     this.state.user.id === this.props.currentUser.id
                       ? <button
                         id="about_me"
-                        onClick={this.editProject}
+                        onClick={this.editUser}
                         type="button"
                         className="btn editUserButton col-4 btn-sm shadow-none">
                       Edit

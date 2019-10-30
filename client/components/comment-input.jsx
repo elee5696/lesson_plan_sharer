@@ -18,16 +18,18 @@ export default class CommentInput extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
+
     let body = {
       user_id: this.props.currentUser,
       project_id: this.props.currentProject,
       comment: this.state.value
     };
 
-    fetch('/api/review.php', {
-      method: 'POST',
-      body: JSON.stringify(body)
+    this.setState({
+      value: ''
     });
+
+    this.props.leaveComment(JSON.stringify(body));
   }
 
   render() {

@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom'
 import ListBubble from './list-bubble';
 import { Redirect } from 'react-router-dom';
 
@@ -50,7 +49,7 @@ class EditProjectSubmit extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let body = JSON.stringify({
+    let body = {
       id: this.id,
       name: this.state.name,
       description: this.state.description,
@@ -62,23 +61,9 @@ class EditProjectSubmit extends React.Component {
       user_id: this.state.userId,
       youtubeLink: this.YoutubeVideo
 
-    });
-    this.props.updateProjectsCallback(body);
-    fetch(`/api/project.php`, {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: body
-    })
-      .then(resp => resp.json())
-      .then(response => {
-        this.setState({
-          location: parseInt(response)
-        });
-      })
-      .catch(error => console.error(error));
+    };
 
+    this.props.updateProjectsCallback(body);
   }
 
   handleDescriptionChange(event) {
@@ -148,23 +133,23 @@ class EditProjectSubmit extends React.Component {
       this.YouTubeVideo = this.props.location.state.youtubeVideoUrl;
     }
     let edit = this.props.location.state.projectToEdit;
-
+    this.goalsArray = edit.goals;
+    this.materialsArray = edit.materials;
     this.setState({
       'name': edit.name,
       'description': edit.description,
       'set_up': edit.set_up,
       'outcomes': edit.outcomes,
       'rating': edit.rating,
-      'goalsToSubmit': edit.goals,
-      'materialsToSubmit': edit.materials,
+      'goalsToSubmit': this.goalsArray,
+      'materialsToSubmit': this.materialsArray,
       'goals': '',
       'materials': '',
       'image': this.image,
       'userId': edit.user_id
     });
     this.id = edit.id;
-    this.goalsArray = edit.goals;
-    this.materialsArray = edit.materials;
+
   }
 
   deleteGoal(text) {
@@ -172,6 +157,8 @@ class EditProjectSubmit extends React.Component {
       return item !== text;
     });
     this.goalsArray = newGoalsArray;
+    this.setState({
+      goalsToSubmit: this.goalsArray });
 
   }
   deleteMaterial(text) {
@@ -179,6 +166,9 @@ class EditProjectSubmit extends React.Component {
       return item !== text;
     });
     this.materialsArray = newMaterialsArray;
+    this.setState({
+      materialsToSubmit: this.materialsArray
+    });
   }
   goToDetails() {
     return this.id;
@@ -233,6 +223,7 @@ class EditProjectSubmit extends React.Component {
                 <div className="row goal-bubble-container justify-content-center">
                   {this.state.goalsToSubmit.map((goal, index) => {
                     return <ListBubble
+                      id={'somegoal'}
                       text={goal}
                       key={index}
                       minWidth="140px"
@@ -255,6 +246,7 @@ class EditProjectSubmit extends React.Component {
                 <div className="row materials-bubble-container justify-content-center">
                   {this.state.materialsToSubmit.map((material, index) => {
                     return <ListBubble
+                      id={'somematerial'}
                       text={material}
                       key={index}
                       minWidth="140px"
