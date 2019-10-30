@@ -3,21 +3,16 @@ body {
   font-family: 'Work Sans', sans-serif !important;
 }
 
-.prov-logo:hover, .nav-item {
+.prov-logo:hover,
+.nav-item,
+.star-rating__star:hover,
+.back-button-container {
   cursor: pointer;
 }
 
 .back-button {
   font-weight: 600;
   font-size: 20px;
-}
-
-.top-rated-provs-container {
-  font-weight: bold;
-}
-
-.project-container {
-  margin-left: 25%;
 }
 
 .project-title {
@@ -46,11 +41,6 @@ body {
   text-align: center;
 }
 
-.bubble-container:hover {
-  color: white;
-  background-color: rgb(61, 61, 61);
-}
-
 .descriptionBox, .outcomeBox{
   width: 100%;
   height: 40%;
@@ -62,9 +52,7 @@ body {
   border: 1px solid black
 }
 
-
-.project-media-container,
-.project-card-container {
+.project-media-container, .project-card-container {
   color: black;
 }
 
@@ -73,20 +61,20 @@ body {
   text-decoration: none;
 }
 
+.editUserButton {
+  height: 30px;
+  max-width: 100px;
+}
 
 .searchButton,
 .uploadPicButton,
 .projectSubmitButton,
 .editProjectButton,
 .editUserButton,
-.addYoutubeVid {
+.addYoutubeVid,
+.addBubbleButton {
   background:#f8b1d1;
   color: white;
-}
-
-.editUserButton {
-  height: 30px;
-  max-width: 100px;
 }
 
 .searchButton:hover,
@@ -94,10 +82,10 @@ body {
 .editUserButton:hover,
 .uploadPicButton:hover,
 .projectSubmitButton:hover,
-.editProjectButton:hover {
+.editProjectButton:hover,
+.addBubbleButton:hover {
   background: #ff70b3;
   color: white;
-  text-decoration: none;
 }
 
 .searchBar{
@@ -115,22 +103,6 @@ body {
 .star-rating__star {
   color: #F5F5F5;
 }
-
-.star-rating__star:hover,
-.back-button-container {
-  cursor: pointer;
-}
-
-/* .uploadPicButton {
-  border-style: none;
-  width: 110px;
-  height: 35px;
-} */
-
-/* .next-page-button-container {
-  margin-top: 315px;
-  margin-left: 100px;
-} */
 
 .inputButton {
   border: 2px solid #f8b1d1;
@@ -167,10 +139,6 @@ body {
 .name-key-value-container,
 .member-since-key-value-container,
 .comment-container {
-  border-bottom: 1px solid  #f8b1d1;
-}
-
-.comment-container {
   border-bottom: 1px solid #f8b1d1;
 }
 
@@ -186,7 +154,7 @@ body {
   border-radius: 15px;
 }
 
-.grey-icon {
+.carousel-circle-icon {
   color: rgb(224, 217, 217);
 }
 
@@ -217,6 +185,7 @@ body {
 .write-button-pen {
   font-size: 2rem;
 }
+
 .submittedImage {
   width: 20rem;
   height: 20rem;
@@ -230,6 +199,38 @@ body {
 .editButton-div {
   position: inherit;
   left: 80%;
+}
+
+.user-profile-pic, .comment-user-pic {
+  border: 2px solid #f8b1d1;
+  border-radius: 50%;
+}
+
+.user-pic-container {
+  width: 50px;
+  height: 50px;
+}
+
+.user-avatar-container {
+  width: 70px;
+  height: 70px;
+}
+
+.login-to-leave-review {
+  border: 1px solid #f8b1d1;
+}
+
+.comment-date {
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.textarea {
+  width: 100%;
+}
+
+.edit-modal {
+  background: rgba(0, 0, 0, 0.329);
 }
 
 @media (min-height: 1024px) {
@@ -280,14 +281,12 @@ body {
   }
 }
 
-
 @media (min-height: 1024px) {
   .next-page-button-container {
     margin-top: 600px;
     margin-left: 70px;
   }
 }
-
 
 @media (min-width: 1024px) {
   .picForm-div {
@@ -395,43 +394,4 @@ body {
   .headerbox {
      margin-left: 0%;
   }
-}
-
-  .project-outcomes-container{
-    padding: 0px;
-    margin-right: 15px;
-  }
-
-.user-profile-pic, .comment-user-pic {
-  border: 2px solid #f8b1d1;
-  border-radius: 50%;
-}
-
-.user-pic-container {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-
-.user-avatar-container {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-}
-
-.login-to-leave-review {
-  border: 1px solid #f8b1d1;
-}
-
-.comment-date {
-  color: #6c757d;
-  font-size: 12px;
-}
-
-.textarea {
-  width: 100%;
-}
-
-.edit-modal {
-  background: rgba(0, 0, 0, 0.329);
 }

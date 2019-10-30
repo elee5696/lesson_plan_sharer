@@ -194,7 +194,7 @@ class ProjectSubmit extends React.Component {
                     value={this.state.goals}
                     placeholder="Goals" />
                   <div className= "input-group-append">
-                    <button className="btn btn-outline-secondary searchButton" type= "button" onClick={this.handleGoalSubmit}>+</button>
+                    <button className="btn btn-outline-secondary addBubbleButton shadow-none" type= "button" onClick={this.handleGoalSubmit}>+</button>
                   </div>
                 </div>
               </div>
