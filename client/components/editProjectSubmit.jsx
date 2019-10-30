@@ -159,7 +159,6 @@ class EditProjectSubmit extends React.Component {
     this.goalsArray = newGoalsArray;
     this.setState({
       goalsToSubmit: this.goalsArray });
-
   }
   deleteMaterial(text) {
     let newMaterialsArray = this.materialsArray.filter(item => {
@@ -218,7 +217,9 @@ class EditProjectSubmit extends React.Component {
                     onChange={this.handleGoalChange}
                     value={this.state.goals}
                     placeholder="Goals Entry"></input>
-                  <button onClick={this.handleGoalSubmit}>+</button>
+                  <button
+                    className = "btn searchButton"
+                    onClick={this.handleGoalSubmit}>+</button>
                 </div>
                 <div className="row goal-bubble-container justify-content-center">
                   {this.state.goalsToSubmit.map((goal, index) => {
@@ -241,7 +242,9 @@ class EditProjectSubmit extends React.Component {
                   <input onChange={this.handleMaterialChange}
                     type="text" className="form-control" id="materialSubmit"
                     placeholder="Materials Entry" value={this.state.materials}></input>
-                  <button onClick={this.handleMaterialSubmit}>+</button>
+                  <button
+                    className="btn searchButton"
+                    onClick={this.handleMaterialSubmit}>+</button>
                 </div>
                 <div className="row materials-bubble-container justify-content-center">
                   {this.state.materialsToSubmit.map((material, index) => {

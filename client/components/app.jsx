@@ -205,8 +205,8 @@ export default class App extends React.Component {
         {redirect}
         <div className="header-container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="prov-logo navbar-brand" to="/">
-              <img src="/images/logo.png" style={{ width: '30%' }} />
+            <Link className="prov-logo navbar-brand p-0 m-0" to="/">
+              <img src="/images/logo_mini.png" style={{ width: '40%' }} />
             </Link>
             <button
               className="navbar-toggler"
