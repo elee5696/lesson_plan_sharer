@@ -35,6 +35,8 @@ class ProjectSubmit extends React.Component {
     this.handleOutcomesChange = this.handleOutcomesChange.bind(this);
     this.handleMaterialSubmit = this.handleMaterialSubmit.bind(this);
     this.goToDetails = this.goToDetails.bind(this);
+    this.deleteGoal = this.deleteGoal.bind(this);
+    this.deleteMaterial = this.deleteMaterial.bind(this);
   }
 
   handleProjectTitleandImageChange(event) {
@@ -73,8 +75,6 @@ class ProjectSubmit extends React.Component {
         this.setState({
           location: response
         });
-        // const location = `/detail/${response}`;
-        // return <Redirect to={location} />;
       })
       .catch(error => console.error(error));
   }
@@ -147,6 +147,25 @@ class ProjectSubmit extends React.Component {
 
     }
   }
+  deleteGoal(text) {
+    let newGoalsArray = this.goalsArray.filter(item => {
+      return item !== text;
+    });
+    this.goalsArray = newGoalsArray;
+    this.setState({
+      goalsToSubmit: this.goalsArray
+    });
+
+  }
+  deleteMaterial(text) {
+    let newMaterialsArray = this.materialsArray.filter(item => {
+      return item !== text;
+    });
+    this.materialsArray = newMaterialsArray;
+    this.setState({
+      materialsToSubmit: this.materialsArray
+    });
+  }
   goToDetails() {
     return this.id;
   }
@@ -199,10 +218,12 @@ class ProjectSubmit extends React.Component {
                 <div className="goal-bubble-container row justify-content-center">
                   {this.state.goalsToSubmit.map((goal, index) => {
                     return <ListBubble
+                      id={'somegoal'}
                       text={goal}
                       key={index}
                       minWidth="140px"
-                      maxWidth="140px"/>;
+                      maxWidth="140px"
+                      deleteGoal={this.deleteGoal} />;
                   })}
                 </div>
               </div>
@@ -220,10 +241,12 @@ class ProjectSubmit extends React.Component {
                 <div className="row materials-bubble-container justify-content-center">
                   {this.state.materialsToSubmit.map((material, index) => {
                     return <ListBubble
+                      id={'somematerial'}
                       text={material}
                       key={index}
                       minWidth="140px"
-                      maxWidth="140px" />;
+                      maxWidth="140px"
+                      deleteMaterial={this.deleteMaterial}/>;
                   })}
                 </div>
               </div>
