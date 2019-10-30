@@ -85,6 +85,7 @@ export default class ProjectDetails extends React.Component {
     }
 
     let setupSteps = this.state.project.set_up.split(',');
+    let linkStyle = { color: 'black', textDecoration: 'none' };
 
     const modal =
       <div
@@ -123,13 +124,9 @@ export default class ProjectDetails extends React.Component {
       <div className="entire-page-container container row col m-0 p-0">
         {this.state.modal ? modal : null}
         <div className="back-button-container mt-3 mb-3 col-12">
-          <div>
-
-            <Link
-              to = "/provs"> {'<Back to Provs'}
-            </Link>
-
-          </div>
+          <Link to="/provs" style={linkStyle}>
+            <div className="back-button">{'< Back to Provs'}</div>
+          </Link>
           {
             this.state.project.author_data.id === this.props.userData.id
               ? <div className="editButton-div ml-5">
@@ -154,9 +151,11 @@ export default class ProjectDetails extends React.Component {
             <div className="project-title-container col-10 mb-3 p-0">
               <h2 className="project-title text-capitalize">{this.state.project.name}</h2>
             </div>
-            <div className="author-details text-muted mb-4">
-              <Link to={`/user/${this.state.project.author_data.id}`}>
-                <h5> By: {this.state.project.author_data.name} | {this.state.project.author_data.username}</h5>
+            <div className="author-detailsmb-4">
+              <Link
+                to={`/user/${this.state.project.author_data.id}`}
+                style={linkStyle}>
+                <h5 className="text-muted "> By: {this.state.project.author_data.name} | {this.state.project.author_data.username}</h5>
               </Link>
             </div>
             <div className="project-desc-container col-12 mb-3">

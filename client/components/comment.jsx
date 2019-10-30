@@ -14,7 +14,9 @@ export default class Comment extends React.Component {
             />
           </div>
           <div className="user-name mt-3">
-            <Link to={`/user/${this.props.user_id}`}>
+            <Link
+              to={`/user/${this.props.user_id}`}
+              style={{ color: 'black', textDecoration: 'none' }}>
               <h6 className="user-name-input">{this.props.username}</h6>
             </Link>
           </div>
