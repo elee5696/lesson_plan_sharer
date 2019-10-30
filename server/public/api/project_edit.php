@@ -6,8 +6,8 @@ if (defined(INTERNAL)) {
 
 $_PUT =get_body();
 
-$id = $_PUT['project_id'];
-$userId = $_PUT['user_id'];
+$id = $_PUT['id'];
+// $userId = $_PUT['user_id'];
 $name = $_PUT['name'];
 $desc = $_PUT['description'];
 $outcomes = $_PUT['outcomes'];
@@ -18,7 +18,7 @@ $materials = $_PUT['materials'];
 
 
 $editProjectsQuery = "UPDATE projects
-SET `user_id` = '$userId', `name` = '$name', `description` = '$desc',
+SET  `name` = '$name', `description` = '$desc',
 `outcomes` = '$outcomes', `set_up` = '$set_up'
 WHERE `id` = '$id'";
 
@@ -118,7 +118,7 @@ if ($materials) {
       while ($row = mysqli_fetch_assoc($result)) {
         $material_id = $row['id'];
       }
-      $insertMaterialToProjectIds = "INSERT INTO project_materials (`project_id`,`material_id`)
+      $insertMaterialToProjectIds = "INSERT INTO project_material (`project_id`,`material_id`)
       VALUES ('$id', $material_id)";
 
       $materialResult = mysqli_query($conn, $insertMaterialToProjectIds);
@@ -132,5 +132,6 @@ if (!$result) {
   throw new Exception('query failed');
 }
 
+print $id;
 
 ?>

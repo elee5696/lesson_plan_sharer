@@ -90,7 +90,7 @@ class EditPictureUpload extends React.Component {
                   {
                     this.state.imagePreviewUrl
                       ? <Link style={{ color: 'white' }} to={{
-                        pathname: '/editSubmission',
+                        pathname: '/edit2',
                         state: {
                           file: this.state.file,
                           youtubeVideoUrl: this.state.youtubeVideo,

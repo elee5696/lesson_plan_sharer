@@ -35,10 +35,6 @@ export default class ProjectDetails extends React.Component {
         });
       }
       );
-
-    if (!this.props.fetched) {
-      this.props.getProjects();
-    }
   }
 
   deleteProject() {
