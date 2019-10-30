@@ -102,8 +102,8 @@ export default class Carousel extends React.Component {
               <Link to={`/detail/${this.state.shuffledArray[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}>
                 <img
                   className="carousel-image"
-                  src={this.state.shuffledArray[this.state.currentImagesIndex].image}
-                  style={{ width: '100%', maxWidth: '700px', maxHeight: '500px' }}></img>
+                  src={this.props.shuffledArray[this.state.currentImagesIndex].image}
+                  style={{ width: '100%', maxWidth: '550px', minHeight: '350px', maxHeight: '350px' }}></img>
               </Link>
             </div>
             <div className="carousel-circles-container row col d-flex justify-content-center">

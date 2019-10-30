@@ -16,12 +16,15 @@ export default class Homepage extends React.Component {
             <Searchbar
               searchCallback={this.props.searchCallback} />
           </div>
-          <div className="feature-container">
+          <div className="header-carousel-container col-12">
             <div className="headerbox featured-posts mt-5">
               <h3 className="featured-posts-text">Featured Provs</h3>
             </div>
-            <Carousel
-              projects={this.props.projects}/>
+            <div className="feature-container">
+              <Carousel
+                projects={this.props.projects}
+                shuffledArray={this.state.shuffledArray} />
+            </div>
           </div>
           <WriteButton />
         </div>
