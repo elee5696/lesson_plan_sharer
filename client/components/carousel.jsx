@@ -37,7 +37,7 @@ export default class Carousel extends React.Component {
     }
 
     this.setState({
-      shuffledArray: carouselItems
+      shuffledArray: carouselItems.slice(0, 5)
     });
   }
 
@@ -62,7 +62,7 @@ export default class Carousel extends React.Component {
     this.setState({
       currentImagesIndex: this.state.currentImagesIndex + 1
     });
-    if (this.state.currentImagesIndex === this.props.projects.length - 1) {
+    if (this.state.currentImagesIndex === this.state.shuffledArray.length - 1) {
       this.setState({
         currentImagesIndex: 0
       });
@@ -75,7 +75,7 @@ export default class Carousel extends React.Component {
     });
     if (this.state.currentImagesIndex === 0) {
       this.setState({
-        currentImagesIndex: this.props.projects.length - 1
+        currentImagesIndex: this.state.shuffledArray.length - 1
       });
     }
   }
@@ -110,7 +110,7 @@ export default class Carousel extends React.Component {
           </div>
         </div>
         <div className="carousel-circles-container row col d-flex justify-content-center p-0 m-0">
-          {this.state.shuffledArray.slice(0, 5).map((project, circleIndex) => {
+          {this.state.shuffledArray.map((project, circleIndex) => {
             let className = this.state.currentImagesIndex === circleIndex ? 'fas carousel-circle-icon' : 'far';
             let circleHandleClick = () => this.goToProject(circleIndex);
             return (
