@@ -27,11 +27,10 @@ export default class SignUpPage extends React.Component {
 
   onChange(event) {
     const fileReader = new FileReader();
-    let file;
+    let file = event.target.files[0];
 
     switch (event.target.id) {
       case 'avatar':
-        file = event.target.files[0];
         fileReader.onloadend = () => {
           this.setState({
             picture: file,
@@ -56,64 +55,70 @@ export default class SignUpPage extends React.Component {
     }
 
     return (
-      <div className="container">
+      <div className="container d-flex justify-content-center mt-5 col-lg-4">
         {redirect}
-        <div className="container d-flex justify-content-center p-0 ml-5 mt-5">
-          <form>
-            <div>
-              Username:
-            </div>
-            <input
-              id="username"
-              type="text"
-              onChange={this.onChange}
-              value={this.state.username}/>
-            {
-              error && !user
-                ? <div>Username taken</div>
-                : null
-            }
-            <div>
-              Name:
-            </div>
-            <input
-              id="name"
-              type="text"
-              onChange={this.onChange}
-              value={this.state.name} />
-            <div>
-              Years of Experience:
-            </div>
-            <input
-              id="years"
-              type="number"
-              onChange={this.onChange}
-              value={this.state.years} />
-            <div>
-              About Me:
-            </div>
-            <textarea
-              id="about_me"
-              type="text"
-              onChange={this.onChange}
-              value={this.state.about_me} />
-            <div>
-              Avatar:
-            </div>
-            <input
-              id="avatar"
-              type="file"
-              name="picture"
-              onChange={this.onChange} />
-            <div className="d-flex justify-content-center">
-              <button
-                type="button"
-                className="btn searchButton shadow-none"
-                onClick={this.onSubmit}>
-                Sign-Up
-              </button>
-            </div>
-          </form>
+        <div className="card container p-lg-5 p-m-5 p-xs-2">
+          <div className="container logo-container mt-1 d-flex justify-content-center mb-1">
+            <img src="/images/logo_mini.png" />
+          </div>
+          <div className="card-top d-flex justify-content-center mt-4">
+            <h3>Create your account</h3>
+          </div>
+          <div className="container d-flex justify-content-center p-0">
+            <form>
+              <div className="mt-2">Username:</div>
+              <input
+                className="form-control"
+                id="username"
+                type="text"
+                onChange={this.onChange}
+                value={this.state.username} />
+              {
+                error && !user
+                  ? <div>Username taken</div>
+                  : null
+              }
+              <div className="mt-2">Full Name:</div>
+              <input
+                id="name"
+                type="text"
+                className="form-control"
+                onChange={this.onChange}
+                value={this.state.name} />
+              <div className="mt-2">Years of Experience:</div>
+              <input
+                id="years"
+                type="number"
+                className="form-control"
+                onChange={this.onChange}
+                value={this.state.years} />
+              <div className="mt-2">About Me:</div>
+              <textarea
+                id="about_me"
+                type="text"
+                className="form-control"
+                maxLength="250"
+                onChange={this.onChange}
+                value={this.state.about_me} />
+              <div className="float-right">
+                {this.state.about_me.length}/250
+              </div>
+              <div className="mt-4">Profile Photo:</div>
+              <input
+                id="avatar"
+                type="file"
+                name="picture"
+                onChange={this.onChange} />
+              <div className="d-flex justify-content-center my-4">
+                <button
+                  type="button"
+                  className="btn searchButton shadow-none"
+                  onClick={this.onSubmit}>
+                  Sign-Up
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     );

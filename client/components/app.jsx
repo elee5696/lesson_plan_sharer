@@ -251,7 +251,8 @@ export default class App extends React.Component {
             <Homepage {...props}
               getProjectCallback={this.getProjects}
               projects={this.state.projects}
-              searchCallback={this.searchProjects} />} />
+              searchCallback={this.searchProjects}
+              resetResults={this.resetResults} />} />
 
           <Route path="/provs" render={props =>
             <ProvPage {...props}
