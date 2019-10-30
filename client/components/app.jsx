@@ -185,12 +185,11 @@ export default class App extends React.Component {
       method: 'DELETE',
       body: JSON.stringify(body)
     })
-      .then(res => res.json())
       .then(res => {
         projects = projects.filter(e => e.id !== projectId);
-        this.setState = {
+        this.setState({
           projects: projects
-        };
+        });
       });
   }
 
