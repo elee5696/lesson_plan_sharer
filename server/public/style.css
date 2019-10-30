@@ -74,7 +74,12 @@ body {
 }
 
 
-.searchButton, .uploadPicButton, .projectSubmitButton, .editProjectButton,.editUserButton, .addYoutubeVid {
+.searchButton,
+.uploadPicButton,
+.projectSubmitButton,
+.editProjectButton,
+.editUserButton,
+.addYoutubeVid {
   background:#f8b1d1;
   color: white;
 }
@@ -84,7 +89,12 @@ body {
   max-width: 100px;
 }
 
-.searchButton:hover, .write-button-container:hover {
+.searchButton:hover,
+.write-button-container:hover,
+.editUserButton:hover,
+.uploadPicButton:hover,
+.projectSubmitButton:hover,
+.editProjectButton:hover {
   background: #ff70b3;
   color: white;
   text-decoration: none;
@@ -186,7 +196,7 @@ body {
 }
 
 .filter-item:hover {
-  background-color: #ffebf4 !important;
+  background-color: #ff70b3 !important;
 }
 
 .write-button-container {

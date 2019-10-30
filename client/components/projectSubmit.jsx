@@ -250,7 +250,7 @@ class ProjectSubmit extends React.Component {
               </div>
               <button onClick={this.handleSubmit}
                 type="submit"
-                className="projectSubmitButton btn btn-secondary btn-lg"
+                className="projectSubmitButton btn btn-outline-light"
                 style={{ color: 'white' }}>
                 Submit</button>
             </div>
