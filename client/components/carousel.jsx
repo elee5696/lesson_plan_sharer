@@ -92,35 +92,36 @@ export default class Carousel extends React.Component {
     }
 
     return (
-      <div className="container col-12">
+      <div className="container p-0">
+        <div className="headerbox container featured-posts p-0 mt-5">
+          <h3 className="featured-posts-text">Featured Provs</h3>
+        </div>
         <div
-          className="carousel-body col mt-3 container d-flex justify-content-center"
+          className="carousel-body col mt-3 p-0 container d-flex justify-content-center"
           onTouchStart={this.handleTouchStart}
           onTouchEnd={this.handleTouchEnd}>
-          <div>
-            <div className="carousel-image-containerprov mb-3 p-0">
-              <Link to={`/detail/${this.state.shuffledArray[this.state.currentImagesIndex].id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                <img
-                  className="carousel-image"
-                  src={this.state.shuffledArray[this.state.currentImagesIndex].image}
-                  style={{ width: '100%', maxWidth: '550px', minHeight: '350px', maxHeight: '350px' }}></img>
-              </Link>
-            </div>
-            <div className="carousel-circles-container row col d-flex justify-content-center">
-              {this.state.shuffledArray.slice(0, 5).map((project, circleIndex) => {
-                let className = this.state.currentImagesIndex === circleIndex ? 'fas grey-icon' : 'far';
-                let circleHandleClick = () => this.goToProject(circleIndex);
-                return (
-                  <i
-                    key={circleIndex}
-                    onClick={circleHandleClick}
-                    className={`${className} fa-circle ml-2`}>
-                  </i>
-                );
-              })
-              }
-            </div>
+          <div className="carousel-image-container d-flex justify-content-center mb-3 p-0">
+            <Link to={`/detail/${this.state.shuffledArray[this.state.currentImagesIndex].id}`}>
+              <img
+                className="carousel-image"
+                src={this.state.shuffledArray[this.state.currentImagesIndex].image}
+                style={{ maxWidth: '100%', maxHeight: '100%' }}></img>
+            </Link>
           </div>
+        </div>
+        <div className="carousel-circles-container row col d-flex justify-content-center p-0 m-0">
+          {this.state.shuffledArray.slice(0, 5).map((project, circleIndex) => {
+            let className = this.state.currentImagesIndex === circleIndex ? 'fas grey-icon' : 'far';
+            let circleHandleClick = () => this.goToProject(circleIndex);
+            return (
+              <i
+                key={circleIndex}
+                onClick={circleHandleClick}
+                className={`${className} fa-circle ml-4`}>
+              </i>
+            );
+          })
+          }
         </div>
       </div>
     );
