@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import ListBubble from './list-bubble';
 
 class ProjectSubmit extends React.Component {
@@ -17,7 +16,6 @@ class ProjectSubmit extends React.Component {
       'goals': '',
       'materials': '',
       'userId': '',
-      'location': '',
       'YouTubeVideo': ''
     };
     this.id = null;
@@ -49,6 +47,7 @@ class ProjectSubmit extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
     let body = JSON.stringify({
       name: this.state.name,
       description: this.state.description,
@@ -59,24 +58,9 @@ class ProjectSubmit extends React.Component {
       image: `/images/${this.state.image}`,
       user_id: this.state.userId,
       youtubeLink: this.YouTubeVideo
-
     });
-    fetch(`/api/project.php`, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: body
-    })
-      .then(resp => resp.json())
-      .then(response => {
-        this.setState({
-          location: response
-        });
-        // const location = `/detail/${response}`;
-        // return <Redirect to={location} />;
-      })
-      .catch(error => console.error(error));
+
+    this.props.addProject(body);
   }
 
   handleDescriptionChange(event) {
@@ -105,6 +89,7 @@ class ProjectSubmit extends React.Component {
       set_up: event.target.value
     });
   }
+
   handleMaterialChange(event) {
     this.setState({
       materials: event.target.value
@@ -147,9 +132,11 @@ class ProjectSubmit extends React.Component {
 
     }
   }
+
   goToDetails() {
     return this.id;
   }
+
   render() {
     if (!this.props.userData) {
       return (
@@ -158,16 +145,8 @@ class ProjectSubmit extends React.Component {
         </div>
       );
     }
-
-    let redirect = null;
-
-    if (this.state.location) {
-      redirect = <Redirect to={`/detail/${this.state.location}`} />;
-    }
-
     return (
       <div className= "submitForm container row p-0 justify-content-center">
-        {redirect}
         <div className="spacer col col-md-1"></div>
         <div className="form container col col-md-8 d-flex justify-content-center m-0">
           <form onSubmit={this.handleSubmit}>

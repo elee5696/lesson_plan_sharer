@@ -13,7 +13,6 @@ class YoutubePlayer extends React.Component {
     let youtubeLink;
     if (link.includes('https://www.youtube.com/')) {
       youtubeLink = link.slice(32);
-      // https://www.youtube.com/watch?v=GNmYIjflfvM
     } else if (link.includes('www.youtube.com')) {
       youtubeLink = link.slice(20);
     }

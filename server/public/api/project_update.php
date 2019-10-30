@@ -7,7 +7,6 @@ if (defined(INTERNAL)) {
 $_PUT =get_body();
 
 $id = $_PUT['id'];
-// $userId = $_PUT['user_id'];
 $name = $_PUT['name'];
 $desc = $_PUT['description'];
 $outcomes = $_PUT['outcomes'];
@@ -78,8 +77,6 @@ if($goals){
  }
 }
 
-
-
 if ($materials) {
 
   $timesToDelete = count($materials);
@@ -132,6 +129,8 @@ if (!$result) {
   throw new Exception('query failed');
 }
 
-print $id;
+$_GET['id'] = $id;
+
+require('project_get.php')
 
 ?>

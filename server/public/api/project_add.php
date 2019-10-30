@@ -118,5 +118,9 @@ if(!$result) {
   throw new Exception('query failed');
 }
 
-print($project_id);
+
+$_GET['id'] = $project_id;
+
+require('project_get.php');
+
 ?>

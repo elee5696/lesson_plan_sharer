@@ -18,6 +18,7 @@ export default class ProjectDetails extends React.Component {
     };
     this.modalToggle = this.modalToggle.bind(this);
     this.deleteProject = this.deleteProject.bind(this);
+    this.leaveComment = this.leaveComment.bind(this);
   }
 
   componentDidMount() {
@@ -37,9 +38,30 @@ export default class ProjectDetails extends React.Component {
       );
   }
 
+  leaveComment(data) {
+    let project = Object.assign({}, this.state.project);
+
+    fetch('/api/review.php', {
+      method: 'POST',
+      body: data
+    })
+      .then(res => res.json())
+      .then(review => {
+        if (project.reviews) {
+          project.reviews.unshift(review);
+        } else {
+          project['reviews'] = [review];
+        }
+        this.setState({
+          project: project
+        });
+      })
+      .catch(err => console.error(err));
+  }
+
   deleteProject() {
     const { id } = this.props.match.params;
-    this.props.deleteProject(id);
+    this.props.deleteProject(parseInt(id));
     this.setState({ deleted: true });
   }
 
@@ -241,7 +263,8 @@ export default class ProjectDetails extends React.Component {
                   ? <div className="mb-2">
                     <CommentInput
                       currentUser={this.props.userData.id}
-                      currentProject={this.state.project.id} />
+                      currentProject={this.state.project.id}
+                      leaveComment={this.leaveComment} />
                   </div>
                   : <div className="login-to-leave-review mb-3"><h5 className="m-2">Please log in to leave a review.</h5></div>
               }

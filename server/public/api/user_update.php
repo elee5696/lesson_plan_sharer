@@ -20,8 +20,6 @@ $query =
   WHERE
     `id`=$id";
 
-print $query;
-
 $result = mysqli_query($conn, $query);
 if(!$result) {
   throw new Exception('query failed');
