@@ -111,17 +111,6 @@ body {
   cursor: pointer;
 }
 
-/* .uploadPicButton {
-  border-style: none;
-  width: 110px;
-  height: 35px;
-} */
-
-/* .next-page-button-container {
-  margin-top: 315px;
-  margin-left: 100px;
-} */
-
 .inputButton {
   border: 2px solid #f8b1d1;
 }
@@ -399,4 +388,8 @@ body {
 
 input {
   width: 100%;
+}
+
+.user-profile-input {
+  width: 75%;
 }

@@ -59,12 +59,12 @@ export default class UserPhotoUpdate extends React.Component {
             <div className="modal-body pt-0">
               <form id="profilePicture">
                 <input
-                  className="inputButton mt-3"
+                  className="mt-3"
                   type="file"
                   name="picture"
                   onChange={this.onChange}
                   style={{ width: '100%' }}></input>
-                <div>
+                <div className="d-flex justify-content-center">
                   {this.state.imagePreviewUrl ? imagePreview : null}
                 </div>
               </form>
