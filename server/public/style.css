@@ -381,7 +381,7 @@ body {
   }
 }
 
-@media (min-width: 766px) {
+@media (min-width: 760px) {
   .headerbox {
      margin-left: 0%;
   }
