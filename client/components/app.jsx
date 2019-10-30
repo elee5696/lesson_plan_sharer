@@ -6,7 +6,7 @@ import ProvPage from './prov-page';
 import UserPage from './user-page';
 import LogInPage from './logInPage';
 import SignUpPage from './signUpPage';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, Link, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import PictureUploadForm from './picture-upload';
 import EditProjectSubmit from './editProjectSubmit';
 import EditPictureUpload from './editPicture-upload';
@@ -19,10 +19,13 @@ export default class App extends React.Component {
       searchResults: '',
       currentUser: '',
       error: false,
-      fetched: false
+      fetched: false,
+      redirect: ''
     };
+
+    this.addProject = this.addProject.bind(this);
     this.getProjects = this.getProjects.bind(this);
-    this.getUpdatedProject = this.getUpdatedProject.bind(this);
+    this.updateProject = this.updateProject.bind(this);
     this.searchProjects = this.searchProjects.bind(this);
     this.resetResults = this.resetResults.bind(this);
     this.userUpdate = this.userUpdate.bind(this);
@@ -67,19 +70,47 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  getUpdatedProject(projectToUpdate) {
+  addProject(data) {
     let projects = [...this.state.projects];
-    projectToUpdate = JSON.parse(projectToUpdate);
-    projects = projects.filter(e => e.id !== projectToUpdate.id);
-    fetch(`/api/project.php?id=${projectToUpdate.id}`)
-      .then(res => res.json())
-      .then(project => {
-        projects.push(project[0]);
+
+    fetch(`/api/project.php`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: data
+    })
+      .then(resp => resp.json())
+      .then(response => {
+        projects.push(response[0]);
         this.setState({
+          redirect: `/detail/${response[0].id}`,
           projects: projects
         });
       })
-      .catch(err => console.error(err));
+      .catch(error => console.error(error));
+  }
+
+  updateProject(data) {
+    let projects = [...this.state.projects];
+
+    fetch(`/api/project.php`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(response => {
+        projects = projects.filter(e => e.id !== data.id);
+        projects.push(response[0]);
+        this.setState({
+          projects: projects,
+          redirect: `/detail/${response[0].id}`
+        });
+      })
+      .catch(error => console.error(error));
   }
 
   logIn(user) {
@@ -105,7 +136,10 @@ export default class App extends React.Component {
     fetch(`/api/user.php`, data)
       .then(res => res.json())
       .then(userData => {
-        this.setState({ currentUser: userData });
+        this.setState({
+          currentUser: userData,
+          redirect: `/user/${userData.id}`
+        });
         window.sessionStorage.setItem('currentUser', JSON.stringify(userData));
       })
       .catch(err => console.error(err));
@@ -144,7 +178,6 @@ export default class App extends React.Component {
   }
 
   deleteProject(projectId) {
-
     let projects = [...this.state.projects];
     const body = { id: parseInt(projectId) };
 
@@ -162,8 +195,15 @@ export default class App extends React.Component {
   }
 
   render() {
+    let redirect = null;
+
+    if (this.state.redirect) {
+      redirect = <Redirect to={`${this.state.redirect}`} />;
+    }
+
     return (
       <Router>
+        {redirect}
         <div className="header-container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link className="prov-logo navbar-brand" to="/">
@@ -256,7 +296,7 @@ export default class App extends React.Component {
             <EditProjectSubmit {...props}
               userData={this.state.currentUser}
               listOfProjects={this.state.projects}
-              updateProjectsCallback={this.getUpdatedProject} />} />
+              updateProjectsCallback={this.updateProject} />} />
 
           <Route path="/submit" render={props =>
             <PictureUploadForm {...props}
@@ -264,7 +304,8 @@ export default class App extends React.Component {
 
           <Route path="/submit2" render={props =>
             <ProjectSubmit {...props}
-              userData={this.state.currentUser} />} />
+              userData={this.state.currentUser}
+              addProject={this.addProject} />} />
 
         </Switch>
       </Router>

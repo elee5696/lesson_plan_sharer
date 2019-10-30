@@ -32,7 +32,7 @@ export default class Searchbar extends React.Component {
     }
 
     this.setState({
-      filter: event.target.innerHTML === 'reset' ? 'Search' : event.target.innerHTML
+      filter: event.target.innerHTML === 'Reset' ? 'Search' : event.target.innerHTML
     });
   }
 

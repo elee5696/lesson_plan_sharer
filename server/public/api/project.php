@@ -21,7 +21,7 @@ switch($method) {
     require('project_patch_rate.php');
     break;
   case 'PUT':
-    require('project_edit.php');
+    require('project_update.php');
     break;
   case 'DELETE':
     require('project_delete.php');

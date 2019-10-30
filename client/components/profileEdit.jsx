@@ -23,6 +23,7 @@ export default class EditProfile extends React.Component {
       'field': this.props.field,
       'value': this.state.value
     });
+
     const data = {
       method: 'PATCH',
       headers: {

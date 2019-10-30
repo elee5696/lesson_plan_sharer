@@ -17,4 +17,21 @@ $project_id = $_POST['project_id'];
 
 $stmt->execute();
 $stmt->close();
+
+$query = "SELECT r.`id`,user_id, username, project_id, `comment`, `time`, avatar
+  FROM `reviews` as r JOIN user_table as u ON u.id=user_id WHERE r.`id`= LAST_INSERT_ID()";
+$result = mysqli_query($conn, $query);
+if(!$result) {
+  throw new Exception('query failed');
+}
+
+$output = [];
+while( $row = mysqli_fetch_assoc($result) ) {
+  $row["id"] = intval($row['id']);
+  $row["project_id"] = intval($row['project_id']);
+  $row["user_id"] = intval($row["user_id"]);
+  $output = $row;
+}
+
+print(json_encode($output));
 ?>

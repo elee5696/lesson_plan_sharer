@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom'
 import ListBubble from './list-bubble';
 import { Redirect } from 'react-router-dom';
 
@@ -50,7 +49,7 @@ class EditProjectSubmit extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let body = JSON.stringify({
+    let body = {
       id: this.id,
       name: this.state.name,
       description: this.state.description,
@@ -62,23 +61,9 @@ class EditProjectSubmit extends React.Component {
       user_id: this.state.userId,
       youtubeLink: this.YoutubeVideo
 
-    });
-    this.props.updateProjectsCallback(body);
-    fetch(`/api/project.php`, {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: body
-    })
-      .then(resp => resp.json())
-      .then(response => {
-        this.setState({
-          location: parseInt(response)
-        });
-      })
-      .catch(error => console.error(error));
+    };
 
+    this.props.updateProjectsCallback(body);
   }
 
   handleDescriptionChange(event) {
