@@ -52,7 +52,13 @@ body {
   border: 1px solid black
 }
 
+<<<<<<< HEAD
+
+.project-media-container,
+.project-card-container{
+=======
 .project-media-container, .project-card-container {
+>>>>>>> 671215cc4376b7fcef5ff8415311adb005c78a5c
   color: black;
 }
 

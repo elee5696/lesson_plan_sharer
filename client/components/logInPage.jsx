@@ -60,7 +60,7 @@ export default class LogInPage extends React.Component {
                 }
               </div>
 
-              <div className="button-container mt-3">
+              <div className="button-container mt-3 d-flex justify-content-center">
                 <button
                   type="button"
                   onClick={this.onSubmit}
