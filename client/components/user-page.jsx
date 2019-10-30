@@ -113,7 +113,8 @@ export default class UserPage extends React.Component {
                       : this.props.currentUser.id
                   }
                 cancelCallback={this.cancelEdit}
-                userUpdateCallback={this.props.userUpdateCallback} />
+                userUpdateCallback={this.props.userUpdateCallback}
+                value={this.state.user.username} />
               : <div className="username-key-value-container col ml-0 mb-3">
                 <div className="username-key row p-0">
                   <p className="col-8 p-0 m-0">Username: </p>
@@ -150,7 +151,8 @@ export default class UserPage extends React.Component {
                       : this.props.currentUser.id
                   }
                 cancelCallback={this.cancelEdit}
-                userUpdateCallback={this.props.userUpdateCallback} />
+                userUpdateCallback={this.props.userUpdateCallback}
+                value={this.state.user.name} />
               : <div className="name-key-value-container col ml-0 mb-3">
                 <div className="name-key row p-0">
                   <p className="col-8 p-0 m-0">Name: </p>
@@ -187,7 +189,8 @@ export default class UserPage extends React.Component {
                       : this.props.currentUser.id
                   }
                 cancelCallback={this.cancelEdit}
-                userUpdateCallback={this.props.userUpdateCallback} />
+                userUpdateCallback={this.props.userUpdateCallback}
+                value={this.state.user.years} />
               : <div className="experience-key-value-container col ml-0 mb-3">
                 <div className="experience-key row p-0">
                   <p className="col-8 p-0 m-0">Experience:</p>
@@ -224,7 +227,8 @@ export default class UserPage extends React.Component {
                       : this.props.currentUser.id
                   }
                 userUpdateCallback={this.props.userUpdateCallback}
-                cancelCallback={this.cancelEdit} />
+                cancelCallback={this.cancelEdit}
+                value={this.state.user.about_me} />
               : <div className="about-me-key-value-container col ml-0 mb-3">
                 <div className="about-me-key row p-0">
                   <p className="col-8 p-0 m-0">About Me:</p>

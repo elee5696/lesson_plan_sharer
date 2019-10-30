@@ -73,14 +73,13 @@ class PictureUploadForm extends React.Component {
             <div>
               {this.state.imagePreviewUrl ? imagePreview : null}
             </div>
-            <div>
-
+            <div className="select-photo-text d-flex justify-content-center">
+              <div className="picForm-div select-photo">Place a video of your project</div>
             </div>
-            <div style={styleNextPageButtondiv}>
-
-              <input onChange={this.onYouTubeChange} className="youtube-link w-100"
+            <div className="mt-3" style={styleNextPageButtondiv}>
+              <input onChange={this.onYouTubeChange} className="youtube-link w-100 form-control"
                 value={this.state.youtubeVideo}
-                placeholder="Place A YouTube Video link here (optional)"></input>
+                placeholder="YouTube Link Here (optional)"></input>
               <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '4rem' }}>
 
                 <button className="uploadPicButton btn" style={{ width: '140px' }} onClick={this.onSubmit}>

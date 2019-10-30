@@ -342,56 +342,74 @@ body {
   }
 }
 
-@media (max-width: 768px) {
-  .headerbox {
-    padding-left: 30px;
-  }
-}
-
-@media (max-width: 1200px) and (min-width: 967px) {
-  .headerbox {
-    padding-left: 130px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .headerbox {
-    padding-left: 220px;
-  }
-
+@media (min-width: 1024px) {
   .search-bar-container {
     width: 800px;
   }
+
+  .carousel-image-container {
+    width: 800px;
+  }
+
+  .headerbox {
+    width: 600px;
+  }
 }
-@media (min-width: 1024px){
+
+@media (min-width: 1024px) {
   .details-info-container{
     margin-left: 145px;
 
   }
 }
 
-@media (min-width: 576px) {
-  .feature-container {
-     margin-left: 0%;
-  }
+.project-outcomes-container{
+  padding: 0px;
+  margin-right: 15px;
 }
 
-@media (min-width: 300px) {
-  .carousel-image {
-     min-height: 250px;
-     max-height: 250px;
-  }
+.user-profile-pic, .comment-user-pic {
+  border: 2px solid #f8b1d1;
+  border-radius: 50%;
 }
 
-@media (min-width: 400px) {
-  .carousel-image {
-     min-height: 350px;
-     max-height: 350px;
-  }
+.user-pic-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
-@media (min-width: 760px) {
-  .headerbox {
-     margin-left: 0%;
-  }
+.user-avatar-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.login-to-leave-review {
+  border: 1px solid #f8b1d1;
+}
+
+.comment-date {
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.textarea {
+  width: 100%;
+}
+
+.edit-modal {
+  background: rgba(0, 0, 0, 0.329);
+}
+
+.carousel-image-container {
+  height: 400px;
+}
+
+input {
+  width: 100%;
+}
+
+.user-profile-input {
+  width: 75%;
 }
