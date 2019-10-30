@@ -111,7 +111,7 @@ export default class Carousel extends React.Component {
         </div>
         <div className="carousel-circles-container row col d-flex justify-content-center p-0 m-0">
           {this.state.shuffledArray.slice(0, 5).map((project, circleIndex) => {
-            let className = this.state.currentImagesIndex === circleIndex ? 'fas grey-icon' : 'far';
+            let className = this.state.currentImagesIndex === circleIndex ? 'fas carousel-circle-icon' : 'far';
             let circleHandleClick = () => this.goToProject(circleIndex);
             return (
               <i
