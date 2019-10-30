@@ -359,11 +359,38 @@ body {
     margin-left: 145px;
 
   }
+}
+
+@media (min-width: 576px) {
+  .feature-container {
+     margin-left: 0%;
+  }
+}
+
+@media (min-width: 300px) {
+  .carousel-image {
+     min-height: 250px;
+     max-height: 250px;
+  }
+}
+
+@media (min-width: 400px) {
+  .carousel-image {
+     min-height: 350px;
+     max-height: 350px;
+  }
+}
+
+@media (min-width: 766px) {
+  .headerbox {
+     margin-left: 0%;
+  }
+}
+
   .project-outcomes-container{
     padding: 0px;
     margin-right: 15px;
   }
-}
 
 .user-profile-pic, .comment-user-pic {
   border: 2px solid #f8b1d1;

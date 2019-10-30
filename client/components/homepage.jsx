@@ -45,14 +45,15 @@ export default class Homepage extends React.Component {
             <Searchbar
               searchCallback={this.props.searchCallback} />
           </div>
-          <div className="feature-container offset-sm-3"
-            style={{ minWidth: '400px', maxWidth: '400px' }}>
+          <div className="header-carousel-container">
             <div className="headerbox featured-posts mt-5">
               <h3 className="featured-posts-text">Featured Provs</h3>
             </div>
-            <Carousel
-              projects={this.props.projects}
-              shuffledArray={this.state.shuffledArray} />
+            <div className="feature-container">
+              <Carousel
+                projects={this.props.projects}
+                shuffledArray={this.state.shuffledArray} />
+            </div>
           </div>
           <WriteButton />
         </div>
