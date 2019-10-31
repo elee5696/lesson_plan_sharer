@@ -431,8 +431,14 @@ input {
   }
 }
 
-@media (min-width: 1024px) {
-  .details-info-container{
+/* @media (min-width: 1024px) {
+  .details-info-container {
     margin-left: 145px;
   }
-}
+} */
+
+/* @media (min-width: 700px) {
+  .back-button {
+    margin-left: 145px;
+  }
+} */

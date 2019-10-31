@@ -13,11 +13,11 @@ export default class EditButton extends React.Component {
 
   render() {
     return (
-      <div className="edit-button-container">
+      <div className="edit-button-container dropdown">
         <button
           type="button"
-          className="editProjectButton btn dropdown-toggle shadow-none dropdown-toggle-split mr-1"
-          data-toggle="dropdown"> Edit Project</button>
+          className="editProjectButton btn shadow-none dropdown-toggle"
+          data-toggle="dropdown">Edit Project</button>
         <div className="dropdown-menu dropdown-menu-right pl-2">
           <Link style={{ color: 'black', textDecoration: 'none' }} to={{
             pathname: '/edit',
