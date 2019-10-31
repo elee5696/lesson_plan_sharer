@@ -120,34 +120,33 @@ export default class ProjectDetails extends React.Component {
       </div>;
 
     return (
-
-      <div className="entire-page-container container row col m-0 p-0">
-        {this.state.modal ? modal : null}
-        <div className="back-button-container mt-3 mb-3 col-10 offset-1 p-0">
-          <Link to="/provs" style={linkStyle}>
-            <div className="back-button">{'< Back to Provs'}</div>
-          </Link>
-          {
-            this.state.project.author_data.id === this.props.userData.id
-              ? <div className="editButton-div ml-5">
-                <EditButton
-                  userData={this.state.project.author_data.id}
-                  project={this.state.project}
-                  currentUser={this.props.userData.id}
-                  modalToggle={this.modalToggle}/>
-              </div>
-              : null
-          }
-        </div>
-        <div className="col-10 p-0 offset-1">
-          <div className="project-image-container row justify-content-center mb-4">
+      <div className="entire-page-container container col m-0 p-0">
+        <div className="container col-lg-8 col-10 p-0 offset-xl-2">
+          {this.state.modal ? modal : null}
+          <div className="back-button-container mt-3 mb-3 m-0 p-0">
+            <Link to="/provs" style={linkStyle}>
+              <div className="back-button">{'< Back to Provs'}</div>
+            </Link>
+            {
+              this.state.project.author_data.id === this.props.userData.id
+                ? <div className="editButton-div ml-5">
+                  <EditButton
+                    userData={this.state.project.author_data.id}
+                    project={this.state.project}
+                    currentUser={this.props.userData.id}
+                    modalToggle={this.modalToggle} />
+                </div>
+                : null
+            }
+          </div>
+          <div className="project-image-container container row justify-content-center mb-4 m-0 p-0">
             <img
               className="project-image p-0"
               style={{ width: '90%', maxWidth: '550px', height: '40%' }}
               src={this.state.project.image}>
             </img>
           </div>
-          <div className="details-info-container">
+          <div className="details-info container p-0">
             <div className="project-title-container col-10 mb-3 p-0">
               <h2 className="project-title text-capitalize">{this.state.project.name}</h2>
             </div>
