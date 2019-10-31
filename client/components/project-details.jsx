@@ -225,8 +225,8 @@ export default class ProjectDetails extends React.Component {
                           key={i}
                           className="project-materials-list-item"
                           text={e}
-                          minWidth="100px"
-                          maxWidth="100px" />
+                          minWidth="150px"
+                          maxWidth="150px" />
                       );
                     })}
                   </div>
