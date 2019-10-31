@@ -71,7 +71,7 @@ class EditPictureUpload extends React.Component {
 
     if (this.state.redirect && this.state.imagePreviewUrl) {
       return <Redirect to={{
-        pathname: '/submit2',
+        pathname: '/edit2',
         state: {
           file: this.state.file,
           youtubeVideoUrl: this.state.youtubeVideo
