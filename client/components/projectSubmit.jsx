@@ -247,7 +247,7 @@ class ProjectSubmit extends React.Component {
                 </div>
                 {this.state.formErrors.goalsToSubmit ? null : <div className="invalid-error">Field must have an entry</div>}
               </div>
-              <div className="goal-bubble-container row justify-content-center mb-0">
+              <div className="goal-bubble-container row justify-content-center ml-1 p-0">
                 {this.state.form.goalsToSubmit.map((goal, index) => {
                   return <ListBubble
                     id={'somegoal'}
