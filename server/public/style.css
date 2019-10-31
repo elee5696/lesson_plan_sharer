@@ -296,6 +296,9 @@ input {
   width: 75%;
 }
 
+.invalid-error{
+  color: red
+}
 
 @media (min-height: 1024px) {
   .description {

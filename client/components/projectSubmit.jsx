@@ -1,23 +1,41 @@
 import React from 'react';
 import ListBubble from './list-bubble';
 
+// const formValid = formErrors => {
+//   let valid = true;
+
+//   Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false)
+//   });
+//   return valid;
+// }
+
 class ProjectSubmit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      'name': '',
-      'description': '',
-      'set_up': '',
-      'outcomes': '',
-      'rating': '',
+      form: {
+        'name': '',
+        'description': '',
+        'set_up': '',
+        'outcomes': '',
+        'goalsToSubmit': [],
+        'materialsToSubmit': []
+      },
       'image': null,
-      'goalsToSubmit': [],
-      'materialsToSubmit': [],
       'goals': '',
       'materials': '',
       'userId': '',
-      'YouTubeVideo': ''
+      'YouTubeVideo': '',
+      'formErrors': {
+        'name': true,
+        'description': true,
+        'set_up': true,
+        'outcomes': true,
+        'goalsToSubmit': true,
+        'materialsToSubmit': true
+      }
     };
+
     this.id = null;
     this.materialsArray = [];
     this.goalsArray = [];
@@ -35,30 +53,34 @@ class ProjectSubmit extends React.Component {
     this.goToDetails = this.goToDetails.bind(this);
     this.deleteGoal = this.deleteGoal.bind(this);
     this.deleteMaterial = this.deleteMaterial.bind(this);
+    this.validateForm = this.validateForm.bind(this);
   }
 
   handleProjectTitleandImageChange(event) {
+    let form = Object.assign({}, this.state.form);
+    form.name = event.target.value;
     this.setState({
-      name: event.target.value,
-      image: this.image,
-      userId: this.props.userData.id,
-      YouTubeVideo: this.YouTubeVideo
-
+      form: form
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    let error = this.validateForm();
+
+    if (error) {
+      return;
+    }
 
     let body = JSON.stringify({
-      name: this.state.name,
-      description: this.state.description,
-      set_up: this.state.set_up,
-      outcomes: this.state.outcomes,
-      goals: this.state.goalsToSubmit,
-      materials: this.state.materialsToSubmit,
-      image: `/images/${this.state.image}`,
-      user_id: this.state.userId,
+      name: this.state.form.name,
+      description: this.state.form.description,
+      set_up: this.state.form.set_up,
+      outcomes: this.state.form.outcomes,
+      goals: this.state.form.goalsToSubmit,
+      materials: this.state.form.materialsToSubmit,
+      image: `/images/${this.image}`,
+      user_id: this.props.userData.id,
       youtubeLink: this.YouTubeVideo
     });
 
@@ -66,8 +88,10 @@ class ProjectSubmit extends React.Component {
   }
 
   handleDescriptionChange(event) {
+    let form = Object.assign({}, this.state.form);
+    form.description = event.target.value;
     this.setState({
-      description: event.target.value
+      form: form
     });
   }
 
@@ -80,15 +104,19 @@ class ProjectSubmit extends React.Component {
   handleGoalSubmit(event) {
     event.preventDefault();
     this.goalsArray.push(this.state.goals);
+    let form = Object.assign({}, this.state.form);
+    form.goalsToSubmit = this.goalsArray;
     this.setState({
       goals: '',
-      goalsToSubmit: this.goalsArray
+      form: form
     });
   }
 
   handleSetUpChange(event) {
+    let form = Object.assign({}, this.state.form);
+    form.set_up = event.target.value;
     this.setState({
-      set_up: event.target.value
+      form: form
     });
   }
 
@@ -102,15 +130,19 @@ class ProjectSubmit extends React.Component {
   handleMaterialSubmit(event) {
     event.preventDefault();
     this.materialsArray.push(this.state.materials);
+    let form = Object.assign({}, this.state.form);
+    form.materialsToSubmit = this.materialsArray;
     this.setState({
       materials: '',
-      materialsToSubmit: this.materialsArray
+      form: form
     });
   }
 
   handleOutcomesChange(event) {
+    let form = Object.assign({}, this.state.form);
+    form.outcomes = event.target.value;
     this.setState({
-      outcomes: event.target.value
+      form: form
     });
   }
 
@@ -139,8 +171,10 @@ class ProjectSubmit extends React.Component {
       return item !== text;
     });
     this.goalsArray = newGoalsArray;
+    let form = Object.assign({}, this.state.form);
+    form.goalsToSubmit = this.goalsArray;
     this.setState({
-      goalsToSubmit: this.goalsArray
+      form: form
     });
 
   }
@@ -149,12 +183,69 @@ class ProjectSubmit extends React.Component {
       return item !== text;
     });
     this.materialsArray = newMaterialsArray;
+    let form = Object.assign({}, this.state.form);
+    form.materialsToSubmit = this.materialsArray;
     this.setState({
-      materialsToSubmit: this.materialsArray
+      form: form
     });
   }
   goToDetails() {
     return this.id;
+  }
+  validateForm(name) {
+    // if((this.state.name === null) || (this.state.description ===  null) || (this.state.set_up === null) || (this.state.outcomes == null) || (this.state.goalsToSubmit === null) || (this.state.materialsToSubmit === null)){
+    // let formErrors = this.state.formErrors;
+    let error = false;
+    let formErrors = Object.assign({}, this.state.formErrors);
+
+    for (let key in this.state.form) {
+      if (this.state.form[key].length <= 0) {
+        formErrors[key] = false;
+        error = true;
+      } else {
+        formErrors[key] = true;
+      }
+    }
+
+    this.setState({
+      formErrors: formErrors
+    });
+    return error;
+
+    //  switch(name){
+    //   case 'name':
+    //     this.state.name = value.length > 0
+    //     ? this.state.
+    //     : ''
+    //     break;
+    //    case 'description':
+    //     this.state.description = value.length > 0
+    //     ? 'input must be filled'
+    //     : ''
+    //      break;
+    //    case 'set_up':
+    //     this.state.set_up = value.length > 0
+    //     ? 'input must be filled'
+    //     : ''
+    //      break;
+    //    case 'outcomes':
+    //     this.state.outcomes = value.length > 0
+    //     ? 'input must be filled'
+    //     : ''
+    //      break;
+    //    case 'goalsToSubmit':
+    //     this.state.goalsToSubmit = value.length > 0
+    //     ? 'input must be filled'
+    //     : ''
+    //      break;
+    //    case 'materialsToSubmit':
+    //     this.state.materialsToSubmit = value.length > 0
+    //     ? 'input must be filled'
+    //     : ''
+    //      break;
+    //    default:
+    //     break;
+
   }
 
   render() {
@@ -177,11 +268,13 @@ class ProjectSubmit extends React.Component {
                 type="text"
                 className="form-control projectEntry"
                 placeholder="Project Entry"></input>
+              {this.state.formErrors.name ? null : <div className="invalid-error">Field must have an entry</div>}
             </div>
             <div className="description form-group">
               <label >Description</label>
               <textarea onChange={this.handleDescriptionChange}
                 className="form-control descriptionBox" placeholder="Description Text" rows="3"></textarea>
+              {this.state.formErrors.description ? null : <div className="invalid-error">Field must have an entry</div>}
             </div>
             <div>
               <div className="goals form-group inline">
@@ -192,13 +285,15 @@ class ProjectSubmit extends React.Component {
                     onChange={this.handleGoalChange}
                     value={this.state.goals}
                     placeholder="Goals" />
+
                   <div className= "input-group-append">
                     <button className="btn btn-outline-secondary addBubbleButton shadow-none" type= "button" onClick={this.handleGoalSubmit}>+</button>
                   </div>
                 </div>
+                {this.state.formErrors.goalsToSubmit ? null : <div className="invalid-error">Field must have an entry</div>}
               </div>
-              <div className="goal-bubble-container row justify-content-center ml-1 p-0">
-                {this.state.goalsToSubmit.map((goal, index) => {
+              <div className="goal-bubble-container row justify-content-center mb-0">
+                {this.state.form.goalsToSubmit.map((goal, index) => {
                   return <ListBubble
                     id={'somegoal'}
                     text={goal}
@@ -220,9 +315,11 @@ class ProjectSubmit extends React.Component {
                   <div className="input-group-append">
                     <button className="btn btn-outline-secondary searchButton" onClick={this.handleMaterialSubmit}>+</button>
                   </div>
+
                 </div>
+                {this.state.formErrors.materialsToSubmit ? null : <div className="invalid-error">Field must have an entry</div>}
                 <div className="row materials-bubble-container justify-content-center ml-1 p-0">
-                  {this.state.materialsToSubmit.map((material, index) => {
+                  {this.state.form.materialsToSubmit.map((material, index) => {
                     return <ListBubble
                       id={'somematerial'}
                       text={material}
@@ -231,6 +328,7 @@ class ProjectSubmit extends React.Component {
                       maxWidth="140px"
                       deleteMaterial={this.deleteMaterial}/>;
                   })}
+
                 </div>
               </div>
             </div>
@@ -242,6 +340,7 @@ class ProjectSubmit extends React.Component {
                   className="form-control setUpEntry" id="setUp"
                   placeholder="Set-Up Entry" />
                 <small className="text-muted"> Separate instructions with commas</small>
+                {this.state.formErrors.set_up ? null : <div className="invalid-error">Field must have an entry</div>}
               </div>
               <div className="outcomes form-group">
                 <label>Outcomes</label>
@@ -250,6 +349,7 @@ class ProjectSubmit extends React.Component {
                   id="outcomeBox"
                   placeholder="Outcome Entries"
                   rows="3"></textarea>
+                {this.state.formErrors.outcomes ? null : <div className="invalid-error">Field must have an entry</div>}
               </div>
               <button onClick={this.handleSubmit}
                 type="submit"
