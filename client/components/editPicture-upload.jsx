@@ -74,7 +74,8 @@ class EditPictureUpload extends React.Component {
         pathname: '/edit2',
         state: {
           file: this.state.file,
-          youtubeVideoUrl: this.state.youtubeVideo
+          youtubeVideoUrl: this.state.youtubeVideo,
+          project: this.state.projectToEdit
         }
       }} />;
     }

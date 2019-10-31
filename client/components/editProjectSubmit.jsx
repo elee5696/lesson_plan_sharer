@@ -132,7 +132,7 @@ class EditProjectSubmit extends React.Component {
       this.image = pictureName;
       this.YouTubeVideo = this.props.location.state.youtubeVideoUrl;
     }
-    const edit = this.props.location.state.projectToEdit;
+    const edit = this.props.location.state.project;
     this.goalsArray = edit.goals;
     this.materialsArray = edit.materials;
     this.setState({
