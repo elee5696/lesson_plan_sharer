@@ -17,7 +17,7 @@ export default class ListBubble extends React.Component {
   render() {
     let hasCallbackFunction = this.props.deleteGoal || this.props.deleteMaterial;
 
-    let borderStyle = {
+    const borderStyle = {
       background: '#f8b1d1',
       color: 'white',
       borderRadius: '50px',

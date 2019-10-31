@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class PictureUploadForm extends React.Component {
   constructor(props) {
@@ -9,7 +9,8 @@ class PictureUploadForm extends React.Component {
       file: null,
       filename: null,
       imagePreviewUrl: null,
-      youtubeVideo: ''
+      youtubeVideo: '',
+      redirect: false
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -29,7 +30,11 @@ class PictureUploadForm extends React.Component {
     fetch('/api/picture_upload.php', {
       'method': 'POST',
       'body': formData
-    });
+    })
+      .then(this.setState({
+        redirect: true
+      }));
+
   }
 
   onChange(event) {
@@ -59,6 +64,16 @@ class PictureUploadForm extends React.Component {
     };
 
     const imagePreview = <img className= "submittedImage" src={this.state.imagePreviewUrl}/>;
+
+    if (this.state.redirect && this.state.imagePreviewUrl) {
+      return <Redirect to={{
+        pathname: '/submit2',
+        state: {
+          file: this.state.file,
+          youtubeVideoUrl: this.state.youtubeVideo
+        }
+      }} />;
+    }
 
     return (
       <div className="col picForm container p-0">
@@ -91,18 +106,7 @@ class PictureUploadForm extends React.Component {
                 value={this.state.youtubeVideo}
                 placeholder="YouTube Link Here (optional)"></input>
               <div className="nextPageDiv d-flex justify-content-center">
-                <button className="uploadPicButton btn" style={{ width: '140px' }} onClick={this.onSubmit}>
-                  {
-                    this.state.imagePreviewUrl
-                      ? <Link style={{ color: 'white' }} to={{
-                        pathname: '/submit2',
-                        state: {
-                          file: this.state.file,
-                          youtubeVideoUrl: this.state.youtubeVideo
-                        }
-                      }}>Next Page</Link>
-                      : 'Next Page'
-                  }
+                <button onClick={this.onSubmit} className="uploadPicButton btn" style={{ width: '140px' }} >Next Page
                 </button>
               </div>
             </div>
