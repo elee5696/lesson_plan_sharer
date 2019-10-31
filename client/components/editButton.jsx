@@ -18,7 +18,7 @@ export default class EditButton extends React.Component {
           type="button"
           className="editProjectButton btn shadow-none dropdown-toggle"
           data-toggle="dropdown">Edit Project</button>
-        <div className="dropdown-menu dropdown-menu-right pl-2">
+        <div className="dropdown-menu dropdown-menu-left pl-2">
           <Link style={{ color: 'black', textDecoration: 'none' }} to={{
             pathname: '/edit',
             state: {

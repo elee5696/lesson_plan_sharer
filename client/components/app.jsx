@@ -103,7 +103,7 @@ export default class App extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        projects = projects.filter(e => e.id !== data.id);
+        projects = projects.filter(e => parseInt(e.id) !== parseInt(data.id));
         projects.push(response[0]);
         this.setState({
           projects: projects,
@@ -171,7 +171,8 @@ export default class App extends React.Component {
 
   logOut() {
     this.setState({
-      currentUser: ''
+      currentUser: '',
+      redirect: '/login'
     });
     window.sessionStorage.removeItem('currentUser');
 
