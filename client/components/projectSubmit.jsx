@@ -167,7 +167,7 @@ class ProjectSubmit extends React.Component {
     }
     return (
       <div className= "submitForm container row p-0 justify-content-center">
-        <div className="spacer col col-md-1"></div>
+
         <div className="form container col col-md-8 d-flex justify-content-center m-0">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
@@ -186,10 +186,9 @@ class ProjectSubmit extends React.Component {
             <div>
               <div className="goals form-group inline">
                 <label className="col-form-label">Goals</label>
-                <div className="input-group  p-0">
+                <div className="input-group shadow-none p-0">
                   <input type="text"
-                    className="form-control"
-                    id="goalSubmit"
+                    className="goalSubmit form-control"
                     onChange={this.handleGoalChange}
                     value={this.state.goals}
                     placeholder="Goals" />
@@ -198,7 +197,7 @@ class ProjectSubmit extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="goal-bubble-container row justify-content-center mb-0">
+              <div className="goal-bubble-container row justify-content-center ml-1 p-0">
                 {this.state.goalsToSubmit.map((goal, index) => {
                   return <ListBubble
                     id={'somegoal'}
@@ -214,15 +213,15 @@ class ProjectSubmit extends React.Component {
               <div className="materials form-group inline ">
                 <label
                   className="col-form-label">Materials</label>
-                <div className="input-group p-0">
+                <div className="input-group shadow-none p-0">
                   <input onChange={this.handleMaterialChange}
-                    type="text" className="form-control" id="materialSubmit"
+                    type="text" className="materialSubmit form-control"
                     placeholder="Materials Entry" value={this.state.materials}></input>
                   <div className="input-group-append">
                     <button className="btn btn-outline-secondary searchButton" onClick={this.handleMaterialSubmit}>+</button>
                   </div>
                 </div>
-                <div className="row materials-bubble-container justify-content-center">
+                <div className="row materials-bubble-container justify-content-center ml-1 p-0">
                   {this.state.materialsToSubmit.map((material, index) => {
                     return <ListBubble
                       id={'somematerial'}
@@ -260,7 +259,6 @@ class ProjectSubmit extends React.Component {
             </div>
           </form>
         </div>
-        <div className="spacer col-md-1"></div>
       </div>
     );
   }
