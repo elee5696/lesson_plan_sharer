@@ -247,7 +247,7 @@ class ProjectSubmit extends React.Component {
                 </div>
                 {this.state.formErrors.goalsToSubmit ? null : <div className="invalid-error">Field must have an entry</div>}
               </div>
-              <div className="goal-bubble-container row justify-content-center ml-1 p-0">
+              <div className="goal-bubble-container row p-0 m-0">
                 {this.state.form.goalsToSubmit.map((goal, index) => {
                   return <ListBubble
                     id={'somegoal'}
@@ -272,19 +272,19 @@ class ProjectSubmit extends React.Component {
                   </div>
 
                 </div>
-                {this.state.formErrors.materialsToSubmit ? null : <div className="invalid-error">Field must have an entry</div>}
-                <div className="row materials-bubble-container justify-content-center ml-1 p-0">
-                  {this.state.form.materialsToSubmit.map((material, index) => {
-                    return <ListBubble
-                      id={'somematerial'}
-                      text={material}
-                      key={index}
-                      minWidth="140px"
-                      maxWidth="140px"
-                      deleteMaterial={this.deleteMaterial}/>;
-                  })}
 
-                </div>
+              </div>
+              {this.state.formErrors.materialsToSubmit ? null : <div className="invalid-error">Field must have an entry</div>}
+              <div className="row materials-bubble-container m-0 p-0">
+                {this.state.form.materialsToSubmit.map((material, index) => {
+                  return <ListBubble
+                    id={'somematerial'}
+                    text={material}
+                    key={index}
+                    minWidth="140px"
+                    maxWidth="140px"
+                    deleteMaterial={this.deleteMaterial} />;
+                })}
               </div>
             </div>
             <div>
