@@ -213,7 +213,7 @@ export default class ProjectDetails extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="materials p-0 ml-2 mt-1 col-4">
+              <div className="materials p-0 ml-2 mt-1">
                 <div className="project-materials-header-container col mb-2 p-0">
                   <h1 className="project-materials-header">Materials</h1>
                 </div>
