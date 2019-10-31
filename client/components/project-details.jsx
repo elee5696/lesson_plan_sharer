@@ -129,7 +129,7 @@ export default class ProjectDetails extends React.Component {
             </Link>
             {
               this.state.project.author_data.id === this.props.userData.id
-                ? <div className="editButton-div ml-5">
+                ? <div className="editButton-div mt-4">
                   <EditButton
                     userData={this.state.project.author_data.id}
                     project={this.state.project}
