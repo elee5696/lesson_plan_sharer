@@ -39,7 +39,7 @@ export default class LogInPage extends React.Component {
         </div>
         <div className="card p-5">
           <div className="d-flex justify-content-center mb-1">
-            <h2>Log-in to Prov</h2>
+            <h2>Log in to Prov</h2>
           </div>
 
           <div className="log-in-form d-flex justify-content-center">
@@ -64,12 +64,12 @@ export default class LogInPage extends React.Component {
                 <button
                   type="button"
                   onClick={this.onSubmit}
-                  className="btn searchButton shadow-none">Log-In
+                  className="btn searchButton shadow-none">Log in
                 </button>
                 <Link to="/signup">
                   <button
                     type="button"
-                    className="btn searchButton shadow-none ml-3">Sign-Up
+                    className="btn searchButton shadow-none ml-3">Sign up
                   </button>
                 </Link>
               </div>

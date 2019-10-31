@@ -119,7 +119,7 @@ export default class SignUpPage extends React.Component {
                 type="button"
                 className="btn searchButton shadow-none"
                 onClick={this.onSubmit}>
-                Sign-Up
+                Sign Up
               </button>
             </form>
           </div>

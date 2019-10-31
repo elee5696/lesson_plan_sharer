@@ -57,10 +57,9 @@ export default class UserPage extends React.Component {
     }
 
     return (
-      <div className="entire-page-container container row m-0 p-0">
-        <div className="spacer col-1 p-0"></div>
-        <div className="content-container col-10 mt-4 p-0"
-          style={{ maxWidth: '700px' }}>
+      <div className="entire-page-container container col col-xl-6">
+
+        <div className="content container mt-4 p-0">
           <div className="user-pic-enter-info-container row ml-0">
             <div className="pic col-2 p-0">
               <div className="user-avatar-container mb-2">
@@ -296,7 +295,6 @@ export default class UserPage extends React.Component {
                 : null }
           </div>
         </div>
-        <div className="spacer col-1 p-0"></div>
       </div>
     );
   }

@@ -375,6 +375,10 @@ input {
     width: 33rem;
     height: 30rem;
   }
+   .entire-page-container {
+    min-width: 1024px;
+  }
+}
 }
 
 @media (max-width:777px){
@@ -387,7 +391,15 @@ input {
   .materials-bubble-container, .goal-bubble-container {
     max-width: 300px;
   }
+
 }
+
+@media (max-width: 1024) {
+   .entire-page-container {
+    min-width: 765px;
+  }
+}
+
 
 @media (min-width: 577px) {
   .submitForm {
