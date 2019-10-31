@@ -59,7 +59,8 @@ export default class UserPage extends React.Component {
     return (
       <div className="entire-page-container container row m-0 p-0">
         <div className="spacer col-1 p-0"></div>
-        <div className="content-container col-10 mt-4 p-0">
+        <div className="content-container col-10 mt-4 p-0"
+          style={{ maxWidth: '700px' }}>
           <div className="user-pic-enter-info-container row ml-0">
             <div className="pic col-2 p-0">
               <div className="user-avatar-container mb-2">
@@ -117,14 +118,14 @@ export default class UserPage extends React.Component {
                 value={this.state.user.username} />
               : <div className="username-key-value-container col ml-0 mb-3">
                 <div className="username-key row p-0">
-                  <p className="col-8 p-0 m-0">Username: </p>
+                  <p className="col p-0 m-0">Username: </p>
                   {
                     this.state.user.id === this.props.currentUser.id
                       ? <button
                         id="username"
                         onClick={this.editUser}
                         type="button"
-                        className="btn editUserButton col-4 btn-sm shadow-none">
+                        className="btn editUserButton col btn-sm shadow-none">
                       Edit
                       </button>
                       : null
@@ -155,14 +156,14 @@ export default class UserPage extends React.Component {
                 value={this.state.user.name} />
               : <div className="name-key-value-container col ml-0 mb-3">
                 <div className="name-key row p-0">
-                  <p className="col-8 p-0 m-0">Name: </p>
+                  <p className="col p-0 m-0">Name: </p>
                   {
                     this.state.user.id === this.props.currentUser.id
                       ? <button
                         id="name"
                         onClick={this.editUser}
                         type="button"
-                        className="btn editUserButton col-4 btn-sm shadow-none">
+                        className="btn editUserButton col btn-sm shadow-none">
                       Edit
                       </button>
                       : null
@@ -193,14 +194,14 @@ export default class UserPage extends React.Component {
                 value={this.state.user.years} />
               : <div className="experience-key-value-container col ml-0 mb-3">
                 <div className="experience-key row p-0">
-                  <p className="col-8 p-0 m-0">Experience:</p>
+                  <p className="col p-0 m-0">Experience:</p>
                   {
                     this.state.user.id === this.props.currentUser.id
                       ? <button
                         type="button"
                         id="years"
                         onClick={this.editUser}
-                        className="btn editUserButton col-4 btn-sm shadow-none">
+                        className="btn editUserButton col btn-sm shadow-none">
                         Edit
                       </button>
                       : null
@@ -231,14 +232,14 @@ export default class UserPage extends React.Component {
                 value={this.state.user.about_me} />
               : <div className="about-me-key-value-container col ml-0 mb-3">
                 <div className="about-me-key row p-0">
-                  <p className="col-8 p-0 m-0">About Me:</p>
+                  <p className="col p-0 m-0">About Me:</p>
                   {
                     this.state.user.id === this.props.currentUser.id
                       ? <button
                         id="about_me"
                         onClick={this.editUser}
                         type="button"
-                        className="btn editUserButton col-4 btn-sm shadow-none">
+                        className="btn editUserButton col btn-sm shadow-none">
                       Edit
                       </button>
                       : null
@@ -290,7 +291,7 @@ export default class UserPage extends React.Component {
                   type="button"
                   className="btn searchButton shadow-none mt-4"
                   onClick={this.logOut}>
-                Log-out
+                Log out
                 </button>
                 : null }
           </div>

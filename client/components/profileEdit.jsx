@@ -50,7 +50,7 @@ export default class EditProfile extends React.Component {
         <p className="text-capitalize"> Edit: {this.props.field}</p>
         <form>
           <div className="form-row align-items-center">
-            <div className="col-auto">
+            <div className="col">
               <input
                 type={type}
                 className="form-control m-0"

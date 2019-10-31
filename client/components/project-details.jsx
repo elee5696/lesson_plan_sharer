@@ -123,7 +123,7 @@ export default class ProjectDetails extends React.Component {
 
       <div className="entire-page-container container row col m-0 p-0">
         {this.state.modal ? modal : null}
-        <div className="back-button-container mt-3 mb-3 col-12">
+        <div className="back-button-container mt-3 mb-3 col-10 offset-1 p-0">
           <Link to="/provs" style={linkStyle}>
             <div className="back-button">{'< Back to Provs'}</div>
           </Link>
@@ -139,8 +139,8 @@ export default class ProjectDetails extends React.Component {
               : null
           }
         </div>
-        <div className="col-10 p-0">
-          <div className="project-image-container row justify-content-center mb-3">
+        <div className="col-10 p-0 offset-1">
+          <div className="project-image-container row justify-content-center mb-4">
             <img
               className="project-image p-0"
               style={{ width: '90%', maxWidth: '550px', height: '40%' }}
@@ -151,19 +151,19 @@ export default class ProjectDetails extends React.Component {
             <div className="project-title-container col-10 mb-3 p-0">
               <h2 className="project-title text-capitalize">{this.state.project.name}</h2>
             </div>
-            <div className="author-detailsmb-4">
+            <div className="author-details mb-3">
               <Link
                 to={`/user/${this.state.project.author_data.id}`}
                 style={linkStyle}>
                 <h5 className="text-muted "> By: {this.state.project.author_data.name} | {this.state.project.author_data.username}</h5>
               </Link>
             </div>
-            <div className="project-desc-container col-12 mb-3">
+            <div className="project-desc-container col-12 mb-2">
               <div className="project-desc-header-container row mb-2">
                 <h2 className="project-desc-header">Description</h2>
               </div>
               <div className="project-desc-body row">
-                <h3 className="col project-desc-text">{this.state.project.description}</h3>
+                <h3 className="col project-desc-text p-0">{this.state.project.description}</h3>
               </div>
               {
                 this.state.project.youtubeLink
@@ -176,11 +176,11 @@ export default class ProjectDetails extends React.Component {
 
             </div>
             <div className="project-goals-container mb-3">
-              <div className="project-goals-header-container row mb-2 ml-1">
+              <div className="project-goals-header-container row m-0">
                 <h1 className="project-goals-header">Goals</h1>
               </div>
-              <div className="row container">
-                <div className="project-goals-list row m-0">
+              <div className="row container m-0">
+                <div className="project-goals-list row">
                   {this.state.project.goals.map((e, i) => {
                     return (
                       <ListBubble
@@ -195,7 +195,7 @@ export default class ProjectDetails extends React.Component {
               </div>
             </div>
             <div className="project-setup-materials-container col-12 row p-0 m-0">
-              <div className="set-up p-0 col-5">
+              <div className="set-up p-0 col-5 mt-1">
                 <div className="project-setup-header-container col mb-2 p-0">
                   <h1 className="project-setup-header">Set-Up</h1>
                 </div>
@@ -213,7 +213,7 @@ export default class ProjectDetails extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="materials p-0 ml-2">
+              <div className="materials p-0 ml-2 mt-1 col-4">
                 <div className="project-materials-header-container col mb-2 p-0">
                   <h1 className="project-materials-header">Materials</h1>
                 </div>
@@ -225,8 +225,8 @@ export default class ProjectDetails extends React.Component {
                           key={i}
                           className="project-materials-list-item"
                           text={e}
-                          minWidth="150px"
-                          maxWidth="150px" />
+                          minWidth="100px"
+                          maxWidth="100px" />
                       );
                     })}
                   </div>
@@ -237,7 +237,7 @@ export default class ProjectDetails extends React.Component {
               <div className="project-outcomes-header-container row mb-2">
                 <h1 className="project-outcomes-header col">Outcomes</h1>
               </div>
-              <div className="project-outcomes-body row mb-4">
+              <div className="project-outcomes-body row mb-3">
                 <h5 className="col project-outcomes-text ">{this.state.project.outcomes}</h5>
               </div>
             </div>

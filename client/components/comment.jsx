@@ -22,7 +22,7 @@ export default class Comment extends React.Component {
           </div>
         </div>
         <div className="comment-body ">
-          <h6>{this.props.text}</h6>
+          <p className="review-text">{this.props.text}</p>
         </div>
         <div className="timestamp">
           <p className="comment-date">{this.props.time.split(' ', 1)}</p>
