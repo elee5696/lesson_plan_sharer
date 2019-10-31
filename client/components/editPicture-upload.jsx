@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class EditPictureUpload extends React.Component {
   constructor(props) {
@@ -10,7 +10,8 @@ class EditPictureUpload extends React.Component {
       filename: null,
       imagePreviewUrl: null,
       projectToEdit: {},
-      youtubeVideo: ''
+      youtubeVideo: '',
+      redirect: false
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onYouTubeChange = this.onYouTubeChange.bind(this);
@@ -30,7 +31,10 @@ class EditPictureUpload extends React.Component {
     fetch('/api/picture_upload.php', {
       'method': 'POST',
       'body': formData
-    });
+    })
+      .then(this.setState({
+        redirect: true
+      }));
   }
   onChange(event) {
     const fileReader = new FileReader();
@@ -65,6 +69,15 @@ class EditPictureUpload extends React.Component {
 
     const imagePreview = <img className="submittedImage" src={this.state.imagePreviewUrl} />;
 
+    if (this.state.redirect && this.state.imagePreviewUrl) {
+      return <Redirect to={{
+        pathname: '/submit2',
+        state: {
+          file: this.state.file,
+          youtubeVideoUrl: this.state.youtubeVideo
+        }
+      }} />;
+    }
     return (
       <div className="col picForm container p-0">
         <div className="select-photo-text d-flex justify-content-center">
@@ -93,18 +106,7 @@ class EditPictureUpload extends React.Component {
                 placeholder="Place A YouTube Video link here (optional)"></input>
               <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '4rem' }}>
                 <button className="uploadPicButton btn" style={{ width: '140px' }} onClick={this.onSubmit}>
-                  {
-                    this.state.imagePreviewUrl
-                      ? <Link style={{ color: 'white' }} to={{
-                        pathname: '/edit2',
-                        state: {
-                          file: this.state.file,
-                          youtubeVideoUrl: this.state.youtubeVideo,
-                          projectToEdit: this.state.projectToEdit
-                        }
-                      }}>Next Page</Link>
-                      : 'Next Page'
-                  }
+                  Next Page
                 </button>
               </div>
             </div>

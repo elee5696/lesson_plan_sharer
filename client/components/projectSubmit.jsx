@@ -1,14 +1,6 @@
 import React from 'react';
 import ListBubble from './list-bubble';
 
-// const formValid = formErrors => {
-//   let valid = true;
-
-//   Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false)
-//   });
-//   return valid;
-// }
-
 class ProjectSubmit extends React.Component {
   constructor(props) {
     super(props);
@@ -193,8 +185,6 @@ class ProjectSubmit extends React.Component {
     return this.id;
   }
   validateForm(name) {
-    // if((this.state.name === null) || (this.state.description ===  null) || (this.state.set_up === null) || (this.state.outcomes == null) || (this.state.goalsToSubmit === null) || (this.state.materialsToSubmit === null)){
-    // let formErrors = this.state.formErrors;
     let error = false;
     let formErrors = Object.assign({}, this.state.formErrors);
 
@@ -211,41 +201,6 @@ class ProjectSubmit extends React.Component {
       formErrors: formErrors
     });
     return error;
-
-    //  switch(name){
-    //   case 'name':
-    //     this.state.name = value.length > 0
-    //     ? this.state.
-    //     : ''
-    //     break;
-    //    case 'description':
-    //     this.state.description = value.length > 0
-    //     ? 'input must be filled'
-    //     : ''
-    //      break;
-    //    case 'set_up':
-    //     this.state.set_up = value.length > 0
-    //     ? 'input must be filled'
-    //     : ''
-    //      break;
-    //    case 'outcomes':
-    //     this.state.outcomes = value.length > 0
-    //     ? 'input must be filled'
-    //     : ''
-    //      break;
-    //    case 'goalsToSubmit':
-    //     this.state.goalsToSubmit = value.length > 0
-    //     ? 'input must be filled'
-    //     : ''
-    //      break;
-    //    case 'materialsToSubmit':
-    //     this.state.materialsToSubmit = value.length > 0
-    //     ? 'input must be filled'
-    //     : ''
-    //      break;
-    //    default:
-    //     break;
-
   }
 
   render() {

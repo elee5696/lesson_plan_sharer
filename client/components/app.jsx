@@ -107,7 +107,7 @@ export default class App extends React.Component {
         projects.push(response[0]);
         this.setState({
           projects: projects,
-          redirect: `/detail/${response[0].id}`
+          redirect: `/detail/${parseInt(response[0].id)}`
         });
       })
       .catch(error => console.error(error));

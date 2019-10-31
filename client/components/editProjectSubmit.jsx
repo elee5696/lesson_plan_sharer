@@ -49,7 +49,7 @@ class EditProjectSubmit extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let body = {
+    const body = {
       id: this.id,
       name: this.state.name,
       description: this.state.description,
@@ -124,15 +124,15 @@ class EditProjectSubmit extends React.Component {
     if (this.props.location.state) {
       const regex = '[\\s]';
       let pictureName = this.props.location.state.file.name;
-      let pictureHasSpaces = pictureName.match(regex);
+      const pictureHasSpaces = pictureName.match(regex);
       if (pictureHasSpaces) {
-        let pictureBrokenUp = pictureName.split(' ');
+        const pictureBrokenUp = pictureName.split(' ');
         pictureName = pictureBrokenUp.join('');
       }
       this.image = pictureName;
       this.YouTubeVideo = this.props.location.state.youtubeVideoUrl;
     }
-    let edit = this.props.location.state.projectToEdit;
+    const edit = this.props.location.state.projectToEdit;
     this.goalsArray = edit.goals;
     this.materialsArray = edit.materials;
     this.setState({
@@ -153,7 +153,7 @@ class EditProjectSubmit extends React.Component {
   }
 
   deleteGoal(text) {
-    let newGoalsArray = this.goalsArray.filter(item => {
+    const newGoalsArray = this.goalsArray.filter(item => {
       return item !== text;
     });
     this.goalsArray = newGoalsArray;
@@ -161,7 +161,7 @@ class EditProjectSubmit extends React.Component {
       goalsToSubmit: this.goalsArray });
   }
   deleteMaterial(text) {
-    let newMaterialsArray = this.materialsArray.filter(item => {
+    const newMaterialsArray = this.materialsArray.filter(item => {
       return item !== text;
     });
     this.materialsArray = newMaterialsArray;
