@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default class Searchbar extends React.Component {
   constructor(props) {
@@ -46,14 +45,12 @@ export default class Searchbar extends React.Component {
           onChange={this.onChange}
           value={this.state.value} />
         <div className="btn-group">
-          <Link to="/provs">
-            <button
-              className="btn searchButton shadow-none ml-2"
-              type="button"
-              onClick={this.onSubmit}>
-              {this.state.filter}
-            </button>
-          </Link>
+          <button
+            className="btn searchButton shadow-none ml-2"
+            type="button"
+            onClick={this.onSubmit}>
+            {this.state.filter}
+          </button>
           <button
             type="button"
             className="btn dropdown-toggle shadow-none dropdown-toggle-split searchButton"

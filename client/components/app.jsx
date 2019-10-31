@@ -50,6 +50,9 @@ export default class App extends React.Component {
       .then(res => res.json())
       .then(results => this.setState({ searchResults: results }))
       .catch(err => console.error(err));
+    this.setState({
+      redirect: '/provs'
+    });
   }
 
   resetResults() {
@@ -240,7 +243,7 @@ export default class App extends React.Component {
                       </li>
                     </>
                     : <li className='nav-item'>
-                      <Link to="/login" className="nav-link">Log-In</Link>
+                      <Link to="/login" className="nav-link">Login</Link>
                     </li>
                 }
               </ul>

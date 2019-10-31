@@ -18,7 +18,7 @@ class EditProjectSubmit extends React.Component {
       'goals': '',
       'materials': '',
       'userId': '',
-      'location': '', // do we need location here?
+      'location': '',
       'YoutubeVideo': '',
       'formErrors': {
         'name': true,
@@ -70,8 +70,8 @@ class EditProjectSubmit extends React.Component {
       outcomes: this.state.form.outcomes,
       goals: this.state.form.goalsToSubmit,
       materials: this.state.form.materialsToSubmit,
-      image: `/images/${this.state.image}`, // this.state.image or this.image
-      id: this.state.userId, // this.props.userData.id or this.state.userId
+      image: `/images/${this.state.image}`,
+      id: this.state.userId,
       youtubeLink: this.YoutubeVideo
 
     };
@@ -245,7 +245,7 @@ class EditProjectSubmit extends React.Component {
               <input
                 onChange={this.handleProjectTitleandImageChange}
                 type="text"
-                value={this.state.form.name} // do i need to change to this.state.form.name
+                value={this.state.form.name}
                 className="form-control projectEntry"
                 placeholder="Project Entry"></input>
               {this.state.formErrors.name ? null : <div className="invalid-error">Field must have an entry</div>}
@@ -257,6 +257,7 @@ class EditProjectSubmit extends React.Component {
                 className="form-control descriptionBox" placeholder="Description Text" rows="3"></textarea>
               {this.state.formErrors.description ? null : <div className="invalid-error">Field must have an entry</div>}
             </div>
+
             <div>
 
               <div className="goals form-group inline">
@@ -274,8 +275,7 @@ class EditProjectSubmit extends React.Component {
                 </div>
                 {this.state.formErrors.goalsToSubmit ? null : <div className="invalid-error">Field must have an entry</div>}
               </div>
-
-              <div className="row goal-bubble-container justify-content-center ml-1 p-0">
+              <div className="row goal-bubble-container p-0 m-0">
                 {this.state.form.goalsToSubmit.map((goal, index) => {
                   return <ListBubble
                     id={'somegoal'}
@@ -287,7 +287,6 @@ class EditProjectSubmit extends React.Component {
                 })}
               </div>
             </div>
-
             <div>
               <div className="materials form-group inline">
                 <label
@@ -301,18 +300,18 @@ class EditProjectSubmit extends React.Component {
                     <button className="btn btn-outline-secondary searchButton" onClick={this.handleMaterialSubmit}>+</button>
                   </div>
                 </div>
-                {this.state.formErrors.materialsToSubmit ? null : <div className="invalid-error">Field must have an entry</div>}
-                <div className="row materials-bubble-container justify-content-center  ml-1 p-0">
-                  {this.state.form.materialsToSubmit.map((material, index) => {
-                    return <ListBubble
-                      id={'somematerial'}
-                      text={material}
-                      key={index}
-                      minWidth="140px"
-                      maxWidth="140px"
-                      deleteMaterial = {this.deleteMaterial}/>;
-                  })}
-                </div>
+              </div>
+              {this.state.formErrors.materialsToSubmit ? null : <div className="invalid-error">Field must have an entry</div>}
+              <div className="row materials-bubble-container p-0 m-0">
+                {this.state.form.materialsToSubmit.map((material, index) => {
+                  return <ListBubble
+                    id={'somematerial'}
+                    text={material}
+                    key={index}
+                    minWidth="140px"
+                    maxWidth="140px"
+                    deleteMaterial={this.deleteMaterial} />;
+                })}
               </div>
             </div>
             <div>

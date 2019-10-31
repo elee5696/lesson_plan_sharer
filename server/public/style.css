@@ -375,19 +375,20 @@ input {
     width: 33rem;
     height: 30rem;
   }
+   .entire-page-container {
+    min-width: 1024px;
+  }
 }
 
-@media (max-width:777px){
-  .goal-bubble-container, .materials-bubble-container{
-  width: 296px;
-
-}
-}
-@media (min-width: 768px) {
   .materials-bubble-container, .goal-bubble-container {
     max-width: 300px;
   }
+@media (max-width: 1024) {
+   .entire-page-container {
+    min-width: 765px;
+  }
 }
+
 
 @media (min-width: 577px) {
   .submitForm {
@@ -430,15 +431,3 @@ input {
     width: 600px;
   }
 }
-
-/* @media (min-width: 1024px) {
-  .details-info-container {
-    margin-left: 145px;
-  }
-} */
-
-/* @media (min-width: 700px) {
-  .back-button {
-    margin-left: 145px;
-  }
-} */
