@@ -7,8 +7,10 @@ class EditPictureUpload extends React.Component {
     this.state = {
       inputValue: null,
       file: null,
+      filename: null,
       imagePreviewUrl: null,
-      projectToEdit: {}
+      projectToEdit: {},
+      youtubeVideo: ''
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onYouTubeChange = this.onYouTubeChange.bind(this);
@@ -36,6 +38,7 @@ class EditPictureUpload extends React.Component {
     fileReader.onloadend = () => {
       this.setState({
         file: file,
+        filename: file.name,
         imagePreviewUrl: fileReader.result
       });
     };
@@ -65,17 +68,22 @@ class EditPictureUpload extends React.Component {
     return (
       <div className="col picForm container p-0">
         <div className="select-photo-text d-flex justify-content-center">
-          <div className="picForm-div select-photo">Select a photo for your project page</div>
+          <div className="picForm-div select-photo">Select a new photo for your project page</div>
         </div>
         <div className="chooseFileButton-div col d-flex justify-content-center mt-4">
           <form id="pictureForm">
-            <div className="d-flex justify-content-center">
-              <input
-                className="inputButton p-0"
-                type="file"
-                name="picture"
-                onChange={this.onChange}></input>
+            <div className="input-group">
+              <div className="custom-file">
+                <input
+                  id="picture"
+                  className="p-0"
+                  type="file"
+                  name="picture"
+                  onChange={this.onChange} />
+                <label className="custom-file-label" htmlFor="picture">{this.state.filename ? this.state.filename : 'Choose File'}</label>
+              </div>
             </div>
+
             <div>
               {this.state.imagePreviewUrl ? imagePreview : null}
             </div>

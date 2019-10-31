@@ -47,7 +47,7 @@ body {
   border: 1px solid black;
 }
 
-.projectEntry, .setUpEntry, #goalSubmit, #materialSubmit{
+.projectEntry, .setUpEntry, .goalSubmit, .materialSubmit{
   width: 300px;
   border: 1px solid black
 }
@@ -365,7 +365,6 @@ input {
     height: 35px;
   }
   .uploadPicButton {
-    margin-top: 250px;
     width: 250px;
     height: 100px;
   }
@@ -375,15 +374,27 @@ input {
   }
 }
 
+@media (max-width:777px){
+  .goal-bubble-container, .materials-bubble-container{
+  width: 296px;
+
+}
+}
+@media (min-width: 768px) {
+  .materials-bubble-container, .goal-bubble-container {
+    max-width: 300px;
+  }
+}
+
 @media (min-width: 577px) {
   .submitForm {
     margin-left: 25px;
   }
 }
 
-@media (min-width: 630px) {
+@media (min-width: 767px) {
   .submitForm {
-    margin-left: 80px;
+    margin-left: 40px;
   }
 }
 

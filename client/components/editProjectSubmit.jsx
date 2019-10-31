@@ -208,45 +208,50 @@ class EditProjectSubmit extends React.Component {
                 className="form-control descriptionBox" placeholder="Description Text" rows="3"></textarea>
             </div>
             <div>
+
               <div className="goals form-group inline">
                 <label className="col-form-label">Goals</label>
-                <div className="col-md-8 p-0">
+                <div className="input-group shadow-none p-0">
                   <input type="text"
-                    className="form-control"
-                    id="goalSubmit"
+                    className="goalSubmit form-control"
                     onChange={this.handleGoalChange}
                     value={this.state.goals}
-                    placeholder="Goals Entry"></input>
-                  <button
-                    className = "btn searchButton"
-                    onClick={this.handleGoalSubmit}>+</button>
-                </div>
-                <div className="row goal-bubble-container justify-content-center">
-                  {this.state.goalsToSubmit.map((goal, index) => {
-                    return <ListBubble
-                      id={'somegoal'}
-                      text={goal}
-                      key={index}
-                      minWidth="140px"
-                      maxWidth="140px"
-                      deleteGoal ={this.deleteGoal}/>;
-                  })}
+                    placeholder="Goals" />
+                  <div className="input-group-append">
+                    <button className="btn btn-outline-secondary addBubbleButton shadow-none"
+                      type="button" onClick={this.handleGoalSubmit}>+</button>
+                  </div>
                 </div>
               </div>
+
+              <div className="row goal-bubble-container justify-content-center ml-1 p-0">
+                {this.state.goalsToSubmit.map((goal, index) => {
+                  return <ListBubble
+                    id={'somegoal'}
+                    text={goal}
+                    key={index}
+                    minWidth="140px"
+                    maxWidth="140px"
+                    deleteGoal ={this.deleteGoal}/>;
+                })}
+              </div>
             </div>
+
             <div>
               <div className="materials form-group inline">
                 <label
                   className="col-form-label">Materials</label>
-                <div className="col-md-8 p-0">
+
+                <div className="input-group shadow-none p-0">
                   <input onChange={this.handleMaterialChange}
-                    type="text" className="form-control" id="materialSubmit"
+                    type="text" className="materialSubmit form-control"
                     placeholder="Materials Entry" value={this.state.materials}></input>
-                  <button
-                    className="btn searchButton"
-                    onClick={this.handleMaterialSubmit}>+</button>
+                  <div className="input-group-append">
+                    <button className="btn btn-outline-secondary searchButton" onClick={this.handleMaterialSubmit}>+</button>
+                  </div>
                 </div>
-                <div className="row materials-bubble-container justify-content-center">
+
+                <div className="row materials-bubble-container justify-content-center  ml-1 p-0">
                   {this.state.materialsToSubmit.map((material, index) => {
                     return <ListBubble
                       id={'somematerial'}

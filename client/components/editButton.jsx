@@ -19,7 +19,7 @@ export default class EditButton extends React.Component {
           className="editProjectButton btn dropdown-toggle shadow-none dropdown-toggle-split mr-1"
           data-toggle="dropdown"> Edit Project</button>
         <div className="dropdown-menu dropdown-menu-right pl-2">
-          <Link to={{
+          <Link style={{ color: 'black', textDecoration: 'none' }} to={{
             pathname: '/edit',
             state: {
               projectToEdit: this.props.project
@@ -28,7 +28,7 @@ export default class EditButton extends React.Component {
             <div
               className="edit-item m-1">Edit</div>
           </Link>
-          <div
+          <div style={{ color: 'red' }}
             className="edit-item m-1"
             onClick={this.props.modalToggle}>Delete</div>
         </div>
