@@ -7,6 +7,7 @@ class PictureUploadForm extends React.Component {
     this.state = {
       inputValue: null,
       file: null,
+      filename: null,
       imagePreviewUrl: null,
       youtubeVideo: ''
     };
