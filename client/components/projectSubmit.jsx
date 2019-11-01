@@ -207,7 +207,7 @@ class ProjectSubmit extends React.Component {
     if (!this.props.userData) {
       return (
         <div className="container">
-          <h1 className="d-flex justify-content-center">Please Log-In</h1>
+          <h1 className="d-flex justify-content-center">Please log in</h1>
         </div>
       );
     }
@@ -242,7 +242,7 @@ class ProjectSubmit extends React.Component {
                     placeholder="Goals" />
 
                   <div className= "input-group-append">
-                    <button className="btn btn-outline-secondary addBubbleButton shadow-none" type= "button" onClick={this.handleGoalSubmit}>+</button>
+                    <button className="btn searchButton btn-outline-secondary addBubbleButton shadow-none" type= "button" onClick={this.handleGoalSubmit}>+</button>
                   </div>
                 </div>
                 {this.state.formErrors.goalsToSubmit ? null : <div className="invalid-error">Field must have an entry</div>}
@@ -268,7 +268,7 @@ class ProjectSubmit extends React.Component {
                     type="text" className="materialSubmit form-control"
                     placeholder="Materials Entry" value={this.state.materials}></input>
                   <div className="input-group-append">
-                    <button className="btn btn-outline-secondary searchButton" onClick={this.handleMaterialSubmit}>+</button>
+                    <button className="btn btn-outline-secondary searchButton shadow-none" onClick={this.handleMaterialSubmit}>+</button>
                   </div>
 
                 </div>

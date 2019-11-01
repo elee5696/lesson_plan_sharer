@@ -54,7 +54,7 @@ class PictureUploadForm extends React.Component {
     if (!this.props.userData) {
       return (
         <div className="container">
-          <h1 className="d-flex justify-content-center">Please Log-In</h1>
+          <h1 className="d-flex justify-content-center">Please log in</h1>
         </div>
       );
     }
@@ -77,7 +77,7 @@ class PictureUploadForm extends React.Component {
 
     return (
       <div className="col picForm container p-0">
-        <div className="select-photo-text d-flex justify-content-center">
+        <div className="select-photo-text d-flex justify-content-center mt-3">
           <div className="picForm-div select-photo">Select a photo for your project page</div>
         </div>
         <div className="chooseFileButton-div col d-flex justify-content-center mt-4">
@@ -96,7 +96,7 @@ class PictureUploadForm extends React.Component {
             <div>
               {this.state.imagePreviewUrl ? imagePreview : null}
             </div>
-            <div className="select-photo-text d-flex justify-content-center">
+            <div className="select-photo-text d-flex justify-content-center mt-5">
               <div className="picForm-div select-photo">Place a video of your project</div>
             </div>
             <div className="mt-3" style={styleNextPageButtondiv}>
@@ -105,7 +105,7 @@ class PictureUploadForm extends React.Component {
                 className="youtube-link w-100 form-control"
                 value={this.state.youtubeVideo}
                 placeholder="YouTube Link Here (optional)"></input>
-              <div className="nextPageDiv d-flex justify-content-center">
+              <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '4rem' }}>
                 <button onClick={this.onSubmit} className="uploadPicButton btn" style={{ width: '140px' }} >Next Page
                 </button>
               </div>

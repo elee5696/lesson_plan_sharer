@@ -49,7 +49,7 @@ if( isset($_POST['id']) ) {
   $user_id = '';
 
   while( $row = mysqli_fetch_assoc($result) ) {
-    $user_id = $row['id'];
+    $user_id = intval($row['id']);
   }
 
   $query = "SELECT * FROM `user_table` WHERE id=$user_id";
@@ -62,6 +62,7 @@ if( isset($_POST['id']) ) {
   $output = [];
 
   while( $row = mysqli_fetch_assoc($result) ) {
+    $row['id'] = intval($row['id']);
     $output = $row;
   }
 

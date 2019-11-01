@@ -1,6 +1,7 @@
 import React from 'react';
 import EditProfile from './profileEdit';
 import UserPhotoUpdate from './user-photo-update';
+import { Redirect } from 'react-router-dom';
 
 export default class UserPage extends React.Component {
 
@@ -8,7 +9,8 @@ export default class UserPage extends React.Component {
     super(props);
     this.state = {
       user: '',
-      field: ''
+      field: '',
+      logout: ''
     };
     this.logOut = this.logOut.bind(this);
     this.editUser = this.editUser.bind(this);
@@ -40,6 +42,9 @@ export default class UserPage extends React.Component {
   logOut(event) {
     event.preventDefault();
     this.props.logOutCallback();
+    this.setState({
+      logout: true
+    });
   }
 
   editUser(event) {
@@ -56,9 +61,10 @@ export default class UserPage extends React.Component {
       return <div className="page-loading">Page loading...</div>;
     }
 
+    let redirect = this.state.logout ? <Redirect to="/login"/> : null;
     return (
       <div className="entire-page-container container col col-xl-6">
-
+        {redirect}
         <div className="content container mt-4 p-0">
           <div className="user-pic-enter-info-container row ml-0">
             <div className="pic col-2 p-0">

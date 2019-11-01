@@ -14,11 +14,11 @@ $image = $_PUT['image'];
 $set_up = $_PUT['set_up'];
 $goals = $_PUT['goals'];
 $materials = $_PUT['materials'];
-
+$youtube = $_PUT['youtubeLink'];
 
 $editProjectsQuery = "UPDATE projects
 SET  `name` = '$name', `description` = '$desc',
-`outcomes` = '$outcomes', `set_up` = '$set_up'
+`outcomes` = '$outcomes', `set_up` = '$set_up', `youtubeLink` = '$youtube'
 WHERE `id` = '$id'";
 
 $editImageQuery = "UPDATE images
