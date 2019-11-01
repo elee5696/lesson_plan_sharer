@@ -1,20 +1,22 @@
 <?php
-if (defined(INTERNAL)) {
-  exit('Direct access is not allowed');
-}
 
-$_POST = get_body()[0];
-$id = $_POST['id'];
-$username = $_POST['username'];
-$name = $_POST['name'];
-$years = $_POST['years'];
-$about_me = $_POST['about_me'];
-$avatar = $_POST['avatar'];
+$post_body = get_body();
+
+if (isset($_FILES['picture'])) {
+  require('picture_upload.php');
+  $field = 'avatar';
+  $value = "/images/$filename";
+  $id = $_POST['id'];
+} else {
+  $field = $post_body['field'];
+  $value = $post_body['value'];
+  $id = $post_body['id'];
+}
 
 $query =
 "UPDATE `user_table`
   SET
-    `name`='$name', `username`=$username , `years`='$years', `about_me`='$about_me', `avatar`='$avatar'
+    `$field`='$value'
   WHERE
     `id`=$id";
 
@@ -22,4 +24,22 @@ $result = mysqli_query($conn, $query);
 if(!$result) {
   throw new Exception('query failed');
 }
+
+$query =
+"SELECT * FROM `user_table`
+  WHERE
+    `id`=$id";
+
+$result = mysqli_query($conn, $query);
+if(!$result) {
+  throw new Exception('query failed');
+}
+
+$output = [];
+while($row = mysqli_fetch_assoc($result)){
+  $row['id'] = intval($row['id']);
+  $output = $row;
+}
+
+print_r(json_encode($output));
 ?>

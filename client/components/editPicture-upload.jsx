@@ -1,7 +1,5 @@
 import React from 'react';
-// import ProjectSubmit from './projectSubmit';
-// import FormData from 'form-data';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class EditPictureUpload extends React.Component {
   constructor(props) {
@@ -9,11 +7,21 @@ class EditPictureUpload extends React.Component {
     this.state = {
       inputValue: null,
       file: null,
+      filename: null,
       imagePreviewUrl: null,
-      projectToEdit: {}
+      projectToEdit: {},
+      youtubeVideo: this.props.location.state.projectToEdit.youtubeLink,
+      redirect: false
     };
     this.onSubmit = this.onSubmit.bind(this);
+    this.onYouTubeChange = this.onYouTubeChange.bind(this);
     this.onChange = this.onChange.bind(this);
+  }
+  onYouTubeChange(event) {
+    this.setState({
+      youtubeVideo: event.target.value
+    });
+
   }
 
   onSubmit(event) {
@@ -23,7 +31,10 @@ class EditPictureUpload extends React.Component {
     fetch('/api/picture_upload.php', {
       'method': 'POST',
       'body': formData
-    });
+    })
+      .then(this.setState({
+        redirect: true
+      }));
   }
   onChange(event) {
     const fileReader = new FileReader();
@@ -31,6 +42,7 @@ class EditPictureUpload extends React.Component {
     fileReader.onloadend = () => {
       this.setState({
         file: file,
+        filename: file.name,
         imagePreviewUrl: fileReader.result
       });
     };
@@ -46,7 +58,7 @@ class EditPictureUpload extends React.Component {
     if (!this.props.userData) {
       return (
         <div className="container">
-          <h1 className="d-flex justify-content-center">Please Log-In</h1>
+          <h1 className="d-flex justify-content-center">Please log in</h1>
         </div>
       );
     }
@@ -57,37 +69,61 @@ class EditPictureUpload extends React.Component {
 
     const imagePreview = <img className="submittedImage" src={this.state.imagePreviewUrl} />;
 
+    if (this.state.redirect && this.state.imagePreviewUrl) {
+      return <Redirect to={{
+        pathname: '/edit2',
+        state: {
+          file: this.state.file,
+          youtubeVideoUrl: this.state.youtubeVideo,
+          project: this.state.projectToEdit
+        }
+      }} />;
+    } else if (this.state.redirect) {
+      let path = this.props.location.state.projectToEdit.image.slice(8);
+      return <Redirect to={{
+        pathname: '/edit2',
+        state: {
+          file: { name: path },
+          youtubeVideoUrl: this.state.youtubeVideo,
+          project: this.state.projectToEdit
+        }
+      }} />;
+    }
+
     return (
       <div className="col picForm container p-0">
-        <div className="select-photo-text d-flex justify-content-center mt-5">
-          <div className="picForm-div select-photo">Select a photo for your project page</div>
+        <div className="select-photo-text d-flex justify-content-center mt-3">
+          <div className="picForm-div select-photo">Select a new photo for your project page</div>
         </div>
         <div className="chooseFileButton-div col d-flex justify-content-center mt-4">
           <form id="pictureForm">
-            <div className="d-flex justify-content-center">
-              <input
-                className="inputButton p-0"
-                type="file"
-                name="picture"
-                onChange={this.onChange}></input>
+            <div className="input-group">
+              <div className="custom-file">
+                <input
+                  id="picture"
+                  className="p-0"
+                  type="file"
+                  name="picture"
+                  onChange={this.onChange} />
+                <label className="custom-file-label" htmlFor="picture">{this.state.filename ? this.state.filename : 'Choose File'}</label>
+              </div>
             </div>
+
             <div>
-              {this.state.imagePreviewUrl ? imagePreview : null}
+              {this.state.imagePreviewUrl ? imagePreview : <img style={{ width: '100%', height: 'auto' }} src={this.props.location.state.projectToEdit.image}/>}
             </div>
-            <div style={styleNextPageButtondiv}>
-              <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '8rem' }}>
+            <div className="select-photo-text d-flex justify-content-center mt-5">
+              <div className="picForm-div select-photo">Place a video of your project</div>
+            </div>
+            <div className="mt-3" style={styleNextPageButtondiv}>
+              <input
+                onChange={this.onYouTubeChange}
+                className="youtube-link w-100 form-control"
+                value={this.state.youtubeVideo}
+                placeholder="YouTube Link Here (optional)"></input>
+              <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '4rem' }}>
                 <button className="uploadPicButton btn" style={{ width: '140px' }} onClick={this.onSubmit}>
-                  {
-                    this.state.imagePreviewUrl
-                      ? <Link style={{ color: 'white' }} to={{
-                        pathname: '/editSubmission',
-                        state: {
-                          file: this.state.file,
-                          projectToEdit: this.state.projectToEdit
-                        }
-                      }}>Next Page</Link>
-                      : 'Next Page'
-                  }
+                  Next Page
                 </button>
               </div>
             </div>

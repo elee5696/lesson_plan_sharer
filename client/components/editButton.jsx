@@ -8,54 +8,31 @@ export default class EditButton extends React.Component {
       project: this.props.project,
       user_id: this.props.userData,
       currentUser: this.props.currentUser
+    };
+  }
 
-    };
-    this.renderSubmit = this.renderSubmit.bind(this);
-    this.submitEdit = this.submitEdit.bind(this);
-  }
-  componentDidMount() {
-    // this.setState({
-    //   project: this.props.project,
-    //   user_id: this.props.user_data.id,
-    //   currentUser: this.props
-    // });
-    // console.log(this.props);
-  }
-  submitEdit() {
-    const body = JSON.stringify({
-      name: this.state.name,
-      description: this.state.description,
-      set_up: this.state.set_up,
-      outcomes: this.state.outcomes,
-      goals: this.state.goalsToSubmit,
-      materials: this.state.materialsToSubmit,
-      image: `/images/${this.state.image}`,
-      user_id: this.props.user_id });
-    const data = {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: body
-    };
-    fetch(`/api/project.php`, data);
-  }
-  renderSubmit() {
-    return (
-      <button className ="editProjectButton btn" onClick={this.submitEdit} > Submit Changes</button>
-    );
-  }
   render() {
-
     return (
-      <Link to={{
-        pathname: '/editSubmissionImage',
-        state: {
-          projectToEdit: this.props.project
-        }
-      }} >
-        <button className="editProjectButton btn"> Edit This Project</button>
-      </Link>
+      <div className="edit-button-container dropdown">
+        <button
+          type="button"
+          className="editProjectButton btn shadow-none dropdown-toggle"
+          data-toggle="dropdown">Edit Project</button>
+        <div className="dropdown-menu dropdown-menu-left pl-2">
+          <Link style={{ color: 'black', textDecoration: 'none' }} to={{
+            pathname: '/edit',
+            state: {
+              projectToEdit: this.props.project
+            }
+          }} >
+            <div
+              className="edit-item m-1">Edit</div>
+          </Link>
+          <div style={{ color: 'red' }}
+            className="edit-item m-1"
+            onClick={this.props.modalToggle}>Delete</div>
+        </div>
+      </div>
     );
   }
 

@@ -1,12 +1,9 @@
 import React from 'react';
 import Searchbar from './search-bar';
 import ProjectList from './project-list';
+import WriteButton from './write-button';
 
 export default class ProvPage extends React.Component {
-
-  componentDidMount() {
-    this.props.getProjectCallback();
-  }
 
   render() {
     let body =
@@ -20,6 +17,7 @@ export default class ProvPage extends React.Component {
           resetResults={this.props.resetResults}/>
         <div className="search-results-container container">
           {body}
+          <WriteButton />
         </div>
       </div>
     );

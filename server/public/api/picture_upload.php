@@ -1,5 +1,4 @@
 <?php
-
 if($_FILES['picture']) {
 
   $errors=0;
@@ -20,7 +19,7 @@ if($_FILES['picture']) {
     throw new Exception('Image must be in JPG, JPEG or PNG format');
   }
 
-  if($pictureSize > 2097152 ) {
+  if($pictureSize > 10485760 ) {
     $errors++;
     throw new Exception('File is too large. Please upload a photo smaller than 5 MB');
   }

@@ -18,34 +18,37 @@ export default class CommentInput extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
+
     let body = {
       user_id: this.props.currentUser,
       project_id: this.props.currentProject,
       comment: this.state.value
     };
 
-    fetch('/api/review.php', {
-      method: 'POST',
-      body: JSON.stringify(body)
+    this.setState({
+      value: ''
     });
+
+    this.props.leaveComment(JSON.stringify(body));
   }
 
   render() {
     return (
-      <div className="comment-input-container">
-        <div className="header">
-          <h2>Leave a review</h2>
+      <div className="comment-input-container container p-0 m-0">
+        <div className="header row leave-review-header mb-3 m-0">
+          <h5>Leave a Review</h5>
         </div>
-        <form className="d-flex">
+        <form>
           <div>
-            <textarea
+            <textarea className="textarea form-control"
               type="text"
               onChange={this.onChange}
               value={this.state.value} />
           </div>
-          <div>
+          <div className="leave-review-button container row m-0 mt-1 p-0">
+            <div className="empty-col-for-button col"></div>
             <button
-              className="btn searchButton shadow-none"
+              className="btn searchButton review-button shadow-none col"
               onClick={this.onSubmit}>
               Review
             </button>
