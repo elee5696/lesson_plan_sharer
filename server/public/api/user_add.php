@@ -32,12 +32,15 @@ if( isset($_POST['id']) ) {
   "INSERT INTO
   `user_table` (`name`, `username`, `years`, `about_me`, `avatar`, `creation`)
   VALUES
-  ('$name', '$username' , '$years', '$about_me', '/images/$filename', NOW())";
+  ( ?, ?, ?, ?, ?, NOW())";
 
-  $result = mysqli_query($conn, $query);
-  if(!$result) {
-    throw new Exception('query failed');
-  }
+  $path = "images/$filename";
+
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param("ssiss", $name, $username, $years, $about_me, $path);
+
+  $stmt->execute();
+  $stmt->close();
 
   $query = "SELECT MAX(`id`) AS 'id' FROM `user_table`";
 
