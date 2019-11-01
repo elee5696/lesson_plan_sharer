@@ -212,7 +212,7 @@ CREATE TABLE `reviews` (
 
 LOCK TABLES `reviews` WRITE;
 /*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
-INSERT INTO `reviews` VALUES (1,103,1,'Great project! My kids really liked working with natural materials.','2019-10-25 00:00:00'),(2,109,1,'Nice Work!','2019-10-25 00:00:00'),(3,103,1,'Hello!','2019-10-25 00:00:00'),(4,103,1,'Woo','2019-10-25 03:20:35'),(5,103,1,'OMG','2019-10-25 03:20:41'),(6,103,1,'WOOO','2019-10-25 20:59:41'),(7,103,1,'s\'s','2019-10-25 21:00:11'),(30,103,2,'asd','2019-10-30 03:20:35'),(32,115,63,'Get this filth out of my house','2019-11-01 03:25:35');
+INSERT INTO `reviews` VALUES (1,103,1,'Great project! My kids really liked working with natural materials.','2019-10-25 00:00:00'),(32,115,63,'Get this filth out of my house','2019-11-01 03:25:35');
 /*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -254,4 +254,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-01  3:48:37
+-- Dump completed on 2019-11-01  3:50:59
