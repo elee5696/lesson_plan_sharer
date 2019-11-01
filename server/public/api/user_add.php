@@ -34,7 +34,7 @@ if( isset($_POST['id']) ) {
   VALUES
   ( ?, ?, ?, ?, ?, NOW())";
 
-  $path = "images/$filename";
+  $path = "/images/$filename";
 
   $stmt = $conn->prepare($query);
   $stmt->bind_param("ssiss", $name, $username, $years, $about_me, $path);
