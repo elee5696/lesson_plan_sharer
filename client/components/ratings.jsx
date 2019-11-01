@@ -5,7 +5,7 @@ export default class Ratings extends React.Component {
     super(props);
     this.state = {
       rating: this.props.rating,
-      total: '',
+      total: this.props.rating_count,
       rated: false
     };
   }
@@ -31,6 +31,7 @@ export default class Ratings extends React.Component {
         });
       })
       .catch(err => console.error(err));
+    this.props.ratingCallback({ count: this.state.total + 1, rating: this.state.rating });
   }
 
   render() {
@@ -47,7 +48,7 @@ export default class Ratings extends React.Component {
         <i
           key={i}
           className={className}
-          onClick={this.state.rated ? null : this.rate.bind(this, i)}>
+          onClick={this.state.rated || !this.props.user ? null : this.rate.bind(this, i)}>
         </i>
       );
     }

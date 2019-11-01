@@ -19,6 +19,7 @@ export default class ProjectDetails extends React.Component {
     this.modalToggle = this.modalToggle.bind(this);
     this.deleteProject = this.deleteProject.bind(this);
     this.leaveComment = this.leaveComment.bind(this);
+    this.rating = this.rating.bind(this);
   }
 
   componentDidMount() {
@@ -68,6 +69,14 @@ export default class ProjectDetails extends React.Component {
   modalToggle() {
     this.setState({
       modal: !this.state.modal
+    });
+  }
+
+  rating(rating) {
+    let project = Object.assign({}, this.state.project);
+    project.rating_data = rating;
+    this.setState({
+      project: project
     });
   }
 
@@ -248,7 +257,9 @@ export default class ProjectDetails extends React.Component {
                 <Ratings
                   id={this.state.project.id}
                   rating={this.state.project.rating_data.rating}
-                  rating_count={this.state.project.rating_data.count} />
+                  rating_count={this.state.project.rating_data.count}
+                  ratingCallback={this.rating}
+                  user={this.props.userData} />
                 {this.state.rated ? <p>Rated</p> : null }
                 <div className="ml-0 mb-2 row rating-details-container">
                   <h6 className="rating-details-input">Total Ratings: { this.state.total ? this.state.total : this.state.project.rating_data.count }</h6>

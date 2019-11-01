@@ -7,6 +7,7 @@ export default class SignUpPage extends React.Component {
     this.state = {
       username: '',
       name: '',
+      filename: '',
       years: '',
       about_me: '',
       picture: '',
@@ -26,21 +27,19 @@ export default class SignUpPage extends React.Component {
   }
 
   onChange(event) {
-    const fileReader = new FileReader();
-    let file = event.target.files[0];
-
-    switch (event.target.id) {
-      case 'avatar':
-        fileReader.onloadend = () => {
-          this.setState({
-            picture: file,
-            imagePreviewUrl: fileReader.result
-          });
-        };
-        fileReader.readAsDataURL(file);
-        break;
-      default:
-        this.setState({ [event.target.id]: event.target.value });
+    if (event.target.id === 'picture') {
+      const fileReader = new FileReader();
+      let file = event.target.files[0];
+      fileReader.onloadend = () => {
+        this.setState({
+          picture: file,
+          filename: file.name,
+          imagePreviewUrl: fileReader.result
+        });
+      };
+      fileReader.readAsDataURL(file);
+    } else {
+      this.setState({ [event.target.id]: event.target.value });
     }
   }
 
@@ -112,7 +111,7 @@ export default class SignUpPage extends React.Component {
                     type="file"
                     name="picture"
                     onChange={this.onChange} />
-                  <label className="custom-file-label" htmlFor="picture">{this.state.filename ? this.state.filename : 'Choose File'}</label>
+                  <label id="avatar" className="custom-file-label" htmlFor="picture">{this.state.filename ? this.state.filename : 'Choose File'}</label>
                 </div>
               </div>
               <button

@@ -10,7 +10,7 @@ class EditPictureUpload extends React.Component {
       filename: null,
       imagePreviewUrl: null,
       projectToEdit: {},
-      youtubeVideo: '',
+      youtubeVideo: this.props.location.state.projectToEdit.youtubeLink,
       redirect: false
     };
     this.onSubmit = this.onSubmit.bind(this);
@@ -58,7 +58,7 @@ class EditPictureUpload extends React.Component {
     if (!this.props.userData) {
       return (
         <div className="container">
-          <h1 className="d-flex justify-content-center">Please Log-In</h1>
+          <h1 className="d-flex justify-content-center">Please log in</h1>
         </div>
       );
     }
@@ -78,10 +78,21 @@ class EditPictureUpload extends React.Component {
           project: this.state.projectToEdit
         }
       }} />;
+    } else if (this.state.redirect) {
+      let path = this.props.location.state.projectToEdit.image.slice(8);
+      return <Redirect to={{
+        pathname: '/edit2',
+        state: {
+          file: { name: path },
+          youtubeVideoUrl: this.state.youtubeVideo,
+          project: this.state.projectToEdit
+        }
+      }} />;
     }
+
     return (
       <div className="col picForm container p-0">
-        <div className="select-photo-text d-flex justify-content-center">
+        <div className="select-photo-text d-flex justify-content-center mt-3">
           <div className="picForm-div select-photo">Select a new photo for your project page</div>
         </div>
         <div className="chooseFileButton-div col d-flex justify-content-center mt-4">
@@ -99,12 +110,17 @@ class EditPictureUpload extends React.Component {
             </div>
 
             <div>
-              {this.state.imagePreviewUrl ? imagePreview : null}
+              {this.state.imagePreviewUrl ? imagePreview : <img style={{ width: '100%', height: 'auto' }} src={this.props.location.state.projectToEdit.image}/>}
             </div>
-            <div style={styleNextPageButtondiv}>
-              <input onChange={this.onYouTubeChange} className="youtube-link w-100"
+            <div className="select-photo-text d-flex justify-content-center mt-5">
+              <div className="picForm-div select-photo">Place a video of your project</div>
+            </div>
+            <div className="mt-3" style={styleNextPageButtondiv}>
+              <input
+                onChange={this.onYouTubeChange}
+                className="youtube-link w-100 form-control"
                 value={this.state.youtubeVideo}
-                placeholder="Place A YouTube Video link here (optional)"></input>
+                placeholder="YouTube Link Here (optional)"></input>
               <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '4rem' }}>
                 <button className="uploadPicButton btn" style={{ width: '140px' }} onClick={this.onSubmit}>
                   Next Page

@@ -109,8 +109,7 @@ export default class App extends React.Component {
         projects = projects.filter(e => parseInt(e.id) !== parseInt(data.id));
         projects.push(response[0]);
         this.setState({
-          projects: projects,
-          redirect: `/detail/${parseInt(response[0].id)}`
+          projects: projects
         });
       })
       .catch(error => console.error(error));
@@ -174,8 +173,7 @@ export default class App extends React.Component {
 
   logOut() {
     this.setState({
-      currentUser: '',
-      redirect: '/login'
+      currentUser: ''
     });
     window.sessionStorage.removeItem('currentUser');
 

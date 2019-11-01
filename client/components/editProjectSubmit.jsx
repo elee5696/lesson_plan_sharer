@@ -18,7 +18,7 @@ class EditProjectSubmit extends React.Component {
       'goals': '',
       'materials': '',
       'userId': '',
-      'location': '',
+      'redirect': '',
       'YoutubeVideo': '',
       'formErrors': {
         'name': true,
@@ -72,10 +72,12 @@ class EditProjectSubmit extends React.Component {
       materials: this.state.form.materialsToSubmit,
       image: `/images/${this.state.image}`,
       id: this.state.userId,
-      youtubeLink: this.YoutubeVideo
+      youtubeLink: this.props.location.state.youtubeVideoUrl
 
     };
-
+    this.setState({
+      redirect: true
+    });
     this.props.updateProjectsCallback(body);
   }
 
@@ -154,7 +156,7 @@ class EditProjectSubmit extends React.Component {
       }
       this.image = pictureName;
       this.YouTubeVideo = this.props.location.state.youtubeVideoUrl;
-    } // this for edit
+    }
     const edit = this.props.location.state.project;
     this.goalsArray = edit.goals;
     this.materialsArray = edit.materials;
@@ -229,11 +231,11 @@ class EditProjectSubmit extends React.Component {
       );
     }
 
-    let redirect = null;
-
-    if (this.state.location) {
-      redirect = <Redirect to={`/detail/${this.state.location}`} />;
+    let redirect;
+    if (this.state.redirect) {
+      redirect = <Redirect to={`/detail/${this.id}`} />;
     }
+
     return (
       <div className= "submitForm container row p-0 col-md-10 justify-content-center">
         {redirect}
@@ -269,7 +271,7 @@ class EditProjectSubmit extends React.Component {
                     value={this.state.form.goals}
                     placeholder="Goals" />
                   <div className="input-group-append">
-                    <button className="btn btn-outline-secondary addBubbleButton shadow-none"
+                    <button className="btn searchButton btn-outline-secondary addBubbleButton shadow-none"
                       type="button" onClick={this.handleGoalSubmit}>+</button>
                   </div>
                 </div>
@@ -297,7 +299,7 @@ class EditProjectSubmit extends React.Component {
                     type="text" className="materialSubmit form-control"
                     placeholder="Materials Entry" value={this.state.materials}></input>
                   <div className="input-group-append">
-                    <button className="btn btn-outline-secondary searchButton" onClick={this.handleMaterialSubmit}>+</button>
+                    <button className="btn btn-outline-secondary searchButton shadow-none" onClick={this.handleMaterialSubmit}>+</button>
                   </div>
                 </div>
               </div>
@@ -337,7 +339,7 @@ class EditProjectSubmit extends React.Component {
               </div>
               <button onClick={this.handleSubmit}
                 type="submit"
-                className="projectSubmitButton btn btn-secondary btn-lg"
+                className="searchButton btn btn-lg shadow-none"
                 style={{ color: 'white' }}>
                   Submit Changes</button>
             </div>
