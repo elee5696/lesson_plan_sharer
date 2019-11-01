@@ -20,16 +20,18 @@ export default class Searchbar extends React.Component {
 
   onSubmit() {
     event.preventDefault();
-    this.props.searchCallback(this.state.value, this.state.filter === 'Search' ? 'name' : this.state.filter);
+    let filter = this.state.filter === 'Search' ? 'name' : this.state.filter;
+    filter = this.state.filter === 'Author' ? 'user' : filter;
+    this.props.searchCallback(this.state.value, filter);
   }
 
   setFilter(event) {
-    if (event.target.innerHTML === 'Remove') {
+    if (event.target.innerHTML === 'Reset') {
       this.props.resetResults();
     }
 
     this.setState({
-      filter: event.target.innerHTML.toLowerCase() === 'remove' ? 'Search' : event.target.innerHTML.toLowerCase()
+      filter: event.target.innerHTML === 'Reset' ? 'Search' : event.target.innerHTML
     });
   }
 
@@ -46,14 +48,17 @@ export default class Searchbar extends React.Component {
           <button
             className="btn searchButton shadow-none ml-2"
             type="button"
-            onClick={this.onSubmit}>{this.state.filter}</button>
+            onClick={this.onSubmit}>
+            {this.state.filter}
+          </button>
           <button
             type="button"
             className="btn dropdown-toggle shadow-none dropdown-toggle-split searchButton"
             data-toggle="dropdown">
           </button>
-          <div className="dropdown-menu dropdown-menu-right">
+          <div className="dropdown-menu dropdown-menu-right pl-2">
             <span className="m-1">Filter:</span>
+            <div className="dropdown-divider"></div>
             <div
               className="filter-item m-1"
               onClick={this.setFilter}>Name</div>
@@ -62,13 +67,14 @@ export default class Searchbar extends React.Component {
               onClick={this.setFilter}>Goals</div>
             <div
               className="filter-item m-1"
+              onClick={this.setFilter}>Materials</div>
+            <div
+              className="filter-item m-1"
               onClick={this.setFilter}>Author</div>
+            <div className="dropdown-divider"></div>
             <div
               className="filter-item m-1"
-              onClick={this.setFilter}>Rating</div>
-            <div
-              className="filter-item m-1"
-              onClick={this.setFilter}>Remove</div>
+              onClick={this.setFilter}>Reset</div>
           </div>
         </div>
       </div>

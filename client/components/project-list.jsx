@@ -14,6 +14,7 @@ export default class ProjectList extends React.Component {
   handleFilterClick() {
     this.setState({
       isClicked: !this.state.isClicked
+
     });
 
   }
@@ -28,8 +29,10 @@ export default class ProjectList extends React.Component {
               projectImage={project.image}
               projectName={project.name}
               projectDescription={project.description}
-              rating={project.rating}
-              rating_count={project.rating_count}
+              rating={project.rating_data.rating}
+              rating_count={project.rating_data.count}
+              username={project.author_data.name}
+
             />
           );
         })}

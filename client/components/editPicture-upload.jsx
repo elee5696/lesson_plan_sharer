@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-class PictureUploadForm extends React.Component {
+class EditPictureUpload extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,12 +9,13 @@ class PictureUploadForm extends React.Component {
       file: null,
       filename: null,
       imagePreviewUrl: null,
-      youtubeVideo: '',
+      projectToEdit: {},
+      youtubeVideo: this.props.location.state.projectToEdit.youtubeLink,
       redirect: false
     };
     this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
     this.onYouTubeChange = this.onYouTubeChange.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
   onYouTubeChange(event) {
     this.setState({
@@ -34,20 +35,23 @@ class PictureUploadForm extends React.Component {
       .then(this.setState({
         redirect: true
       }));
-
   }
-
   onChange(event) {
     const fileReader = new FileReader();
     const file = event.target.files[0];
-
     fileReader.onloadend = () => {
       this.setState({
         file: file,
         filename: file.name,
-        imagePreviewUrl: fileReader.result });
+        imagePreviewUrl: fileReader.result
+      });
     };
     fileReader.readAsDataURL(file);
+  }
+  componentDidMount() {
+    this.setState({
+      projectToEdit: this.props.location.state.projectToEdit
+    });
   }
 
   render() {
@@ -63,14 +67,25 @@ class PictureUploadForm extends React.Component {
       margin: '100 0 0 70px'
     };
 
-    const imagePreview = <img className= "submittedImage" src={this.state.imagePreviewUrl}/>;
+    const imagePreview = <img className="submittedImage" src={this.state.imagePreviewUrl} />;
 
     if (this.state.redirect && this.state.imagePreviewUrl) {
       return <Redirect to={{
-        pathname: '/submit2',
+        pathname: '/edit2',
         state: {
           file: this.state.file,
-          youtubeVideoUrl: this.state.youtubeVideo
+          youtubeVideoUrl: this.state.youtubeVideo,
+          project: this.state.projectToEdit
+        }
+      }} />;
+    } else if (this.state.redirect) {
+      let path = this.props.location.state.projectToEdit.image.slice(8);
+      return <Redirect to={{
+        pathname: '/edit2',
+        state: {
+          file: { name: path },
+          youtubeVideoUrl: this.state.youtubeVideo,
+          project: this.state.projectToEdit
         }
       }} />;
     }
@@ -78,7 +93,7 @@ class PictureUploadForm extends React.Component {
     return (
       <div className="col picForm container p-0">
         <div className="select-photo-text d-flex justify-content-center mt-3">
-          <div className="picForm-div select-photo">Select a photo for your project page</div>
+          <div className="picForm-div select-photo">Select a new photo for your project page</div>
         </div>
         <div className="chooseFileButton-div col d-flex justify-content-center mt-4">
           <form id="pictureForm">
@@ -89,12 +104,13 @@ class PictureUploadForm extends React.Component {
                   className="p-0"
                   type="file"
                   name="picture"
-                  onChange={this.onChange}/>
+                  onChange={this.onChange} />
                 <label className="custom-file-label" htmlFor="picture">{this.state.filename ? this.state.filename : 'Choose File'}</label>
               </div>
             </div>
+
             <div>
-              {this.state.imagePreviewUrl ? imagePreview : null}
+              {this.state.imagePreviewUrl ? imagePreview : <img style={{ width: '100%', height: 'auto' }} src={this.props.location.state.projectToEdit.image}/>}
             </div>
             <div className="select-photo-text d-flex justify-content-center mt-5">
               <div className="picForm-div select-photo">Place a video of your project</div>
@@ -106,7 +122,8 @@ class PictureUploadForm extends React.Component {
                 value={this.state.youtubeVideo}
                 placeholder="YouTube Link Here (optional)"></input>
               <div className="nextPageDiv d-flex justify-content-center" style={{ margin: '4rem' }}>
-                <button onClick={this.onSubmit} className="uploadPicButton btn" style={{ width: '140px' }} >Next Page
+                <button className="uploadPicButton btn" style={{ width: '140px' }} onClick={this.onSubmit}>
+                  Next Page
                 </button>
               </div>
             </div>
@@ -116,4 +133,4 @@ class PictureUploadForm extends React.Component {
     );
   }
 }
-export default PictureUploadForm;
+export default EditPictureUpload;

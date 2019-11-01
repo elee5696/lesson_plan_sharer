@@ -5,7 +5,7 @@ export default class Ratings extends React.Component {
     super(props);
     this.state = {
       rating: this.props.rating,
-      total: '',
+      total: this.props.rating_count,
       rated: false
     };
   }
@@ -31,6 +31,7 @@ export default class Ratings extends React.Component {
         });
       })
       .catch(err => console.error(err));
+    this.props.ratingCallback({ count: this.state.total + 1, rating: this.state.rating });
   }
 
   render() {
@@ -47,22 +48,18 @@ export default class Ratings extends React.Component {
         <i
           key={i}
           className={className}
-          onClick={this.state.rated ? null : this.rate.bind(this, i)}>
+          onClick={this.state.rated || !this.props.user ? null : this.rate.bind(this, i)}>
         </i>
       );
     }
 
     return (
       <div className="star-rating">
-        <div className="row star-rating-container ml-0">
+        <div className="row star-rating-container ml-0 mb-2">
           {stars}
           <div className="rating-number-container ml-2">
-            <p className="mr-3">{(parseFloat(this.state.rating)).toFixed(2)}/5</p>
+            <h6 className="mr-3 rating-score-input">{(parseFloat(this.state.rating)).toFixed(2)}/5</h6>
           </div>
-        </div>
-        {this.state.rated ? <p>Rated</p> : null }
-        <div className="ml-0 row rating-details-container">
-          <p>Total Ratings: { this.state.total ? this.state.total : this.props.rating_count }</p>
         </div>
       </div>
     );

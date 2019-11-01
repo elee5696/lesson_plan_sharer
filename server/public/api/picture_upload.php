@@ -1,6 +1,4 @@
 <?php
-$picture_path = 'NULL';
-
 if($_FILES['picture']) {
 
   $errors=0;
@@ -10,16 +8,18 @@ if($_FILES['picture']) {
   $file_type = $_FILES['picture']['type'];
 
   $filearray = explode('.', $picture_uploaded);
+  $filestart = $filearray[0];
   $fileend = end($filearray);
   $file_ext= strtolower($fileend);
   $extentions = array("jpeg", "jpg", "png");
+
 
   if(in_array($file_ext, $extentions)=== false){
     $errors++;
     throw new Exception('Image must be in JPG, JPEG or PNG format');
   }
 
-  if($pictureSize > 2097152 ) {
+  if($pictureSize > 10485760 ) {
     $errors++;
     throw new Exception('File is too large. Please upload a photo smaller than 5 MB');
   }
@@ -30,10 +30,18 @@ if($_FILES['picture']) {
     $picture_uploaded = implode($picNameArray);
   }
 
-  if(empty($errors)==true){
-    move_uploaded_file($picture_tempName, "../images/$picture_uploaded");
-    header('Location: /submitForm');
-    echo $picture_uploaded;
+  if( empty($errors) === true ){
+    $filename = $picture_uploaded;
+    $i = 1;
+
+    while(file_exists('../images/' . $filename))
+    {
+      $filename = $filestart.$i;
+      $filename = $filename.".".$file_ext;
+      $i++;
+    }
+
+    move_uploaded_file($picture_tempName, "../images/$filename");
   } else {
     throw new Exception('File could not be uploaded');
   }

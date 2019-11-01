@@ -4,27 +4,19 @@ if (defined(INTERNAL)) {
   exit('Direct access is not allowed');
 }
 
-$_POST = get_body();
+$stmt = $conn->prepare("INSERT INTO projects (`name`, `description`, `outcomes`, `set_up`, `user_id`,`youtubeLink`) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssis", $name, $description, $outcomes, $set_up, $user_id, $youtubeLink);
 
+$_POST = get_body();
 $name = $_POST['name'];
 $description = $_POST['description'];
 $outcomes = $_POST['outcomes'];
-$image = $_POST['image'];
 $set_up = $_POST['set_up'];
+$user_id = $_POST['user_id'];
+$youtubeLink = $_POST['youtubeLink'];
 
-$goals = $_POST['goals'];
-$materials = $_POST['materials'];
-
-$query =
-"INSERT INTO
-`projects` (`name`, `description`, `outcomes`, `set_up`)
-VALUES
-('$name', '$description', '$outcomes', '$set_up')";
-
-$result = mysqli_query($conn, $query);
-if(!$result) {
-  throw new Exception('query failed');
-}
+$stmt->execute();
+$stmt->close();
 
 $query = "SELECT MAX(`id`) AS 'id' FROM `projects`";
 
@@ -40,44 +32,39 @@ while( $row = mysqli_fetch_assoc($result) ) {
 }
 
 if ((!$result)) {
-throw new Exception( mysqli_error( $conn ) );
+  throw new Exception( mysqli_error( $conn ) );
 }
 
-$query =
-"INSERT INTO `images` (`filename`, `project_id`)
-  VALUES
-  ('$image', $project_id)";
+$stmt = $conn->prepare("INSERT INTO images (`filename`, `project_id`) VALUES (?, ?)");
+$stmt->bind_param("si", $image, $project_id);
 
-$result = mysqli_query($conn, $query);
-if(!$result) {
-  throw new Exception('query failed');
-}
+$image = $_POST['image'];
+
+$stmt->execute();
+$stmt->close();
+
+$goals = $_POST['goals'];
 
 foreach($goals as $goal) {
-
-  $query =
-  "INSERT INTO goals (`name`)
-    SELECT * FROM (SELECT '$goal') AS tmp
+  $stmt = $conn->prepare("INSERT INTO goals (`name`)
+    SELECT * FROM (SELECT ?) AS tmp
     WHERE NOT EXISTS (
-      SELECT `name` FROM goals WHERE `name`='$goal'
-      ) LIMIT 1";
+      SELECT `name` FROM goals WHERE `name`=?
+      ) LIMIT 1");
 
-  $result = mysqli_query($conn, $query);
-  if(!$result) {
-  throw new Exception('query failed');
+  $stmt->bind_param("ss", $goal, $goal);
+  $stmt->execute();
+  $stmt->close();
+
+  $stmt = $conn->prepare("SELECT `id` FROM goals WHERE `name`=?");
+  $stmt->bind_param("s", $goal);
+  $stmt->execute();
+  $stmt->store_result();
+  $stmt->bind_result($col1);
+  while ($stmt->fetch()) {
+    $goal_id = $col1;
   }
-
-  $query = "SELECT `id` FROM goals WHERE `name`='$goal'";
-
-  $result = mysqli_query($conn, $query);
-  if(!$result) {
-  throw new Exception('query failed');
-  }
-
-  $goal_id = '';
-  while( $row = mysqli_fetch_assoc($result) ) {
-    $goal_id = $row['id'];
-  }
+  $stmt->close();
 
   $query =
   "INSERT INTO `project_goals` (`project_id`, `goal_id`)
@@ -89,31 +76,28 @@ foreach($goals as $goal) {
   }
 }
 
+$materials = $_POST['materials'];
+
 foreach($materials as $material) {
-
-  $query =
-  "INSERT INTO materials (`name`)
-    SELECT * FROM (SELECT '$material') AS tmp
+  $stmt = $conn->prepare("INSERT INTO materials (`name`)
+    SELECT * FROM (SELECT ?) AS tmp
     WHERE NOT EXISTS (
-      SELECT `name` FROM materials WHERE `name` = '$material'
-      ) LIMIT 1";
+      SELECT `name` FROM materials WHERE `name`=?
+      ) LIMIT 1");
 
-  $result = mysqli_query($conn, $query);
-  if(!$result) {
-  throw new Exception('query failed');
+  $stmt->bind_param("ss", $material, $material);
+  $stmt->execute();
+  $stmt->close();
+
+  $stmt = $conn->prepare("SELECT `id` FROM materials WHERE `name`=?");
+  $stmt->bind_param("s", $material);
+  $stmt->execute();
+  $stmt->store_result();
+  $stmt->bind_result($col1);
+  while ($stmt->fetch()) {
+    $material_id = $col1;
   }
-
-  $query = "SELECT `id` FROM materials WHERE `name`='$material'";
-
-  $result = mysqli_query($conn, $query);
-  if(!$result) {
-  throw new Exception('query failed');
-  }
-
-  $material_id = '';
-  while( $row = mysqli_fetch_assoc($result) ) {
-    $material_id = $row['id'];
-  }
+  $stmt->close();
 
   $query =
   "INSERT INTO `project_material` (`project_id`, `material_id`)
@@ -134,5 +118,9 @@ if(!$result) {
   throw new Exception('query failed');
 }
 
-print($project_id);
+
+$_GET['id'] = $project_id;
+
+require('project_get.php');
+
 ?>
